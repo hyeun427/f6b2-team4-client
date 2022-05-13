@@ -1,10 +1,21 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useAuth } from '../src/components/commons/hooks/useAuth';
 import styles from '../styles/Home.module.css';
 
+// timeago 사용시 임포트 항목
+import * as timeago from 'timeago.js';
+import ko from 'timeago.js/lib/lang/ko';
+import TimeAgo from 'timeago-react';
+
 export default function Home() {
+  const newDate = new Date;
+
+  // timeago register
+  timeago.register('ko', ko);
+  
+  useAuth()
   return (
-    <div>얍얍얍ㅇ</div>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -16,6 +27,10 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
+
+        {/* timeago 적용예시 */}
+        <TimeAgo datetime={newDate} locale='ko' />
+        
 
         <p className={styles.description}>
           Get started by editing{' '}
