@@ -9,5 +9,13 @@ export default function CommunityList() {
     router.push("./community/write");
   };
 
-  return <CommunityListUI onClickMoveToWrite={onClickMoveToWrite} />;
+  // 좋아요 누를 때
+  const onClickLike = () => {};
+
+  return (
+    <CommunityListUI
+      onClickMoveToWrite={onClickMoveToWrite}
+      onClickLike={onClickLike}
+    />
+  );
 }
