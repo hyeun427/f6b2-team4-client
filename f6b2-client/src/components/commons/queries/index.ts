@@ -38,3 +38,21 @@ export const FETCH_BOARDS = gql`
     }
   }
 `;
+
+export const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      id
+      content
+      video
+      likes
+      writer {
+        id
+        name
+        email
+        myLang
+        newLang
+      }
+    }
+  }
+`;

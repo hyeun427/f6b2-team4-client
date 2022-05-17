@@ -35,7 +35,6 @@ export default function SignInContainer() {
   });
 
   const [loginUser] = useMutation(LOGIN_USER);
-  console.log(loginUser);
   const router = useRouter();
   const client = useApolloClient();
 
@@ -47,7 +46,6 @@ export default function SignInContainer() {
     const accessToken = result.data.login;
     setAccessToken(accessToken);
     localStorage.setItem('accessToken', accessToken);
-    console.log(accessToken);
 
     const resultUserInfo = await client.query({
       query: FETCH_USER_LOGGED_IN,
@@ -59,9 +57,8 @@ export default function SignInContainer() {
     });
 
     const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+    console.log(userInfo);
     setUserInfo(userInfo);
-    alert('login end');
-
     router.push('/');
   };
 

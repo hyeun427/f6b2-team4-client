@@ -40,6 +40,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/apollo-upload-client": "^17.0.0",
     "@types/react": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
