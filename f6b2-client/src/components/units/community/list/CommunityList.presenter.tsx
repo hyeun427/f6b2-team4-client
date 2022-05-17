@@ -1,14 +1,18 @@
-import * as S from './CommunityList.styles';
-import { GiHearts } from 'react-icons/gi';
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
+import * as S from "./CommunityList.styles";
+import { GiHearts } from "react-icons/gi";
 
-export default function CommunityListUI() {
+export default function CommunityListUI(props) {
   return (
     <S.OutWrapper>
       <S.Wrapper>
-        <S.Header>Community</S.Header>
+        <S.Header>
+          <S.PageName>Community</S.PageName>
+
+          <S.BtnWrapper>
+            <S.FilterBtn>filter</S.FilterBtn>
+            <S.WriteBtn onClick={props.onClickMoveToWrite}>Create</S.WriteBtn>
+          </S.BtnWrapper>
+        </S.Header>
 
         <div>
           <S.Body>

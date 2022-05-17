@@ -1,7 +1,6 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const OutWrapper = styled.div`
-  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,9 +12,39 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin: 65px 0px 120px;
+`;
+
+export const PageName = styled.div`
   font-size: 50px;
   font-weight: 600;
+`;
+
+export const BtnWrapper = styled.div`
+  width: 350px;
+  justify-content: space-between;
+`;
+
+export const FilterBtn = styled.button`
+  width: 154px;
+  height: 34px;
+  background-color: white;
+  font-size: 25px;
+  color: #a4b1da;
+  border: 1px solid #a4b1da;
+  border-radius: 17px;
+`;
+
+export const WriteBtn = styled.button`
+  width: 154px;
+  height: 34px;
+  background-color: white;
+  font-size: 25px;
+  color: #a4b1da;
+  border: 1px solid #a4b1da;
+  border-radius: 17px;
 `;
 
 export const Body = styled.div`
