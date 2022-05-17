@@ -22,7 +22,7 @@ export default function GardenWriteUI(props) {
         <L.WrapperImgProfile>
           <L.ImgProfile />
         </L.WrapperImgProfile>
-        <L.H2ProfileName>Jay</L.H2ProfileName>
+        <L.H2ProfileName>{props.data?.fetchUser?.name}</L.H2ProfileName>
       </L.WrapperRow>
       <L.WrapperRow>
         <L.TextareaContents
@@ -51,7 +51,9 @@ export default function GardenWriteUI(props) {
       <button>녹화시작</button>
       <button>녹화종료</button> */}
 
-      <L.ButtonSave onClick={props.onClickSave}>저장하기</L.ButtonSave>
+      <L.ButtonSave none onClick={props.onClickSave}>
+        저장하기
+      </L.ButtonSave>
     </L.WrapperDiv>
   );
 }

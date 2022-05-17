@@ -61,7 +61,7 @@ export default function ApolloConfig(props: IApolloProps) {
     uri: 'https://team04backend.shop/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: 'include',
-  });
+  }) as unknown as ApolloLink;
 
   const client = new ApolloClient({
     link: ApolloLink.from([errorLink, uploadLink]),

@@ -66,6 +66,7 @@ export default function LayoutHeader() {
   const [isToken] = useRecoilState(accessTokenState);
   // const [isOpen, setIsOpen] = useState(false);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  console.log(data);
   // const [logout] = useMutation(LOGOUT_USER);
   // const [userInfo] = useRecoilState(userInfoState);
 
