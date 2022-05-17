@@ -8,42 +8,44 @@ export const OutWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 1193px;
+  width: 997px;
 `;
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 65px 0px 120px;
+  margin: 55px 0px 65px;
 `;
 
 export const PageName = styled.div`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
 `;
 
 export const BtnWrapper = styled.div`
-  width: 350px;
+  width: 138px;
+  display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const FilterBtn = styled.button`
-  width: 154px;
-  height: 34px;
+  width: 66px;
+  height: 27px;
   background-color: white;
-  font-size: 25px;
+  font-size: 13px;
   color: #a4b1da;
-  border: 1px solid #a4b1da;
+  border: 2px solid #a4b1da;
   border-radius: 17px;
 `;
 
 export const WriteBtn = styled.button`
-  width: 154px;
-  height: 34px;
+  width: 66px;
+  height: 27px;
   background-color: white;
-  font-size: 25px;
+  font-size: 13px;
   color: #a4b1da;
-  border: 1px solid #a4b1da;
+  border: 2px solid #a4b1da;
   border-radius: 17px;
 `;
 
@@ -56,13 +58,15 @@ export const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
+  width: 175px;
 `;
 
 export const Img = styled.div`
   width: 100%;
-  height: 338px;
+  height: 210px;
   border: 2px solid #a4b1da;
+
+  text-align: center;
   /* 완성 후 삭제 */
   background-color: white;
 `;
@@ -80,23 +84,30 @@ export const InfoWrapper = styled.div`
 export const Info = styled.div``;
 
 export const Title = styled.div`
-  font-size: 18px;
-`;
-
-export const Subtitle = styled.div`
-  font-size: 16px;
-  color: #777777;
+  font-size: 15px;
 `;
 
 export const Writer = styled.div`
-  font-size: 16px;
+  font-size: 12px;
 `;
 
 export const Date = styled.div`
-  font-size: 14px;
+  font-size: 10px;
+  color: #6a6a6a;
 `;
 
-export const LikesWrapper = styled.div``;
+export const LikesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const HeartsWrapper = styled.button`
+  color: white;
+  border: none;
+  background-color: #d4e8ea;
+  cursor: pointer;
+`;
 export const Likes = styled.div`
-  color: #a4b1da;
+  font-size: 10px;
 `;
