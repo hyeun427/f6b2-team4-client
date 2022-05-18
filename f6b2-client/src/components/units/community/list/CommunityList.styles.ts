@@ -1,70 +1,77 @@
 import styled from "@emotion/styled";
 
-export const OutWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #d4e8ea;
-`;
-
-export const Wrapper = styled.div`
-  width: 1193px;
+  padding-bottom: 40px;
 `;
 
 export const Header = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  margin: 65px 0px 120px;
+  margin: 55px 0px 47px;
+  width: 900px;
 `;
 
 export const PageName = styled.div`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
 `;
 
 export const BtnWrapper = styled.div`
-  width: 350px;
+  width: 138px;
+  display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
-export const FilterBtn = styled.button`
-  width: 154px;
-  height: 34px;
+export const Button = styled.button`
+  cursor: pointer;
+  width: 66px;
+  height: 27px;
   background-color: white;
-  font-size: 25px;
+  font-size: 13px;
   color: #a4b1da;
-  border: 1px solid #a4b1da;
-  border-radius: 17px;
-`;
-
-export const WriteBtn = styled.button`
-  width: 154px;
-  height: 34px;
-  background-color: white;
-  font-size: 25px;
-  color: #a4b1da;
-  border: 1px solid #a4b1da;
+  border: 2px solid #a4b1da;
   border-radius: 17px;
 `;
 
 export const Body = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  width: 750px;
+`;
+
+export const LikesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-top: 18px;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+`;
+export const HeartsWrapper = styled.div`
+  color: white;
+  cursor: pointer;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+`;
+
+export const Likes = styled.div`
+  font-size: 10px;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
 export const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
-`;
-
-export const Img = styled.div`
-  width: 100%;
-  height: 338px;
-  border: 2px solid #a4b1da;
-  /* 완성 후 삭제 */
-  background-color: white;
+  width: 150px;
 `;
 
 export const InfoWrapper = styled.div`
@@ -73,30 +80,37 @@ export const InfoWrapper = styled.div`
   justify-content: space-between;
 
   margin-top: 10px;
-  width: 100%;
+  width: 120px;
   height: 90px;
 `;
 
-export const Info = styled.div``;
-
-export const Title = styled.div`
-  font-size: 18px;
+export const Info = styled.div`
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
-export const Subtitle = styled.div`
-  font-size: 16px;
-  color: #777777;
+export const Title = styled.div`
+  font-size: 13px;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
 export const Writer = styled.div`
-  font-size: 16px;
+  font-size: 10px;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
 export const Date = styled.div`
-  font-size: 14px;
+  font-size: 10px;
+  color: #6a6a6a;
+  text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
-export const LikesWrapper = styled.div``;
-export const Likes = styled.div`
-  color: #a4b1da;
+export const Img = styled.img`
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border: 2px solid none;
+  filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.25));
 `;
