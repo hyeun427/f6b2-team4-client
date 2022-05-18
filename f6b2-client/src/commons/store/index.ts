@@ -2,7 +2,6 @@
 import { atom, selector } from 'recoil';
 import { getAccessToken } from '../libraries/getAccessToken';
 
-
 export const accessTokenState = atom({
   key: 'accessTokenState',
   default: '',
@@ -12,7 +11,14 @@ export const userInfoState = atom({
   key: 'userInfoState',
   default: {
     email: '',
+    id: '',
+    image: '',
+    myLang: '',
     name: '',
+    newLang: '',
+    password: '',
+    points: 0,
+    __typename: '',
   },
 });
 

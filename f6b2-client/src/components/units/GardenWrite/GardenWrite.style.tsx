@@ -8,9 +8,9 @@ export const WrapperDiv = styled.div`
   width: 100%;
   height: auto;
   background-color: #fff;
-  border: 4px solid #727da1;
-  border-radius: 25px;
-  padding: 34px 38px;
+  border: 2px solid #727da1;
+  border-radius: 20px;
+  padding: 30px 30px;
 `;
 
 export const WrapperRow = styled.div`
@@ -45,7 +45,7 @@ export const H2ProfileName = styled.h2`
 
 export const TextareaContents = styled.textarea`
   width: 100%;
-  height: 209px;
+  height: 116px;
   padding: 17px 10px;
   background: #dee1ec;
   border-radius: 25px;
@@ -58,6 +58,15 @@ export const ImgIcon = styled.img`
 `;
 
 export const ButtonSave = styled.button`
+  width: 100%;
+  height: auto;
+`;
+
+export const WrapperRowIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: auto;
 `;
