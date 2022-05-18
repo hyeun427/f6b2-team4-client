@@ -4,14 +4,14 @@ import { ISingninPresenter } from './signin.type';
 export default function SignInUI(props: ISingninPresenter) {
   return (
     <U.WrapperDiv>
-      <U.SignUpTitleH1>로그인</U.SignUpTitleH1>
       <U.SignUpWrapperDiv>
+        <U.SignUpTitleH1>Log in</U.SignUpTitleH1>
         <U.SignUpForm onSubmit={props.handleSubmit(props.onClickSignin)}>
           <U.SignUpItemDiv>
             <U.SignUpItemInput
               {...props.register('email')}
               type='email'
-              placeholder='이메일을 입력해주세요'
+              placeholder='Enter your email'
             />
             <U.Warning>{props.formState.errors.email?.message}</U.Warning>
           </U.SignUpItemDiv>
@@ -19,20 +19,45 @@ export default function SignInUI(props: ISingninPresenter) {
             <U.SignUpItemInput
               {...props.register('password')}
               type='password'
-              placeholder='비밀번호를 입력해주세요'
+              placeholder='Enter your password'
             />
             <U.Warning>{props.formState.errors?.password?.message}</U.Warning>
           </U.SignUpItemDiv>
+          <U.WrapperRow>
+            <U.WrapperRadio>
+              <U.InputRadio type='radio' />
+              <U.LabelRadio>Keep logged in</U.LabelRadio>
+            </U.WrapperRadio>
+            <U.PFindId>Find ID / Password</U.PFindId>
+          </U.WrapperRow>
 
           <U.SignUpItemDiv>
             <U.SignUpItemBtn disabled={!props.formState.isValid}>
-              로그인
+              Log in
             </U.SignUpItemBtn>
           </U.SignUpItemDiv>
         </U.SignUpForm>
         <U.BtnMoveSignUp onClick={props.onClickMoveSignUp}>
-          회원가입
+          Don’t have any account? ➤ Go sign up
         </U.BtnMoveSignUp>
+        <U.ButtonGoogle>
+          <U.WarperBtnContents>
+            <U.ImageBtnIcon src={'/image/google.png'} />
+            <U.PBtnText>Log in via Google</U.PBtnText>
+          </U.WarperBtnContents>
+        </U.ButtonGoogle>
+        <U.ButtonKakao>
+          <U.WarperBtnContents>
+            <U.ImageBtnIcon src={'/image/kakao.png'} />
+            <U.PBtnText>Log in via Kakao</U.PBtnText>
+          </U.WarperBtnContents>
+        </U.ButtonKakao>
+        <U.ButtonNaver>
+          <U.WarperBtnContents>
+            <U.ImageBtnIcon src={'/image/naver.png'} />
+            <U.PBtnText>Log in via Naver</U.PBtnText>
+          </U.WarperBtnContents>
+        </U.ButtonNaver>
       </U.SignUpWrapperDiv>
     </U.WrapperDiv>
   );

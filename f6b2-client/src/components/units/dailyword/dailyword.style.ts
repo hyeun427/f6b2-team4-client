@@ -10,7 +10,7 @@ export const WrapperDiv = styled.div`
   background-color: #fff;
   border: 2px solid #727da1;
   border-radius: 20px;
-  padding: 30px 30px;
+  padding: 12px 15px;
 `;
 
 export const WrapperRow = styled.div`
@@ -38,8 +38,8 @@ export const PNewLang = styled.p`
   color: #a4b1da;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 14px;
+  line-height: 20px;
 `;
 
 export const Divider = styled.div`
@@ -52,6 +52,6 @@ export const PMyLang = styled.p`
   color: #6b6b6b;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 14px;
+  line-height: 20px;
 `;

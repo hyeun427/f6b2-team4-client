@@ -8,15 +8,15 @@ export default function ArchiveUI(props: IArchive) {
   return (
     <Archive.WrapperDiv>
       <Archive.WrapperRow>
-        <BsBookmark />
+        <BsBookmark style={{ margin: '10' }} />
         Archive
       </Archive.WrapperRow>
       <Archive.InputSearchBar placeholder='Search' />
-      <Archive.WrapperItem>
+      <Archive.WrapperColItem>
         {props.data?.fetchSavedBoards.map((el) => (
           <ArchiveItemUI key={String(uuidv4())} el={el} />
         ))}
-      </Archive.WrapperItem>
+      </Archive.WrapperColItem>
     </Archive.WrapperDiv>
   );
 }

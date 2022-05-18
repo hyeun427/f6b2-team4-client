@@ -23,6 +23,7 @@ export const WrapperDiv = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
+  padding: 69px;
 `;
 
 export const SignUpWrapperDiv = styled.div`
@@ -30,11 +31,12 @@ export const SignUpWrapperDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 520px;
+  width: 390px;
   height: auto;
-  padding: 45px 58px 36px 62px;
+  padding: 50px 46px 61px 44px;
   background-color: #fff;
-  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 0px;
 `;
 
 export const SignUpForm = styled.form`
@@ -47,10 +49,11 @@ export const SignUpForm = styled.form`
 export const SignUpTitleH1 = styled.h1`
   width: 100%;
   height: auto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
   text-align: center;
-  font-size: 28px;
-  margin-top: 80px;
-  margin-bottom: 20px;
 `;
 
 export const SignUpItemDiv = styled.div`
@@ -61,34 +64,33 @@ export const SignUpItemDiv = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SignUpItemLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  font-size: 16px;
-`;
-
 export const SignUpItemInput = styled.input`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 41px;
   border: none;
   border-bottom: 2px solid #dbdbdb;
   font-size: 16px;
-  padding: 20px 16px;
+  padding: 13px 0px 10px 0px;
+  color: #767676;
 `;
 
 export const SignUpItemBtn = styled.button`
   width: 100%;
-  height: auto;
-  margin-top: 40px;
+  height: 41px;
+  margin-top: 24px;
   border: none;
-  font-size: 20px;
-  padding: 20px 16px;
+  font-size: 12px;
+  padding: 12px 16px;
   color: #f8f9fa;
-  background-color: #a4b1da;
+  background: linear-gradient(
+      96.63deg,
+      #965de8 0%,
+      rgba(255, 255, 255, 0.100415) 99.98%
+    ),
+    #6559ee;
+  border-radius: 10px;
   cursor: pointer;
   :disabled {
     background-color: gray;
@@ -96,24 +98,110 @@ export const SignUpItemBtn = styled.button`
 `;
 
 export const Warning = styled.p`
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
+  color: #ed1c24;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 11px;
+  margin-top: 3px;
 `;
 
 export const BtnMoveSignUp = styled.button`
   width: 100%;
   height: auto;
-  margin-top: 40px;
-  border: 1px solid #dbdbdb;
-  font-size: 20px;
-  padding: 20px 16px;
-  color: black;
+  border: none;
+  padding: 0px 16px;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  color: #767676;
   background-color: white;
+  margin-bottom: 30px;
   :hover {
-    background-color: #a4b1da;
-    border: none;
-    color: white;
     cursor: pointer;
   }
+`;
+
+export const WrapperRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const WrapperRadio = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const InputRadio = styled.input``;
+
+export const LabelRadio = styled.label`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+`;
+
+export const PFindId = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: right;
+  color: #767676;
+`;
+
+export const ButtonGoogle = styled.button`
+  width: 298px;
+  height: 29px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  background: #ffffff;
+  margin-bottom: 16px;
+`;
+
+export const WarperBtnContents = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ImageBtnIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+`;
+
+export const PBtnText = styled.p`
+  width: auto;
+  height: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #000000;
+`;
+
+export const ButtonKakao = styled.button`
+  width: 298px;
+  height: 29px;
+  border: none;
+  border-radius: 10px;
+  background: #fee500;
+  border: none;
+  margin-bottom: 16px;
+`;
+
+export const ButtonNaver = styled.button`
+  width: 298px;
+  height: 29px;
+  border: none;
+  border-radius: 10px;
+  background: #06bd34;
+  border: none;
 `;

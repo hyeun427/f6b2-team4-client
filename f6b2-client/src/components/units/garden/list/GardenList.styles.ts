@@ -1,25 +1,67 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const TmpDiv = styled.div`
   width: 100%;
+  height: 60px;
+`;
+
+export const GardenWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+`;
+
+export const WrapperLeft = styled.div`
+  width: 285px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 98px 47px 0px 0px;
+  position: sticky;
+  top: 60px;
+`;
 
-  // test
+export const Wrapper = styled.div`
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #d4e8ea;
-  padding-top: 100px;
-  /* default 80px */
+  padding-top: 45px;
+`;
+export const WrapperRight = styled.div`
+  width: 285px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 98px 0px 0px 47px;
+  position: sticky;
+  top: 60px;
+`;
+
+export const InputSearchBar = styled.input`
+  width: 100%;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 25px;
+  border: none;
+  margin-bottom: 20px;
+  color: #909090;
+  padding: 8px 20px;
 `;
 
 export const GardenListBox = styled.main`
-  width: 800px;
-  padding: 60px;
-  border-radius: 20px;
-  border: 3px solid #727da1;
-
-  // test
+  width: 100%;
+  padding: 30px;
+  border-radius: 25px;
+  border: 2px solid #727da1;
   background-color: white;
+  margin-bottom: 20px;
 `;
 
 export const WriterInfoBox = styled.section`
@@ -29,8 +71,8 @@ export const WriterInfoBox = styled.section`
 `;
 
 export const WriterProfile = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
   margin-right: 10px;
 
@@ -75,12 +117,10 @@ export const ContentsTranslateBox = styled.article`
 `;
 
 export const ContentsImg = styled.img`
-  width: 600px;
+  width: 335px;
+  height: 221px;
   margin-top: 20px;
-  border-radius: 20px;
-
   // test
-  height: 350px;
   background-color: gray;
 `;
 

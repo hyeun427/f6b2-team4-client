@@ -1,5 +1,4 @@
 // import WebcamRecord from '../../commons/records';
-import dynamic from 'next/dynamic';
 import * as L from './GardenWrite.style';
 import { IGardenWrite } from './GardenWrite.type';
 import {
@@ -7,6 +6,7 @@ import {
   BiImageAlt,
   BiCaretRightSquare,
 } from 'react-icons/bi';
+import { FaRegUserCircle } from 'react-icons/fa';
 // const WebcamRecord = dynamic(() => import('WebcamRecord'), { ssr: false });
 // import VideoRecorder from 'react-video-recorder';
 // const VideoRecorder = dynamic(() => import('react-video-recorder'), {
@@ -26,7 +26,11 @@ export default function GardenWriteUI(props: IGardenWrite) {
     <L.WrapperDiv>
       <L.WrapperRow>
         <L.WrapperImgProfile>
-          <L.ImgProfile />
+          {props.data?.fetchUser?.image.includes('http') ? (
+            <L.ImgProfile src={props.data?.fetchUser?.image} />
+          ) : (
+            <FaRegUserCircle />
+          )}
         </L.WrapperImgProfile>
         <L.H2ProfileName>{props.data?.fetchUser?.name}</L.H2ProfileName>
       </L.WrapperRow>
