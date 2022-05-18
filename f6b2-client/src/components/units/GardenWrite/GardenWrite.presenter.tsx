@@ -1,6 +1,12 @@
 // import WebcamRecord from '../../commons/records';
 import dynamic from 'next/dynamic';
 import * as L from './GardenWrite.style';
+import { IGardenWrite } from './GardenWrite.type';
+import {
+  BiVideoRecording,
+  BiImageAlt,
+  BiCaretRightSquare,
+} from 'react-icons/bi';
 // const WebcamRecord = dynamic(() => import('WebcamRecord'), { ssr: false });
 // import VideoRecorder from 'react-video-recorder';
 // const VideoRecorder = dynamic(() => import('react-video-recorder'), {
@@ -9,7 +15,7 @@ import * as L from './GardenWrite.style';
 
 // import Webcam from 'react-webcam';
 
-export default function GardenWriteUI(props) {
+export default function GardenWriteUI(props: IGardenWrite) {
   // const videoConstraints = {
   //   width: 800,
   //   height: 600,
@@ -30,11 +36,11 @@ export default function GardenWriteUI(props) {
           placeholder='Enter Your Words Here'
         ></L.TextareaContents>
       </L.WrapperRow>
-      <L.WrapperRow>
-        <L.ImgIcon src='/icon/notice.svg' />
-        <L.ImgIcon src='/icon/image.svg' />
-        <L.ImgIcon src='/icon/video.svg' />
-      </L.WrapperRow>
+      <L.WrapperRowIcon>
+        <BiVideoRecording size={'30'} color={'A4B1DA'} />
+        <BiImageAlt size={'30'} color={'A4B1DA'} />
+        <BiCaretRightSquare size={'30'} color={'A4B1DA'} />
+      </L.WrapperRowIcon>
       {/* {typeof window !== 'undefined' ? (
         <VideoRecorder
           onRecordingComplete={(videoBlob) => {
@@ -51,9 +57,7 @@ export default function GardenWriteUI(props) {
       <button>녹화시작</button>
       <button>녹화종료</button> */}
 
-      <L.ButtonSave none onClick={props.onClickSave}>
-        저장하기
-      </L.ButtonSave>
+      <L.ButtonSave onClick={props.onClickSave}>저장하기</L.ButtonSave>
     </L.WrapperDiv>
   );
 }

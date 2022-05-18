@@ -22,6 +22,8 @@ export default function GardenWriteContainer() {
         variables: {
           createBoardInput: {
             content: String(isContent),
+            // 비디오 URL 값이 필수값임
+            // 현재 비디오 녹화 기능이 없어 임시 URL을 넣음
             video: 'temporary url',
           },
         },

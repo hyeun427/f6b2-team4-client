@@ -58,13 +58,20 @@ export default function SignInContainer() {
 
     const userInfo = resultUserInfo.data.fetchUserLoggedIn;
     console.log(userInfo);
+    console.log(resultUserInfo);
+
     setUserInfo(userInfo);
     router.push('/');
+  };
+
+  const onClickMoveSignUp = () => {
+    router.push('/signup');
   };
 
   return (
     <SignInUI
       onClickSignin={onClickSignin}
+      onClickMoveSignUp={onClickMoveSignUp}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}

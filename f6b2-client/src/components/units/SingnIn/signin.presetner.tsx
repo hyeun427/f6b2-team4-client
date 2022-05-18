@@ -2,17 +2,12 @@ import * as U from './signin.style';
 import { ISingninPresenter } from './signin.type';
 
 export default function SignInUI(props: ISingninPresenter) {
-
-
-  
   return (
     <U.WrapperDiv>
+      <U.SignUpTitleH1>로그인</U.SignUpTitleH1>
       <U.SignUpWrapperDiv>
         <U.SignUpForm onSubmit={props.handleSubmit(props.onClickSignin)}>
-          <U.SignUpTitleH1>회원가입</U.SignUpTitleH1>
-
           <U.SignUpItemDiv>
-            <U.SignUpItemLabel htmlFor='email'>이메일</U.SignUpItemLabel>
             <U.SignUpItemInput
               {...props.register('email')}
               type='email'
@@ -20,9 +15,7 @@ export default function SignInUI(props: ISingninPresenter) {
             />
             <U.Warning>{props.formState.errors.email?.message}</U.Warning>
           </U.SignUpItemDiv>
-
           <U.SignUpItemDiv>
-            <U.SignUpItemLabel htmlFor='password'>비밀번호</U.SignUpItemLabel>
             <U.SignUpItemInput
               {...props.register('password')}
               type='password'
@@ -32,11 +25,14 @@ export default function SignInUI(props: ISingninPresenter) {
           </U.SignUpItemDiv>
 
           <U.SignUpItemDiv>
-            <U.SignUpItemBtn type='submit'>
+            <U.SignUpItemBtn disabled={!props.formState.isValid}>
               로그인
             </U.SignUpItemBtn>
           </U.SignUpItemDiv>
         </U.SignUpForm>
+        <U.BtnMoveSignUp onClick={props.onClickMoveSignUp}>
+          회원가입
+        </U.BtnMoveSignUp>
       </U.SignUpWrapperDiv>
     </U.WrapperDiv>
   );

@@ -19,8 +19,10 @@ import {
   WriterName,
   WriterProfile,
 } from './GardenList.styles';
-import { MdQuestionAnswer, MdThumbUp } from 'react-icons/md';
+import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from 'react-icons/md';
 import GardenBestList from '../bestList/GardenBestList.container';
+// 날짜 데이터 yyyy-mm-dd 로 변경 모듈
+import { getDate } from '../../../../commons/libraries/utils';
 
 export default function GardenListUI(props) {
   return (
@@ -31,9 +33,13 @@ export default function GardenListUI(props) {
           <WriterInfoBox>
             <WriterProfile />
             <WriterInfo>
-              <WriterName></WriterName>
-              <CreatedAt>{el.createdAt}</CreatedAt>
+              <WriterName>{el.writer.name}</WriterName>
+              <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
             </WriterInfo>
+            <MdBookmarkBorder
+              size={'30'}
+              onClick={() => props.onClickSaved(el)}
+            />
           </WriterInfoBox>
           <ContentsBox>
             <Contents>{el.content}</Contents>

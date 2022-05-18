@@ -1,55 +1,105 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
-import { accessTokenState } from '../../../../commons/store';
+import { accessTokenState, userInfoState } from '../../../../commons/store';
 import { useQuery } from '@apollo/client';
-// 팀플용
 import { FETCH_USER_LOGGED_IN } from '../../queries';
-// import { useState } from 'react';
-// import { Modal } from 'antd';
-// import RechargeModal from '../../rechargeModal/rechargeModal';
-
-// export const LOGOUT_USER = gql`
-//   mutation logoutUser {
-//     logoutUser
-//   }
-// `;
+import { FaRegUserCircle, FaCookieBite } from 'react-icons/fa';
+import { CgBee } from 'react-icons/cg';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 117px;
+  height: 60px;
   display: flex;
-  background-color: white;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  background-color: #3a3939;
   position: fixed;
-  box-shadow: -1px 1px 1px 0 rgb(42 42 42 / 27%);
   z-index: 100;
+  padding: 12px 0px;
 `;
 
 const WrapperHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px 0px;
   width: 1200px;
   height: 100%;
+`;
+
+const WrapperLogo = styled.div`
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const PLogoLang = styled.span`
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 36px;
+  color: #ffffff;
+`;
+
+const PLogoB = styled.span`
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 36px;
+  color: #a4b1da;
 `;
 
 const WrapperHeaderMenu = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 40px;
+  width: 75%;
+  height: 100%;
 `;
-const WrapperLogo = styled.div`
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
+
+const BtnHeader = styled.button`
+  width: auto;
+  height: 100%;
+  border: none;
+  color: white;
+  background-color: #3a3939;
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  margin: 0px 35px;
+
   :hover {
-    background-color: lightgray;
+    color: #a4b1da;
+    cursor: pointer;
   }
+`;
+
+const WrapperHeaderInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 100%;
+  color: white;
+
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
 `;
 
 const SignUpButton = styled.button`
@@ -65,13 +115,27 @@ export default function LayoutHeader() {
   const router = useRouter();
   const [isToken] = useRecoilState(accessTokenState);
   // const [isOpen, setIsOpen] = useState(false);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
   console.log(data);
   // const [logout] = useMutation(LOGOUT_USER);
-  // const [userInfo] = useRecoilState(userInfoState);
+  setUserInfo(data?.fetchUser);
+  console.log('userInfo', userInfo);
 
   const onClickLogo = () => {
     router.push('/');
+  };
+
+  const onClickGarden = () => {
+    router.push('/garden');
+  };
+
+  const onClickCommunity = () => {
+    router.push('/community');
+  };
+
+  const onClickChat = () => {
+    alert('준비중입니다');
   };
 
   const onClickSignIn = () => {
@@ -82,52 +146,54 @@ export default function LayoutHeader() {
     router.push('/signup');
   };
 
-  // const onClickReCharge = () => {
-  //   setIsOpen(true);
-  // };
-
-  // const handleOk = () => {
-  //   setIsOpen(false);
-  // };
-
-  // const handleCancel = () => {
-  //   setIsOpen(false);
-  // };
-
-  // const onClickLogOut = async () => {
-  //   try {
-  //     await logout({
-  //       variables: {
-  //         logoutUser: true,
-  //       },
-  //     });
-  //     setIsToken('');
-  //   } catch (error) {
-  //     if (error instanceof Error) alert(error.message);
-  //   }
-  // };
-
   return (
     <Wrapper>
       <WrapperHeader>
-        <WrapperLogo onClick={onClickLogo}>로고로고</WrapperLogo>
+        <WrapperLogo onClick={onClickLogo}>
+          <PLogoLang>Lang</PLogoLang>
+          <PLogoB>B</PLogoB>
+        </WrapperLogo>
         <WrapperHeaderMenu>
+          <BtnHeader onClick={onClickGarden}>Garden</BtnHeader>
+          <BtnHeader onClick={onClickCommunity}>Community</BtnHeader>
+          <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
+        </WrapperHeaderMenu>
+        <WrapperHeaderInfo>
+          <FaRegUserCircle color='white' size={'20'} style={{ margin: '10' }} />
+          <CgBee color='white' size={'20'} style={{ margin: '10' }} />
           {isToken ? (
-            <>
-              {/* 수업용 */}
-              {/* <div>{data?.fetchUserLoggedIn.name}님 환영합니다</div> */}
-              {/* 팀프로젝트용 */}
-              <div>{data?.fetchUser.name}님 환영합니다</div>
-              {/* <SignUpButton onClick={onClickLogOut}>로그아웃</SignUpButton> */}
-            </>
+            <>{data?.fetchUser.points} P</>
           ) : (
             <>
               <SignUpButton onClick={onClickSignIn}>로그인</SignUpButton>
               <SignUpButton onClick={onClickSignUp}>회원가입</SignUpButton>
             </>
           )}
-        </WrapperHeaderMenu>
+        </WrapperHeaderInfo>
       </WrapperHeader>
     </Wrapper>
   );
 }
+
+// // 이 페이지는 서버사이드 렌더링 할래!!
+// export const getServerSideProps = async (context) => {
+//   // 데이터를 요청할 것!!!
+//   // const {data} = use
+//   const result = await request(
+//     'https://backend06.codebootcamp.co.kr/graphql',
+//     FETCH_BOARD,
+//     {
+//       boardId: context.query.boardId,
+//     }
+//   );
+
+//   return {
+//     props: {
+//       myboardData: {
+//         title: result.fetchBoard.title,
+//         contents: result.fetchBoard.contents,
+//         images: result.fetchBoard.images,
+//       },
+//     },
+//   };
+// };
