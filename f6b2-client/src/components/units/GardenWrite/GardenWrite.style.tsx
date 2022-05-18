@@ -5,12 +5,14 @@ export const WrapperDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 236px;
   height: auto;
   background-color: #fff;
   border: 2px solid #727da1;
   border-radius: 20px;
-  padding: 30px 30px;
+  padding: 20px 20px;
+  margin-bottom: 20px;
+  z-index: 10;
 `;
 
 export const WrapperRow = styled.div`
@@ -20,6 +22,7 @@ export const WrapperRow = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
+  padding-bottom: 4px;
 `;
 
 export const WrapperImgProfile = styled.div`
@@ -27,16 +30,17 @@ export const WrapperImgProfile = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 15px;
+  height: 15px;
   border: none;
+  margin-right: 10px;
 `;
 
 export const ImgProfile = styled.img`
   width: 100%;
   height: 100%;
   background-color: gray;
-  border-radius: 25%;
+  border-radius: 50%;
 `;
 export const H2ProfileName = styled.h2`
   width: 100%;
@@ -45,10 +49,10 @@ export const H2ProfileName = styled.h2`
 
 export const TextareaContents = styled.textarea`
   width: 100%;
-  height: 116px;
-  padding: 17px 10px;
+  height: 69px;
+  padding: 8px 7px;
   background: #dee1ec;
-  border-radius: 25px;
+  border-radius: 6px;
   border: none;
 `;
 

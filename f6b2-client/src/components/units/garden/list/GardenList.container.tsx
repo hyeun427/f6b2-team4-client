@@ -7,9 +7,7 @@ import { IBoard } from '../../../../commons/types/generated/types';
 export default function GardenList() {
   const [commentListVal, setCommentListVal] = useState(false);
   const [saveGarden] = useMutation(SAVE_BOARD);
-
   const { data } = useQuery(FETCH_BOARDS);
-  console.log(data);
 
   const onClickCommentListBtn = () => {
     if (commentListVal === false) {
@@ -22,7 +20,6 @@ export default function GardenList() {
   // 저장하기 버튼 클릭 함수
 
   const onClickSaved = async (data: IBoard) => {
-    console.log(data);
     try {
       const result = await saveGarden({
         variables: {
@@ -30,7 +27,6 @@ export default function GardenList() {
           userId: data.writer.id,
         },
       });
-      console.log('저장완료');
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

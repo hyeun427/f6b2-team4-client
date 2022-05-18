@@ -15,7 +15,7 @@ const WrapperLayout = styled.div`
 `;
 
 const Body = styled.div`
-  width: 100%;
+  width: 1080px;
   height: auto;
 `;
 
@@ -25,7 +25,7 @@ const BodyWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 117px;
+  padding-top: 60px;
   background-color: #d4e8ea;
 `;
 
@@ -49,9 +49,9 @@ export default function Layout(props: ILayoutProps) {
     <WrapperLayout>
       {!isHiddenHeader && <LayoutHeader />}
       <BodyWrapper>
-        <LeftSidebar />
+        {/* <LeftSidebar /> */}
         <Body>{props.children}</Body>
-        <RightSidebar />
+        {/* <RightSidebar /> */}
       </BodyWrapper>
     </WrapperLayout>
   );

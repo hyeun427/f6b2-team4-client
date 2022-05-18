@@ -22,7 +22,7 @@ export const CommentWriteProfile = styled.img`
 `;
 
 export const CommentWriteInputBox = styled.article`
-  width: 610px;
+  width: 100%;
   height: 50px;
   border-radius: 15px;
   display: flex;

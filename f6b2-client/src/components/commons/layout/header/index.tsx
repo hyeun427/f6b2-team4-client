@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { accessTokenState, userInfoState } from '../../../../commons/store';
 import { useQuery } from '@apollo/client';
 import { FETCH_USER_LOGGED_IN } from '../../queries';
-import { FaRegUserCircle, FaCookieBite } from 'react-icons/fa';
+import { FaRegUserCircle } from 'react-icons/fa';
 import { CgBee } from 'react-icons/cg';
 
 const Wrapper = styled.div`

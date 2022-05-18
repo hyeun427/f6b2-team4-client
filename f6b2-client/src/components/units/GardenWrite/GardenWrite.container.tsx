@@ -1,6 +1,10 @@
 import { useMutation, useQuery } from '@apollo/client';
 import { ChangeEvent, useState } from 'react';
-import { CREATE_BOARD, FETCH_USER_LOGGED_IN } from '../../commons/queries';
+import {
+  CREATE_BOARD,
+  FETCH_USER_LOGGED_IN,
+  FETCH_BOARDS,
+} from '../../commons/queries';
 import GardenWriteUI from './GardenWrite.presenter';
 
 export default function GardenWriteContainer() {
@@ -27,8 +31,13 @@ export default function GardenWriteContainer() {
             video: 'temporary url',
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARDS,
+          },
+        ],
       });
-      console.log(response);
+      setIsContent('');
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
