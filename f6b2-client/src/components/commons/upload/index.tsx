@@ -1,4 +1,4 @@
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ChangeEvent, useRef, useState } from 'react';
 import { checkFileValidation } from '../../../commons/libraries/validation';
 import {
@@ -7,14 +7,7 @@ import {
 } from '../../../commons/types/generated/types';
 import styled from '@emotion/styled';
 import { Modal } from 'antd';
-
-const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      url
-    }
-  }
-`;
+import { UPLOAD_FILE } from '../../commons/queries';
 
 export const UploadImageWrapper = styled.div`
   width: 100px;

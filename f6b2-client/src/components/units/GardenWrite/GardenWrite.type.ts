@@ -1,9 +1,12 @@
 import { ChangeEvent } from 'react';
-import {} from '../../../commons/types/generated/types';
+import { IUser } from '../../../commons/types/generated/types';
 
-export interface IPostingPathProps {
-  isEdit: boolean;
-  originData?: any;
+export interface IGardenWrite {
+  onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onClickSave: () => void;
+  data: {
+    fetchUser: IUser;
+  };
 }
 
 // export interface IPostingUIProps {

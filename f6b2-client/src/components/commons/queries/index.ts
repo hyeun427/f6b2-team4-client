@@ -22,6 +22,7 @@ export const FETCH_USER_LOGGED_IN = gql`
       newLang
       image
       password
+      points
     }
   }
 `;
@@ -34,6 +35,10 @@ export const FETCH_BOARDS = gql`
       video
       likes
       createdAt
+      writer {
+        id
+        name
+      }
       # 나중에 writer 추가해야한
     }
   }
@@ -54,5 +59,29 @@ export const CREATE_BOARD = gql`
         newLang
       }
     }
+  }
+`;
+
+export const SAVE_BOARD = gql`
+  mutation saveBoard($boardId: String!, $userId: String!) {
+    saveBoard(boardId: $boardId, userId: $userId)
+  }
+`;
+
+export const FETCH_SAVED_BOARDS = gql`
+  query fetchSavedBoards($userId: String!) {
+    fetchSavedBoards(userId: $userId) {
+      id
+      board {
+        id
+        content
+      }
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($files: Upload!) {
+    uploadFile(files: $files)
   }
 `;
