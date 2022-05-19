@@ -85,3 +85,9 @@ export const UPLOAD_FILE = gql`
     uploadFile(files: $files)
   }
 `;
+
+export const LOG_OUT = gql`
+  mutation logout {
+    logout
+  }
+`;
