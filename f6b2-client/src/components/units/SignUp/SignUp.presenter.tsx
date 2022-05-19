@@ -3,9 +3,9 @@ import {
   AuthInput,
   AuthInputBox,
   AuthSubmitBtn,
-  EmailBtn,
   EmailInput,
   EmailInputBox,
+  Error,
   LangSelectBox,
   PasswordInput,
   PasswordInputBox,
@@ -15,59 +15,110 @@ import {
   Select2,
   SelectBox1,
   SelectBox2,
+  SelectError,
   SelectList,
   SignUpBox,
   SignUpBtn,
   SignUpTitle,
+  VisibleBtn,
   Wrapper,
 } from "./SignUp.styles";
-import { TiDeleteOutline } from "react-icons/ti";
+import "antd/dist/antd.css";
 import { Select } from "antd";
-export default function SignUpUI() {
-  return (
-    <Wrapper>
-      <SignUpTitle>SignUp</SignUpTitle>
-      <SignUpBox>
-        <EmailInputBox>
-          <EmailInput placeholder="이메일을 입력하세요" />
-          <EmailBtn>
-            <TiDeleteOutline size={"25"} />
-          </EmailBtn>
-        </EmailInputBox>
-        {/* 에러위치 */}
-        <AuthCallBtn>인증번호 받기</AuthCallBtn>
+import { AiOutlineEye } from "react-icons/ai";
 
-        <AuthInputBox>
-          <AuthInput placeholder="인증번호를 입력하세요" />
-        </AuthInputBox>
-        {/* 인증제한시간위치 */}
-        <AuthSubmitBtn>인증 확인하기</AuthSubmitBtn>
-        <PasswordInputBox>
-          <PasswordInput placeholder="비밀번호" />
-        </PasswordInputBox>
-        <RePasswordInputBox>
-          <RePasswordInput placeholder="비밀번호 확인" />
-        </RePasswordInputBox>
-        <LangSelectBox>
-          <SelectBox1>
-            <Select1 defaultValue={"MotherTongue"}>
-              <SelectList disabled={true}>MotherTongue</SelectList>
-              <SelectList>한국어</SelectList>
-              <SelectList>영어</SelectList>
-              <SelectList>일본어</SelectList>
-            </Select1>
-          </SelectBox1>
-          <SelectBox2>
-            <Select2 defaultValue={"LearningLanguage"}>
-              <SelectList disabled={true}>LearningLanguage</SelectList>
-              <SelectList>한국어</SelectList>
-              <SelectList>영어</SelectList>
-              <SelectList>일본어</SelectList>
-            </Select2>
-          </SelectBox2>
-        </LangSelectBox>
-        <SignUpBtn>회원가입</SignUpBtn>
-      </SignUpBox>
-    </Wrapper>
+export default function SignUpUI(props: any) {
+  const { Option } = Select;
+  return (
+    <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
+      <Wrapper>
+        <SignUpBox>
+          <SignUpTitle>Sign Up</SignUpTitle>
+          <EmailInputBox>
+            <EmailInput
+              placeholder="Enter your email"
+              {...props.register("email")}
+              disabled={props.authDisable}
+              onChange={props.onChangeEmail}
+            />
+            <AuthCallBtn
+              type="button"
+              onClick={props.onClickAuthCall}
+              disabled={props.authDisable}
+            >
+              Verify
+            </AuthCallBtn>
+          </EmailInputBox>
+          <Error>{props.emailError}</Error>
+          <AuthInputBox>
+            <AuthInput
+              placeholder="Enter your verification code"
+              onChange={props.onChangeAuthNum}
+              disabled={props.authCheckDisable}
+            />
+            <AuthSubmitBtn
+              type="button"
+              onClick={props.onClickAuthNumCheck}
+              disabled={props.authCheckDisable}
+            >
+              Verify
+            </AuthSubmitBtn>
+          </AuthInputBox>
+          <Error>{props.authError}</Error>
+          <PasswordInputBox>
+            <PasswordInput
+              placeholder="Enter your password"
+              {...props.register("password")}
+              type={props.passwordVisible}
+            />
+            <VisibleBtn type="button" onClick={props.onClickVisible}>
+              <AiOutlineEye />
+            </VisibleBtn>
+          </PasswordInputBox>
+          <Error>{props.passwordError}</Error>
+          <RePasswordInputBox>
+            <RePasswordInput
+              placeholder="Password check"
+              {...props.register("rePassword")}
+              type={props.rePasswordVisible}
+            />
+            <VisibleBtn type="button" onClick={props.onClickReVisible}>
+              <AiOutlineEye />
+            </VisibleBtn>
+          </RePasswordInputBox>
+          <Error>{props.rePasswordError}</Error>
+          <LangSelectBox>
+            <SelectBox1>
+              <Select1 defaultValue={"My Lang"} {...props.register("myLang")}>
+                <SelectList disabled={true}>My Lang</SelectList>
+                <SelectList>한국어</SelectList>
+                <SelectList>English</SelectList>
+                <SelectList>日本語</SelectList>
+                <SelectList>español</SelectList>
+                <SelectList>Français</SelectList>
+                <SelectList>中国</SelectList>
+              </Select1>
+              <SelectError>{props.myLangError}</SelectError>
+            </SelectBox1>
+            <SelectBox2>
+              <Select2
+                defaultValue={"Learn Lang"}
+                {...props.register("learnLang")}
+              >
+                <SelectList disabled={true}>Learn Lang</SelectList>
+                <SelectList>한국어</SelectList>
+                <SelectList>English</SelectList>
+                <SelectList>日本語</SelectList>
+                <SelectList>español</SelectList>
+                <SelectList>Français</SelectList>
+                <SelectList>中国</SelectList>
+              </Select2>
+              <SelectError>{props.learnLangError}</SelectError>
+            </SelectBox2>
+          </LangSelectBox>
+          <SignUpBtn disabled={props.signUpDisable}>회원가입</SignUpBtn>
+        </SignUpBox>
+      </Wrapper>
+    </form>
   );
 }
