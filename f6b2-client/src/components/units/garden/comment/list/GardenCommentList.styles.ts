@@ -1,20 +1,21 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const CommentListBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 15px;
   border-top: 1px solid gray;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
 `;
 
 export const CommentProfile = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
 
   //test
   background-color: gray;
@@ -23,29 +24,29 @@ export const CommentProfile = styled.img`
 export const CommentContentsBox = styled.main`
   background-color: #a4b1da;
   padding: 15px;
-  border-radius: 0px 15px 15px 15px;
-  margin-right: 10px;
+  border-radius: 15px 15px 15px 15px;
 `;
 
 export const CommentInfo = styled.div`
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CommentName = styled.article`
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 14px;
 `;
 
 export const CommentText = styled.article`
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  color: white;
+  margin-top: 10px;
 `;
 
 export const CommentImg = styled.img`
   width: 200px;
-  margin-top: 10px;
-  border-radius: 15px;
+  margin-top: 5px;
 
   // test
   height: 150px;
@@ -74,6 +75,7 @@ export const DeleteBtn = styled.button`
 `;
 
 export const CreatedAt = styled.time`
-  font-size: 15px;
-  color: #65676b;
+  font-weight: 400;
+  font-size: 11px;
+  color: #767676;
 `;

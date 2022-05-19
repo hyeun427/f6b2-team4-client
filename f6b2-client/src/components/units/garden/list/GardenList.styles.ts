@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -81,18 +81,21 @@ export const WriterProfile = styled.img`
 `;
 
 export const WriterInfo = styled.article`
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
 export const WriterName = styled.strong`
-  font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 5px;
 `;
 
 export const CreatedAt = styled.time`
-  margin-top: 5px;
-  font-size: 15px;
+  margin-top: 1px;
+  font-weight: 400;
+  font-size: 11px;
   color: #65676b;
 `;
 
@@ -104,8 +107,9 @@ export const ContentsBox = styled.section`
 
 export const Contents = styled.div`
   width: 100%;
-  font-size: 18px;
-  margin-top: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 5px;
   margin-bottom: 15px;
 `;
 
@@ -119,13 +123,15 @@ export const ContentsTranslateBox = styled.article`
 export const ContentsImg = styled.img`
   width: 335px;
   height: 221px;
-  margin-top: 20px;
+  margin-top: 30px;
   // test
   background-color: gray;
 `;
 
 export const ContentsTranslate = styled.div`
-  color: gray;
+  font-weight: 400;
+  font-size: 13px;
+  color: #a4b1da;
 `;
 
 export const LikeAndCommentCountBox = styled.div`
@@ -141,7 +147,8 @@ export const Like = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 12px;
 
   margin-right: 30px;
   padding-right: 30px;
@@ -149,13 +156,15 @@ export const Like = styled.button`
 `;
 
 export const CommentCount = styled.div`
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 12px;
 `;
 
 export const CommentListBtn = styled.button`
   border: none;
   background: none;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 12px;
   color: gray;
   cursor: pointer;
 `;
@@ -163,5 +172,13 @@ export const CommentListBtn = styled.button`
 export const LikeAndCommentCount = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+`;
+
+export const NameRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
