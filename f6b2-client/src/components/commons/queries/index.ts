@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -89,5 +89,22 @@ export const UPLOAD_FILE = gql`
 export const LOG_OUT = gql`
   mutation logout {
     logout
+  }
+`;
+
+// 커뮤니티 글 목록 가져오기
+export const FETCH_COMMUNITY_BOARDS = gql`
+  query fetchCommunityBoards {
+    fetchCommunityBoards {
+      id
+      title
+      content
+      likes
+      createdAt
+      writer {
+        id
+        name
+      }
+    }
   }
 `;
