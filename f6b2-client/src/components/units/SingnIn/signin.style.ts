@@ -126,7 +126,7 @@ export const BtnMoveSignUp = styled.button`
 export const WrapperRow = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: right;
   align-items: center;
 `;
 

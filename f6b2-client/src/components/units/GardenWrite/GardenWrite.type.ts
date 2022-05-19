@@ -7,4 +7,5 @@ export interface IGardenWrite {
   data: {
     fetchUser: IUser;
   };
+  isContent: string;
 }

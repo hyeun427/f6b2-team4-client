@@ -27,6 +27,20 @@ export const FETCH_USER_LOGGED_IN = gql`
   }
 `;
 
+export const FETCH_USERS = gql`
+  query fetchUsers {
+    fetchUsers {
+      id
+      name
+      email
+      myLang
+      newLang
+      image
+      points
+    }
+  }
+`;
+
 export const FETCH_BOARDS = gql`
   query fetchBoards {
     fetchBoards {
@@ -63,8 +77,8 @@ export const CREATE_BOARD = gql`
 `;
 
 export const SAVE_BOARD = gql`
-  mutation saveBoard($boardId: String!, $userId: String!) {
-    saveBoard(boardId: $boardId, userId: $userId)
+  mutation saveBoard($boardId: String!) {
+    saveBoard(boardId: $boardId)
   }
 `;
 

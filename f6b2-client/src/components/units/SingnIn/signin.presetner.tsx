@@ -24,10 +24,6 @@ export default function SignInUI(props: ISingninPresenter) {
             <U.Warning>{props.formState.errors?.password?.message}</U.Warning>
           </U.SignUpItemDiv>
           <U.WrapperRow>
-            <U.WrapperRadio>
-              <U.InputRadio type='radio' />
-              <U.LabelRadio>Keep logged in</U.LabelRadio>
-            </U.WrapperRadio>
             <U.PFindId>Find ID / Password</U.PFindId>
           </U.WrapperRow>
 
