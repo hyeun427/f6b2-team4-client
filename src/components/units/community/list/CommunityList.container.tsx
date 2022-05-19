@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FETCH_COMMUNITY_BOARDS } from "../../../commons/queries";
 import CommunityListUI from "./CommunityList.presenter";
-import { FETCH_COMMUNITY_BOARDS } from "./CommunityList.queries";
 
 export default function CommunityList(props) {
   const router = useRouter();
@@ -19,6 +19,7 @@ export default function CommunityList(props) {
   // 좋아요 누를 때
   const onClickLike = () => {
     setLike((prev) => !prev);
+    router.push()
   };
 
   return (

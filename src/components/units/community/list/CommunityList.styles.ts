@@ -91,20 +91,17 @@ export const Button = styled.button`
 export const Body = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 750px;
+  justify-content: center;
+  width: 705px;
 `;
 
 export const ContentsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 150px;
   margin-bottom: 20px;
 `;
 
 export const Img = styled.img`
-  width: 120px;
+  width: 130px;
   height: 160px;
   object-fit: cover;
   border: 2px solid none;

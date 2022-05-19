@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../../../commons/store';
-import { useQuery } from '@apollo/client';
-import { FETCH_USER_LOGGED_IN } from '../../queries';
-import { FaRegUserCircle, FaCookieBite } from 'react-icons/fa';
-import { CgBee } from 'react-icons/cg';
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { accessTokenState, userInfoState } from "../../../../commons/store";
+import { useQuery } from "@apollo/client";
+import { FETCH_USER_LOGGED_IN } from "../../queries";
+import { FaRegUserCircle, FaCookieBite } from "react-icons/fa";
+import { CgBee } from "react-icons/cg";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ const WrapperLogo = styled.div`
 `;
 
 const PLogoLang = styled.span`
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
@@ -48,7 +48,7 @@ const PLogoLang = styled.span`
 `;
 
 const PLogoB = styled.span`
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
@@ -71,7 +71,7 @@ const BtnHeader = styled.button`
   border: none;
   color: white;
   background-color: #3a3939;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -94,7 +94,7 @@ const WrapperHeaderInfo = styled.div`
   height: 100%;
   color: white;
 
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -120,30 +120,30 @@ export default function LayoutHeader() {
   console.log(data);
   // const [logout] = useMutation(LOGOUT_USER);
   setUserInfo(data?.fetchUser);
-  console.log('userInfo', userInfo);
+  console.log("userInfo", userInfo);
 
   const onClickLogo = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const onClickGarden = () => {
-    router.push('/garden');
+    router.push("/garden");
   };
 
   const onClickCommunity = () => {
-    router.push('/community');
+    router.push("/community");
   };
 
   const onClickChat = () => {
-    alert('준비중입니다');
+    alert("준비중입니다");
   };
 
   const onClickSignIn = () => {
-    router.push('/signin');
+    router.push("/signin");
   };
 
   const onClickSignUp = () => {
-    router.push('/signup');
+    router.push("/signup");
   };
 
   return (
@@ -159,8 +159,8 @@ export default function LayoutHeader() {
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
-          <FaRegUserCircle color='white' size={'20'} style={{ margin: '10' }} />
-          <CgBee color='white' size={'20'} style={{ margin: '10' }} />
+          <FaRegUserCircle color="white" size={"20"} style={{ margin: "10" }} />
+          <CgBee color="white" size={"20"} style={{ margin: "10" }} />
           {isToken ? (
             <>{data?.fetchUser.points} P</>
           ) : (
