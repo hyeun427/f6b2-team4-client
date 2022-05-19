@@ -129,7 +129,7 @@ const SpanLogin = styled.span`
 export default function LayoutHeader() {
   const router = useRouter();
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
-  const [, setUserInfo] = useRecoilState(userInfoState);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const [userLogOut] = useMutation(LOG_OUT);
 
@@ -180,6 +180,11 @@ export default function LayoutHeader() {
     }
   };
 
+  const onClickMoveMypage = () => {
+    router.push(`/profile/${userInfo.id}`);
+    handleClose();
+  };
+
   return (
     <Wrapper>
       <WrapperHeader>
@@ -199,16 +204,27 @@ export default function LayoutHeader() {
             style={{ margin: "10" }}
             onClick={handleMenu}
           />
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={onClickLogOut}>Log Out</MenuItem>
-          </Menu>
-          <CgBee color="white" size={"20"} style={{ margin: "10" }} />
+
+
+          {isToken ? (
+            <>
+              <Menu
+                id='menu-appbar'
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={onClickLogOut}>Log Out</MenuItem>
+                <MenuItem onClick={onClickMoveMypage}>MyPage</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <></>
+          )}
+
+          <CgBee color='white' size={'20'} style={{ margin: '10' }} />
+
           {isToken ? (
             <>{data?.fetchUser.points} P</>
           ) : (

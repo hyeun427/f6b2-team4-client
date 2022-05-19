@@ -21,6 +21,11 @@ export default function GardenWriteContainer() {
 
   // 가든 게시물 생성하기 버튼
   const onClickSave = async () => {
+    if (isContent === '') {
+      alert('Please Enter your words');
+      return;
+    }
+
     try {
       const response = await createGarden({
         variables: {
@@ -48,6 +53,7 @@ export default function GardenWriteContainer() {
       onChangeContents={onChangeContents}
       onClickSave={onClickSave}
       data={data}
+      isContent={isContent}
     />
   );
 }

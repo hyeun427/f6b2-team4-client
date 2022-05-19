@@ -1,15 +1,23 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import GardenListUI from "./GardenList.presenter";
+
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import GardenListUI from './GardenList.presenter';
 import {
   FETCH_BOARDS,
-  FETCH_COMMENTS,
+    FETCH_COMMENTS,
   SAVE_BOARD,
-} from "../../../commons/queries";
-import { IBoard } from "../../../../commons/types/generated/types";
+  FETCH_SAVED_BOARDS,
+} from '../../../commons/queries';
+import { IBoard } from '../../../../commons/types/generated/types';
+import { userInfoState } from '../../../../commons/store';
+import { useRecoilState } from 'recoil';
 
 export default function GardenList() {
-  const [commentListVal, setCommentListVal] = useState([false]);
+  const [userInfo] = useRecoilState(userInfoState);
+  const [commentListVal, setCommentListVal] = useState(false);
+  const [saveGarden] = useMutation(SAVE_BOARD);
+  const { data } = useQuery(FETCH_BOARDS);
+
 
   // 댓글 펼치기
   const onClickCommentListBtn = (index) => (event) => {
@@ -29,8 +37,14 @@ export default function GardenList() {
       const result = await saveGarden({
         variables: {
           boardId: data.id,
-          userId: data.writer.id,
+          // userId: data.writer.id,
         },
+        refetchQueries: [
+          {
+            query: FETCH_SAVED_BOARDS,
+            variables: { userId: userInfo.id },
+          },
+        ],
       });
     } catch (error) {
       if (error instanceof Error) alert(error.message);

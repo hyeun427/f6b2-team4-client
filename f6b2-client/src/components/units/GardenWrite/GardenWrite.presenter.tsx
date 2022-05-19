@@ -38,6 +38,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
         <L.TextareaContents
           onChange={props.onChangeContents}
           placeholder='Enter Your Words Here'
+          value={props.isContent || ''}
         ></L.TextareaContents>
       </L.WrapperRow>
       <L.WrapperRowIcon>
