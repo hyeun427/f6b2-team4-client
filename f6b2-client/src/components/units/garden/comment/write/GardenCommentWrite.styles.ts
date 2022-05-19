@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const CommentWriteBox = styled.main`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 
@@ -13,21 +13,21 @@ export const CommentWriteBox = styled.main`
 `;
 
 export const CommentWriteProfile = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
+  margin-right: 15px;
 
   //test
   background-color: gray;
 `;
 
 export const CommentWriteInputBox = styled.article`
-  width: 100%;
-  height: 50px;
+  width: 385px;
+  height: 34px;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
 
   // test
@@ -35,17 +35,21 @@ export const CommentWriteInputBox = styled.article`
 `;
 
 export const CommentWriteInput = styled.input`
-  width: 450px;
-  height: 35px;
+  width: 286px;
+  height: 24px;
   border: none;
-  border-radius: 7px;
+  border-radius: 11px;
+  margin-left: 3.5px;
+  font-weight: 400;
+  font-size: 12px;
+  padding-left: 9.5px;
 `;
 
 export const CommentWriteBtn = styled.section`
   width: 130px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  margin-left: 8px;
 `;
 
 export const SubmitBtn = styled.button`
@@ -62,6 +66,7 @@ export const ImgBtn = styled.button`
   color: white;
   font-size: 25px;
   cursor: pointer;
+  margin-left: 13px;
 `;
 
 export const VideoBtn = styled.button`
@@ -70,4 +75,5 @@ export const VideoBtn = styled.button`
   color: white;
   font-size: 25px;
   cursor: pointer;
+  margin-left: 13px;
 `;

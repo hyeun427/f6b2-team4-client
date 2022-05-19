@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -83,5 +83,53 @@ export const FETCH_SAVED_BOARDS = gql`
 export const UPLOAD_FILE = gql`
   mutation uploadFile($files: Upload!) {
     uploadFile(files: $files)
+  }
+`;
+
+// 댓글 작성
+export const CREATE_COMMENT = gql`
+  mutation createComment(
+    $createCommentInput: CreateCommentInput!
+    $boardId: String!
+  ) {
+    createComment(createCommentInput: $createCommentInput, boardId: $boardId) {
+      id
+      content
+      likes
+      image
+      video
+      writer {
+        id
+        name
+        myLang
+        newLang
+      }
+      createdAt
+    }
+  }
+`;
+
+// 댓글 리스트
+export const FETCH_COMMENTS = gql`
+  query fetchComments($boardId: String!) {
+    fetchComments(boardId: $boardId) {
+      id
+      content
+      likes
+      image
+      video
+      writer {
+        name
+        image
+      }
+      createdAt
+    }
+  }
+`;
+
+// 댓글 삭제
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($commentId: String!) {
+    deleteComment(commentId: $commentId)
   }
 `;
