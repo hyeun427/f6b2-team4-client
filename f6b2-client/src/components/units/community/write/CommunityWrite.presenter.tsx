@@ -1,34 +1,41 @@
-// import Uploads01 from "../uploads/01/Uploads01.container";
 import * as S from "./CommunityWrite.styles";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function CommunityListUI() {
   return (
     <S.OutWrapper>
-      {/* 페이지 헤더 */}
       <S.Wrapper>
-        <S.Header>Community 새 글 쓰기</S.Header>
-        <S.Body>
-          {/* 제목 */}
-          <S.TitleWrapper>
-            <S.Label>제목</S.Label>
-            <S.TitleInput type="text" placeholder="제목을 작성해주세요." />
-          </S.TitleWrapper>
-          {/* 내용 */}
-          <S.ReactQuillWrapper>에디터 자리</S.ReactQuillWrapper>
-          {/* 사진 */}
-          <S.ImgWrapper>
-            <S.Label>사진 첨부</S.Label>
-            <S.Img>Upload</S.Img>
-            {/* {props.fileUrls.map((el, index) => (
-            <Uploads01
-              key={uuidv4()}
-              index={index}
-              fileUrl={el}
-              onChangeFileUrls={props.onChangeFileUrls}
-            />
-          ))} */}
-          </S.ImgWrapper>
-        </S.Body>
+        {/* 제목 */}
+        <S.TitleWrapper>
+          <S.TitleInput type="text" placeholder="제목을 작성해주세요." />
+        </S.TitleWrapper>
+
+        {/* 내용 */}
+        <S.ReactQuillWrapper>
+          <ReactQuill />
+        </S.ReactQuillWrapper>
+
+        {/* 사진 */}
+        <S.ImgWrapper>
+          Image Upload
+          <S.IconWrapper>
+            <S.ImgBtn>
+              <S.BsFileEarmarkIcon />
+            </S.ImgBtn>
+          </S.IconWrapper>
+          {/* <S.Img>Upload</S.Img> */}
+        </S.ImgWrapper>
+
+        {/* 업로드버튼 */}
+        <S.BtnWrapper>
+          <S.UploadBtn>
+            {/* <S.UploadBtn onClick={props.onClickSubmit}> */}
+            <S.MdUploadFileIcon />
+            Upload
+          </S.UploadBtn>
+        </S.BtnWrapper>
       </S.Wrapper>
     </S.OutWrapper>
   );
