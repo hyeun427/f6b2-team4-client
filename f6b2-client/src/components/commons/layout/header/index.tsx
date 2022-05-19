@@ -188,8 +188,8 @@ export default function LayoutHeader() {
           <PLogoB>B</PLogoB>
         </WrapperLogo>
         <WrapperHeaderMenu>
-          <BtnHeader onClick={onClickCommunity}>Community</BtnHeader>
           <BtnHeader onClick={onClickGarden}>Garden</BtnHeader>
+          <BtnHeader onClick={onClickCommunity}>Community</BtnHeader>
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
