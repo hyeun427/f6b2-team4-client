@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { GiHearts } from 'react-icons/gi';
-import { ICommunityLikeProps } from './CommunityList.types';
+import styled from "@emotion/styled";
+import { AiOutlineSearch } from "react-icons/ai";
+import { GiHearts } from "react-icons/gi";
+import { ICommunityLikeProps } from "./CommunityList.types";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -91,20 +91,17 @@ export const Button = styled.button`
 export const Body = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 750px;
+  justify-content: center;
+  width: 705px;
 `;
 
 export const ContentsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 150px;
   margin-bottom: 20px;
 `;
 
 export const Img = styled.img`
-  width: 120px;
+  width: 130px;
   height: 160px;
   object-fit: cover;
   border: 2px solid none;
@@ -121,6 +118,7 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   margin-top: 10px;
   width: 120px;
 `;
@@ -159,7 +157,7 @@ export const HeartsWrapper = styled.button`
   border: none;
   background-color: #d4e8ea;
   cursor: pointer;
-  color: ${(props: ICommunityLikeProps) => (props.like ? 'red' : 'none')};
+  color: ${(props: ICommunityLikeProps) => (props.like ? "red" : "none")};
 `;
 
 export const Likes = styled.div`

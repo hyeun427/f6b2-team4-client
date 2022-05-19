@@ -1,13 +1,14 @@
-import * as S from './CommunityList.styles';
-import { GiHearts } from 'react-icons/gi';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import styled from '@emotion/styled';
+import * as S from "./CommunityList.styles";
+import { GiHearts } from "react-icons/gi";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import styled from "@emotion/styled";
+import { getDate } from "../../../../commons/libraries/utils";
 
 // 캐러셀 커스터마이징
 const Slider1 = styled(Slider)`
-  width: 778px;
+  width: 705px;
   .slick-prev {
     left: -60px;
     z-index: 10;
@@ -21,7 +22,7 @@ const Slider1 = styled(Slider)`
     font-size: 25px;
   }
   .slick-next:before {
-    color: none; // arrow 색상 변경
+    color: black; // arrow 색상 변경
     font-size: 25px; // arrow 크기 변경
   }
 `;
@@ -31,8 +32,9 @@ export default function CommunityListUI(props) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    rows: 2,
+    slidesToShow: 4,
+    slidesToScroll: 4,
   };
 
   return (
@@ -54,16 +56,16 @@ export default function CommunityListUI(props) {
         </S.BarBtnWrapper>
       </S.Header>
 
-      <Slider1 {...settings}>
-        <div>
-          <S.Body>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
+      <S.Body>
+        <Slider1 {...settings}>
+          {props.data?.fetchCommunityBoards.map((el) => (
+            <S.ContentsWrapper key={el.id}>
+              <S.Img src={"/community/default.png"} />
               <S.InfoWrapper>
                 <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
+                  <S.Title>{el.title}</S.Title>
+                  <S.Writer>{el.writer.name}</S.Writer>
+                  <S.Date>{getDate(el.createdAt)}</S.Date>
                 </S.Info>
                 <S.LikesWrapper>
                   <S.HeartsWrapper
@@ -72,314 +74,13 @@ export default function CommunityListUI(props) {
                   >
                     <S.GiHeartsIcon />
                   </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
+                  <S.Likes>{el.likes}</S.Likes>
                 </S.LikesWrapper>
               </S.InfoWrapper>
             </S.ContentsWrapper>
-            {/* map 사용할 때 삭제 할 코드 */}
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* 여기까지 삭제 */}
-          </S.Body>
-          <S.Body>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* map 사용할 때 삭제 할 코드 */}
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* 여기까지 삭제 */}
-          </S.Body>
-        </div>
-        <div>
-          <S.Body>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* map 사용할 때 삭제 할 코드 */}
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* 여기까지 삭제 */}
-          </S.Body>
-          <S.Body>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* map 사용할 때 삭제 할 코드 */}
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            <S.ContentsWrapper>
-              <S.Img src={'/community/default.png'} />
-              <S.InfoWrapper>
-                <S.Info>
-                  <S.Title>Title Goes here</S.Title>
-                  <S.Writer>User</S.Writer>
-                  <S.Date>2022.0512</S.Date>
-                </S.Info>
-                <S.LikesWrapper>
-                  <S.HeartsWrapper
-                    onClick={props.onClickLike}
-                    like={props.like}
-                  >
-                    <GiHearts />
-                  </S.HeartsWrapper>
-                  <S.Likes>20</S.Likes>
-                </S.LikesWrapper>
-              </S.InfoWrapper>
-            </S.ContentsWrapper>
-            {/* 여기까지 삭제 */}
-          </S.Body>
-        </div>
-      </Slider1>
+          ))}
+        </Slider1>
+      </S.Body>
     </S.Wrapper>
   );
 }

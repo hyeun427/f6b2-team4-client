@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -100,8 +100,75 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
+
+// 댓글 작성
+export const CREATE_COMMENT = gql`
+  mutation createComment(
+    $createCommentInput: CreateCommentInput!
+    $boardId: String!
+  ) {
+    createComment(createCommentInput: $createCommentInput, boardId: $boardId) {
+      id
+      content
+      likes
+      image
+      video
+      writer {
+        id
+        name
+        myLang
+        newLang
+      }
+      createdAt
+    }
+  }
+`;
+
+// 댓글 리스트
+export const FETCH_COMMENTS = gql`
+  query fetchComments($boardId: String!) {
+    fetchComments(boardId: $boardId) {
+      id
+      content
+      likes
+      image
+      video
+      writer {
+        name
+        image
+      }
+      createdAt
+    }
+  }
+`;
+
+// 댓글 삭제
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($commentId: String!) {
+    deleteComment(commentId: $commentId)
+  }
+`;
+
 export const LOG_OUT = gql`
   mutation logout {
     logout
   }
 `;
+
+// 커뮤니티 글 목록 가져오기
+export const FETCH_COMMUNITY_BOARDS = gql`
+  query fetchCommunityBoards {
+    fetchCommunityBoards {
+      id
+      title
+      content
+      likes
+      createdAt
+      writer {
+        id
+        name
+      }
+    }
+  }
+`;
+

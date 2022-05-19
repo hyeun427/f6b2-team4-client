@@ -10,29 +10,33 @@ import {
   CreatedAt,
   DeleteBtn,
   EditBtn,
-} from './GardenCommentList.styles';
-import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
+} from "./GardenCommentList.styles";
+import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
 
-export default function GardenCommentListUI() {
+export default function GardenCommentListUI(props) {
   return (
-    <CommentListBox>
-      <CommentProfile />
-      <CommentContentsBox>
-        <CommentInfo>
-          <CommentName>Joonyoung</CommentName>
-          <CreatedAt>2022.05.12</CreatedAt>
-        </CommentInfo>
-        <CommentText>Hi!</CommentText>
-        <CommentImg></CommentImg>
-      </CommentContentsBox>
-      <CommentBtns>
-        <EditBtn>
-          <MdModeEditOutline />
-        </EditBtn>
-        <DeleteBtn>
-          <MdOutlineClear />
-        </DeleteBtn>
-      </CommentBtns>
-    </CommentListBox>
+    <>
+      {props.comments?.fetchComments.map((el) => (
+        <CommentListBox>
+          <CommentProfile />
+          <CommentContentsBox>
+            <CommentInfo>
+              <CommentName>{el.writer.name}</CommentName>
+              <CreatedAt>{el.createdAt}</CreatedAt>
+            </CommentInfo>
+            <CommentText>{el.content}</CommentText>
+            <CommentImg></CommentImg>
+          </CommentContentsBox>
+          <CommentBtns>
+            <EditBtn>
+              <MdModeEditOutline />
+            </EditBtn>
+            <DeleteBtn onClick={props.onClickDeleteComment} id={el.id}>
+              <MdOutlineClear />
+            </DeleteBtn>
+          </CommentBtns>
+        </CommentListBox>
+      ))}
+    </>
   );
 }
