@@ -3,42 +3,47 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   background-color: #d4e8ea;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const SignUpTitle = styled.h1`
+  width: 72px;
+  height: 27px;
   font-weight: 500;
-  font-size: 28px;
-  margin-bottom: 25px;
-  margin-top: 80px;
+  font-size: 20px;
+  margin-top: 47px;
+  margin-bottom: 30px;
 `;
 
 export const SignUpBox = styled.main`
-  width: 520px;
-  height: 780px;
+  width: 390px;
+  height: 580px;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 180px;
+  box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 0px;
 `;
 
 export const EmailInputBox = styled.section`
-  width: 400px;
-  height: 55px;
+  width: 300.54px;
+  height: 45px;
   border-bottom: 2px solid #dbdbdb;
-  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const EmailInput = styled.input`
   width: 100%;
   height: 100%;
+  font-weight: 400;
+  font-size: 12px;
   border: none;
   :focus {
     outline: none;
@@ -46,73 +51,99 @@ export const EmailInput = styled.input`
   :focus::-webkit-input-placeholder {
     opacity: 0;
   }
-`;
-
-export const EmailBtn = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  // test
-  color: #dbdbdb;
+  :disabled {
+    background: none;
+  }
 `;
 
 export const AuthCallBtn = styled.button`
-  width: 400px;
-  height: 55px;
-  background-color: #a4b1da;
-  margin-top: 30px;
+  width: 66px;
+  height: 20px;
+  background: linear-gradient(
+      96.63deg,
+      #965de8 0%,
+      rgba(255, 255, 255, 0.100415) 99.98%
+    ),
+    #6559ee;
+  border-radius: 10px;
+  /* margin-top: 30px; */
   border: none;
   cursor: pointer;
   color: white;
+  font-weight: 400;
+  font-size: 10px;
+
+  :disabled {
+    background: gray;
+  }
 `;
 
 export const AuthInputBox = styled.section`
-  width: 400px;
-  height: 55px;
+  width: 300px;
+  height: 45px;
   border-bottom: 2px solid #dbdbdb;
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const AuthInput = styled.input`
   width: 100%;
   height: 100%;
   border: none;
+  font-weight: 400;
+  font-size: 12px;
   :focus {
     outline: none;
   }
   :focus::-webkit-input-placeholder {
     opacity: 0;
   }
+  :disabled {
+    background: none;
+  }
 `;
 
 export const AuthSubmitBtn = styled.button`
-  width: 400px;
-  height: 55px;
-  background-color: #a4b1da;
-  margin-top: 30px;
+  width: 66px;
+  height: 20px;
+  background: linear-gradient(
+      96.63deg,
+      #965de8 0%,
+      rgba(255, 255, 255, 0.100415) 99.98%
+    ),
+    #6559ee;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   color: white;
+  font-weight: 400;
+  font-size: 10px;
+
+  :disabled {
+    background: gray;
+  }
 `;
 
 export const PasswordInputBox = styled.section`
-  width: 400px;
-  height: 55px;
+  width: 300px;
+  height: 45px;
   border-bottom: 2px solid #dbdbdb;
-  margin-top: 40px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const PasswordInput = styled.input`
   width: 100%;
   height: 100%;
   border: none;
+  font-weight: 400;
+  font-size: 12px;
   :focus {
     outline: none;
   }
@@ -122,19 +153,22 @@ export const PasswordInput = styled.input`
 `;
 
 export const RePasswordInputBox = styled.section`
-  width: 400px;
-  height: 55px;
+  width: 300px;
+  height: 45px;
   border-bottom: 2px solid #dbdbdb;
-  margin-top: 40px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const RePasswordInput = styled.input`
   width: 100%;
   height: 100%;
   border: none;
+  font-weight: 400;
+  font-size: 12px;
   :focus {
     outline: none;
   }
@@ -144,22 +178,24 @@ export const RePasswordInput = styled.input`
 `;
 
 export const LangSelectBox = styled.section`
-  width: 400px;
-
-  // 셀렉트 박스는 50 에러메세지는 20으로...
-  height: 70px;
+  width: 300px;
+  height: 45px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 15px;
 `;
 
-export const SelectBox1 = styled.article``;
+export const SelectBox1 = styled.article`
+  border: none;
+`;
 
 export const Select1 = styled.select`
-  width: 160px;
-  height: 55px;
+  width: 120px;
+  height: 58px;
   border: none;
+  font-weight: 400;
+  font-size: 12px;
   border-bottom: 2px solid #dbdbdb;
   :focus {
     outline: none;
@@ -173,9 +209,11 @@ export const SelectList = styled.option``;
 export const SelectBox2 = styled.article``;
 
 export const Select2 = styled.select`
-  width: 160px;
-  height: 55px;
+  width: 120px;
+  height: 58px;
   border: none;
+  font-weight: 400;
+  font-size: 12px;
   border-bottom: 2px solid #dbdbdb;
   :focus {
     outline: none;
@@ -186,9 +224,44 @@ export const Select2 = styled.select`
 
 export const SignUpBtn = styled.button`
   margin-top: 40px;
-  width: 400px;
-  height: 56px;
+  width: 300px;
+  height: 41px;
   border: 1px solid #dbdbdb;
   background: none;
+  background: linear-gradient(
+      96.63deg,
+      #965de8 0%,
+      rgba(255, 255, 255, 0.100415) 99.98%
+    ),
+    #6559ee;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  color: white;
   cursor: pointer;
+
+  :disabled {
+    background: gray;
+  }
+`;
+
+export const VisibleBtn = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+`;
+
+export const Error = styled.div`
+  width: 300px;
+  height: 13px;
+  font-weight: 400;
+  font-size: 8px;
+  color: #ed1c24;
+`;
+
+export const SelectError = styled.div`
+  height: 13px;
+  font-weight: 400;
+  font-size: 8px;
+  color: #ed1c24;
 `;
