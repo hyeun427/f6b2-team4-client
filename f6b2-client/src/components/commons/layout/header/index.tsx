@@ -1,11 +1,14 @@
-import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { accessTokenState, userInfoState } from '../../../../commons/store';
-import { useQuery } from '@apollo/client';
-import { FETCH_USER_LOGGED_IN } from '../../queries';
-import { FaRegUserCircle } from 'react-icons/fa';
-import { CgBee } from 'react-icons/cg';
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { accessTokenState, userInfoState } from "../../../../commons/store";
+import { useMutation, useQuery } from "@apollo/client";
+import { FETCH_USER_LOGGED_IN, LOG_OUT } from "../../queries";
+import { FaRegUserCircle } from "react-icons/fa";
+import { CgBee } from "react-icons/cg";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import React from "react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -39,7 +42,7 @@ const WrapperLogo = styled.div`
 `;
 
 const PLogoLang = styled.span`
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
@@ -48,7 +51,7 @@ const PLogoLang = styled.span`
 `;
 
 const PLogoB = styled.span`
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 25px;
@@ -71,7 +74,7 @@ const BtnHeader = styled.button`
   border: none;
   color: white;
   background-color: #3a3939;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -94,7 +97,7 @@ const WrapperHeaderInfo = styled.div`
   height: 100%;
   color: white;
 
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -111,39 +114,70 @@ const SignUpButton = styled.button`
   border-radius: 5px;
 `;
 
+const SpanLogin = styled.span`
+  font-family: "Istok Web";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export default function LayoutHeader() {
   const router = useRouter();
-  const [isToken] = useRecoilState(accessTokenState);
-  // const [isOpen, setIsOpen] = useState(false);
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  const [isToken, setIsToken] = useRecoilState(accessTokenState);
+  const [, setUserInfo] = useRecoilState(userInfoState);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
-  console.log(data);
+  const [userLogOut] = useMutation(LOG_OUT);
+
+  //
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  // const [isOpen, setIsOpen] = useState(false);
   // const [logout] = useMutation(LOGOUT_USER);
   setUserInfo(data?.fetchUser);
-  console.log('userInfo', userInfo);
 
   const onClickLogo = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const onClickGarden = () => {
-    router.push('/garden');
+    router.push("/garden");
   };
 
   const onClickCommunity = () => {
-    router.push('/community');
+    router.push("/community");
   };
 
   const onClickChat = () => {
-    alert('준비중입니다');
+    alert("준비중입니다");
   };
 
   const onClickSignIn = () => {
-    router.push('/signin');
+    router.push("/signin");
   };
 
-  const onClickSignUp = () => {
-    router.push('/signup');
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const onClickLogOut = async () => {
+    try {
+      await userLogOut();
+      handleClose();
+      setIsToken("");
+      router.push("/garden");
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
   };
 
   return (
@@ -159,14 +193,27 @@ export default function LayoutHeader() {
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
-          <FaRegUserCircle color='white' size={'20'} style={{ margin: '10' }} />
-          <CgBee color='white' size={'20'} style={{ margin: '10' }} />
+          <FaRegUserCircle
+            color="white"
+            size={"20"}
+            style={{ margin: "10" }}
+            onClick={handleMenu}
+          />
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={onClickLogOut}>Log Out</MenuItem>
+          </Menu>
+          <CgBee color="white" size={"20"} style={{ margin: "10" }} />
           {isToken ? (
             <>{data?.fetchUser.points} P</>
           ) : (
             <>
-              <SignUpButton onClick={onClickSignIn}>로그인</SignUpButton>
-              <SignUpButton onClick={onClickSignUp}>회원가입</SignUpButton>
+              <SpanLogin onClick={onClickSignIn}>Login</SpanLogin>
             </>
           )}
         </WrapperHeaderInfo>

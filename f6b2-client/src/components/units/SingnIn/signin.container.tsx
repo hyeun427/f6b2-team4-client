@@ -3,9 +3,6 @@ import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { accessTokenState, userInfoState } from '../../../commons/store';
 import SignInUI from './signin.presetner';
-// 수업용
-// import { FETCH_USER_LOGGED_IN, LOGIN_USER } from './signin.query';
-// 팀플용
 import { LOGIN_USER, FETCH_USER_LOGGED_IN } from '../../commons/queries';
 
 import { useForm } from 'react-hook-form';
@@ -61,7 +58,7 @@ export default function SignInContainer() {
     console.log(resultUserInfo);
 
     setUserInfo(userInfo);
-    router.push('/');
+    router.push('/garden');
   };
 
   const onClickMoveSignUp = () => {

@@ -86,6 +86,7 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
+
 // 댓글 작성
 export const CREATE_COMMENT = gql`
   mutation createComment(
@@ -133,3 +134,27 @@ export const DELETE_COMMENT = gql`
     deleteComment(commentId: $commentId)
   }
 `;
+
+export const LOG_OUT = gql`
+  mutation logout {
+    logout
+  }
+`;
+
+// 커뮤니티 글 목록 가져오기
+export const FETCH_COMMUNITY_BOARDS = gql`
+  query fetchCommunityBoards {
+    fetchCommunityBoards {
+      id
+      title
+      content
+      likes
+      createdAt
+      writer {
+        id
+        name
+      }
+    }
+  }
+`;
+
