@@ -100,7 +100,6 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
-
 // 댓글 작성
 export const CREATE_COMMENT = gql`
   mutation createComment(
@@ -172,3 +171,42 @@ export const FETCH_COMMUNITY_BOARDS = gql`
   }
 `;
 
+// 커뮤니티 글 가져오기
+export const FETCH_COMMUNITY_BOARD = gql`
+  query fetchCommunityBoard($communityBoardId: String!) {
+    fetchCommunityBoard(communityBoardId: $communityBoardId) {
+      id
+      title
+      content
+      createdAt
+      likes
+      image
+      writer {
+        id
+        name
+      }
+    }
+  }
+`;
+
+// 커뮤니티 글 작성하기
+export const CREATE_COMMUNITY_BOARD = gql`
+  mutation createCommunityBoard(
+    $createCommunityBoardInput: CreateCommunityBoardInput!
+  ) {
+    createCommunityBoard(
+      createCommunityBoardInput: $createCommunityBoardInput
+    ) {
+      id
+      title
+      content
+      createdAt
+      likes
+      image
+      writer {
+        id
+        name
+      }
+    }
+  }
+`;

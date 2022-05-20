@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 import { getDate } from "../../../../commons/libraries/utils";
+import { ICommunityListUIProps } from "./CommunityList.types";
 
 // 캐러셀 커스터마이징
 const Slider1 = styled(Slider)`
@@ -27,7 +28,7 @@ const Slider1 = styled(Slider)`
   }
 `;
 
-export default function CommunityListUI(props) {
+export default function CommunityListUI(props: ICommunityListUIProps) {
   const settings = {
     dots: false,
     infinite: true,
@@ -60,7 +61,10 @@ export default function CommunityListUI(props) {
         <Slider1 {...settings}>
           {props.data?.fetchCommunityBoards.map((el) => (
             <S.ContentsWrapper key={el.id}>
-              <S.Img src={"/community/default.png"} />
+              <S.Img
+                src={"/community/default.png"}
+                onClick={props.onClickContent}
+              />
               <S.InfoWrapper>
                 <S.Info>
                   <S.Title>{el.title}</S.Title>
