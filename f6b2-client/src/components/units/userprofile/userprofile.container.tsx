@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userInfoState } from '../../../commons/store';
 import { FETCH_BOARDS, FETCH_USERS } from '../../commons/queries';
@@ -10,6 +11,7 @@ export default function UserProfileContainer() {
   const router = useRouter();
   const { data: boards } = useQuery(FETCH_BOARDS);
   const { data: userList } = useQuery(FETCH_USERS);
+  const [isTab, setIsTab] = useState('');
 
   console.log(boards);
   console.log(userList);
@@ -26,11 +28,17 @@ export default function UserProfileContainer() {
 
   console.log(userInformation);
 
+  const onClickTab = (event) => {
+    setIsTab(event.currentTarget.id);
+  };
+
   return (
     <UserProfileUI
       userInfo={userInfo}
       userGarden={userGarden}
       userInformation={userInformation}
+      onClickTab={onClickTab}
+      isTab={isTab}
     />
   );
 }

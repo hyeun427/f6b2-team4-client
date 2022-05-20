@@ -13,24 +13,24 @@ export default function UserProfileUI(props) {
   return (
     <Profile.WrapperRow>
       {/* 왼쪽 */}
-      {/* <Profile.WrapperColUserinfo>
+      <Profile.WrapperColUserinfo>
         <Profile.WrapperRowEnd>
           <Profile.ButtonEdit>Edit</Profile.ButtonEdit>
         </Profile.WrapperRowEnd>
         <Profile.ImageProfile />
         <Profile.H3ProfileName>
-          {props?.userInformation[0]?.name}
+          {/* {props?.userInformation[0]?.name} */}
         </Profile.H3ProfileName>
         <Profile.WrapperRowDetail>
           <Profile.PDetailTitle>Mother Tongue</Profile.PDetailTitle>
           <Profile.PDetailValue>
-            {props?.userInformation[0]?.myLang}
+            {/* {props?.userInformation[0]?.myLang} */}
           </Profile.PDetailValue>
         </Profile.WrapperRowDetail>
         <Profile.WrapperRowDetail>
           <Profile.PDetailTitle>New Language</Profile.PDetailTitle>
           <Profile.PDetailValue>
-            {props?.userInformation[0]?.newLang}
+            {/* {props?.userInformation[0]?.newLang} */}
           </Profile.PDetailValue>
         </Profile.WrapperRowDetail>
         <Profile.WrapperRowDetail>
@@ -38,25 +38,27 @@ export default function UserProfileUI(props) {
           <Profile.PDetailValue>Busan</Profile.PDetailValue>
         </Profile.WrapperRowDetail>
         <Profile.WrapperRowTab>
-          <Profile.WrapperColCenter>
+          <Profile.WrapperColCenter onClick={props.onClickTab} id={'mygarden'}>
             <Profile.IconMyGarden />
             <Profile.PMyGardenText>My garden</Profile.PMyGardenText>
             <Profile.PMyGardenCount>
-              {props?.userGarden?.length}
+              {/* {props?.userGarden?.length} */}
             </Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
-          <Profile.WrapperColCenter>
+          <Profile.WrapperColCenter onClick={props.onClickTab} id={'myhive'}>
             <Profile.IconMyHive />
             <Profile.PMyGardenText>My Hive</Profile.PMyGardenText>
             <Profile.PMyGardenCount>33</Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
           <Profile.WrapperColCenter>
             <Profile.IconMyCharge />
-            <Profile.PMyGardenText>Charge History</Profile.PMyGardenText>
+            <Profile.PMyGardenText onClick={props.onClickTab} id={'mycharge'}>
+              Charge History
+            </Profile.PMyGardenText>
             <Profile.PMyGardenCount>33</Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
         </Profile.WrapperRowTab>
-      </Profile.WrapperColUserinfo> */}
+      </Profile.WrapperColUserinfo>
 
       {/* 오른쪽 */}
       <Profile.WrapperMyContents>

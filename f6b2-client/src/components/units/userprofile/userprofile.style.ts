@@ -128,11 +128,6 @@ export const WrapperRowTab = styled.div`
   margin-top: 16px;
 `;
 
-export const IconMyGarden = styled(BsStack)`
-  color: black;
-  font-size: 25px;
-`;
-
 export const PMyGardenText = styled.p`
   font-style: normal;
   font-weight: 400;
@@ -152,14 +147,23 @@ export const PMyGardenCount = styled.p`
   color: #000000;
 `;
 
-export const IconMyHive = styled(AiOutlineAppstore)`
-  color: black;
+export const IconMyGarden = styled(BsStack)`
+  color: #ffb950;
+  color: ${(props) => (props.isTab === 'mygarden' ? 'black' : '#ffb950')};
   font-size: 25px;
+  cursor: pointer;
+`;
+
+export const IconMyHive = styled(AiOutlineAppstore)`
+  color: #ffb950;
+  font-size: 25px;
+  cursor: pointer;
 `;
 
 export const IconMyCharge = styled(AiFillFire)`
-  color: black;
+  color: #ffb950;
   font-size: 25px;
+  cursor: pointer;
 `;
 
 export const SliderTab = styled(Slider)`
