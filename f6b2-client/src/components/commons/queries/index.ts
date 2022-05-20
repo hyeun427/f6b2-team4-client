@@ -203,7 +203,7 @@ export const CREATE_COMMUNITY_BOARD = gql`
       createdAt
       likes
       image
-      writer {
+      writer{
         id
         name
       }

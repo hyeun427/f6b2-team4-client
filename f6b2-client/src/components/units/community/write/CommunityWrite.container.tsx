@@ -33,7 +33,7 @@ export default function CommunityWrite() {
       console.log("2");
       console.log(result);
       alert("등록성공");
-      router.push(`communityBoardId/${result.data.createCommunityBoard.id}`);
+      router.push(`/community/${result.data.createCommunityBoard.id}`);
     } catch (error) {
       alert("실패ㅠ");
     }

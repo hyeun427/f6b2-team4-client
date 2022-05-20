@@ -10,7 +10,7 @@ export default function CommunityDetail() {
   const { data } = useQuery(FETCH_COMMUNITY_BOARD, {
     variables: { communityBoardId: router.query.communityBoardId },
   });
-  console.log(data);
+  // console.log(data);
 
   // 리스트로 이동
   const onClickMovetoList = () => {

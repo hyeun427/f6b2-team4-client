@@ -3,7 +3,7 @@ import { BsFileEarmarkImage } from "react-icons/bs";
 import { MdUploadFile } from "react-icons/md";
 
 export const OutWrapper = styled.div`
-  background-color: #d4e8ea;
+  background-color: #e4c2ff;
   display: flex;
   justify-content: center;
   height: 730px;
