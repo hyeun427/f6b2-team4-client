@@ -3,18 +3,22 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-export default function CommunityListUI() {
+export default function CommunityListUI(props) {
   return (
     <S.OutWrapper>
       <S.Wrapper>
         {/* 제목 */}
         <S.TitleWrapper>
-          <S.TitleInput type="text" placeholder="제목을 작성해주세요." />
+          <S.TitleInput
+            type="text"
+            placeholder="제목을 작성해주세요."
+            onChange={props.onChangeTitle}
+          />
         </S.TitleWrapper>
 
         {/* 내용 */}
         <S.ReactQuillWrapper>
-          <ReactQuill />
+          <ReactQuill onChange={props.onChangeContent} />
         </S.ReactQuillWrapper>
 
         {/* 사진 */}
@@ -25,13 +29,11 @@ export default function CommunityListUI() {
               <S.BsFileEarmarkIcon />
             </S.ImgBtn>
           </S.IconWrapper>
-          {/* <S.Img>Upload</S.Img> */}
         </S.ImgWrapper>
 
         {/* 업로드버튼 */}
         <S.BtnWrapper>
-          <S.UploadBtn>
-            {/* <S.UploadBtn onClick={props.onClickSubmit}> */}
+          <S.UploadBtn onClick={props.onClickSubmit}>
             <S.MdUploadFileIcon />
             Upload
           </S.UploadBtn>
