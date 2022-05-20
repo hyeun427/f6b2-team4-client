@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -210,3 +210,4 @@ export const CREATE_COMMUNITY_BOARD = gql`
     }
   }
 `;
+
