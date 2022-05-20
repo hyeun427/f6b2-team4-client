@@ -148,20 +148,19 @@ export const PMyGardenCount = styled.p`
 `;
 
 export const IconMyGarden = styled(BsStack)`
-  color: #ffb950;
   color: ${(props) => (props.isTab === 'mygarden' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyHive = styled(AiOutlineAppstore)`
-  color: #ffb950;
+  color: ${(props) => (props.isTab === 'myhive' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyCharge = styled(AiFillFire)`
-  color: #ffb950;
+  color: ${(props) => (props.isTab === 'mycharge' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;

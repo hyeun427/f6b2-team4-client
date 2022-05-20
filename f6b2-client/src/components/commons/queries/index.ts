@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -100,7 +100,6 @@ export const UPLOAD_FILE = gql`
   }
 `;
 
-
 // 댓글 작성
 export const CREATE_COMMENT = gql`
   mutation createComment(
@@ -171,4 +170,3 @@ export const FETCH_COMMUNITY_BOARDS = gql`
     }
   }
 `;
-
