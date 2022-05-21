@@ -1,4 +1,5 @@
 import { useMutation } from "@apollo/client";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { CREATE_COMMUNITY_BOARD } from "../../../commons/queries";
@@ -30,10 +31,9 @@ export default function CommunityWrite() {
           },
         },
       });
-      console.log("2");
       console.log(result);
       alert("등록성공");
-      router.push(`communityBoardId/${result.data.createCommunityBoard.id}`);
+      router.push(`/community/${result.data.createCommunityBoard.id}`);
     } catch (error) {
       alert("실패ㅠ");
     }
