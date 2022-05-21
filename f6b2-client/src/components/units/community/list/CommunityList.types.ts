@@ -5,9 +5,4 @@ export interface ICommunityListUIProps {
   onClickMoveToWrite: () => void;
   onClickContent: () => void;
   onClickLike: () => void;
-  like: Boolean;
-}
-
-export interface ICommunityLikeProps {
-  like: Boolean;
 }

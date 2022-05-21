@@ -14,7 +14,6 @@ import {
 
 export default function CommunityList() {
   const router = useRouter();
-  const [like, setLike] = useState(false);
 
   //커뮤니티 글목록 데이터 가져오기
   const { data, refetch } = useQuery<
@@ -32,7 +31,7 @@ export default function CommunityList() {
     router.push(`/community/${event.currentTarget.id}`);
   };
 
-  // 커뮤니티 글 좋아요 gql 가져오기
+  /*   // 커뮤니티 글 좋아요 gql 가져오기
   const [likeCommunityBoard] = useMutation(LIKE_COMMUNITY_BOARD);
 
   // 좋아요 누를 때
@@ -53,7 +52,7 @@ export default function CommunityList() {
     } catch (error) {
       alert("에러ㅠ");
     }
-  };
+  }; */
 
   return (
     <CommunityListUI
@@ -64,8 +63,7 @@ export default function CommunityList() {
       // 새 글 작성
       onClickMoveToWrite={onClickMoveToWrite}
       // 좋아요
-      onClickLike={onClickLike}
-      like={like}
+      // onClickLike={onClickLike}
     />
   );
 }

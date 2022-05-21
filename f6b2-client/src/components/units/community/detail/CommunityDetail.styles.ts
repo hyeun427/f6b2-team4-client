@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { GiHearts } from "react-icons/gi";
 import { BiReceipt, BiEdit, BiTrash } from "react-icons/bi";
+import { ICommunityDetailUIProps } from "./CommunityDetail.types";
 
 export const OutWrapper = styled.div`
   background-color: #d4e8ea;
@@ -116,7 +117,7 @@ export const IconWrapper = styled.button`
   color: white;
   border: none;
   background-color: #d4e8ea;
-  /* color: ${(props: ICommunityLikeProps) => (props.like ? "red" : "none")}; */
+
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0));
   cursor: pointer;
 `;

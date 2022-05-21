@@ -60,7 +60,7 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
       <S.Body>
         <Slider1 {...settings}>
           {props.data?.fetchCommunityBoards.map((el) => (
-            <S.ContentsWrapper>
+            <S.ContentsWrapper key={el.id}>
               <S.Img
                 id={el.id}
                 src={"/community/default.png"}

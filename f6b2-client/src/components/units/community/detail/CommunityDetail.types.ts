@@ -4,4 +4,6 @@ export interface ICommunityDetailUIProps {
   data?: Pick<IQuery, "fetchCommunityBoard">;
   onClickMovetoList: () => void;
   onClickDelete: () => void;
+  onClickLike: () => void;
+  isLike: Boolean;
 }
