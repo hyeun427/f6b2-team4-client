@@ -8,8 +8,6 @@ export default function UserTabUI() {
       <UserTabItemUI />
       <UserTabItemUI />
       <UserTabItemUI />
-      <UserTabItemUI />
-      <UserTabItemUI />
     </Tab.Wrapper>
   );
 }

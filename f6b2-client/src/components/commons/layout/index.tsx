@@ -3,8 +3,6 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import LayoutHeader from './header';
-import LeftSidebar from './leftsidebar';
-import RightSidebar from './rightsidebar';
 
 const WrapperLayout = styled.div`
   width: 100%;
@@ -36,22 +34,21 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  const HIDDEN_HEADER = [
-    // 헤더 숨길 페이지
-    // '/boards/post/[postid]',
-    // '/boards/new',
-    // '/boards/post/[postid]/edit',
-  ];
+  // const HIDDEN_HEADER = [
+  //   // 헤더 숨길 페이지 사용법 예시
+  //   // '/boards/post/[postid]',
+  // ];
 
-  const isHiddenHeader = HIDDEN_HEADER.includes(router.pathname);
+  // const isHiddenHeader = HIDDEN_HEADER.includes(router.pathname);
 
   return (
     <WrapperLayout>
-      {!isHiddenHeader && <LayoutHeader />}
+      {
+        // !isHiddenHeader &&
+        <LayoutHeader />
+      }
       <BodyWrapper>
-        {/* <LeftSidebar /> */}
         <Body>{props.children}</Body>
-        {/* <RightSidebar /> */}
       </BodyWrapper>
     </WrapperLayout>
   );

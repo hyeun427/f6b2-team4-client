@@ -23,6 +23,14 @@ export const WrapperRow = styled.div`
   margin-top: 102px;
   margin-bottom: 163px;
 `;
+export const WrapperRowNoMargin = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: auto;
+  height: 100%;
+  border: 1px solid red;
+`;
 
 export const WrapperColUserinfo = styled.div`
   display: flex;
@@ -44,6 +52,7 @@ export const WrapperMyContents = styled.div`
   width: 702px;
   height: 408px;
   background-color: #fff;
+  border: 1px solid blue;
 `;
 
 export const WrapperRowEnd = styled.div`
@@ -148,19 +157,19 @@ export const PMyGardenCount = styled.p`
 `;
 
 export const IconMyGarden = styled(BsStack)`
-  color: ${(props) => (props.isTab === 'mygarden' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'mygarden' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyHive = styled(AiOutlineAppstore)`
-  color: ${(props) => (props.isTab === 'myhive' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'myhive' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyCharge = styled(AiFillFire)`
-  color: ${(props) => (props.isTab === 'mycharge' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'mycharge' ? 'black' : '#ffb950')};
   font-size: 25px;
   cursor: pointer;
 `;
@@ -168,6 +177,7 @@ export const IconMyCharge = styled(AiFillFire)`
 export const SliderTab = styled(Slider)`
   width: 500px;
   height: 320px;
+
   .slick-prev {
     left: -60px;
     z-index: 10;
