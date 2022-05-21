@@ -42,8 +42,8 @@ export const FETCH_USERS = gql`
 `;
 
 export const FETCH_BOARDS = gql`
-  query fetchBoards {
-    fetchBoards {
+  query fetchBoards($pageSize: Float, $page: Float, $userId: String) {
+    fetchBoards(pageSize: $pageSize, page: $page, userId: $userId) {
       id
       content
       video
@@ -210,4 +210,3 @@ export const CREATE_COMMUNITY_BOARD = gql`
     }
   }
 `;
-

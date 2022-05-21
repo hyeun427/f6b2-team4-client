@@ -18,7 +18,8 @@ export const WrapperColItem = styled.div`
   align-items: center;
   width: 105px;
   height: 150px;
-  margin: 5px 10px;
+  margin: 10px 10px;
+  border: 1px solid red;
 `;
 
 export const ImageItem = styled.img`
