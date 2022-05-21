@@ -23,7 +23,7 @@ const Slider1 = styled(Slider)`
     font-size: 25px;
   }
   .slick-next:before {
-    color: black; // arrow 색상 변경
+    color: none; // arrow 색상 변경
     font-size: 25px; // arrow 크기 변경
   }
 `;
@@ -32,10 +32,10 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 800,
     rows: 2,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesPerRow: 4,
+    slidesToScroll: 1,
   };
 
   return (
@@ -60,8 +60,9 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
       <S.Body>
         <Slider1 {...settings}>
           {props.data?.fetchCommunityBoards.map((el) => (
-            <S.ContentsWrapper key={el.id}>
+            <S.ContentsWrapper>
               <S.Img
+                id={el.id}
                 src={"/community/default.png"}
                 onClick={props.onClickContent}
               />

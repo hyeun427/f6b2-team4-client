@@ -1,8 +1,14 @@
 import * as S from "./CommunityDetail.styles";
 import { getDate } from "../../../../commons/libraries/utils";
-import { ICommunityDetaulUIProps } from "./CommunityDetail.types";
+import { ICommunityDetailUIProps } from "./CommunityDetail.types";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store";
+import Dompurify from "dompurify";
 
-export default function CommunityDetailUI(props: ICommunityDetaulUIProps) {
+export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
+  // 로그인유저정보 가져오기
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+
   return (
     <S.OutWrapper>
       <S.Wrapper>
@@ -33,25 +39,41 @@ export default function CommunityDetailUI(props: ICommunityDetaulUIProps) {
             {/* 제목,내용 */}
             <S.Detail>
               <S.Title>{props.data?.fetchCommunityBoard?.title}</S.Title>
-              <S.Contents>
-                {props.data?.fetchCommunityBoard?.content}
-              </S.Contents>
+              {typeof window !== "undefined" && (
+                <S.Contents
+                  dangerouslySetInnerHTML={{
+                    __html: Dompurify.sanitize(
+                      props.data?.fetchCommunityBoard?.content
+                    ),
+                  }}
+                ></S.Contents>
+              )}
             </S.Detail>
-            {/* 버튼모음 */}
-            <S.BtnWrapper>
-              {/* 리스트로 */}
-              <S.IconWrapper onClick={props.onClickMovetoList}>
-                <S.ListIcon />
-              </S.IconWrapper>
-              {/* 수정하기 */}
-              <S.IconWrapper>
-                <S.EditIcon></S.EditIcon>
-              </S.IconWrapper>
-              {/* 삭제하기 */}
-              <S.IconWrapper>
-                <S.DeleteIcon></S.DeleteIcon>
-              </S.IconWrapper>
-            </S.BtnWrapper>
+            {/* 내 글 버튼 리스트 */}
+            {props.data?.fetchCommunityBoard.writer.id === userInfo?.id && (
+              <S.BtnWrapper>
+                {/* 리스트로 */}
+                <S.IconWrapper onClick={props.onClickMovetoList}>
+                  <S.ListIcon />
+                </S.IconWrapper>
+                {/* 수정하기 */}
+                <S.IconWrapper>
+                  <S.EditIcon />
+                </S.IconWrapper>
+                {/* 삭제하기 */}
+                <S.IconWrapper onClick={props.onClickDelete}>
+                  <S.DeleteIcon />
+                </S.IconWrapper>
+              </S.BtnWrapper>
+            )}
+            {/* 상대방 글 버튼리스트 */}
+            {props.data?.fetchCommunityBoard.writer.id !== userInfo?.id && (
+              <S.BtnWrapper>
+                <S.IconWrapper onClick={props.onClickMovetoList}>
+                  <S.ListIcon />
+                </S.IconWrapper>
+              </S.BtnWrapper>
+            )}
           </S.InnerWrapper>
         </S.Body>
       </S.Wrapper>
