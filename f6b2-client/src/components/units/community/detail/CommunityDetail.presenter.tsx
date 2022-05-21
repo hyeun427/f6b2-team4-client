@@ -4,11 +4,11 @@ import { ICommunityDetailUIProps } from "./CommunityDetail.types";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../commons/store";
 import Dompurify from "dompurify";
+import { GiHearts } from "react-icons/gi";
 
 export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
   // 로그인유저정보 가져오기
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
-
   return (
     <S.OutWrapper>
       <S.Wrapper>
@@ -27,12 +27,28 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
           <S.InnerWrapper>
             <S.Img src="/community/default2.png" />
             {/* 좋아요 */}
-            <S.LikesWrapper>
+            {props.isLike ? (
+              <S.LikesWrapper onClick={props.onClickLike}>
+                <S.IconWrapper>
+                  <GiHearts style={{ color: "#FF5B5B" }} />
+                </S.IconWrapper>
+                <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
+              </S.LikesWrapper>
+            ) : (
+              <S.LikesWrapper onClick={props.onClickLike}>
+                <S.IconWrapper>
+                  <S.GiHeartsIcon />
+                </S.IconWrapper>
+                <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
+              </S.LikesWrapper>
+            )}
+
+            {/* <S.LikesWrapper onClick={props.onClickLike}>
               <S.IconWrapper>
                 <S.GiHeartsIcon />
               </S.IconWrapper>
               <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
-            </S.LikesWrapper>
+            </S.LikesWrapper> */}
           </S.InnerWrapper>
 
           <S.InnerWrapper>

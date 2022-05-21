@@ -90,7 +90,7 @@ export const BsFileEarmarkIcon = styled(BsFileEarmarkImage)`
   cursor: pointer;
 `;
 
-export const Img = styled.div``;
+export const ImgUpload = styled.input``;
 
 export const BtnWrapper = styled.div`
   display: flex;

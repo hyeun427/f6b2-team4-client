@@ -153,11 +153,10 @@ export const LikesWrapper = styled.div`
   align-items: center;
 `;
 export const HeartsWrapper = styled.button`
-  color: white;
+  color: #ffb950;
   border: none;
   background-color: #d4e8ea;
   cursor: pointer;
-  color: ${(props: ICommunityLikeProps) => (props.like ? "red" : "none")};
 `;
 
 export const Likes = styled.div`

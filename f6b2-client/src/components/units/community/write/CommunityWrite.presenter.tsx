@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { Quill } from "react-quill";
+import ImageUpload from "../../../commons/upload";
 
 export default function CommunityListUI(props) {
   /*   // 에디터 커스텀
@@ -45,6 +46,7 @@ export default function CommunityListUI(props) {
           <S.IconWrapper>
             <S.ImgBtn>
               <S.BsFileEarmarkIcon />
+              {/* <S.ImgUpload type="file" onChange={props.onChangeFile} /> */}
             </S.ImgBtn>
           </S.IconWrapper>
         </S.ImgWrapper>
