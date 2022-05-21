@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const FETCH_BOARDS = gql`
   query fetchBoards {
@@ -11,5 +11,11 @@ export const FETCH_BOARDS = gql`
       name
     }
     createdAt
+  }
+`;
+
+export const LIKE_BOARD = gql`
+  mutation likeBoard($boardId: String!) {
+    likeBoard(boardId: $boardId)
   }
 `;

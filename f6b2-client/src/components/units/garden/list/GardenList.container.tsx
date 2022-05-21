@@ -1,21 +1,16 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { useState } from 'react';
-import GardenListUI from './GardenList.presenter';
-import {
-  FETCH_BOARDS,
-  FETCH_COMMENTS,
-  SAVE_BOARD,
-  FETCH_SAVED_BOARDS,
-} from '../../../commons/queries';
-import { IBoard } from '../../../../commons/types/generated/types';
-import { userInfoState } from '../../../../commons/store';
-import { useRecoilState } from 'recoil';
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import GardenListUI from "./GardenList.presenter";
+import { FETCH_BOARDS, SAVE_BOARD } from "../../../commons/queries";
+import { IBoard } from "../../../../commons/types/generated/types";
+import { LIKE_BOARD } from "./GardenList.queries";
 
 export default function GardenList() {
-  const [userInfo] = useRecoilState(userInfoState);
-  const [commentListVal, setCommentListVal] = useState(false);
   const [saveGarden] = useMutation(SAVE_BOARD);
   const { data, fetchMore } = useQuery(FETCH_BOARDS);
+  const [likeBoard] = useMutation(LIKE_BOARD);
+
+  const [commentListVal, setCommentListVal] = useState([false]);
 
   // 댓글 펼치기
   const onClickCommentListBtn = (index) => (event) => {
@@ -24,20 +19,37 @@ export default function GardenList() {
     setCommentListVal(newCommentOpen);
   };
 
+  // 좋아요 클릭
+  const onClickLikeBoard = async (event) => {
+    console.log(event.currentTarget.id);
+    try {
+      await likeBoard({
+        variables: {
+          boardId: event.currentTarget.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_BOARDS,
+            variables: {
+              boardId: event.target.id,
+            },
+          },
+        ],
+      });
+      alert("좋아요!");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   // 저장하기 버튼 클릭 함수
   const onClickSaved = async (data: IBoard) => {
     try {
       const result = await saveGarden({
         variables: {
           boardId: data.id,
-          // userId: data.writer.id,
+          userId: data.writer.id,
         },
-        refetchQueries: [
-          {
-            query: FETCH_SAVED_BOARDS,
-            variables: { userId: userInfo.id },
-          },
-        ],
       });
     } catch (error) {
       if (error instanceof Error) alert(error.message);
@@ -66,6 +78,7 @@ export default function GardenList() {
       data={data}
       onClickSaved={onClickSaved}
       loadFunc={loadFunc}
+      onClickLikeBoard={onClickLikeBoard}
     />
   );
 }
