@@ -1,4 +1,4 @@
-import { IBoard, ISave } from '../../../commons/types/generated/types';
+import { ISave } from '../../../commons/types/generated/types';
 
 export interface IArchive {
   data: {
@@ -7,7 +7,5 @@ export interface IArchive {
 }
 
 export interface IArchiveItem {
-  el: {
-    board: IBoard;
-  };
+  el: ISave;
 }

@@ -18,12 +18,12 @@ export type Scalars = {
 
 export type IBoard = {
   __typename?: 'Board';
+  commentsCount: Scalars['Int'];
   content: Scalars['String'];
   createdAt: Scalars['DateTime'];
   deletedAt: Scalars['DateTime'];
   id: Scalars['String'];
   likes: Scalars['Int'];
-  updatedAt: Scalars['DateTime'];
   video: Scalars['String'];
   writer: IUser;
 };
@@ -79,12 +79,25 @@ export type ICreateCommunityBoardInput = {
 };
 
 export type ICreateUserInput = {
+  currentRegion?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
-  image: Scalars['String'];
+  image?: InputMaybe<Scalars['String']>;
   myLang: Scalars['String'];
   name: Scalars['String'];
   newLang: Scalars['String'];
   password: Scalars['String'];
+};
+
+export type ICurrentRegion = {
+  __typename?: 'CurrentRegion';
+  id: Scalars['String'];
+  region: Scalars['String'];
+  regionDetail?: Maybe<Scalars['String']>;
+};
+
+export type ICurrentRegionInput = {
+  region: Scalars['String'];
+  regionDetail: Scalars['String'];
 };
 
 export type IMutation = {
@@ -93,14 +106,21 @@ export type IMutation = {
   createBoardImage: Array<IBoardImage>;
   createComment: IComment;
   createCommunityBoard: ICommunityBoard;
+  createCurrentRegion: ICurrentRegion;
+  createReceipt: IReceipt;
   createUser: IUser;
   deleteBoard: Scalars['Boolean'];
   deleteBoardImage: Scalars['Boolean'];
   deleteComment: Scalars['Boolean'];
   deleteCommunityBoard: Scalars['Boolean'];
+  deleteCurrentRegion: Scalars['Boolean'];
   deleteFile: Scalars['String'];
+  deleteReceipt: IReceipt;
   deleteUser: Scalars['Boolean'];
   emailCheck: Scalars['String'];
+  likeBoard: Scalars['String'];
+  likeComment: Scalars['String'];
+  likeCommunityBoard: Scalars['String'];
   login: Scalars['String'];
   logout: Scalars['String'];
   restoreAccessToken: Scalars['String'];
@@ -109,8 +129,10 @@ export type IMutation = {
   updateBoardImage: Array<IBoardImage>;
   updateComment: IComment;
   updateCommunityBoard: ICommunityBoard;
+  updateCurrentRegion: ICurrentRegion;
   updateUser: IUser;
   uploadFile: Array<Scalars['String']>;
+  verification: Scalars['String'];
 };
 
 
@@ -133,6 +155,17 @@ export type IMutationCreateCommentArgs = {
 
 export type IMutationCreateCommunityBoardArgs = {
   createCommunityBoardInput: ICreateCommunityBoardInput;
+};
+
+
+export type IMutationCreateCurrentRegionArgs = {
+  currentRegionInput: ICurrentRegionInput;
+};
+
+
+export type IMutationCreateReceiptArgs = {
+  impUid: Scalars['String'];
+  price: Scalars['Float'];
 };
 
 
@@ -161,18 +194,39 @@ export type IMutationDeleteCommunityBoardArgs = {
 };
 
 
+export type IMutationDeleteCurrentRegionArgs = {
+  currentRegionId: Scalars['String'];
+};
+
+
 export type IMutationDeleteFileArgs = {
   files: Scalars['String'];
 };
 
 
-export type IMutationDeleteUserArgs = {
-  id: Scalars['String'];
+export type IMutationDeleteReceiptArgs = {
+  impUid: Scalars['String'];
+  price: Scalars['Float'];
 };
 
 
 export type IMutationEmailCheckArgs = {
   email: Scalars['String'];
+};
+
+
+export type IMutationLikeBoardArgs = {
+  boardId: Scalars['String'];
+};
+
+
+export type IMutationLikeCommentArgs = {
+  commentId: Scalars['String'];
+};
+
+
+export type IMutationLikeCommunityBoardArgs = {
+  communityBoardId: Scalars['String'];
 };
 
 
@@ -184,7 +238,6 @@ export type IMutationLoginArgs = {
 
 export type IMutationSaveBoardArgs = {
   boardId: Scalars['String'];
-  userId: Scalars['String'];
 };
 
 
@@ -212,6 +265,12 @@ export type IMutationUpdateCommunityBoardArgs = {
 };
 
 
+export type IMutationUpdateCurrentRegionArgs = {
+  UpdateCurrentRegionInput: ICurrentRegionInput;
+  currentRegionId: Scalars['String'];
+};
+
+
 export type IMutationUpdateUserArgs = {
   originalPassword: Scalars['String'];
   updateUserInput: IUpdateUserInput;
@@ -222,25 +281,32 @@ export type IMutationUploadFileArgs = {
   files: Array<Scalars['Upload']>;
 };
 
+
+export type IMutationVerificationArgs = {
+  email: Scalars['String'];
+  token: Scalars['String'];
+};
+
 export type IQuery = {
   __typename?: 'Query';
-  createBoardImage: Array<IBoardImage>;
   fetchBoard: IBoard;
   fetchBoardImage: Array<IBoardImage>;
   fetchBoardImages: Array<IBoardImage>;
   fetchBoards: Array<IBoard>;
+  fetchBoardsCount: Scalars['Int'];
   fetchComments: Array<IComment>;
   fetchCommunityBoard: ICommunityBoard;
   fetchCommunityBoards: Array<ICommunityBoard>;
+  fetchMyBoards: Array<IBoard>;
+  fetchMyCommunityBoards: Array<ICommunityBoard>;
+  fetchMyReceipts: Array<IReceipt>;
+  fetchReceipts: Array<IReceipt>;
   fetchSavedBoards: Array<ISave>;
   fetchUser: IUser;
+  fetchUserId: IUser;
   fetchUsers: Array<IUser>;
-};
-
-
-export type IQueryCreateBoardImageArgs = {
-  board: Scalars['String'];
-  image: Array<Scalars['String']>;
+  searchBoardContent: Array<IBoard>;
+  searchCommnunityContent: Array<ICommunityBoard>;
 };
 
 
@@ -254,6 +320,18 @@ export type IQueryFetchBoardImageArgs = {
 };
 
 
+export type IQueryFetchBoardsArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  pageSize?: InputMaybe<Scalars['Float']>;
+  userId?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchBoardsCountArgs = {
+  UserId?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchCommentsArgs = {
   boardId: Scalars['String'];
 };
@@ -264,14 +342,54 @@ export type IQueryFetchCommunityBoardArgs = {
 };
 
 
+export type IQueryFetchCommunityBoardsArgs = {
+  page?: InputMaybe<Scalars['Float']>;
+  pageSize?: InputMaybe<Scalars['Float']>;
+  userId?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchSavedBoardsArgs = {
   userId: Scalars['String'];
+};
+
+
+export type IQueryFetchUserIdArgs = {
+  userId: Scalars['String'];
+};
+
+
+export type IQuerySearchBoardContentArgs = {
+  content: Scalars['String'];
+};
+
+
+export type IQuerySearchCommnunityContentArgs = {
+  content: Scalars['String'];
+};
+
+export enum IReceipt_Status_Enum {
+  Cancelled = 'CANCELLED',
+  Purchased = 'PURCHASED'
+}
+
+export type IReceipt = {
+  __typename?: 'Receipt';
+  id: Scalars['String'];
+  impUid: Scalars['String'];
+  point: Scalars['Int'];
+  price: Scalars['Int'];
+  purchasedAt: Scalars['DateTime'];
+  status: IReceipt_Status_Enum;
+  user: IUser;
 };
 
 export type ISave = {
   __typename?: 'Save';
   board: IBoard;
   id: Scalars['String'];
+  isLiked: Scalars['Boolean'];
+  isSaved: Scalars['Boolean'];
   user: IUser;
 };
 
@@ -294,6 +412,7 @@ export type IUpdateCommunityBoardInput = {
 };
 
 export type IUpdateUserInput = {
+  currentRegion?: InputMaybe<Scalars['String']>;
   email?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   myLang?: InputMaybe<Scalars['String']>;
@@ -304,6 +423,9 @@ export type IUpdateUserInput = {
 
 export type IUser = {
   __typename?: 'User';
+  boardCounts: Scalars['Int'];
+  communityBoardCounts: Scalars['Int'];
+  currentRegion: ICurrentRegion;
   email: Scalars['String'];
   id: Scalars['String'];
   image: Scalars['String'];
@@ -311,4 +433,5 @@ export type IUser = {
   name: Scalars['String'];
   newLang: Scalars['String'];
   password: Scalars['String'];
+  points: Scalars['Int'];
 };
