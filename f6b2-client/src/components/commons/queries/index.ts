@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -148,6 +148,21 @@ export const DELETE_COMMENT = gql`
   }
 `;
 
+// 댓글 수정
+export const UPDATE_COMMENT = gql`
+  mutation updateComment(
+    $updateCommentInput: UpdateCommentInput!
+    $commentId: String!
+  ) {
+    updateComment(
+      updateCommentInput: $updateCommentInput
+      commentId: $commentId
+    ) {
+      id
+    }
+  }
+`;
+
 export const LOG_OUT = gql`
   mutation logout {
     logout
@@ -210,4 +225,3 @@ export const CREATE_COMMUNITY_BOARD = gql`
     }
   }
 `;
-

@@ -32,9 +32,10 @@ import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
 import DailyWordContainer from "../../dailyword/dailyword.container";
 import ArchiveContainer from "../../archivelist/archivelist.container";
 import InfiniteScroll from "react-infinite-scroller";
+import { useQuery } from "@apollo/client";
+import { FETCH_COMMENTS } from "../../../commons/queries";
 
 export default function GardenListUI(props: any) {
-  console.log("boardId1" + props.boardId);
   return (
     <>
       <GardenWrapper>
@@ -73,21 +74,6 @@ export default function GardenListUI(props: any) {
                   </ContentsTranslateBox>
                   <ContentsImg />
                   <LikeAndCommentCountBox>
-                    {/* {props.commentListVal === true ? (
-                    <CommentListBtn
-                      onClick={props.onClickCommentListBtn(index)}
-                      id={el.id}
-                    >
-                      Close Comments
-                    </CommentListBtn>
-                  ) : (
-                    <CommentListBtn
-                      onClick={props.onClickCommentListBtn(index)}
-                      id={el.id}
-                    >
-                      Open Comments
-                    </CommentListBtn>
-                  )} */}
                     {props.commentListVal[index] ? (
                       <CommentListBtn
                         onClick={props.onClickCommentListBtn(index)}
@@ -106,8 +92,14 @@ export default function GardenListUI(props: any) {
 
                     <LikeAndCommentCount>
                       <Like>
-                        <MdThumbUp size={"13"} /> {el.likes}
+                        <MdThumbUp
+                          size={"13"}
+                          onClick={props.onClickLikeBoard}
+                          id={el.id}
+                        />{" "}
+                        {el.likes}
                       </Like>
+                      {/* 해당 게시글의 댓글 갯수 */}
                       <CommentCount>
                         <MdQuestionAnswer size={"13"} /> 1
                       </CommentCount>

@@ -1,10 +1,15 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
-import { CREATE_COMMENT, FETCH_COMMENTS } from "../../../../commons/queries";
+import {
+  CREATE_COMMENT,
+  FETCH_COMMENTS,
+  UPDATE_COMMENT,
+} from "../../../../commons/queries";
 import GardenCommentWriteUI from "./GardenCommentWrite.presenter";
 
 export default function GardenCommentWrite(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
+  const [updateComment] = useMutation(UPDATE_COMMENT);
   const [comment, setComment] = useState("");
 
   const onChangeComment = (event: any) => {
@@ -37,10 +42,34 @@ export default function GardenCommentWrite(props: any) {
     }
   };
 
+  const onClickCommentUpdate = async () => {
+    console.log(props.commentEl?.id);
+    const myVariables = {
+      updateCommentInput: {},
+      commentId: props.commentEl?.id,
+    };
+
+    if (comment !== "") {
+      myVariables.updateCommentInput.content = comment;
+    }
+
+    try {
+      await updateComment({
+        variables: myVariables,
+      });
+      alert("댓글수정 성공!");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <GardenCommentWriteUI
       onChangeComment={onChangeComment}
       onClickCommentWrite={onClickCommentWrite}
+      onClickCommentUpdate={onClickCommentUpdate}
+      commentEl={props.commentEl}
+      isEdit={props.isEdit}
     />
   );
 }
