@@ -32,8 +32,6 @@ import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
 import DailyWordContainer from "../../dailyword/dailyword.container";
 import ArchiveContainer from "../../archivelist/archivelist.container";
 import InfiniteScroll from "react-infinite-scroller";
-import { useQuery } from "@apollo/client";
-import { FETCH_COMMENTS } from "../../../commons/queries";
 
 export default function GardenListUI(props: any) {
   return (
@@ -52,67 +50,70 @@ export default function GardenListUI(props: any) {
             hasMore={true}
           >
             {props.data?.fetchBoards.map((el, index) => (
-              <GardenListBox key={index}>
-                <WriterInfoBox>
-                  <WriterProfile />
-                  <WriterInfo>
-                    <NameRow>
-                      <WriterName>{el.writer.name}</WriterName>
-                      <MdBookmarkBorder
-                        size={"16"}
-                        onClick={() => props.onClickSaved(el)}
-                      />
-                    </NameRow>
-                    <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
-                  </WriterInfo>
-                </WriterInfoBox>
-                <ContentsBox>
-                  <Contents>{el.content}</Contents>
-                  <ContentsTranslateBox>
-                    {/* 번역API 버튼 자리? */}
-                    <ContentsTranslate>번역한 내용</ContentsTranslate>
-                  </ContentsTranslateBox>
-                  <ContentsImg />
-                  <LikeAndCommentCountBox>
-                    {props.commentListVal[index] ? (
-                      <CommentListBtn
-                        onClick={props.onClickCommentListBtn(index)}
-                        id={el.id}
-                      >
-                        close
-                      </CommentListBtn>
-                    ) : (
-                      <CommentListBtn
-                        onClick={props.onClickCommentListBtn(index)}
-                        id={el.id}
-                      >
-                        open
-                      </CommentListBtn>
-                    )}
-
-                    <LikeAndCommentCount>
-                      <Like>
-                        <MdThumbUp
-                          size={"13"}
-                          onClick={props.onClickLikeBoard}
+              <div key={index}>
+                {/* {props.loginUserInfo?.newLang === el.writer.myLang ? ( */}
+                <GardenListBox>
+                  <WriterInfoBox>
+                    <WriterProfile
+                      onClick={props.onClickUserProfile}
+                      id={el.writer.id}
+                    />
+                    <WriterInfo>
+                      <NameRow>
+                        <WriterName>{el.writer.name}</WriterName>
+                        <MdBookmarkBorder
+                          size={"16"}
+                          onClick={() => props.onClickSaved(el)}
+                        />
+                      </NameRow>
+                      <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
+                    </WriterInfo>
+                  </WriterInfoBox>
+                  <ContentsBox>
+                    <Contents>{el.content}</Contents>
+                    <ContentsTranslateBox>
+                      {/* 번역API 버튼 자리? */}
+                      <ContentsTranslate>번역한 내용</ContentsTranslate>
+                    </ContentsTranslateBox>
+                    <ContentsImg />
+                    <LikeAndCommentCountBox>
+                      {props.commentListVal[index] ? (
+                        <CommentListBtn
+                          onClick={props.onClickCommentListBtn(index)}
                           id={el.id}
-                        />{" "}
-                        {el.likes}
-                      </Like>
-                      {/* 해당 게시글의 댓글 갯수 */}
-                      <CommentCount>
-                        <MdQuestionAnswer size={"13"} /> 1
-                      </CommentCount>
-                    </LikeAndCommentCount>
-                  </LikeAndCommentCountBox>
-                </ContentsBox>
-                <GardenCommentWrite boardId={el.id} />
-                {props.commentListVal[index] ? (
-                  <GardenCommentList boardElId={el.id} />
-                ) : (
+                        >
+                          close
+                        </CommentListBtn>
+                      ) : (
+                        <CommentListBtn
+                          onClick={props.onClickCommentListBtn(index)}
+                          id={el.id}
+                        >
+                          open
+                        </CommentListBtn>
+                      )}
+                      <LikeAndCommentCount>
+                        <Like onClick={props.onClickLikeBoard} id={el.id}>
+                          <MdThumbUp size={"13"} /> {el.likes}
+                        </Like>
+                        {/* 해당 게시글의 댓글 갯수 */}
+                        <CommentCount>
+                          <MdQuestionAnswer size={"13"} /> 1
+                        </CommentCount>
+                      </LikeAndCommentCount>
+                    </LikeAndCommentCountBox>
+                  </ContentsBox>
+                  <GardenCommentWrite boardId={el.id} />
+                  {props.commentListVal[index] ? (
+                    <GardenCommentList boardElId={el.id} />
+                  ) : (
+                    <div></div>
+                  )}
+                </GardenListBox>
+                {/* ) : (
                   <div></div>
-                )}
-              </GardenListBox>
+                )} */}
+              </div>
             ))}
           </InfiniteScroll>
         </Wrapper>

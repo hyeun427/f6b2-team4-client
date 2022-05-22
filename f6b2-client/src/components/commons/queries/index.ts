@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -42,8 +42,8 @@ export const FETCH_USERS = gql`
 `;
 
 export const FETCH_BOARDS = gql`
-  query fetchBoards($pageSize: Float, $page: Float, $userId: String) {
-    fetchBoards(pageSize: $pageSize, page: $page, userId: $userId) {
+  query fetchBoards {
+    fetchBoards {
       id
       content
       video
@@ -53,7 +53,6 @@ export const FETCH_BOARDS = gql`
         id
         name
       }
-      # 나중에 writer 추가해야한
     }
   }
 `;
@@ -90,8 +89,6 @@ export const FETCH_SAVED_BOARDS = gql`
         id
         content
       }
-      isSaved
-      isLiked
     }
   }
 `;

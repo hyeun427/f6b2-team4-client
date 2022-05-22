@@ -4,15 +4,20 @@ import GardenListUI from "./GardenList.presenter";
 import { FETCH_BOARDS, SAVE_BOARD } from "../../../commons/queries";
 import { IBoard } from "../../../../commons/types/generated/types";
 import { LIKE_BOARD } from "./GardenList.queries";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store";
+import { useRouter } from "next/router";
 
 export default function GardenList() {
+  const router = useRouter();
   const [saveGarden] = useMutation(SAVE_BOARD);
   const { data, fetchMore } = useQuery(FETCH_BOARDS);
   const [likeBoard] = useMutation(LIKE_BOARD);
-
-  const [commentListVal, setCommentListVal] = useState([false]);
+  //  로그인 된 회원 정보(글로벌)
+  const [loginUserInfo] = useRecoilState(userInfoState);
 
   // 댓글 펼치기
+  const [commentListVal, setCommentListVal] = useState([false]);
   const onClickCommentListBtn = (index) => (event) => {
     const newCommentOpen = [...commentListVal];
     newCommentOpen[index] = !commentListVal[index];
@@ -25,7 +30,7 @@ export default function GardenList() {
     try {
       await likeBoard({
         variables: {
-          boardId: event.currentTarget.id,
+          boardId: event.target.id,
         },
         refetchQueries: [
           {
@@ -71,6 +76,11 @@ export default function GardenList() {
     });
   };
 
+  // 가든에서 유저 프로필 클릭 시,
+  const onClickUserProfile = (event) => {
+    router.push(`/profile/${event.target.id}`);
+  };
+
   return (
     <GardenListUI
       commentListVal={commentListVal}
@@ -79,6 +89,8 @@ export default function GardenList() {
       onClickSaved={onClickSaved}
       loadFunc={loadFunc}
       onClickLikeBoard={onClickLikeBoard}
+      loginUserInfo={loginUserInfo}
+      onClickUserProfile={onClickUserProfile}
     />
   );
 }

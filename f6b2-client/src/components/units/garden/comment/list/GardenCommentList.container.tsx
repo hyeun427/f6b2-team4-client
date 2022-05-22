@@ -1,5 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../../commons/store";
 import { DELETE_COMMENT, FETCH_COMMENTS } from "../../../../commons/queries";
 import GardenCommentListUI from "./GardenCommentList.presenter";
 
@@ -10,14 +12,23 @@ export default function GardenCommentList(props: any) {
     },
   });
   const [deleteComment] = useMutation(DELETE_COMMENT);
+  const [loginInfo] = useRecoilState(userInfoState);
 
-  const onClickDeleteComment = async (event: any) => {
+  const onClickDeleteComment = async (event) => {
     console.log(event.target.id);
     try {
       await deleteComment({
         variables: {
-          commentId: event.target.id,
+          commentId: event.currentTarget.id,
         },
+        refetchQueries: [
+          {
+            query: FETCH_COMMENTS,
+            variables: {
+              boardId: props.boardElId,
+            },
+          },
+        ],
       });
       alert("댓글삭제!");
     } catch (error) {
@@ -40,6 +51,7 @@ export default function GardenCommentList(props: any) {
       onClickDeleteComment={onClickDeleteComment}
       commentEditBtn={commentEditBtn}
       commentEditVal={commentEditVal}
+      loginInfo={loginInfo}
     />
   );
 }
