@@ -44,7 +44,6 @@ export const WrapperRight = styled.div`
   top: 60px;
 `;
 
-
 export const GardenListBox = styled.main`
   width: 100%;
   padding: 30px;
