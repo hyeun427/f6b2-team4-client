@@ -3,17 +3,16 @@ import * as L from './GardenWrite.style';
 import { IGardenWrite } from './GardenWrite.type';
 import {
   BiVideoRecording,
-  BiImageAlt,
+  // BiImageAlt,
   BiCaretRightSquare,
 } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
-// const WebcamRecord = dynamic(() => import('WebcamRecord'), { ssr: false });
-// import VideoRecorder from 'react-video-recorder';
+import ImageUpload from '../../commons/upload';
+import { v4 as uuidv4 } from 'uuid';
+// import dynamic from 'next/dynamic';
 // const VideoRecorder = dynamic(() => import('react-video-recorder'), {
 //   ssr: false,
 // });
-
-// import Webcam from 'react-webcam';
 
 export default function GardenWriteUI(props: IGardenWrite) {
   // const videoConstraints = {
@@ -43,9 +42,28 @@ export default function GardenWriteUI(props: IGardenWrite) {
       </L.WrapperRow>
       <L.WrapperRowIcon>
         <BiVideoRecording size={'30'} color={'A4B1DA'} />
-        <BiImageAlt size={'30'} color={'A4B1DA'} />
+        {/* <BiImageAlt size={'30'} color={'A4B1DA'} /> */}
+        <ImageUpload
+          onChangeFileUrls={props.onChangeFileUrls}
+          fileUrls={props.fileUrls}
+        />
         <BiCaretRightSquare size={'30'} color={'A4B1DA'} />
       </L.WrapperRowIcon>
+      {props.fileUrls?.map((el, index) => (
+        <>
+          <L.ImageItempWrap>
+            <L.ImageThumbnail
+              key={uuidv4()}
+              src={
+                el.startsWith('https', 0)
+                  ? el
+                  : `https://storage.googleapis.com/${el}`
+              }
+            />
+            {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
+          </L.ImageItempWrap>
+        </>
+      ))}
       {/* {typeof window !== 'undefined' ? (
         <VideoRecorder
           onRecordingComplete={(videoBlob) => {
@@ -56,11 +74,6 @@ export default function GardenWriteUI(props: IGardenWrite) {
       ) : (
         ''
       )} */}
-
-      {/* {typeof window !== 'undefined' ? <WebcamRecord /> : ''} */}
-      {/* <Webcam videoConstraints={videoConstraints} audio={true} />
-      <button>녹화시작</button>
-      <button>녹화종료</button> */}
 
       <L.ButtonSave onClick={props.onClickSave}>저장하기</L.ButtonSave>
     </L.WrapperDiv>

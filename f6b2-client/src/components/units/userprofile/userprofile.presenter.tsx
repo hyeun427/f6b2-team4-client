@@ -44,7 +44,7 @@ export default function UserProfileUI(props) {
           )}
           <Modal open={props.open} onClose={props.handleClose}>
             <Box sx={style}>
-              <UserEditContainer />
+              <UserEditContainer onClose={props.handleClose} />
             </Box>
           </Modal>
         </Profile.WrapperRowEnd>
@@ -105,7 +105,12 @@ export default function UserProfileUI(props) {
             <Profile.SliderTab {...settings}>
               {props.userGarden?.map((el, index) => (
                 <div>
-                  <UserTabItemUI key={uuidv4} el={el} number={index} />
+                  <UserTabItemUI
+                    key={uuidv4}
+                    el={el}
+                    number={index}
+                    istab={props.istab}
+                  />
                 </div>
               ))}
             </Profile.SliderTab>
@@ -117,7 +122,12 @@ export default function UserProfileUI(props) {
           <Profile.WrapperRowNoMargin>
             <Profile.SliderTab {...settings}>
               {props.community.fetchCommunityBoards?.map((el, index) => (
-                <UserTabItemUI key={uuidv4} el={el} number={index} />
+                <UserTabItemUI
+                  key={uuidv4}
+                  el={el}
+                  number={index}
+                  istab={props.istab}
+                />
               ))}
             </Profile.SliderTab>
           </Profile.WrapperRowNoMargin>

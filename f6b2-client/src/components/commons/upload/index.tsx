@@ -8,12 +8,12 @@ import {
 import styled from '@emotion/styled';
 import { Modal } from 'antd';
 import { UPLOAD_FILE } from '../../commons/queries';
+import { BiImageAlt } from 'react-icons/bi';
 
 export const UploadImageWrapper = styled.div`
-  width: 100px;
+  width: 30px;
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
 `;
 
 export const UploadButton = styled.button`
@@ -24,8 +24,8 @@ export const UploadButton = styled.button`
 `;
 
 export default function ImageUpload(props: {
-  setInputs: (arg0: any) => void;
-  inputs: any;
+  // setInputs: (arg0: any) => void;
+  // inputs: any;
   onChangeFileUrls: (fileUrl: string) => void;
   fileUrls: Array<string>;
 }) {
@@ -38,9 +38,11 @@ export default function ImageUpload(props: {
   >(UPLOAD_FILE);
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    console.log('업로드 시작');
+    const file = [event.target.files?.[0]];
+    console.log(file);
 
-    const isValid = checkFileValidation(file);
+    const isValid = checkFileValidation(file[0]);
     if (!isValid) return;
 
     try {
@@ -58,7 +60,7 @@ export default function ImageUpload(props: {
 
   return (
     <UploadImageWrapper>
-      <UploadButton onClick={onClickImage}>+</UploadButton>
+      <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
       <input
         id='images'
         style={{ display: 'none' }}

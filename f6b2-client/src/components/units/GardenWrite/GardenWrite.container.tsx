@@ -9,7 +9,7 @@ import GardenWriteUI from './GardenWrite.presenter';
 
 export default function GardenWriteContainer() {
   const [isContent, setIsContent] = useState('');
-  const [isBtnActive, setIsBtnActive] = useState(false);
+  const [fileUrls, setFileUrls] = useState([]);
 
   const [createGarden] = useMutation(CREATE_BOARD);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -17,6 +17,12 @@ export default function GardenWriteContainer() {
   // 가든 게시물 컨텐츠 입력값 받아오기
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setIsContent(event.target.value);
+  };
+
+  const onChangeFileUrls = (fileUrl: string) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.push(fileUrl);
+    setFileUrls(newFileUrls);
   };
 
   // 가든 게시물 생성하기 버튼
@@ -54,6 +60,8 @@ export default function GardenWriteContainer() {
       onClickSave={onClickSave}
       data={data}
       isContent={isContent}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
     />
   );
 }
