@@ -2,8 +2,9 @@ import * as Profile from './userprofile.style';
 import { v4 as uuidv4 } from 'uuid';
 import UserTabItemUI from './usertab/usertabitem.presenter';
 import Modal from '@mui/material/Modal';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import UserEditContainer from './useredit/useredit.container';
+import UserChargeContainer from './usercharge/usercharge.container';
 
 export default function UserProfileUI(props) {
   // react slick setting
@@ -114,7 +115,6 @@ export default function UserProfileUI(props) {
         )}
         {props.istab === 'myhive' ? (
           <Profile.WrapperRowNoMargin>
-            {props.istab}페이지
             <Profile.SliderTab {...settings}>
               {props.community.fetchCommunityBoards?.map((el, index) => (
                 <UserTabItemUI key={uuidv4} el={el} number={index} />
@@ -124,13 +124,7 @@ export default function UserProfileUI(props) {
         ) : (
           ''
         )}
-        {props.istab === 'mycharge' ? (
-          <Profile.WrapperRowNoMargin>
-            {props.istab}페이지
-          </Profile.WrapperRowNoMargin>
-        ) : (
-          ''
-        )}
+        {props.istab === 'mycharge' ? <UserChargeContainer /> : ''}
       </Profile.WrapperMyContents>
     </Profile.WrapperRow>
   );
