@@ -1,25 +1,42 @@
 import { useMutation } from '@apollo/client';
-import React from 'react';
+import { indexOf } from 'lodash';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../commons/store';
+import { FETCH_USER_ID } from '../userprofile.queries';
 import UserEditUI from './useredit.presenter';
 import { UPDATE_USER } from './useredit.queries';
 
 export default function UserEditContainer() {
+  const [userInfo] = useRecoilState(userInfoState);
   const [updateUser] = useMutation(UPDATE_USER);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedNewIndex, setSelectedNewIndex] = React.useState(3);
   const open = Boolean(anchorEl);
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // myLang 선택
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLElement>,
     index: number
   ) => {
     setSelectedIndex(index);
     setAnchorEl(null);
+  };
+
+  // newLang 선택
+  const handleMenuNewItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number
+  ) => {
+    setSelectedNewIndex(index);
+    setAnchorEl(null);
+    console.log('배울언어');
   };
 
   const handleClose = () => {
@@ -35,6 +52,11 @@ export default function UserEditContainer() {
     '中国',
   ];
 
+  useEffect(() => {
+    setSelectedIndex(options.indexOf(userInfo.myLang));
+    setSelectedNewIndex(options.indexOf(userInfo.newLang));
+  }, []);
+
   const onClickUpdate = async () => {
     try {
       const result = await updateUser({
@@ -42,8 +64,17 @@ export default function UserEditContainer() {
           originalPassword: 'jtjt0363!!',
           updateUserInput: {
             myLang: options[selectedIndex],
+            newLang: options[selectedNewIndex],
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_USER_ID,
+            variables: {
+              userId: userInfo.id,
+            },
+          },
+        ],
       });
     } catch (error) {
       if (error instanceof Error) alert(error.message);
@@ -54,8 +85,10 @@ export default function UserEditContainer() {
     <UserEditUI
       open={open}
       selectedIndex={selectedIndex}
+      selectedNewIndex={selectedNewIndex}
       handleClickListItem={handleClickListItem}
       handleMenuItemClick={handleMenuItemClick}
+      handleMenuNewItemClick={handleMenuNewItemClick}
       handleClose={handleClose}
       options={options}
       onClickUpdate={onClickUpdate}

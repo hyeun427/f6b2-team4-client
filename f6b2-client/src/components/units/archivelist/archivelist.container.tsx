@@ -10,7 +10,5 @@ export default function ArchiveContainer() {
     variables: { userId: userInfo?.id },
   });
 
-  console.log(data);
-
   return <ArchiveUI data={data} />;
 }
