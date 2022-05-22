@@ -4,6 +4,7 @@ import * as TabItem from './usertab.style';
 
 export default function UserTabItemUI(props) {
   const router = useRouter();
+  console.log(props.el);
   const onClickMoveDetail = () => {
     props.istab === 'mygarden'
       ? router.push(`/garden/${props.el.id}`)

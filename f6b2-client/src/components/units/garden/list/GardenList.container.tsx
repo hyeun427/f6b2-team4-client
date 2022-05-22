@@ -1,12 +1,16 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import GardenListUI from "./GardenList.presenter";
-import { FETCH_BOARDS, SAVE_BOARD } from "../../../commons/queries";
-import { IBoard } from "../../../../commons/types/generated/types";
-import { LIKE_BOARD } from "./GardenList.queries";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../../commons/store";
-import { useRouter } from "next/router";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import GardenListUI from './GardenList.presenter';
+import {
+  FETCH_BOARDS,
+  FETCH_SAVED_BOARDS,
+  SAVE_BOARD,
+} from '../../../commons/queries';
+import { IBoard } from '../../../../commons/types/generated/types';
+import { LIKE_BOARD } from './GardenList.queries';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../commons/store';
+import { useRouter } from 'next/router';
 
 export default function GardenList() {
   const router = useRouter();
@@ -41,7 +45,7 @@ export default function GardenList() {
           },
         ],
       });
-      alert("좋아요!");
+      alert('좋아요!');
     } catch (error) {
       alert(error);
     }
@@ -53,8 +57,16 @@ export default function GardenList() {
       const result = await saveGarden({
         variables: {
           boardId: data.id,
-          userId: data.writer.id,
+          // userId: data.writer.id,
         },
+        refetchQueries: [
+          {
+            query: FETCH_SAVED_BOARDS,
+            variables: {
+              userId: loginUserInfo.id,
+            },
+          },
+        ],
       });
     } catch (error) {
       if (error instanceof Error) alert(error.message);
