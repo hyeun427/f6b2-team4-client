@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { BsFileEarmarkImage } from "react-icons/bs";
 import { MdUploadFile } from "react-icons/md";
+import { IUploadBtnProps } from "./CommunityWrite.types";
 
 export const OutWrapper = styled.div`
   background-color: #d4e8ea;
@@ -99,15 +100,26 @@ export const BtnWrapper = styled.div`
 `;
 
 export const UploadBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
-  height: 30px;
-  color: #999999;
+  height: 24px;
+  color: white;
   font-size: 11px;
-
-  border: 2px solid #999999;
-  border-radius: 10px;
-  background-color: #d4e8ea;
+  font-weight: 700;
+  border: none;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+  background-color: ${(props: IUploadBtnProps) =>
+    props.isActive ? "#FFB950" : "#3A3939"};
   cursor: pointer;
 `;
 
 export const MdUploadFileIcon = styled(MdUploadFile)``;
+
+export const Error = styled.div`
+  padding: 2px 0px 0px 22px;
+  font-size: 11px;
+  color: red;
+`;

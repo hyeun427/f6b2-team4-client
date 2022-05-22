@@ -20,8 +20,13 @@ export default function CommunityDetail() {
   const [deleteCommunityBoard] = useMutation(DELETE_COMMUNITY_BOARD);
 
   // 리스트로 이동
-  const onClickMovetoList = () => {
+  const onClickMoveToList = () => {
     router.push("/community");
+  };
+
+  // 글 수정하기
+  const onClickMoveToEdit = () => {
+    router.push(`/community/${router.query.communityBoardId}/edit`);
   };
 
   // 글 삭제하기
@@ -31,7 +36,7 @@ export default function CommunityDetail() {
         variables: { communityBoardId: String(router.query.communityBoardId) },
       });
       alert("삭제가 완료되었습니다.");
-      router.back();
+      router.push("/community");
     } catch (error) {
       alert("에러ㅠ");
     }
@@ -48,7 +53,6 @@ export default function CommunityDetail() {
       setIsLike(true);
     }
 
-    console.log(isLike);
     try {
       await likeCommunityBoard({
         variables: { communityBoardId: String(router.query.communityBoardId) },
@@ -66,13 +70,20 @@ export default function CommunityDetail() {
     }
   };
 
+  // 다른 유저 프로필로 이동
+  const onClickUser = () => {
+    router.push(`/profile/${data.fetchCommunityBoard.writer.id}`);
+  };
+
   return (
     <CommunityDetailUI
       data={data}
-      onClickMovetoList={onClickMovetoList}
+      onClickMoveToList={onClickMoveToList}
+      onClickMoveToEdit={onClickMoveToEdit}
       onClickDelete={onClickDelete}
       onClickLike={onClickLike}
       isLike={isLike}
+      onClickUser={onClickUser}
     />
   );
 }
