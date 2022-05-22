@@ -30,14 +30,16 @@ export default function GardenCommentListUI(props) {
               <CommentImg></CommentImg>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}
-            <CommentBtns>
-              <EditBtn onClick={props.commentEditBtn(index)}>
-                <MdModeEditOutline />
-              </EditBtn>
-              <DeleteBtn onClick={props.onClickDeleteComment}>
-                <MdOutlineClear />
-              </DeleteBtn>
-            </CommentBtns>
+            {props.loginInfo.name === el.writer.name && (
+              <CommentBtns>
+                <EditBtn onClick={props.commentEditBtn(index)}>
+                  <MdModeEditOutline />
+                </EditBtn>
+                <DeleteBtn onClick={props.onClickDeleteComment} id={el.id}>
+                  <MdOutlineClear />
+                </DeleteBtn>
+              </CommentBtns>
+            )}
           </CommentListBox>
           {/* 댓글 수정창 */}
           {props.commentEditVal[index] && (

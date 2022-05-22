@@ -43,7 +43,7 @@ export default function GardenCommentWrite(props: any) {
   };
 
   const onClickCommentUpdate = async () => {
-    console.log(props.commentEl?.id);
+    console.log(props.boardId);
     const myVariables = {
       updateCommentInput: {},
       commentId: props.commentEl?.id,
@@ -56,6 +56,14 @@ export default function GardenCommentWrite(props: any) {
     try {
       await updateComment({
         variables: myVariables,
+        refetchQueries: [
+          {
+            query: FETCH_COMMENTS,
+            variables: {
+              boardId: props.boardId,
+            },
+          },
+        ],
       });
       alert("댓글수정 성공!");
     } catch (error) {
