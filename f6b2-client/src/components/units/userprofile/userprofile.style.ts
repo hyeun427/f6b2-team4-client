@@ -27,9 +27,9 @@ export const WrapperRowNoMargin = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
   width: auto;
   height: 100%;
-  border: 1px solid red;
 `;
 
 export const WrapperColUserinfo = styled.div`

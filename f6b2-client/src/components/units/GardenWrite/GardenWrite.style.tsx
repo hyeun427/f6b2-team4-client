@@ -74,3 +74,19 @@ export const WrapperRowIcon = styled.div`
   width: 100%;
   height: auto;
 `;
+
+export const ImageItempWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  margin-bottom: 20px;
+`;
+
+export const ImageThumbnail = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+`;

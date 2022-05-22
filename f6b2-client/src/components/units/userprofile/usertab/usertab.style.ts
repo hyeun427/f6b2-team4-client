@@ -19,7 +19,6 @@ export const WrapperColItem = styled.div`
   width: 105px;
   height: 150px;
   margin: 10px 10px;
-  border: 1px solid red;
 `;
 
 export const ImageItem = styled.img`

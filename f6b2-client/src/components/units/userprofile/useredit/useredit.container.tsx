@@ -1,5 +1,4 @@
 import { useMutation } from '@apollo/client';
-import { indexOf } from 'lodash';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { userInfoState } from '../../../../commons/store';
@@ -7,7 +6,7 @@ import { FETCH_USER_ID } from '../userprofile.queries';
 import UserEditUI from './useredit.presenter';
 import { UPDATE_USER } from './useredit.queries';
 
-export default function UserEditContainer() {
+export default function UserEditContainer(props) {
   const [userInfo] = useRecoilState(userInfoState);
   const [updateUser] = useMutation(UPDATE_USER);
 
@@ -76,6 +75,7 @@ export default function UserEditContainer() {
           },
         ],
       });
+      props.onClose();
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
