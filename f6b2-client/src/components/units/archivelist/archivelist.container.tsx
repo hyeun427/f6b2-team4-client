@@ -9,6 +9,7 @@ export default function ArchiveContainer() {
   const { data } = useQuery(FETCH_SAVED_BOARDS, {
     variables: { userId: userInfo?.id },
   });
+  console.log(data);
 
   return <ArchiveUI data={data} />;
 }

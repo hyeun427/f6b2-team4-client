@@ -89,6 +89,7 @@ export const FETCH_SAVED_BOARDS = gql`
         id
         content
       }
+      isSaved
     }
   }
 `;
