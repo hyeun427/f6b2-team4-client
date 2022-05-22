@@ -6,3 +6,7 @@ export interface ICommunityListUIProps {
   onClickContent: () => void;
   onClickLike: () => void;
 }
+
+export interface ICommunityList {
+  isLike: Boolean;
+}

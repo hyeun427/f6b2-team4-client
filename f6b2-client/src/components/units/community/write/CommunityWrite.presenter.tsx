@@ -1,11 +1,13 @@
 import * as S from "./CommunityWrite.styles";
+// 에디터
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { Quill } from "react-quill";
 import ImageUpload from "../../../commons/upload";
+import { ICommunityBoardWriteUIProps } from "./CommunityWrite.types";
 
-export default function CommunityListUI(props) {
+export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
   /*   // 에디터 커스텀
   const fontSizeArr = ["11px", "14px", "16px", "20px"];
 
@@ -20,7 +22,6 @@ export default function CommunityListUI(props) {
       [{ size: fontSizeArr }],
     ],
   }; */
-
   return (
     <S.OutWrapper>
       <S.Wrapper>
@@ -30,14 +31,28 @@ export default function CommunityListUI(props) {
             type="text"
             placeholder="제목을 작성해주세요."
             onChange={props.onChangeTitle}
+            defaultValue={props.data?.fetchCommunityBoard.title || ""}
           />
+          <S.Error>{props.titleError}</S.Error>
         </S.TitleWrapper>
 
         {/* 내용 */}
         <S.ReactQuillWrapper>
-          {/* 툴바 커스텀은 나중에 */}
-          {/* <ReactQuill modules={modules} onChange={props.onChangeContent} /> */}
-          <ReactQuill onChange={props.onChangeContent} />
+          {!props.isEdit && (
+            <>
+              <ReactQuill onChange={props.onChangeContent} />
+              <S.Error>{props.contentError}</S.Error>
+            </>
+          )}
+          {props.isEdit && props.data?.fetchCommunityBoard.content && (
+            <>
+              <ReactQuill
+                onChange={props.onChangeContent}
+                defaultValue={props.data?.fetchCommunityBoard.content}
+              />
+              <S.Error>{props.contentError}</S.Error>
+            </>
+          )}
         </S.ReactQuillWrapper>
 
         {/* 사진 */}
@@ -53,9 +68,12 @@ export default function CommunityListUI(props) {
 
         {/* 업로드버튼 */}
         <S.BtnWrapper>
-          <S.UploadBtn onClick={props.onClickSubmit}>
+          <S.UploadBtn
+            onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+            isActive={props.isEdit ? true : props.isActive}
+          >
             <S.MdUploadFileIcon />
-            Upload
+            {props.isEdit ? "Update" : "Upload"}
           </S.UploadBtn>
         </S.BtnWrapper>
       </S.Wrapper>

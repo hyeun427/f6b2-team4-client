@@ -14,7 +14,7 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
       <S.Wrapper>
         {/* 프사, 작성자, 작성일자 */}
         <S.Header>
-          <S.Info>
+          <S.Info onClick={props.onClickUser}>
             <S.UserImg src="/community/profile.png" />
             <S.Writer>{props.data?.fetchCommunityBoard?.writer.name}</S.Writer>
           </S.Info>
@@ -69,11 +69,11 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
             {props.data?.fetchCommunityBoard.writer.id === userInfo?.id && (
               <S.BtnWrapper>
                 {/* 리스트로 */}
-                <S.IconWrapper onClick={props.onClickMovetoList}>
+                <S.IconWrapper onClick={props.onClickMoveToList}>
                   <S.ListIcon />
                 </S.IconWrapper>
                 {/* 수정하기 */}
-                <S.IconWrapper>
+                <S.IconWrapper onClick={props.onClickMoveToEdit}>
                   <S.EditIcon />
                 </S.IconWrapper>
                 {/* 삭제하기 */}
@@ -85,7 +85,7 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
             {/* 상대방 글 버튼리스트 */}
             {props.data?.fetchCommunityBoard.writer.id !== userInfo?.id && (
               <S.BtnWrapper>
-                <S.IconWrapper onClick={props.onClickMovetoList}>
+                <S.IconWrapper onClick={props.onClickMoveToList}>
                   <S.ListIcon />
                 </S.IconWrapper>
               </S.BtnWrapper>

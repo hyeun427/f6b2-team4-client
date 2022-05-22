@@ -1,58 +1,144 @@
-import { gql, useMutation } from "@apollo/client";
-import { Modal } from "antd";
-import { useRouter } from "next/router";
-import { ChangeEvent, ChangeEventHandler, useRef, useState } from "react";
-import { checkFileValidation } from "../../../../commons/libraries/validation";
-import {
-  IMutation,
-  IMutationUploadFileArgs,
-} from "../../../../commons/types/generated/types";
-import { CREATE_COMMUNITY_BOARD } from "../../../commons/queries";
 import CommunityWriteUI from "./CommunityWrite.presenter";
+import { ICommunityBoardWriteProps } from "./CommunityWrite.types";
+import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
+import {
+  CREATE_COMMUNITY_BOARD,
+  FETCH_COMMUNITY_BOARD,
+} from "../../../commons/queries";
+import { Modal } from "antd";
+import "antd/dist/antd.css";
+import { IUpdateCommunityBoardInput } from "../../../../commons/types/generated/types";
+import { UPDATE_COMMUNITY_BOARD } from "./CommunityWrite.queries";
 
-export default function CommunityWrite() {
+export default function CommunityWrite(props: ICommunityBoardWriteProps) {
   const router = useRouter();
 
+  // 뮤테이션 가져오기
   const [createCommunityBoard] = useMutation(CREATE_COMMUNITY_BOARD);
+  const [updateCommunityBoard] = useMutation(UPDATE_COMMUNITY_BOARD);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
 
+  const [titleError, setTitleError] = useState("");
+  const [contentError, setContentError] = useState("");
+
+  const [isActive, setIsActive] = useState(false);
+
   // 제목 작성 시
-  const onChangeTitle = (event) => {
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
+    if (event.target.value !== "") {
+      setTitleError("");
+    }
+
+    if (event.target.value && content) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
+
   // 내용 작성 시
-  const onChangeContent = (value) => {
+  const onChangeContent = (value: string) => {
     setContent(value);
+    if (value !== "") {
+      setContentError("");
+    }
+
+    if (title && value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
 
   // 이미지 업로드 시
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {};
 
+  // 등록 버튼
   const onClickSubmit = async () => {
-    try {
-      const result = await createCommunityBoard({
-        variables: {
-          createCommunityBoardInput: {
-            title,
-            content,
-            image,
+    if (title === "") {
+      setTitleError("제목을 입력하세요");
+    }
+    if (content === "") {
+      setContentError("내용을 입력하세요.");
+    }
+
+    if (title !== "" && content !== "") {
+      try {
+        const result = await createCommunityBoard({
+          variables: {
+            createCommunityBoardInput: {
+              title,
+              content,
+              image,
+            },
           },
-        },
-      });
-      alert("등록성공");
-      router.push(`/community/${result.data.createCommunityBoard.id}`);
-    } catch (error) {
-      alert("실패ㅠ");
+        });
+        Modal.success({
+          content: "오늘의 기록이 등록되었습니다.",
+        });
+        router.push(`/community/${result.data.createCommunityBoard.id}`);
+      } catch (error) {
+        Modal.error({ content: "오늘의 기록을 다시 작성해주세요." });
+      }
     }
   };
+
+  // 수정 버튼
+  const onClickUpdate = async () => {
+    if (!title && !content) {
+      Modal.error({ content: "수정한 내용이 없습니다. 다시 확인해주세요." });
+      return;
+    }
+
+    const updateCommunityBoardInput: IUpdateCommunityBoardInput = {};
+    if (title) updateCommunityBoardInput.title = title;
+    if (content) updateCommunityBoardInput.content = content;
+    // 이미지 추가할 것
+    try {
+      const editResult = await updateCommunityBoard({
+        variables: {
+          communityBoardId: router?.query.communityBoardId,
+          updateCommunityBoardInput,
+        },
+      });
+      Modal.success({ content: "게시물 수정에 성공하였습니다!" });
+      router.push(`/community/${editResult.data?.updateCommunityBoard.id}`);
+    } catch (error) {
+      Modal.error({
+        content: "게시물 수정이 실패하였습니다.다시 확인해주세요.",
+      });
+    }
+  };
+
+  // 작성된 컨텐츠 data 불러오기
+  const { data: commuData } = useQuery(FETCH_COMMUNITY_BOARD, {
+    variables: { communityBoardId: router?.query.communityBoardId },
+  });
+
   return (
     <CommunityWriteUI
-      onClickSubmit={onClickSubmit}
+      // 작성 관련
+      isActive={isActive}
+      titleError={titleError}
+      contentError={contentError}
+      // 이벤트 핸들러
       onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
-      onChangeFile={onChangeFile}
+      // onChangeFile={onChangeFile}
+      onClickSubmit={onClickSubmit}
+      onClickUpdate={onClickUpdate}
+      // 수정 관련
+      isEdit={props.isEdit}
+      data={props.data}
+      commuData={commuData}
+      // 에디터
+      // ReactQuill={ReactQuill}
     />
   );
 }
