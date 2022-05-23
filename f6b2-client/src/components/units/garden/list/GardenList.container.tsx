@@ -89,7 +89,7 @@ export default function GardenList() {
   //   });
   // };
 
-  // 가든에서 유저 프로필 클릭 시,
+  // 가든에서 유저 프로필 클릭 시...
   const onClickUserProfile = (event) => {
     router.push(`/profile/${event.target.id}`);
   };
