@@ -21,7 +21,6 @@ interface IApolloProps {
 
 export default function ApolloConfig(props: IApolloProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  // const [, setUserInfo] = useRecoilState(userInfoState);
   const restoreAccessToken = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   useEffect(() => {
@@ -56,8 +55,6 @@ export default function ApolloConfig(props: IApolloProps) {
   });
 
   const uploadLink = createUploadLink({
-    // 기존 프리보드, 중고마켓 URI
-    // uri: 'https://backend06.codebootcamp.co.kr/graphql',
     // uri: 'hiosi123.shop/graphql',
     uri: 'https://team04backend.shop/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },

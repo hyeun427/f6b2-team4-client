@@ -48,6 +48,7 @@ export const WrapperRowItem = styled.div`
   width: 100%;
   height: 40px;
   margin-bottom: 7px;
+  cursor: pointer;
 `;
 
 export const ImageItem = styled.img`

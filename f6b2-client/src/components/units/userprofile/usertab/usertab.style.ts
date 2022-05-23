@@ -37,9 +37,17 @@ export const WrapperRowItem = styled.div`
   width: 100%;
   height: 100%;
 `;
+export const WrapperRowRightItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  height: 100%;
+`;
 
 export const PItemDate = styled.p`
-  width: auto;
+  width: 60%;
   height: auto;
   font-style: normal;
   font-weight: 400;

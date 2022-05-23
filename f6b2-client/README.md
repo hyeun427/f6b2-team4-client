@@ -1,38 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-깃풀 이슈 등록 테스트입니다
+## Backend 경로 바꾸기
 
-## Getting Started
+1. 파일 위치 : /Users/jintaekwoo/Desktop/f6b2-team4-client/f6b2-client/src/components/commons/apollo/index.tsx
 
-하이하이 나는 테스트!
-test
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+```javascript
+const uploadLink = createUploadLink({
+  // 아래 URL 변경, https 주의, https가 아니면 리프레시 토큰 발급 안됨
+    uri: 'https://team04backend.shop/graphql',
+    headers: { Authorization: `Bearer ${accessToken}` },
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. 파일 위치 : f6b2-client/src/commons/libraries/getAccessToken.ts
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```javascript
+export async function getAccessToken() {
+  try {
+    const graphQLClient = new GraphQLClient(
+      // 아래 URL 변경, https 주의, https가 아니면 리프레시 토큰 발급 안됨
+      'https://team04backend.shop/graphql',
+      { credentials: 'include' }
+    );
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## image 업로드 사용방법
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+경로 : f6b2-client/src/components/commons/upload/index.tsx
 
-## Learn More
+> Container
 
-To learn more about Next.js, take a look at the following resources:
+```javascript
+// 1. 이미지 URL을 받기 위한 set 선언
+const [fileUrls, setFileUrls] = useState([]);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+const onChangeFileUrls = (fileUrl: string) => {
+  const newFileUrls = [...fileUrls];
+  newFileUrls.push(fileUrl);
+  setFileUrls(newFileUrls);
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+> Presenter
 
-## Deploy on Vercel
+```javascript
+// 1. 컴포넌트 임포트하기
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// 2. 업로드 버튼 컴포넌트 삽입
+<ImageUpload
+  onChangeFileUrls={props.onChangeFileUrls}
+  fileUrls={props.fileUrls}
+  // type 주기
+  // 가든 게시물인 경우 : garden
+  // 커뮤니티 게시물인 경우 : community
+  type={'garden'}
+/>;
+// 3. 이미지 썸네일 노출
+// 디자인은 각자 수정 해서 사용하면 됩니다.
+{
+  props.fileUrls?.map((el, index) => (
+    <>
+      <L.ImageItempWrap>
+        <L.ImageThumbnail
+          key={uuidv4()}
+          src={
+            el.startsWith('https', 0)
+              ? el
+              : `https://storage.googleapis.com/${el}`
+          }
+        />
+        {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
+      </L.ImageItempWrap>
+    </>
+  ));
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## video 업로드 사용방법
+
+- 추가 예정
+
+## timeago 사용방법
+
+- 자세한 내용 : https://www.npmjs.com/package/timeago-react
+
+> Container
+
+```javascript
+// 1. import하기
+import * as timeago from 'timeago.js';
+import ko from 'timeago.js/lib/lang/ko';
+import TimeAgo from 'timeago-react';
+
+export default function Home() {
+  // timeago 등록하기
+  // 한국어는 ko, 디폴트는 영어
+  timeago.register('ko', ko);
+```
+
+> presenter
+
+```javascript
+<TimeAgo datetime={newDate} locale='ko' />
+```

@@ -42,13 +42,6 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
                 <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
               </S.LikesWrapper>
             )}
-
-            {/* <S.LikesWrapper onClick={props.onClickLike}>
-              <S.IconWrapper>
-                <S.GiHeartsIcon />
-              </S.IconWrapper>
-              <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
-            </S.LikesWrapper> */}
           </S.InnerWrapper>
 
           <S.InnerWrapper>

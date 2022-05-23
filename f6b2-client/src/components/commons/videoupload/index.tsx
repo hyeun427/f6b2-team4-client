@@ -6,12 +6,11 @@ import {
   IMutationUploadFileArgs,
 } from '../../../commons/types/generated/types';
 import styled from '@emotion/styled';
-import { Modal } from 'antd';
-import { UPLOAD_FILE } from '../../commons/queries';
-import { BiImageAlt } from 'react-icons/bi';
-import * as S from '../../../components/units/community/write/CommunityWrite.styles';
+import { UPLOAD_FILE } from '../queries';
+import { BiCaretRightSquare } from 'react-icons/bi';
+import * as S from '../../units/community/write/CommunityWrite.styles';
 
-export const UploadImageWrapper = styled.div`
+export const UploadVideoWrapper = styled.div`
   width: 30px;
   display: flex;
   flex-direction: column;
@@ -24,16 +23,14 @@ export const UploadButton = styled.button`
   background: #bdbdbd;
 `;
 
-export default function ImageUpload(props: {
-  // setInputs: (arg0: any) => void;
-  // inputs: any;
-  onChangeFileUrls: (fileUrl: string) => void;
-  fileUrls: Array<string>;
+export default function VideoUpload(props: {
+  onChangeVideoUrls: (fileUrl: string) => void;
+  videoUrls: Array<string>;
   type: string;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [, setImageUrl] = useState<string | undefined>('');
+  const [, setVideoUrl] = useState<string | undefined>('');
   const [uploadFile] = useMutation<
     Pick<IMutation, 'uploadFile'>,
     IMutationUploadFileArgs
@@ -41,30 +38,35 @@ export default function ImageUpload(props: {
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    // const isValid = checkFileValidation(file);
-    // if (!isValid) return;
+
+    const isValid = checkFileValidation(file);
+    if (!isValid) return;
 
     try {
-      const { data: resultImgUrl } = await uploadFile({
+      const { data: resultVideoUrl } = await uploadFile({
         variables: { files: [file] },
       });
-      console.log(resultImgUrl);
+      console.log('비디오', resultVideoUrl);
 
-      setImageUrl(resultImgUrl?.uploadFile[3]);
-      props.onChangeFileUrls(String(resultImgUrl?.uploadFile[3]));
+      setVideoUrl(resultVideoUrl?.uploadFile[3]);
+      props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
 
-  const onClickImage = () => {
+  const onClickVideo = () => {
     fileRef.current?.click();
   };
 
   return (
-    <UploadImageWrapper>
+    <UploadVideoWrapper>
       {props.type === 'garden' && (
-        <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
+        <BiCaretRightSquare
+          onClick={onClickVideo}
+          size={'30'}
+          color={'A4B1DA'}
+        />
       )}
       {props.type === 'community' && (
         <S.ImgBtn>
@@ -78,6 +80,6 @@ export default function ImageUpload(props: {
         onChange={onChangeFile}
         ref={fileRef}
       />
-    </UploadImageWrapper>
+    </UploadVideoWrapper>
   );
 }
