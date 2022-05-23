@@ -43,13 +43,11 @@ export default function GardenWriteUI(props: IGardenWrite) {
       </L.WrapperRow>
       <L.WrapperRowIcon>
         <BiVideoRecording size={'30'} color={'A4B1DA'} />
-        {/* <BiImageAlt size={'30'} color={'A4B1DA'} /> */}
         <ImageUpload
           onChangeFileUrls={props.onChangeFileUrls}
           fileUrls={props.fileUrls}
           type={'garden'}
         />
-        {/* <BiCaretRightSquare size={'30'} color={'A4B1DA'} /> */}
         <VideoUpload
           onChangeVideoUrls={props.onChangeVideoUrls}
           videoUrls={props.videoUrls}

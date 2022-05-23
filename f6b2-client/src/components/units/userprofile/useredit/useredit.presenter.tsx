@@ -1,103 +1,82 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import * as Edit from './useredit.style';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import { NativeSelect } from '@mui/material';
+import ImageUpload from '../../../commons/upload';
 
 export default function UserEditUI(props) {
   return (
-    <>
+    <Edit.WrapperCol>
+      <Edit.ImgProfile src={props?.fileUrls[0]} />
+      <ImageUpload
+        type='edit'
+        onChangeFileUrls={props.onChangeFileUrls}
+        fileUrls={props.fileUrls}
+      />
+      {/* <Edit.IconEdit /> */}
+      <Edit.WrapperRowCenter>
+        <Edit.InputName
+          defaultValue={props?.user?.fetchUserId?.name}
+          onChange={props.onChangeName}
+        />
+      </Edit.WrapperRowCenter>
       <Edit.WrapperRow>
-        <div>Mother Tongue</div>
-        <List
-          component='nav'
-          aria-label='Mother Tongue'
-          sx={{ bgcolor: 'background.paper' }}
-        >
-          <ListItem
-            button
-            id='lock-button'
-            aria-haspopup='listbox'
-            aria-controls='mother-tongue'
-            aria-label='select mother tongue'
-            aria-expanded={props.open ? 'true' : undefined}
-            onClick={props.handleClickListItem}
-          >
-            <ListItemText
-              primary={props.options[props.selectedIndex]}
-              // secondary={props.options[props.selectedIndex]}
-            />
-          </ListItem>
-        </List>
-        <Menu
-          id='mother-tongue'
-          anchorEl={props.anchorEl}
-          open={props.open}
-          onClose={props.handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'lock-button',
-            role: 'listbox',
-          }}
-        >
-          {props.options.map((option, index) => (
-            <MenuItem
-              key={option}
-              // disabled={index === 0}
-              selected={index === props.selectedIndex}
-              onClick={(event) => props.handleMenuItemClick(event, index)}
+        <Edit.PLabel>New Language</Edit.PLabel>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <NativeSelect
+              defaultValue={props?.user?.fetchUserId?.newLang}
+              inputProps={{
+                name: 'lang',
+                id: 'uncontrolled-native',
+              }}
+              onChange={props.handleChange}
             >
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
+              <option value={'한국어'}>한국어</option>
+              <option value={'English'}>English</option>
+              <option value={'日本語'}>日本語</option>
+              <option value={'español'}>español</option>
+              <option value={'Français'}>Français</option>
+              <option value={'中国'}>中国</option>
+            </NativeSelect>
+          </FormControl>
+        </Box>
       </Edit.WrapperRow>
       <Edit.WrapperRow>
-        <div>New Language</div>
-        <List
-          component='nav'
-          aria-label='new language'
-          sx={{ bgcolor: 'background.paper' }}
-        >
-          <ListItem
-            button
-            id='lock-button'
-            aria-haspopup='listbox'
-            aria-controls='new-language'
-            aria-label='when device is locked'
-            aria-expanded={props.open ? 'true' : undefined}
-            onClick={props.handleClickListItem}
-          >
-            <ListItemText
-              primary={props.options[props.selectedNewIndex]}
-              // secondary={props.options[props.selectedIndex]}
-            />
-          </ListItem>
-        </List>
-        <Menu
-          id='new-language'
-          anchorEl={props.anchorEl}
-          open={props.open}
-          onClose={props.handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'lock-button',
-            role: 'listbox',
-          }}
-        >
-          {props.options.map((option, index) => (
-            <MenuItem
-              key={option}
-              // disabled={index === 0}
-              selected={index === props.selectedNewIndex}
-              onClick={(event) => props.handleMenuNewItemClick(event, index)}
+        <Edit.PLabel>Current Region</Edit.PLabel>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <NativeSelect
+              defaultValue={'서울'}
+              inputProps={{
+                name: 'Region',
+                id: 'uncontrolled-native',
+              }}
+              onChange={props.handleChangeRegion}
             >
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
+              <option value={'서울'}>서울</option>
+              <option value={'인천'}>인천</option>
+            </NativeSelect>
+          </FormControl>
+        </Box>
       </Edit.WrapperRow>
-
-      <button onClick={props.onClickUpdate}>저장하기</button>
-    </>
+      <Edit.WrapperRow>
+        <Edit.PLabel>Current Password</Edit.PLabel>
+        <Edit.InputPW
+          placeholder='Enter your password'
+          onChange={props.onChangeCurPw}
+          type='password'
+        />
+      </Edit.WrapperRow>
+      <Edit.WrapperRow>
+        <Edit.PLabel>New Password</Edit.PLabel>
+        <Edit.InputPW
+          placeholder='Enter your password'
+          onChange={props.onChangeNewPw}
+          type='password'
+        />
+      </Edit.WrapperRow>
+      <Edit.ButtonSave onClick={props.onClickUpdate}>Save</Edit.ButtonSave>
+    </Edit.WrapperCol>
   );
 }

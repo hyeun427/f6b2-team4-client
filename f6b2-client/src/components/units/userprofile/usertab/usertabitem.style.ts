@@ -14,19 +14,20 @@ export const Wrapper = styled.div`
 export const WrapperColItem = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 105px;
-  height: 150px;
+  width: 106px;
+  height: 152px;
   margin: 10px 10px;
 `;
 
 export const ImageItem = styled.img`
   width: 106px;
   height: 130px;
-  background-color: gray;
   object-fit: cover;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 8px;
 `;
 
 export const WrapperRowItem = styled.div`
@@ -35,7 +36,7 @@ export const WrapperRowItem = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 export const WrapperRowRightItem = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ export const WrapperRowRightItem = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: auto;
-  height: 100%;
+  height: auto;
 `;
 
 export const PItemDate = styled.p`

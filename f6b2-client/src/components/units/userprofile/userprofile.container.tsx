@@ -8,6 +8,8 @@ import { FETCH_BOARDS } from '../../commons/queries';
 import UserProfileUI from './userprofile.presenter';
 import { FETCH_USER_ID, FETCH_COMMUNITY_BOARDS } from './userprofile.queries';
 
+import { MouseEvent } from 'react';
+
 export default function UserProfileContainer() {
   const [userInfo] = useRecoilState(userInfoState);
   const [istab, setIsTab] = useState('mygarden');
@@ -37,20 +39,20 @@ export default function UserProfileContainer() {
     },
   });
 
+  console.log(user);
+
   const { data: community } = useQuery(FETCH_COMMUNITY_BOARDS, {
     variables: {
       userId: router.query.id,
     },
   });
 
-  console.log(community);
-
   //  data 중에 router.query.id 와 data.fetchBoards.writer.id 가 일치 하는 경우의 board와 community를 찾아내야 한다.
   const userGarden = boards?.fetchBoards?.filter(
     (el: any) => el.writer.id === router.query.id
   );
 
-  const onClickTab = (event) => {
+  const onClickTab = (event: MouseEvent<HTMLButtonElement>) => {
     setIsTab(event.currentTarget.id);
   };
 

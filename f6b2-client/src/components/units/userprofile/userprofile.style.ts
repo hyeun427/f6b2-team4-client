@@ -4,6 +4,7 @@ import { AiOutlineAppstore, AiFillFire } from 'react-icons/ai';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Modal, Box } from '@mui/material';
 
 export const WrapperColCenter = styled.div`
   display: flex;
@@ -50,9 +51,9 @@ export const WrapperMyContents = styled.div`
   justify-content: center;
   align-items: center;
   width: 702px;
-  height: 408px;
+  height: 465px;
   background-color: #fff;
-  border: 1px solid blue;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
 export const WrapperRowEnd = styled.div`
@@ -157,19 +158,19 @@ export const PMyGardenCount = styled.p`
 `;
 
 export const IconMyGarden = styled(BsStack)`
-  color: ${(props) => (props.istab === 'mygarden' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'mygarden' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyHive = styled(AiOutlineAppstore)`
-  color: ${(props) => (props.istab === 'myhive' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'myhive' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
 export const IconMyCharge = styled(AiFillFire)`
-  color: ${(props) => (props.istab === 'mycharge' ? 'black' : '#ffb950')};
+  color: ${(props) => (props.istab === 'mycharge' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
@@ -194,4 +195,25 @@ export const SliderTab = styled(Slider)`
     color: black; // arrow 색상 변경
     font-size: 25px; // arrow 크기 변경
   }
+`;
+
+export const BoxModal = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 538px;
+  height: 524px;
+  background-color: #fff;
+  font-size: 4;
+  border-radius: 50px;
+`;
+
+export const WrapperRowItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
 `;
