@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { BiEdit } from "react-icons/bi";
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -170,4 +171,23 @@ export const NameRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+// 수정버튼
+export const IconWrapper = styled.button`
+  color: white;
+  border: none;
+  background-color: white;
+
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0));
+  cursor: pointer;
+`;
+
+export const EditIcon = styled(BiEdit)`
+  color: black;
+  width: 24px;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  :hover {
+    color: #ffb950;
+  }
 `;

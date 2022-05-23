@@ -4,7 +4,7 @@ import { MdUploadFile } from "react-icons/md";
 import { IUploadBtnProps } from "./CommunityWrite.types";
 
 export const OutWrapper = styled.div`
-  background-color: #d4e8ea;
+  background-color: white;
   display: flex;
   justify-content: center;
   height: 730px;
@@ -22,10 +22,10 @@ export const TitleWrapper = styled.div`
 export const TitleInput = styled.input`
   width: 100%;
   padding: 16px 0px 16px 32px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
-  border-radius: 50px 0px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   ::placeholder {
     color: #767676;
     font-size: 11px;
@@ -40,15 +40,15 @@ export const ReactQuillWrapper = styled.div`
   width: 700px;
 
   .quill {
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 50px 0px;
+    background: #ffffff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
   }
   .ql-toolbar {
     height: 48px;
   }
   .ql-toolbar.ql-snow {
-    padding: 13px 0px 13px 34px;
     border: none;
     border-bottom: 2px solid #b9b9b9;
   }
@@ -66,9 +66,10 @@ export const ImgWrapper = styled.div`
   padding: 21px 51px 0px 51px;
   width: 700px;
   height: 80px;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 50px 0px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
   font-size: 11px;
   font-weight: 700;
   color: #999999;

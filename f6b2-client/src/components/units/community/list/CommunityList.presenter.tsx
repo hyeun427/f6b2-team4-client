@@ -1,5 +1,5 @@
 import * as S from "./CommunityList.styles";
-import { GiHearts } from "react-icons/gi";
+import { GiHearts, GiPlayerPrevious } from "react-icons/gi";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,9 +7,32 @@ import styled from "@emotion/styled";
 import { getDate } from "../../../../commons/libraries/utils";
 import { ICommunityListUIProps } from "./CommunityList.types";
 
+const arrow = <GiPlayerPrevious />;
 // 캐러셀 커스터마이징
 const Slider1 = styled(Slider)`
-  width: 705px;
+  width: 700px;
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick";
+    font-size: 40px;
+    font-weight: 100;
+    color: black;
+  }
+
+  .slick-prev:before {
+    content: "<";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: ">";
+  }
+
+  .slick-next:before {
+    content: ">";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "<";
+  }
+
   .slick-prev {
     left: -60px;
     z-index: 10;
@@ -17,14 +40,6 @@ const Slider1 = styled(Slider)`
   .slick-next {
     right: -35px;
     z-index: 10;
-  }
-  .slick-prev:before {
-    color: none;
-    font-size: 25px;
-  }
-  .slick-next:before {
-    color: none; // arrow 색상 변경
-    font-size: 25px; // arrow 크기 변경
   }
 `;
 

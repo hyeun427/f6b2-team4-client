@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHearts } from "react-icons/gi";
-import { ICommunityLikeProps } from "./CommunityList.types";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d4e8ea;
+  background-color: white;
   padding-bottom: 40px;
   height: 673px;
 `;
@@ -40,14 +39,14 @@ export const SearchbarWrapper = styled.div`
   margin-bottom: 10px;
   padding: 0px 5px;
   width: 100%;
-  background-color: #ecf5f6;
+  background-color: #dbdbdb;
   border: none;
   border-radius: 5px;
 `;
 
 export const Searchbar = styled.input`
   width: 100%;
-  background-color: #ecf5f6;
+  background-color: #dbdbdb;
   border: none;
   border-radius: 5px;
   :focus {
@@ -71,19 +70,21 @@ export const Button = styled.button`
   cursor: pointer;
   width: 66px;
   height: 27px;
-  background-color: #d4e8ea;
+  background-color: #3a3939;
   font-size: 13px;
-  color: #6d6d6d;
-  border: 2px solid #6f6f6f;
+  font-weight: 700;
+  color: white;
+  border: none;
   border-radius: 17px;
   :hover {
     cursor: pointer;
     width: 66px;
     height: 27px;
-    background-color: #ffffff;
+    background-color: #ffb950;
     font-size: 13px;
-    color: #a4b1da;
-    border: 2px solid #a4b1da;
+    font-weight: 700;
+    color: white;
+    border: none;
     border-radius: 17px;
   }
 `;
@@ -96,8 +97,9 @@ export const Body = styled.div`
 `;
 
 export const ContentsWrapper = styled.div`
-  width: 150px;
+  width: 130px;
   margin-bottom: 20px;
+  filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.25));
 `;
 
 export const Img = styled.img`
@@ -105,9 +107,9 @@ export const Img = styled.img`
   height: 160px;
   object-fit: cover;
   border: 2px solid none;
+  border-radius: 10px;
   transition-duration: 1s;
   cursor: pointer;
-  filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.25));
   :hover {
     transform: scale(1.1);
     transition-duration: 0.5s;
@@ -153,9 +155,9 @@ export const LikesWrapper = styled.div`
   align-items: center;
 `;
 export const HeartsWrapper = styled.button`
-  color: #ffb950;
+  color: red;
   border: none;
-  background-color: #d4e8ea;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
 `;
 
@@ -164,6 +166,4 @@ export const Likes = styled.div`
   text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;
 
-export const GiHeartsIcon = styled(GiHearts)`
-  /* color: yellow; */
-`;
+export const GiHeartsIcon = styled(GiHearts)``;

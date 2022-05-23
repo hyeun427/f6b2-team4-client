@@ -21,6 +21,10 @@ export default function GardenDetailUI(props: any) {
                   {getDate(props.data?.fetchBoard.createdAt)}
                 </S.CreatedAt>
               </S.WriterInfo>
+              {/* 수정버튼 */}
+              <S.IconWrapper>
+                <S.EditIcon />
+              </S.IconWrapper>
             </S.WriterInfoBox>
             <S.ContentsBox>
               <S.Contents>{props.data?.fetchBoard.content}</S.Contents>
