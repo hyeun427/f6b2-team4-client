@@ -4,10 +4,9 @@ import { BiReceipt, BiEdit, BiTrash } from "react-icons/bi";
 import { ICommunityDetailUIProps } from "./CommunityDetail.types";
 
 export const OutWrapper = styled.div`
-  background-color: #d4e8ea;
+  background-color: white;
   display: flex;
   justify-content: center;
-  /* height 다시 수정 할 것 */
   height: 730px;
 `;
 
@@ -22,7 +21,7 @@ export const Header = styled.div`
   align-items: center;
   margin-bottom: 33px;
   padding-bottom: 10px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #000000;
 `;
 
 export const Info = styled.div`
@@ -43,6 +42,8 @@ export const UserImg = styled.img`
 export const Writer = styled.div`
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
+  color: #000000;
   text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -50,7 +51,7 @@ export const Date = styled.div`
   font-weight: 400;
   font-size: 12px;
   text-align: center;
-  color: #ffffff;
+  color: #000000;
   text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -70,6 +71,8 @@ export const Img = styled.img`
   width: 300px;
   height: 350px;
   margin-bottom: 45px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 `;
 
 export const LikesWrapper = styled.div`
@@ -81,6 +84,7 @@ export const LikesWrapper = styled.div`
 
 export const GiHeartsIcon = styled(GiHearts)`
   font-size: 15px;
+  color: lightgray;
 `;
 
 export const Likes = styled.div`
@@ -91,9 +95,9 @@ export const Likes = styled.div`
 export const Detail = styled.div`
   margin-bottom: 45px;
   padding: 39px 37px;
-  background: rgba(255, 255, 255, 0.7);
+  background: #3a3939;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 50px 0px;
+  border-radius: 10px;
   width: 350px;
   height: 350px;
 `;
@@ -102,11 +106,13 @@ export const Title = styled.div`
   margin-bottom: 10px;
   padding-bottom: 6px;
   font-size: 11px;
-  border-bottom: 1px solid #a5a5a5;
+  color: #ffffff;
+  border-bottom: 1px solid #cdcdcd;
 `;
 
 export const Contents = styled.div`
   font-size: 11px;
+  color: #ffffff;
 `;
 
 export const BtnWrapper = styled.div`
@@ -116,26 +122,35 @@ export const BtnWrapper = styled.div`
 export const IconWrapper = styled.button`
   color: white;
   border: none;
-  background-color: #d4e8ea;
+  background-color: white;
 
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0));
   cursor: pointer;
 `;
 
 export const ListIcon = styled(BiReceipt)`
-  color: white;
+  color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  :hover {
+    color: #ffb950;
+  }
 `;
 
 export const EditIcon = styled(BiEdit)`
-  color: white;
+  color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  :hover {
+    color: #ffb950;
+  }
 `;
 
 export const DeleteIcon = styled(BiTrash)`
-  color: white;
+  color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  :hover {
+    color: #ffb950;
+  }
 `;
