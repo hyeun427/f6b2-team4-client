@@ -15,7 +15,6 @@ export default function UserProfileUI(props) {
     rows: 2,
     slidesPerRow: 4,
     slidesToScroll: 1,
-    vertical: false,
   };
 
   // modal style
@@ -24,7 +23,8 @@ export default function UserProfileUI(props) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    width: 538,
+    height: 524,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -44,11 +44,14 @@ export default function UserProfileUI(props) {
           )}
           <Modal open={props.open} onClose={props.handleClose}>
             <Box sx={style}>
-              <UserEditContainer onClose={props.handleClose} />
+              <UserEditContainer
+                onClose={props.handleClose}
+                user={props.user}
+              />
             </Box>
           </Modal>
         </Profile.WrapperRowEnd>
-        <Profile.ImageProfile />
+        <Profile.ImageProfile src={props.user?.fetchUserId?.image} />
         <Profile.H3ProfileName>
           {props.user?.fetchUserId?.name}
         </Profile.H3ProfileName>
@@ -101,17 +104,16 @@ export default function UserProfileUI(props) {
       <Profile.WrapperMyContents>
         {props.istab === 'mygarden' ? (
           <Profile.WrapperRowNoMargin>
-            {/* {props.istab}페이지 */}
             <Profile.SliderTab {...settings}>
               {props.userGarden?.map((el, index) => (
-                <div>
+                <Profile.WrapperRowItem>
                   <UserTabItemUI
                     key={uuidv4}
                     el={el}
                     number={index}
                     istab={props.istab}
                   />
-                </div>
+                </Profile.WrapperRowItem>
               ))}
             </Profile.SliderTab>
           </Profile.WrapperRowNoMargin>
@@ -121,13 +123,15 @@ export default function UserProfileUI(props) {
         {props.istab === 'myhive' ? (
           <Profile.WrapperRowNoMargin>
             <Profile.SliderTab {...settings}>
-              {props.community.fetchCommunityBoards?.map((el, index) => (
-                <UserTabItemUI
-                  key={uuidv4}
-                  el={el}
-                  number={index}
-                  istab={props.istab}
-                />
+              {props.community?.fetchCommunityBoards?.map((el, index) => (
+                <Profile.WrapperRowItem>
+                  <UserTabItemUI
+                    key={uuidv4}
+                    el={el}
+                    number={index}
+                    istab={props.istab}
+                  />
+                </Profile.WrapperRowItem>
               ))}
             </Profile.SliderTab>
           </Profile.WrapperRowNoMargin>

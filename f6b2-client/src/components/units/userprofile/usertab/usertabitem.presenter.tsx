@@ -1,10 +1,14 @@
+import { useQuery } from '@apollo/client';
 import { Router, useRouter } from 'next/router';
 import { getDate } from '../../../../commons/libraries/utils';
-import * as TabItem from './usertab.style';
+import { FETCH_BOARD_IMAGE } from './usertabitem.queries';
+import * as TabItem from './usertabitem.style';
 
 export default function UserTabItemUI(props) {
   const router = useRouter();
-  console.log(props.el);
+  const { data: boardImage } = useQuery(FETCH_BOARD_IMAGE, {
+    variables: { boardId: props.el.id },
+  });
   const onClickMoveDetail = () => {
     props.istab === 'mygarden'
       ? router.push(`/garden/${props.el.id}`)
@@ -13,7 +17,17 @@ export default function UserTabItemUI(props) {
 
   return (
     <TabItem.WrapperColItem onClick={onClickMoveDetail}>
-      <TabItem.ImageItem src={props.el.image} />
+      <TabItem.ImageItem
+        src={
+          props.istab === 'mygarden'
+            ? boardImage?.fetchBoardImage[0]?.image.includes('http')
+              ? boardImage?.fetchBoardImage[0]?.image
+              : '/image/default1.jpg'
+            : props.el.image.includes('http')
+            ? props.el.image
+            : '/image/default2.jpg'
+        }
+      />
       <TabItem.WrapperRowItem>
         <TabItem.PItemDate>{getDate(props.el.createdAt)}</TabItem.PItemDate>
         <TabItem.WrapperRowRightItem>

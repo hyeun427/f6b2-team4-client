@@ -5,8 +5,9 @@ import { IArchiveItem } from './archivelist.type';
 export default function ArchiveItemUI(props: IArchiveItem) {
   const router = useRouter();
   const onClickArchiveItem = () => {
-    router.push(`/garden/${props.el.id}`);
+    router.push(`/garden/${props.el.board.id}`);
   };
+  console.log(props.el);
   return (
     <>
       {props.el.isSaved ? (
