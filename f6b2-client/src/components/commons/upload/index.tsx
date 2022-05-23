@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 import { Modal } from 'antd';
 import { UPLOAD_FILE } from '../../commons/queries';
 import { BiImageAlt } from 'react-icons/bi';
+import * as S from '../../../components/units/community/write/CommunityWrite.styles';
 
 export const UploadImageWrapper = styled.div`
   width: 30px;
@@ -28,6 +29,7 @@ export default function ImageUpload(props: {
   // inputs: any;
   onChangeFileUrls: (fileUrl: string) => void;
   fileUrls: Array<string>;
+  type: string;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -39,18 +41,21 @@ export default function ImageUpload(props: {
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     console.log('업로드 시작');
-    const file = [event.target.files?.[0]];
+    const file = event.target.files?.[0];
     console.log(file);
 
-    const isValid = checkFileValidation(file[0]);
+    const isValid = checkFileValidation(file);
     if (!isValid) return;
 
     try {
-      const result = await uploadFile({ variables: { file } });
-      setImageUrl(result.data?.uploadFile.url);
+      const { data: resultImgUrl } = await uploadFile({
+        variables: { files: [file] },
+      });
+
+      setImageUrl(resultImgUrl?.uploadFile[3]);
       props.onChangeFileUrls(String(result.data?.uploadFile.url));
     } catch (error) {
-      if (error instanceof Error) Modal.error({ content: error.message });
+      if (error instanceof Error) alert(error.message);
     }
   };
 
@@ -60,7 +65,14 @@ export default function ImageUpload(props: {
 
   return (
     <UploadImageWrapper>
-      <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
+      {props.type === 'garden' && (
+        <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
+      )}
+      {props.type === 'community' && (
+        <S.ImgBtn>
+          <S.BsFileEarmarkIcon />
+        </S.ImgBtn>
+      )}
       <input
         id='images'
         style={{ display: 'none' }}

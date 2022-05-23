@@ -5,6 +5,8 @@ import {
   FETCH_USER_LOGGED_IN,
   FETCH_BOARDS,
 } from '../../commons/queries';
+
+import { CREATE_BOARD_IMAGE } from './GardenWrite.queries';
 import GardenWriteUI from './GardenWrite.presenter';
 
 export default function GardenWriteContainer() {
@@ -12,6 +14,8 @@ export default function GardenWriteContainer() {
   const [fileUrls, setFileUrls] = useState([]);
 
   const [createGarden] = useMutation(CREATE_BOARD);
+  const [createImage] = useMutation(CREATE_BOARD_IMAGE);
+
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
   // 가든 게시물 컨텐츠 입력값 받아오기
@@ -33,14 +37,21 @@ export default function GardenWriteContainer() {
     }
 
     try {
-      const response = await createGarden({
+      const { data: resultCreateBoard } = await createGarden({
         variables: {
           createBoardInput: {
             content: String(isContent),
-            // 비디오 URL 값이 필수값임
-            // 현재 비디오 녹화 기능이 없어 임시 URL을 넣음
             video: 'temporary url',
           },
+        },
+      });
+      console.log(resultCreateBoard);
+
+      // 이미지 쿼리
+      const { data: imageResult } = await createImage({
+        variables: {
+          image: fileUrls,
+          board: resultCreateBoard.createBoard.id,
         },
         refetchQueries: [
           {
@@ -48,7 +59,9 @@ export default function GardenWriteContainer() {
           },
         ],
       });
+      console.log(imageResult);
       setIsContent('');
+      setFileUrls([]);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
