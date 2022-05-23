@@ -40,20 +40,18 @@ export default function ImageUpload(props: {
   >(UPLOAD_FILE);
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('업로드 시작');
     const file = event.target.files?.[0];
-    console.log(file);
-
-    const isValid = checkFileValidation(file);
-    if (!isValid) return;
+    // const isValid = checkFileValidation(file);
+    // if (!isValid) return;
 
     try {
       const { data: resultImgUrl } = await uploadFile({
         variables: { files: [file] },
       });
+      console.log(resultImgUrl);
 
       setImageUrl(resultImgUrl?.uploadFile[3]);
-      props.onChangeFileUrls(String(result.data?.uploadFile.url));
+      props.onChangeFileUrls(String(resultImgUrl?.uploadFile[3]));
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

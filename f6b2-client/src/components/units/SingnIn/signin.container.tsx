@@ -54,9 +54,6 @@ export default function SignInContainer() {
     });
 
     const userInfo = resultUserInfo.data.fetchUserLoggedIn;
-    console.log(userInfo);
-    console.log(resultUserInfo);
-
     setUserInfo(userInfo);
     router.push('/garden');
   };

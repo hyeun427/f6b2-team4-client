@@ -28,14 +28,14 @@ export default function Home() {
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
         {/* timeago 적용예시 */}
-        <TimeAgo datetime={newDate} locale='ko' />
+        {/* <TimeAgo datetime={newDate} locale='ko' /> */}
 
-        {event.toString()}
+        {/* {event.toString()}
         <br />
         {event.toISOString()}
         <br />
         {event.toLocaleDateString()}
-        {event.toLocaleTimeString()}
+        {event.toLocaleTimeString()} */}
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
