@@ -44,14 +44,14 @@ export default function GardenListUI(props: any) {
         <Wrapper>
           <InputSearchBar defaultValue={"Search"} />
           <GardenBestList />
-          <InfiniteScroll
+          {/* <InfiniteScroll
             pageStart={0}
             loadMore={props.loadFunc}
             hasMore={true}
-          >
-            {props.data?.fetchBoards.map((el, index) => (
-              <div key={index}>
-                {/* {props.loginUserInfo?.newLang === el.writer.myLang ? ( */}
+          > */}
+          {props.data?.fetchBoards.map((el, index) => (
+            <div key={index}>
+              {props.loginUserInfo?.newLang === el.writer.myLang ? (
                 <GardenListBox>
                   <WriterInfoBox>
                     <WriterProfile
@@ -76,6 +76,9 @@ export default function GardenListUI(props: any) {
                       <ContentsTranslate>번역한 내용</ContentsTranslate>
                     </ContentsTranslateBox>
                     <ContentsImg />
+                    {/* {el.commentCount > 0 && (
+                        
+                        )} */}
                     <LikeAndCommentCountBox>
                       {props.commentListVal[index] ? (
                         <CommentListBtn
@@ -98,7 +101,7 @@ export default function GardenListUI(props: any) {
                         </Like>
                         {/* 해당 게시글의 댓글 갯수 */}
                         <CommentCount>
-                          <MdQuestionAnswer size={"13"} /> 1
+                          <MdQuestionAnswer size={"13"} /> {el.commentsCount}
                         </CommentCount>
                       </LikeAndCommentCount>
                     </LikeAndCommentCountBox>
@@ -110,12 +113,12 @@ export default function GardenListUI(props: any) {
                     <div></div>
                   )}
                 </GardenListBox>
-                {/* ) : (
-                  <div></div>
-                )} */}
-              </div>
-            ))}
-          </InfiniteScroll>
+              ) : (
+                <div></div>
+              )}
+            </div>
+          ))}
+          {/* </InfiniteScroll> */}
         </Wrapper>
         <WrapperRight>
           <ArchiveContainer />

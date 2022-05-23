@@ -7,20 +7,19 @@ import {
   ImgBtn,
   SubmitBtn,
   VideoBtn,
-} from "./GardenCommentWrite.styles";
+} from "./GardenCommentEdit.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
 
-export default function GardenCommentWriteUI(props: any) {
+export default function GardenCommentEditUI(props: any) {
   return (
     <CommentWriteBox>
       <CommentWriteProfile />
       <CommentWriteInputBox>
         <CommentWriteInput
-          placeholder="Enter Your Comment Here!"
+          placeholder="Change Your Comment Here!"
           type={"text"}
           onChange={props.onChangeComment}
-          // value={props.comment || props.commentEl?.content || ""}
-          value={props.comment}
+          defaultValue={props.commentEl?.content}
         />
         <CommentWriteBtn>
           {props.isEdit !== true ? (
