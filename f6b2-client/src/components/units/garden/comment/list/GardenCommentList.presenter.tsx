@@ -42,7 +42,7 @@ export default function GardenCommentListUI(props) {
               </CommentBtns>
             )}
           </CommentListBox>
-          {/* 댓글 수정창 */}
+          {/* 댓글 수정창! */}
           {props.commentEditVal[index] && (
             <GardenCommentEdit
               commentEl={el}
