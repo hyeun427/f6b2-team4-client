@@ -61,6 +61,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
           Image Upload
           <S.IconWrapper>
             <S.ImgBtn>
+              {/* {props.fileUrls ? () : } */}
               <ImageUpload
                 onChangeFileUrls={props.onChangeFileUrls}
                 fileUrls={props.fileUrls}
@@ -79,20 +80,6 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
             </S.ImgBtn>
           </S.IconWrapper>
         </S.ImgWrapper>
-
-        {/* <S.ImgWrapper>
-          Image Upload
-          <S.IconWrapper>
-            <S.ImgBtn>
-              <ImageUpload
-                onChangeFileUrls={props.onChangeFileUrls}
-                fileUrls={props.fileUrls}
-                type={"community"}
-              />
-            </S.ImgBtn>
-          </S.IconWrapper>
-        </S.ImgWrapper> */}
-
         {/* 업로드버튼 */}
         <S.BtnWrapper>
           <S.UploadBtn
