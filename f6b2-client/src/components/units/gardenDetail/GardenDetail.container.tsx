@@ -18,7 +18,6 @@ export default function GardenDetail() {
   const [likeBoard] = useMutation(LIKE_BOARD);
 
   const [commentListVal, setCommentListVal] = useState([false]);
-
   // 댓글 펼치기
   const onClickCommentListBtn = (index) => (event) => {
     const newCommentOpen = [...commentListVal];
@@ -70,6 +69,7 @@ export default function GardenDetail() {
       data={data}
       onClickSaved={onClickSaved}
       onClickLikeBoard={onClickLikeBoard}
+      boardElId={router.query.boardId}
     />
   );
 }
