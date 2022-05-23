@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -49,9 +49,12 @@ export const FETCH_BOARDS = gql`
       video
       likes
       createdAt
+      commentsCount
       writer {
         id
         name
+        myLang
+        newLang
       }
     }
   }
@@ -177,6 +180,7 @@ export const FETCH_COMMUNITY_BOARDS = gql`
       title
       content
       likes
+      image
       createdAt
       writer {
         id

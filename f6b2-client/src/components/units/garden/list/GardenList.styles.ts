@@ -75,6 +75,7 @@ export const WriterProfile = styled.img`
   height: 30px;
   border-radius: 50px;
   margin-right: 10px;
+  cursor: pointer;
 
   // test
   background-color: gray;

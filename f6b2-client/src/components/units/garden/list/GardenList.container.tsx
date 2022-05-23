@@ -1,16 +1,17 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { useState } from 'react';
-import GardenListUI from './GardenList.presenter';
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import GardenListUI from "./GardenList.presenter";
 import {
   FETCH_BOARDS,
+  FETCH_COMMENTS,
   FETCH_SAVED_BOARDS,
   SAVE_BOARD,
-} from '../../../commons/queries';
-import { IBoard } from '../../../../commons/types/generated/types';
-import { LIKE_BOARD } from './GardenList.queries';
-import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../../commons/store';
-import { useRouter } from 'next/router';
+} from "../../../commons/queries";
+import { IBoard } from "../../../../commons/types/generated/types";
+import { LIKE_BOARD } from "./GardenList.queries";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store";
+import { useRouter } from "next/router";
 
 export default function GardenList() {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function GardenList() {
           },
         ],
       });
-      alert('좋아요!');
+      alert("좋아요!");
     } catch (error) {
       alert(error);
     }
@@ -74,21 +75,21 @@ export default function GardenList() {
   };
 
   // 무한스크롤
-  const loadFunc = () => {
-    if (!data) return;
-    fetchMore({
-      variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.fetchBoards)
-          return { fetchBoards: [...prev.fetchBoards] };
-        return {
-          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
-        };
-      },
-    });
-  };
+  // const loadFunc = () => {
+  //   if (!data) return;
+  //   fetchMore({
+  //     variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
+  //     updateQuery: (prev, { fetchMoreResult }) => {
+  //       if (!fetchMoreResult.fetchBoards)
+  //         return { fetchBoards: [...prev.fetchBoards] };
+  //       return {
+  //         fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
+  //       };
+  //     },
+  //   });
+  // };
 
-  // 가든에서 유저 프로필 클릭 시,
+  // 가든에서 유저 프로필 클릭 시...
   const onClickUserProfile = (event) => {
     router.push(`/profile/${event.target.id}`);
   };
@@ -99,7 +100,7 @@ export default function GardenList() {
       onClickCommentListBtn={onClickCommentListBtn}
       data={data}
       onClickSaved={onClickSaved}
-      loadFunc={loadFunc}
+      // loadFunc={loadFunc}
       onClickLikeBoard={onClickLikeBoard}
       loginUserInfo={loginUserInfo}
       onClickUserProfile={onClickUserProfile}

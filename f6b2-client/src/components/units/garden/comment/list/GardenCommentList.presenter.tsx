@@ -13,6 +13,7 @@ import {
 } from "./GardenCommentList.styles";
 import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
 import GardenCommentWrite from "../write/GardenCommentWrite.container";
+import GardenCommentEdit from "../edit/GardenCommentEdit.container";
 
 export default function GardenCommentListUI(props) {
   return (
@@ -41,9 +42,13 @@ export default function GardenCommentListUI(props) {
               </CommentBtns>
             )}
           </CommentListBox>
-          {/* 댓글 수정창 */}
+          {/* 댓글 수정창! */}
           {props.commentEditVal[index] && (
-            <GardenCommentWrite commentEl={el} isEdit={true} />
+            <GardenCommentEdit
+              commentEl={el}
+              isEdit={true}
+              boardElId={props.boardElId}
+            />
           )}
         </>
       ))}

@@ -63,7 +63,7 @@ export const Body = styled.div`
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 

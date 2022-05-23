@@ -1,6 +1,6 @@
 // import WebcamRecord from '../../commons/records';
-import * as L from './GardenWrite.style';
-import { IGardenWrite } from './GardenWrite.type';
+import * as L from "./GardenWrite.style";
+import { IGardenWrite } from "./GardenWrite.type";
 import {
   BiVideoRecording,
   // BiImageAlt,
@@ -10,6 +10,7 @@ import { FaRegUserCircle } from 'react-icons/fa';
 import ImageUpload from '../../commons/upload';
 import { v4 as uuidv4 } from 'uuid';
 import VideoUpload from '../../commons/videoupload';
+
 // import dynamic from 'next/dynamic';
 // const VideoRecorder = dynamic(() => import('react-video-recorder'), {
 //   ssr: false,
@@ -26,7 +27,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
     <L.WrapperDiv>
       <L.WrapperRow>
         <L.WrapperImgProfile>
-          {props.data?.fetchUser?.image.includes('http') ? (
+          {props.data?.fetchUser?.image.includes("http") ? (
             <L.ImgProfile src={props.data?.fetchUser?.image} />
           ) : (
             <FaRegUserCircle />
@@ -37,12 +38,14 @@ export default function GardenWriteUI(props: IGardenWrite) {
       <L.WrapperRow>
         <L.TextareaContents
           onChange={props.onChangeContents}
-          placeholder='Enter Your Words Here'
-          value={props.isContent || ''}
+          placeholder="Enter Your Words Here"
+          value={props.isContent || ""}
         ></L.TextareaContents>
       </L.WrapperRow>
       <L.WrapperRowIcon>
+
         <BiVideoRecording size={'30'} color={'A4B1DA'} />
+
         <ImageUpload
           onChangeFileUrls={props.onChangeFileUrls}
           fileUrls={props.fileUrls}
@@ -53,6 +56,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
           videoUrls={props.videoUrls}
           type={'garden'}
         />
+
       </L.WrapperRowIcon>
       {props.fileUrls?.map((el, index) => (
         <>
@@ -60,7 +64,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
             <L.ImageThumbnail
               key={uuidv4()}
               src={
-                el.startsWith('https', 0)
+                el.startsWith("https", 0)
                   ? el
                   : `https://storage.googleapis.com/${el}`
               }

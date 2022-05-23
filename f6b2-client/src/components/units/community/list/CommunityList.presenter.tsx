@@ -15,7 +15,6 @@ const Slider1 = styled(Slider)`
   .slick-next:before {
     font-family: "slick";
     font-size: 40px;
-    font-weight: 100;
     color: black;
   }
 
@@ -41,6 +40,14 @@ const Slider1 = styled(Slider)`
     right: -35px;
     z-index: 10;
   }
+  .slick-prev:before {
+    color: black;
+    font-size: 25px;
+  }
+  .slick-next:before {
+    color: black; // arrow 색상 변경
+    font-size: 25px; // arrow 크기 변경
+  }
 `;
 
 export default function CommunityListUI(props: ICommunityListUIProps) {
@@ -52,7 +59,6 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
     slidesPerRow: 4,
     slidesToScroll: 1,
   };
-
   return (
     <S.Wrapper>
       <S.Header>
@@ -75,12 +81,24 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
       <S.Body>
         <Slider1 {...settings}>
           {props.data?.fetchCommunityBoards.map((el) => (
+            // <S.ContentsWrapper key={el.id}>
+            //   <S.Img
+            //     id={el.id}
+            //     src={"/community/default.png"}
+            //     onClick={props.onClickContent}
+            //   />
+
             <S.ContentsWrapper key={el.id}>
               <S.Img
                 id={el.id}
-                src={"/community/default.png"}
                 onClick={props.onClickContent}
+                src={
+                  el.image.includes("http")
+                    ? el.image
+                    : "/community/default.png"
+                }
               />
+
               <S.InfoWrapper>
                 <S.Info>
                   <S.Title>{el.title}</S.Title>
