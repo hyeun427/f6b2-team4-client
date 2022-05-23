@@ -5,9 +5,9 @@ import {
   FETCH_COMMENTS,
   UPDATE_COMMENT,
 } from "../../../../commons/queries";
-import GardenCommentWriteUI from "./GardenCommentWrite.presenter";
+import GardenCommentWriteUI from "./GardenCommentEdit.presenter";
 
-export default function GardenCommentWrite(props: any) {
+export default function GardenCommentEdit(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
   const [comment, setComment] = useState("");
@@ -66,7 +66,6 @@ export default function GardenCommentWrite(props: any) {
         ],
       });
       alert("댓글수정 성공!");
-      setComment("");
     } catch (error) {
       alert(error);
     }
