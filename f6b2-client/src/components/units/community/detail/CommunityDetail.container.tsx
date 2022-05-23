@@ -10,11 +10,11 @@ import {
 
 export default function CommunityDetail() {
   const router = useRouter();
-
   // 글 가져오기
   const { data } = useQuery(FETCH_COMMUNITY_BOARD, {
     variables: { communityBoardId: router.query.communityBoardId },
   });
+
 
   // 삭제gql 가져오기
   const [deleteCommunityBoard] = useMutation(DELETE_COMMUNITY_BOARD);

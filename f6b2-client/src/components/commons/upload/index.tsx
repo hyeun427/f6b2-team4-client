@@ -1,15 +1,15 @@
-import { useMutation } from '@apollo/client';
-import { ChangeEvent, useRef, useState } from 'react';
-import { checkFileValidation } from '../../../commons/libraries/validation';
+import { useMutation } from "@apollo/client";
+import { ChangeEvent, useRef, useState } from "react";
+import { checkFileValidation } from "../../../commons/libraries/validation";
 import {
   IMutation,
   IMutationUploadFileArgs,
-} from '../../../commons/types/generated/types';
-import styled from '@emotion/styled';
-import { Modal } from 'antd';
-import { UPLOAD_FILE } from '../../commons/queries';
-import { BiImageAlt } from 'react-icons/bi';
-import * as S from '../../../components/units/community/write/CommunityWrite.styles';
+} from "../../../commons/types/generated/types";
+import styled from "@emotion/styled";
+import { Modal } from "antd";
+import { UPLOAD_FILE } from "../../commons/queries";
+import { BiImageAlt } from "react-icons/bi";
+import * as S from "../../../components/units/community/write/CommunityWrite.styles";
 
 export const UploadImageWrapper = styled.div`
   width: 30px;
@@ -33,9 +33,9 @@ export default function ImageUpload(props: {
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [, setImageUrl] = useState<string | undefined>('');
+  const [, setImageUrl] = useState<string | undefined>("");
   const [uploadFile] = useMutation<
-    Pick<IMutation, 'uploadFile'>,
+    Pick<IMutation, "uploadFile">,
     IMutationUploadFileArgs
   >(UPLOAD_FILE);
 
@@ -63,18 +63,18 @@ export default function ImageUpload(props: {
 
   return (
     <UploadImageWrapper>
-      {props.type === 'garden' && (
-        <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
+      {props.type === "garden" && (
+        <BiImageAlt onClick={onClickImage} size={"30"} color={"A4B1DA"} />
       )}
-      {props.type === 'community' && (
-        <S.ImgBtn>
+      {props.type === "community" && (
+        <S.ImgBtn onClick={onClickImage}>
           <S.BsFileEarmarkIcon />
         </S.ImgBtn>
       )}
       <input
-        id='images'
-        style={{ display: 'none' }}
-        type='file'
+        id="images"
+        style={{ display: "none" }}
+        type="file"
         onChange={onChangeFile}
         ref={fileRef}
       />

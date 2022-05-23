@@ -8,7 +8,7 @@ import { GiHearts } from "react-icons/gi";
 
 export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
   // 로그인유저정보 가져오기
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  const [userInfo] = useRecoilState(userInfoState);
   return (
     <S.OutWrapper>
       <S.Wrapper>
@@ -25,7 +25,14 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
         <S.Body>
           {/* 이미지 */}
           <S.InnerWrapper>
-            <S.Img src="/community/default2.png" />
+            <S.Img
+              src={
+                props.data?.fetchCommunityBoard?.image.includes("http")
+                  ? props.data?.fetchCommunityBoard?.image
+                  : "/community/default.png"
+              }
+            />
+
             {/* 좋아요 */}
             {props.isLike ? (
               <S.LikesWrapper onClick={props.onClickLike}>
@@ -43,7 +50,6 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
               </S.LikesWrapper>
             )}
           </S.InnerWrapper>
-
           <S.InnerWrapper>
             {/* 제목,내용 */}
             <S.Detail>
