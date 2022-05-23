@@ -155,7 +155,7 @@ export const LikesWrapper = styled.div`
   align-items: center;
 `;
 export const HeartsWrapper = styled.button`
-  color: red;
+  color: #ff5b5b;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;

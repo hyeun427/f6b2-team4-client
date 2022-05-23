@@ -180,6 +180,7 @@ export const FETCH_COMMUNITY_BOARDS = gql`
       title
       content
       likes
+      image
       createdAt
       writer {
         id

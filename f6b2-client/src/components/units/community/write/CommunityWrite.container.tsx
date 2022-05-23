@@ -15,14 +15,20 @@ import { UPDATE_COMMUNITY_BOARD } from "./CommunityWrite.queries";
 export default function CommunityWrite(props: ICommunityBoardWriteProps) {
   const router = useRouter();
 
+  // 작성된 컨텐츠 data 불러오기
+  const { data: commuData } = useQuery(FETCH_COMMUNITY_BOARD, {
+    variables: { communityBoardId: router?.query.communityBoardId },
+  });
+
   // 뮤테이션 가져오기
   const [createCommunityBoard] = useMutation(CREATE_COMMUNITY_BOARD);
   const [updateCommunityBoard] = useMutation(UPDATE_COMMUNITY_BOARD);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
-
+  // 이미지
+  const [fileUrls, setFileUrls] = useState([]);
+  console.log(fileUrls, "1");
   const [titleError, setTitleError] = useState("");
   const [contentError, setContentError] = useState("");
 
@@ -57,7 +63,11 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
   };
 
   // 이미지 업로드 시
-  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {};
+  const onChangeFileUrls = (fileUrl: string) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.push(fileUrl);
+    setFileUrls(newFileUrls);
+  };
 
   // 등록 버튼
   const onClickSubmit = async () => {
@@ -67,7 +77,6 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
     if (content === "") {
       setContentError("내용을 입력하세요.");
     }
-
     if (title !== "" && content !== "") {
       try {
         const result = await createCommunityBoard({
@@ -75,23 +84,27 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
             createCommunityBoardInput: {
               title,
               content,
-              image,
+              image: fileUrls[0],
             },
           },
         });
         Modal.success({
           content: "오늘의 기록이 등록되었습니다.",
         });
+
         router.push(`/community/${result.data.createCommunityBoard.id}`);
       } catch (error) {
         Modal.error({ content: "오늘의 기록을 다시 작성해주세요." });
       }
     }
   };
-
   // 수정 버튼
-  const onClickUpdate = async () => {
-    if (!title && !content) {
+  const onClickUpdate = async (data) => {
+    const currentFiles = JSON.stringify(fileUrls);
+    const defaultFiles = JSON.stringify(props.data?.fetchCommunityBoard.image);
+    const isChangeFiles = currentFiles !== defaultFiles;
+
+    if (title !== "" && content !== "" && fileUrls !== "") {
       Modal.error({ content: "수정한 내용이 없습니다. 다시 확인해주세요." });
       return;
     }
@@ -99,27 +112,55 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
     const updateCommunityBoardInput: IUpdateCommunityBoardInput = {};
     if (title) updateCommunityBoardInput.title = title;
     if (content) updateCommunityBoardInput.content = content;
-    // 이미지 추가할 것
+    if (isChangeFiles) updateCommunityBoardInput.image = String(fileUrls[3]);
+
     try {
       const editResult = await updateCommunityBoard({
         variables: {
-          communityBoardId: router?.query.communityBoardId,
-          updateCommunityBoardInput,
+          updateCommunityBoardInput: {
+            ...data,
+            image: fileUrls[3],
+          },
+          communityBoardId: router.query.communityBoardId,
         },
       });
       Modal.success({ content: "게시물 수정에 성공하였습니다!" });
       router.push(`/community/${editResult.data?.updateCommunityBoard.id}`);
     } catch (error) {
+      console.log(error);
       Modal.error({
-        content: "게시물 수정이 실패하였습니다.다시 확인해주세요.",
+        content: "에러ㅠ",
       });
     }
   };
 
-  // 작성된 컨텐츠 data 불러오기
-  const { data: commuData } = useQuery(FETCH_COMMUNITY_BOARD, {
-    variables: { communityBoardId: router?.query.communityBoardId },
-  });
+  //  수정 완료 되면 지우기
+  // // 수정 버튼
+  // const onClickUpdate = async (data) => {
+  //   if (!title && !content) {
+  //     Modal.error({ content: "수정한 내용이 없습니다. 다시 확인해주세요." });
+  //     return;
+  //   }
+
+  //   const updateCommunityBoardInput: IUpdateCommunityBoardInput = {};
+  //   if (title) updateCommunityBoardInput.title = title;
+  //   if (content) updateCommunityBoardInput.content = content;
+  //   // 이미지 추가할 것
+  //   try {
+  //     const editResult = await updateCommunityBoard({
+  //       variables: {
+  //         communityBoardId: router?.query.communityBoardId,
+  //         updateCommunityBoardInput,
+  //       },
+  //     });
+  //     Modal.success({ content: "게시물 수정에 성공하였습니다!" });
+  //     router.push(`/community/${editResult.data?.updateCommunityBoard.id}`);
+  //   } catch (error) {
+  //     Modal.error({
+  //       content: "게시물 수정이 실패하였습니다.다시 확인해주세요.",
+  //     });
+  //   }
+  // };
 
   return (
     <CommunityWriteUI
@@ -127,18 +168,17 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
       isActive={isActive}
       titleError={titleError}
       contentError={contentError}
+      fileUrls={fileUrls}
       // 이벤트 핸들러
       onChangeTitle={onChangeTitle}
       onChangeContent={onChangeContent}
-      // onChangeFile={onChangeFile}
+      onChangeFileUrls={onChangeFileUrls}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
       // 수정 관련
       isEdit={props.isEdit}
       data={props.data}
       commuData={commuData}
-      // 에디터
-      // ReactQuill={ReactQuill}
     />
   );
 }

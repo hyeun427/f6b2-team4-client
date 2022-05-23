@@ -21,6 +21,7 @@ export const FETCH_COMMUNITY_BOARD = gql`
       id
       title
       content
+      image
       createdAt
       likes
       writer {

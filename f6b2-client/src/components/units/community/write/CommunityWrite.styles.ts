@@ -79,6 +79,7 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: max-content;
 `;
 
 export const ImgBtn = styled.button`
@@ -123,4 +124,11 @@ export const Error = styled.div`
   padding: 2px 0px 0px 22px;
   font-size: 11px;
   color: red;
+`;
+
+export const ImageItempWrap = styled.div``;
+export const ImageThumbnail = styled.img`
+  width: 700px;
+  height: 220px;
+  object-fit: cover;
 `;

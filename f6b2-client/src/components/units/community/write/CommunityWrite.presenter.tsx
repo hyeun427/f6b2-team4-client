@@ -6,6 +6,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import { Quill } from "react-quill";
 import ImageUpload from "../../../commons/upload";
 import { ICommunityBoardWriteUIProps } from "./CommunityWrite.types";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
   /*   // 에디터 커스텀
@@ -60,11 +61,37 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
           Image Upload
           <S.IconWrapper>
             <S.ImgBtn>
-              <S.BsFileEarmarkIcon />
-              {/* <S.ImgUpload type="file" onChange={props.onChangeFile} /> */}
+              <ImageUpload
+                onChangeFileUrls={props.onChangeFileUrls}
+                fileUrls={props.fileUrls}
+                type={"community"}
+              />
+              {props.fileUrls?.map((el, index) => (
+                <S.ImageThumbnail
+                  key={uuidv4()}
+                  src={
+                    el.startsWith("https", 0)
+                      ? el
+                      : `https://storage.googleapis.com/${el}`
+                  }
+                />
+              ))}
             </S.ImgBtn>
           </S.IconWrapper>
         </S.ImgWrapper>
+
+        {/* <S.ImgWrapper>
+          Image Upload
+          <S.IconWrapper>
+            <S.ImgBtn>
+              <ImageUpload
+                onChangeFileUrls={props.onChangeFileUrls}
+                fileUrls={props.fileUrls}
+                type={"community"}
+              />
+            </S.ImgBtn>
+          </S.IconWrapper>
+        </S.ImgWrapper> */}
 
         {/* 업로드버튼 */}
         <S.BtnWrapper>
@@ -73,7 +100,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
             isActive={props.isEdit ? true : props.isActive}
           >
             <S.MdUploadFileIcon />
-            {props.isEdit ? "Update" : "Upload"}
+            {props.isEdit ? "Edit" : "Upload"}
           </S.UploadBtn>
         </S.BtnWrapper>
       </S.Wrapper>
