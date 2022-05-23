@@ -8,4 +8,6 @@ export interface IGardenWrite {
     fetchUser: IUser;
   };
   isContent: string;
+  onChangeFileUrls: (fileUrl: string) => void;
+  fileUrls: Array<string>;
 }

@@ -16,10 +16,10 @@ export default function UserTabItemUI(props) {
       <TabItem.ImageItem src={props.el.image} />
       <TabItem.WrapperRowItem>
         <TabItem.PItemDate>{getDate(props.el.createdAt)}</TabItem.PItemDate>
-        <TabItem.WrapperRowItem>
+        <TabItem.WrapperRowRightItem>
           <TabItem.IconLike />
           <TabItem.PItemLikeCount>{props.el.likes}</TabItem.PItemLikeCount>
-        </TabItem.WrapperRowItem>
+        </TabItem.WrapperRowRightItem>
       </TabItem.WrapperRowItem>
     </TabItem.WrapperColItem>
   );

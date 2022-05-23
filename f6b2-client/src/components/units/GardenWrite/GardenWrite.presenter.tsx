@@ -46,6 +46,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
         <ImageUpload
           onChangeFileUrls={props.onChangeFileUrls}
           fileUrls={props.fileUrls}
+          type={'garden'}
         />
         <BiCaretRightSquare size={'30'} color={'A4B1DA'} />
       </L.WrapperRowIcon>
