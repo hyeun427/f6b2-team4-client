@@ -9,6 +9,7 @@ import {
 import { FaRegUserCircle } from 'react-icons/fa';
 import ImageUpload from '../../commons/upload';
 import { v4 as uuidv4 } from 'uuid';
+import VideoUpload from '../../commons/videoupload';
 // import dynamic from 'next/dynamic';
 // const VideoRecorder = dynamic(() => import('react-video-recorder'), {
 //   ssr: false,
@@ -48,7 +49,12 @@ export default function GardenWriteUI(props: IGardenWrite) {
           fileUrls={props.fileUrls}
           type={'garden'}
         />
-        <BiCaretRightSquare size={'30'} color={'A4B1DA'} />
+        {/* <BiCaretRightSquare size={'30'} color={'A4B1DA'} /> */}
+        <VideoUpload
+          onChangeVideoUrls={props.onChangeVideoUrls}
+          videoUrls={props.videoUrls}
+          type={'garden'}
+        />
       </L.WrapperRowIcon>
       {props.fileUrls?.map((el, index) => (
         <>
@@ -63,6 +69,21 @@ export default function GardenWriteUI(props: IGardenWrite) {
             />
             {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
           </L.ImageItempWrap>
+        </>
+      ))}
+      {props.videoUrls?.map((el, index) => (
+        <>
+          <L.VideoItempWrap>
+            <L.VideoThumbnail
+              key={uuidv4()}
+              src={
+                el.startsWith('https', 0)
+                  ? el
+                  : `https://storage.googleapis.com/${el}`
+              }
+            />
+            {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
+          </L.VideoItempWrap>
         </>
       ))}
       {/* {typeof window !== 'undefined' ? (

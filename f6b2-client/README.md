@@ -74,6 +74,10 @@ const onChangeFileUrls = (fileUrl: string) => {
 }
 ```
 
+## video 업로드 사용방법
+
+- 추가 예정
+
 ## timeago 사용방법
 
 - 자세한 내용 : https://www.npmjs.com/package/timeago-react
