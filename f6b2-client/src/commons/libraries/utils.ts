@@ -6,3 +6,11 @@ export const getDate = (date: string | number | Date) => {
   const yyyymmdd: String = `${yyyy}-${mm}-${dd}`;
   return yyyymmdd;
 };
+
+// const event = new Date();
+// {event.toString()}
+// <br />
+// {event.toISOString()}
+// <br />
+// {event.toLocaleDateString()}
+// {event.toLocaleTimeString()}

@@ -13,6 +13,8 @@ export default function Home() {
   // timeago register
   timeago.register('ko', ko);
 
+  const event = new Date();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -25,15 +27,19 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
-
         {/* timeago 적용예시 */}
         <TimeAgo datetime={newDate} locale='ko' />
 
+        {event.toString()}
+        <br />
+        {event.toISOString()}
+        <br />
+        {event.toLocaleDateString()}
+        {event.toLocaleTimeString()}
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
-
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
             <h2>Documentation &rarr;</h2>
