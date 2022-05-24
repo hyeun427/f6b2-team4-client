@@ -24,13 +24,14 @@ export const UploadButton = styled.button`
 `;
 
 export default function VideoUpload(props: {
-  onChangeVideoUrls: (fileUrl: string) => void;
-  videoUrls: Array<string>;
-  type: string;
+  onChangeVideoUrls?: (fileUrl: string) => void;
+  videoUrls?: Array<string>;
+  type?: string;
+  recordUrls?: Array<string>;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [, setVideoUrl] = useState<string | undefined>('');
+  const [videoUrl, setVideoUrl] = useState<string | undefined>('');
   const [uploadFile] = useMutation<
     Pick<IMutation, 'uploadFile'>,
     IMutationUploadFileArgs
@@ -38,6 +39,7 @@ export default function VideoUpload(props: {
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+    console.log(file);
 
     const isValid = checkFileValidation(file);
     if (!isValid) return;
@@ -48,7 +50,9 @@ export default function VideoUpload(props: {
       });
 
       setVideoUrl(resultVideoUrl?.uploadFile[3]);
-      props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
+      if (props.onChangeVideoUrls)
+        props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
+      console.log(resultVideoUrl?.uploadFile);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -56,6 +60,23 @@ export default function VideoUpload(props: {
 
   const onClickVideo = () => {
     fileRef.current?.click();
+  };
+
+  // record
+  const onClickRecordUpload = async () => {
+    console.log(props.recordUrls);
+    try {
+      const { data: resultVideoUrl } = await uploadFile({
+        variables: { files: [props.recordUrls] },
+      });
+
+      setVideoUrl(resultVideoUrl?.uploadFile[3]);
+      if (props.onChangeVideoUrls)
+        props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
+      console.log(resultVideoUrl?.uploadFile);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
   };
 
   return (
@@ -72,6 +93,10 @@ export default function VideoUpload(props: {
           <S.BsFileEarmarkIcon />
         </S.ImgBtn>
       )}
+      {props.type === 'record' && (
+        <button onClick={onClickRecordUpload}>저장하기</button>
+      )}
+
       <input
         id='images'
         style={{ display: 'none' }}

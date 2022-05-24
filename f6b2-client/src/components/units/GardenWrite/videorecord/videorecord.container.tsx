@@ -1,64 +1,23 @@
-import React from 'react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+// import VideoUpload from '../../../commons/videoupload';
 import VideoRecordUI from './videorecord.presenter';
+import { v4 as uuidv4 } from 'uuid';
 
-export default function VideoRecord() {
-  const webcamRef = React.useRef(null);
-  const mediaRecorderRef = React.useRef(null);
-  const [capturing, setCapturing] = React.useState(false);
-  const [recordedChunks, setRecordedChunks] = React.useState([]);
+export default function VideoRecord(props) {
+  const [recordUrls, setRecordUrls] = useState([]);
 
-  const handleStartCaptureClick = React.useCallback(() => {
-    setCapturing(true);
-    mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
-      mimeType: 'video/webm',
-    });
-    mediaRecorderRef.current.addEventListener(
-      'dataavailable',
-      handleDataAvailable
-    );
-    mediaRecorderRef.current.start();
-  }, [webcamRef, setCapturing, mediaRecorderRef]);
+  const onRecordingComplete = (videoBlob: Blob) => {
+    const file = new File([videoBlob], `${uuidv4()}.webm`);
+    setRecordUrls(file);
+  };
 
-  const handleDataAvailable = React.useCallback(
-    ({ data }) => {
-      if (data.size > 0) {
-        setRecordedChunks((prev) => prev.concat(data));
-      }
-    },
-    [setRecordedChunks]
-  );
-
-  const handleStopCaptureClick = React.useCallback(() => {
-    mediaRecorderRef.current.stop();
-    setCapturing(false);
-  }, [mediaRecorderRef, webcamRef, setCapturing]);
-
-  const handleDownload = React.useCallback(() => {
-    if (recordedChunks.length) {
-      const blob = new Blob(recordedChunks, {
-        type: 'video/webm',
-      });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      document.body.appendChild(a);
-      a.style = 'display: none';
-      a.href = url;
-      a.download = 'react-webcam-stream-capture.webm';
-      a.click();
-      window.URL.revokeObjectURL(url);
-      setRecordedChunks([]);
-    }
-  }, [recordedChunks]);
+  console.log(recordUrls);
 
   return (
     <VideoRecordUI
-      ref={webcamRef}
-      capturing={capturing}
-      handleStartCaptureClick={handleStartCaptureClick}
-      handleStopCaptureClick={handleStopCaptureClick}
-      handleDownload={handleDownload}
-      recordedChunks={recordedChunks}
+      recordUrls={recordUrls}
+      onRecordingComplete={onRecordingComplete}
+      onChangeVideoUrls={props.onChangeVideoUrls}
     />
   );
 }
