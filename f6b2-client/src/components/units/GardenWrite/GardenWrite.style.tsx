@@ -8,11 +8,11 @@ export const WrapperDiv = styled.div`
   width: 236px;
   height: auto;
   background-color: #fff;
-  border: 2px solid #727da1;
-  border-radius: 20px;
   padding: 20px 20px;
   margin-bottom: 20px;
-  z-index: 10;
+  border: 1px solid #dbdbdb;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 50px;
 `;
 
 export const WrapperRow = styled.div`
@@ -30,30 +30,36 @@ export const WrapperImgProfile = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   border: none;
   margin-right: 10px;
 `;
 
 export const ImgProfile = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 25px;
+  height: 25px;
   background-color: gray;
   border-radius: 50%;
 `;
 export const H2ProfileName = styled.h2`
   width: 100%;
   height: 100%;
+  font-size: 14px;
 `;
 
 export const TextareaContents = styled.textarea`
   width: 100%;
   height: 69px;
   padding: 8px 7px;
-  background: #dee1ec;
-  border-radius: 6px;
   border: none;
+  background: rgba(219, 219, 219, 0.55);
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #767676;
 `;
 
 export const ImgIcon = styled.img`

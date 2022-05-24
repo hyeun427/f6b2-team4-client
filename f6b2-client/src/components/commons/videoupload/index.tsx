@@ -46,7 +46,6 @@ export default function VideoUpload(props: {
       const { data: resultVideoUrl } = await uploadFile({
         variables: { files: [file] },
       });
-      console.log('비디오', resultVideoUrl);
 
       setVideoUrl(resultVideoUrl?.uploadFile[3]);
       props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
@@ -65,7 +64,7 @@ export default function VideoUpload(props: {
         <BiCaretRightSquare
           onClick={onClickVideo}
           size={'30'}
-          color={'A4B1DA'}
+          color={'#FFB950'}
         />
       )}
       {props.type === 'community' && (

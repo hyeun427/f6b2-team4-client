@@ -8,9 +8,10 @@ export const WrapperDiv = styled.div`
   width: 100%;
   height: auto;
   background-color: #fff;
-  border: 2px solid #727da1;
-  border-radius: 20px;
-  padding: 12px 15px;
+  padding: 27px 15px 30px 15px;
+  border: 1px solid #dbdbdb;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 50px;
 `;
 
 export const WrapperRow = styled.div`
@@ -24,6 +25,7 @@ export const WrapperRow = styled.div`
 export const H3Title = styled.h3`
   font-size: 15px;
   text-align: left;
+  margin-bottom: 13px;
 `;
 
 export const WrapperCol = styled.div`
@@ -35,7 +37,7 @@ export const WrapperCol = styled.div`
 `;
 
 export const PNewLang = styled.p`
-  color: #a4b1da;
+  color: #ffb950;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;

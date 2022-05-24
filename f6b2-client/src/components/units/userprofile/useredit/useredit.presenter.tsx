@@ -7,13 +7,12 @@ import ImageUpload from '../../../commons/upload';
 export default function UserEditUI(props) {
   return (
     <Edit.WrapperCol>
-      <Edit.ImgProfile src={props?.fileUrls[0]} />
+      <Edit.ImgProfile src={props?.fileUrls} />
       <ImageUpload
         type='edit'
         onChangeFileUrls={props.onChangeFileUrls}
         fileUrls={props.fileUrls}
       />
-      {/* <Edit.IconEdit /> */}
       <Edit.WrapperRowCenter>
         <Edit.InputName
           defaultValue={props?.user?.fetchUserId?.name}

@@ -19,6 +19,11 @@ export default function GardenWriteContainer() {
 
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
+  // 모달
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   // 가든 게시물 컨텐츠 입력값 받아오기
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setIsContent(event.target.value);
@@ -31,8 +36,6 @@ export default function GardenWriteContainer() {
     setFileUrls(newFileUrls);
   };
 
-  console.log(fileUrls);
-
   // 업로드 된 비디오 경로 받아오기
 
   const onChangeVideoUrls = (fileUrl: string) => {
@@ -40,8 +43,6 @@ export default function GardenWriteContainer() {
     newVideoUrls.push(fileUrl);
     setVideoUrls(newVideoUrls);
   };
-
-  console.log(videoUrls);
 
   // 가든 게시물 생성하기 버튼
   const onClickSave = async () => {
@@ -92,6 +93,9 @@ export default function GardenWriteContainer() {
       fileUrls={fileUrls}
       onChangeVideoUrls={onChangeVideoUrls}
       videoUrls={videoUrls}
+      open={open}
+      handleOpen={handleOpen}
+      handleClose={handleClose}
     />
   );
 }
