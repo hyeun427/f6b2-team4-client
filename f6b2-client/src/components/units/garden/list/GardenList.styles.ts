@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -34,14 +34,16 @@ export const Wrapper = styled.div`
   padding-top: 45px;
 `;
 export const WrapperRight = styled.div`
-  width: 285px;
+  width: 236px;
   height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 98px 0px 0px 47px;
   position: sticky;
   top: 60px;
+  margin-left: 50px;
+  padding: 98px 0px 0px 0px;
 `;
 
 export const InputSearchBar = styled.input`

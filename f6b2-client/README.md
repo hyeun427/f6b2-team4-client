@@ -76,7 +76,55 @@ const onChangeFileUrls = (fileUrl: string) => {
 
 ## video 업로드 사용방법
 
-- 추가 예정
+경로 : f6b2-client/src/components/commons/videoupload/index.tsx
+
+> Container
+
+```javascript
+// 1. 이미지 URL을 받기 위한 set 선언
+const [videoUrls, setVideoUrls] = useState([]);
+
+// 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+const onChangeVideoUrls = (fileUrl: string) => {
+  const newVideoUrls = [...videoUrls];
+  newVideoUrls.push(fileUrl);
+  setVideoUrls(newVideoUrls);
+};
+```
+
+> Presenter
+
+```javascript
+// 1. 컴포넌트 임포트하기
+
+// 2. 업로드 버튼 컴포넌트 삽입
+<VideoUpload
+  onChangeVideoUrls={props.onChangeVideoUrls}
+  videoUrls={props.videoUrls}
+  // type 주기
+  // 가든 게시물인 경우 : garden
+  // 커뮤니티 게시물인 경우 : community
+  type={'garden'}
+/>;
+// 3. 비디오 썸네일 노출
+// 디자인은 각자 수정 해서 사용하면 됩니다.
+{
+  props.videoUrls?.map((el, index) => (
+    <>
+      <L.VideoItempWrap>
+        <L.VideoThumbnail
+          key={uuidv4()}
+          src={
+            el.startsWith('https', 0)
+              ? el
+              : `https://storage.googleapis.com/${el}`
+          }
+        />
+      </L.VideoItempWrap>
+    </>
+  ));
+}
+```
 
 ## timeago 사용방법
 

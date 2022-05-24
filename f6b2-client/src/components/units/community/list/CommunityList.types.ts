@@ -5,6 +5,7 @@ export interface ICommunityListUIProps {
   onClickMoveToWrite: () => void;
   onClickContent: () => void;
   onClickLike: () => void;
+  // fileUrls: string[];
 }
 
 export interface ICommunityList {

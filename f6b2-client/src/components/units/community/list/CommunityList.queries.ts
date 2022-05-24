@@ -14,8 +14,27 @@ export const FETCH_COMMUNITY_BOARD = gql`
       id
       title
       content
+      image
       createdAt
       likes
+      writer {
+        id
+        name
+      }
+    }
+  }
+`;
+
+// 커뮤니티 글 목록 가져오기
+export const FETCH_COMMUNITY_BOARDS = gql`
+  query fetchCommunityBoards {
+    fetchCommunityBoards {
+      id
+      title
+      content
+      createdAt
+      likes
+      image
       writer {
         id
         name

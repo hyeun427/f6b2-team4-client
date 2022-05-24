@@ -1,69 +1,88 @@
 import { useMutation } from '@apollo/client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userInfoState } from '../../../../commons/store';
 import { FETCH_USER_ID } from '../userprofile.queries';
 import UserEditUI from './useredit.presenter';
 import { UPDATE_USER } from './useredit.queries';
+import { SelectChangeEvent } from '@mui/material/Select';
 
 export default function UserEditContainer(props) {
   const [userInfo] = useRecoilState(userInfoState);
   const [updateUser] = useMutation(UPDATE_USER);
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [selectedNewIndex, setSelectedNewIndex] = React.useState(3);
-  const open = Boolean(anchorEl);
+  const [isName, setIsName] = useState('');
+  const [isNewLang, setIsNewLang] = useState('');
+  const [isRegion, setIsRegion] = useState('');
+  const [isCurPW, setIsCurPW] = useState('');
+  const [isNewPW, setIsNewPW] = useState('');
+  const [fileUrls, setFileUrls] = useState('');
 
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleChange = (event: SelectChangeEvent) => {
+    setIsNewLang(event.target.value as string);
   };
 
-  // myLang 선택
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
-
-  // newLang 선택
-  const handleMenuNewItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number
-  ) => {
-    setSelectedNewIndex(index);
-    setAnchorEl(null);
-    console.log('배울언어');
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const options = [
-    '한국어',
-    'English',
-    '日本語',
-    'español',
-    'Français',
-    '中国',
-  ];
+  //   fetchUserId:
+  // email: "zintagi@naver.com"
+  // id: "60c028ab-2e02-4a59-b421-17a2791da74d"
+  // image: "test"
+  // myLang: "한국어"
+  // name: "zintagi"
+  // newLang: "한국어"
 
   useEffect(() => {
-    setSelectedIndex(options.indexOf(userInfo.myLang));
-    setSelectedNewIndex(options.indexOf(userInfo.newLang));
+    setFileUrls(props?.user?.fetchUserId?.image);
+    setIsName(props?.user?.fetchUserId?.name);
+    setIsNewLang(props?.user?.fetchUserId?.newLang);
   }, []);
+
+  // console.log(props?.user?.fetchUserId?.image);
+  // console.log([fileUrls]);
+
+  const onChangeFileUrls = (fileUrl: string) => {
+    // const newFileUrls = fileUrls;
+    // newFileUrls.push(fileUrl);
+
+    setFileUrls(fileUrl);
+  };
+
+  const handleChangeRegion = (event: SelectChangeEvent) => {
+    setIsRegion(event.target.value as string);
+  };
+
+  const onChangeName = (event: SelectChangeEvent) => {
+    setIsName(event.target.value as string);
+  };
+
+  const onChangeCurPw = (event) => {
+    setIsCurPW(event.target.value);
+  };
+
+  const onChangeNewPw = (event) => {
+    setIsNewPW(event.target.value);
+  };
+
+  // type UpdateUserInput {
+  //   name: String
+  //   image: String
+  //   email: String
+  //   password: String
+  //   myLang: String
+  //   newLang: String
+  //   currentRegion: String
+  //   }
 
   const onClickUpdate = async () => {
     try {
       const result = await updateUser({
         variables: {
-          originalPassword: 'jtjt0363!!',
+          originalPassword: isCurPW,
           updateUserInput: {
-            myLang: options[selectedIndex],
-            newLang: options[selectedNewIndex],
+            name: isName,
+            newLang: isNewLang,
+            // currentRegion: isRegion,
+            password: isNewPW,
+            image: fileUrls,
           },
         },
         refetchQueries: [
@@ -83,15 +102,16 @@ export default function UserEditContainer(props) {
 
   return (
     <UserEditUI
-      open={open}
-      selectedIndex={selectedIndex}
-      selectedNewIndex={selectedNewIndex}
-      handleClickListItem={handleClickListItem}
-      handleMenuItemClick={handleMenuItemClick}
-      handleMenuNewItemClick={handleMenuNewItemClick}
-      handleClose={handleClose}
-      options={options}
+      isNewLang={isNewLang}
+      handleChange={handleChange}
+      handleChangeRegion={handleChangeRegion}
+      onChangeName={onChangeName}
       onClickUpdate={onClickUpdate}
+      onChangeCurPw={onChangeCurPw}
+      onChangeNewPw={onChangeNewPw}
+      user={props.user}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
     />
   );
 }

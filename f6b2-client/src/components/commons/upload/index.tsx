@@ -10,6 +10,7 @@ import { Modal } from 'antd';
 import { UPLOAD_FILE } from '../../commons/queries';
 import { BiImageAlt } from 'react-icons/bi';
 import * as S from '../../../components/units/community/write/CommunityWrite.styles';
+import * as Edit from '../../units/userprofile/useredit/useredit.style';
 
 export const UploadImageWrapper = styled.div`
   width: 30px;
@@ -64,13 +65,15 @@ export default function ImageUpload(props: {
   return (
     <UploadImageWrapper>
       {props.type === 'garden' && (
-        <BiImageAlt onClick={onClickImage} size={'30'} color={'A4B1DA'} />
+        <BiImageAlt onClick={onClickImage} size={'30'} color={'#FFB950'} />
       )}
+
       {props.type === 'community' && (
         <S.ImgBtn>
-          <S.BsFileEarmarkIcon />
+          <S.BsFileEarmarkIcon onClick={onClickImage} />
         </S.ImgBtn>
       )}
+      {props.type === 'edit' && <Edit.IconEdit onClick={onClickImage} />}
       <input
         id='images'
         style={{ display: 'none' }}

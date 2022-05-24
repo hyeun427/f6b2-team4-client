@@ -65,7 +65,8 @@ export const ImgWrapper = styled.div`
   margin-bottom: 52px;
   padding: 21px 51px 0px 51px;
   width: 700px;
-  height: 80px;
+  /* height: 80px; */
+
   background: #ffffff;
   border: 1px solid #dbdbdb;
   box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
@@ -79,6 +80,8 @@ export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: max-content;
+  max-height: 220px;
 `;
 
 export const ImgBtn = styled.button`
@@ -123,4 +126,12 @@ export const Error = styled.div`
   padding: 2px 0px 0px 22px;
   font-size: 11px;
   color: red;
+`;
+
+export const ImageItempWrap = styled.div``;
+export const ImageThumbnail = styled.img`
+  width: 600px;
+  height: 156px;
+  object-fit: cover;
+  margin-bottom: 20px;
 `;

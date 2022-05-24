@@ -24,7 +24,8 @@ const BodyWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding-top: 60px;
-  background-color: #d4e8ea;
+  padding-bottom: 100px;
+  background-color: white;
 `;
 
 interface ILayoutProps {
@@ -34,12 +35,14 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  // const HIDDEN_HEADER = [
-  //   // 헤더 숨길 페이지 사용법 예시
-  //   // '/boards/post/[postid]',
-  // ];
+  const BODY_YELLOW = [
+    // 헤더 숨길 페이지 사용법 예시
+    '/signin',
+    '/signup',
+    '/profile/[id]',
+  ];
 
-  // const isHiddenHeader = HIDDEN_HEADER.includes(router.pathname);
+  const isBodyColor = BODY_YELLOW.includes(router.pathname);
 
   return (
     <WrapperLayout>
@@ -47,7 +50,9 @@ export default function Layout(props: ILayoutProps) {
         // !isHiddenHeader &&
         <LayoutHeader />
       }
-      <BodyWrapper>
+      <BodyWrapper
+        style={{ backgroundColor: `${isBodyColor ? '#ffb950' : 'white'}` }}
+      >
         <Body>{props.children}</Body>
       </BodyWrapper>
     </WrapperLayout>

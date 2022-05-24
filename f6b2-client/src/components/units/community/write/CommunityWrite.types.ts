@@ -10,8 +10,10 @@ export interface ICommunityBoardWriteUIProps {
   isActive: boolean;
   titleError: string;
   contentError: string;
+  fileUrls: string[];
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContent: (value: string) => void;
+  onChangeFileUrls: (fileUrl: string) => void;
   onClickSubmit: () => void;
   onClickUpdate: () => void;
   data?: Pick<IQuery, "fetchCommunityBoard">;
@@ -26,5 +28,5 @@ export interface IUploadBtnProps {
 export interface IUpdateCommunityBoardInput {
   title?: string;
   content?: string;
-  images?: string;
+  fileUrls?: string[];
 }
