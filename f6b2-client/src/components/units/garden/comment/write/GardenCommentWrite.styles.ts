@@ -74,3 +74,9 @@ export const VideoBtn = styled.button`
   cursor: pointer;
   margin-left: 13px;
 `;
+
+export const ImageThumbnail = styled.img`
+  width: 448px;
+  object-fit: cover;
+  margin-bottom: 20px;
+`;

@@ -90,7 +90,8 @@ export const Like = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 15px;
+  font-size: 12px;
 `;
 
 export const ContentWrapper = styled.div`
