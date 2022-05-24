@@ -8,7 +8,7 @@ import { IArchiveItem } from './archivelist.type';
 export default function ArchiveItemUI(props: IArchiveItem) {
   const router = useRouter();
   const { data: boardImage } = useQuery(FETCH_BOARD_IMAGE, {
-    variables: { boardId: props.el.id },
+    variables: { boardId: props.el.board.id },
   });
   const onClickArchiveItem = () => {
     router.push(`/garden/${props.el.board.id}`);

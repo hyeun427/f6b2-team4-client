@@ -11,13 +11,12 @@ export default function VideoRecord(props) {
     setRecordUrls(file);
   };
 
-  console.log(recordUrls);
-
   return (
     <VideoRecordUI
       recordUrls={recordUrls}
       onRecordingComplete={onRecordingComplete}
       onChangeVideoUrls={props.onChangeVideoUrls}
+      handleClose={props.handleClose}
     />
   );
 }

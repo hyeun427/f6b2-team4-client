@@ -36,12 +36,23 @@ export default function GardenWriteContainer() {
     setFileUrls(newFileUrls);
   };
 
-  // 업로드 된 비디오 경로 받아오기
+  const onClickImageDelete = (index) => () => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.splice(index, 1);
+    setFileUrls(newFileUrls);
+  };
 
+  // 업로드 된 비디오 경로 받아오기
   const onChangeVideoUrls = (fileUrl: string) => {
     const newVideoUrls = [...videoUrls];
     newVideoUrls.push(fileUrl);
-    setVideoUrls(newVideoUrls);
+    setVideoUrls(fileUrl);
+  };
+
+  const onClickVideoDelete = (index) => () => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.splice(index, 1);
+    setFileUrls(newFileUrls);
   };
 
   // 가든 게시물 생성하기 버튼
@@ -95,6 +106,7 @@ export default function GardenWriteContainer() {
       open={open}
       handleOpen={handleOpen}
       handleClose={handleClose}
+      onClickImageDelete={onClickImageDelete}
     />
   );
 }

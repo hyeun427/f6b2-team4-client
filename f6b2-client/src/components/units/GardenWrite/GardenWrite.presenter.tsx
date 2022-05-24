@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import VideoUpload from '../../commons/videoupload';
 import { Box, Modal } from '@mui/material';
 import VideoRecord from './videorecord/videorecord.container';
+import Badge from '@mui/material/Badge';
 
 export default function GardenWriteUI(props: IGardenWrite) {
   const style = {
@@ -17,10 +18,10 @@ export default function GardenWriteUI(props: IGardenWrite) {
     transform: 'translate(-50%, -50%)',
     width: 800,
     height: 600,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: '#3A3939;',
     boxShadow: 24,
-    p: 4,
+    p: 2,
+    borderRadius: '25px',
   };
 
   return (
@@ -55,7 +56,10 @@ export default function GardenWriteUI(props: IGardenWrite) {
           aria-describedby='modal-modal-description'
         >
           <Box sx={style}>
-            <VideoRecord onChangeVideoUrls={props.onChangeVideoUrls} />
+            <VideoRecord
+              onChangeVideoUrls={props.onChangeVideoUrls}
+              handleClose={props.handleClose}
+            />
           </Box>
         </Modal>
 
@@ -70,46 +74,46 @@ export default function GardenWriteUI(props: IGardenWrite) {
           type={'garden'}
         />
       </L.WrapperRowIcon>
-      {props.fileUrls?.map((el, index) => (
-        <>
-          <L.ImageItempWrap>
-            <L.ImageThumbnail
-              key={uuidv4()}
-              src={
-                el.startsWith('https', 0)
-                  ? el
-                  : `https://storage.googleapis.com/${el}`
-              }
-            />
-            {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
-          </L.ImageItempWrap>
-        </>
-      ))}
-      {props.videoUrls?.map((el, index) => (
-        <>
-          <L.VideoItempWrap>
-            <L.VideoThumbnail
-              key={uuidv4()}
-              src={
-                el.startsWith('https', 0)
-                  ? el
-                  : `https://storage.googleapis.com/${el}`
-              }
-            />
-            {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
-          </L.VideoItempWrap>
-        </>
-      ))}
-
-      {/* {typeof window !== 'undefined' ? (
-        <VideoRecorder
-          onRecordingComplete={(videoBlob) => {
-            console.log('videoBlob', videoBlob);
-          }}
-        />
-      ) : (
-        ''
-      )} */}
+      <L.WrapperItem>
+        {props.videoUrls?.map((el) => (
+          <>
+            <L.VideoItempWrap>
+              <Badge badgeContent={'X'} color='primary'>
+                <L.VideoThumbnail
+                  controls
+                  key={uuidv4()}
+                  src={
+                    el.startsWith('https', 0)
+                      ? el
+                      : `https://storage.googleapis.com/${el}`
+                  }
+                />
+                {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
+              </Badge>
+            </L.VideoItempWrap>
+          </>
+        ))}
+        {props.fileUrls?.map((el, index) => (
+          <>
+            <L.ImageItempWrap>
+              <Badge
+                badgeContent={'X'}
+                color='secondary'
+                onClick={props.onClickImageDelete(index)}
+              >
+                <L.ImageThumbnail
+                  key={uuidv4()}
+                  src={
+                    el.startsWith('https', 0)
+                      ? el
+                      : `https://storage.googleapis.com/${el}`
+                  }
+                />
+              </Badge>
+            </L.ImageItempWrap>
+          </>
+        ))}
+      </L.WrapperItem>
 
       <L.ButtonSave onClick={props.onClickSave}>저장하기</L.ButtonSave>
     </L.WrapperDiv>

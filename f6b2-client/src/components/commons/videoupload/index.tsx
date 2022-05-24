@@ -23,11 +23,23 @@ export const UploadButton = styled.button`
   background: #bdbdbd;
 `;
 
+export const RecordSaveButton = styled.button`
+  width: 200px;
+  height: 30px;
+  background: #ffb950;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin: 0px;
+  cursor: pointer;
+`;
+
 export default function VideoUpload(props: {
   onChangeVideoUrls?: (fileUrl: string) => void;
   videoUrls?: Array<string>;
   type?: string;
   recordUrls?: Array<string>;
+  handleClose?: () => void;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -39,7 +51,6 @@ export default function VideoUpload(props: {
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    console.log(file);
 
     const isValid = checkFileValidation(file);
     if (!isValid) return;
@@ -52,7 +63,6 @@ export default function VideoUpload(props: {
       setVideoUrl(resultVideoUrl?.uploadFile[3]);
       if (props.onChangeVideoUrls)
         props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
-      console.log(resultVideoUrl?.uploadFile);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -64,7 +74,6 @@ export default function VideoUpload(props: {
 
   // record
   const onClickRecordUpload = async () => {
-    console.log(props.recordUrls);
     try {
       const { data: resultVideoUrl } = await uploadFile({
         variables: { files: [props.recordUrls] },
@@ -73,37 +82,41 @@ export default function VideoUpload(props: {
       setVideoUrl(resultVideoUrl?.uploadFile[3]);
       if (props.onChangeVideoUrls)
         props.onChangeVideoUrls(String(resultVideoUrl?.uploadFile[3]));
-      console.log(resultVideoUrl?.uploadFile);
+      props.handleClose();
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
 
   return (
-    <UploadVideoWrapper>
-      {props.type === 'garden' && (
-        <BiCaretRightSquare
-          onClick={onClickVideo}
-          size={'30'}
-          color={'#FFB950'}
-        />
-      )}
-      {props.type === 'community' && (
-        <S.ImgBtn>
-          <S.BsFileEarmarkIcon />
-        </S.ImgBtn>
-      )}
-      {props.type === 'record' && (
-        <button onClick={onClickRecordUpload}>저장하기</button>
-      )}
+    <>
+      <UploadVideoWrapper>
+        {props.type === 'garden' && (
+          <BiCaretRightSquare
+            onClick={onClickVideo}
+            size={'30'}
+            color={'#FFB950'}
+          />
+        )}
+        {props.type === 'community' && (
+          <S.ImgBtn>
+            <S.BsFileEarmarkIcon />
+          </S.ImgBtn>
+        )}
 
-      <input
-        id='images'
-        style={{ display: 'none' }}
-        type='file'
-        onChange={onChangeFile}
-        ref={fileRef}
-      />
-    </UploadVideoWrapper>
+        <input
+          id='images'
+          style={{ display: 'none' }}
+          type='file'
+          onChange={onChangeFile}
+          ref={fileRef}
+        />
+      </UploadVideoWrapper>
+      {props.type === 'record' && (
+        <RecordSaveButton onClick={onClickRecordUpload}>
+          저장하기
+        </RecordSaveButton>
+      )}
+    </>
   );
 }
