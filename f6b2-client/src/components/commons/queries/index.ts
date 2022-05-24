@@ -167,6 +167,13 @@ export const UPDATE_COMMENT = gql`
   }
 `;
 
+// 댓글 좋아요
+export const LIKE_COMMENT = gql`
+  mutation likeComment($commentId: String!) {
+    likeComment(commentId: $commentId)
+  }
+`;
+
 export const LOG_OUT = gql`
   mutation logout {
     logout
@@ -226,6 +233,18 @@ export const CREATE_COMMUNITY_BOARD = gql`
       writer {
         id
         name
+      }
+    }
+  }
+`;
+
+// 가든 이미지/비디오 불러오기
+export const FETCH_BOARD_IMAGE = gql`
+  query fetchBoardImage($boardId: String!) {
+    fetchBoardImage(boardId: $boardId) {
+      image
+      board {
+        video
       }
     }
   }

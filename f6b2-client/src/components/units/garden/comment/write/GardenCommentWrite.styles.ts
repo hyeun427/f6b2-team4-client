@@ -25,20 +25,17 @@ export const CommentWriteProfile = styled.img`
 export const CommentWriteInputBox = styled.article`
   width: 385px;
   height: 34px;
-  border-radius: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  // test
-  background-color: #a4b1da;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
 `;
 
 export const CommentWriteInput = styled.input`
-  width: 286px;
+  width: 100%;
   height: 24px;
   border: none;
-  border-radius: 11px;
   margin-left: 3.5px;
   font-weight: 400;
   font-size: 12px;
@@ -55,7 +52,7 @@ export const CommentWriteBtn = styled.section`
 export const SubmitBtn = styled.button`
   border: none;
   background: none;
-  color: white;
+  color: black;
   font-size: 25px;
   cursor: pointer;
 `;
@@ -63,7 +60,7 @@ export const SubmitBtn = styled.button`
 export const ImgBtn = styled.button`
   border: none;
   background: none;
-  color: white;
+  color: black;
   font-size: 25px;
   cursor: pointer;
   margin-left: 13px;
@@ -72,7 +69,7 @@ export const ImgBtn = styled.button`
 export const VideoBtn = styled.button`
   border: none;
   background: none;
-  color: white;
+  color: black;
   font-size: 25px;
   cursor: pointer;
   margin-left: 13px;

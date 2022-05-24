@@ -5,7 +5,6 @@ import {
   CommentListBtn,
   Contents,
   ContentsBox,
-  ContentsImg,
   ContentsTranslate,
   ContentsTranslateBox,
   CreatedAt,
@@ -27,11 +26,14 @@ import {
 import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from 'react-icons/md';
 import GardenBestList from '../bestList/GardenBestList.container';
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
-import { getDate } from '../../../../commons/libraries/utils';
-import GardenWriteContainer from '../../GardenWrite/GardenWrite.container';
-import DailyWordContainer from '../../dailyword/dailyword.container';
-import ArchiveContainer from '../../archivelist/archivelist.container';
-import InfiniteScroll from 'react-infinite-scroller';
+
+import { getDate } from "../../../../commons/libraries/utils";
+import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
+import DailyWordContainer from "../../dailyword/dailyword.container";
+import ArchiveContainer from "../../archivelist/archivelist.container";
+import InfiniteScroll from "react-infinite-scroller";
+import GardenImg from "../gardenImg/gardenImg.container";
+
 
 export default function GardenListUI(props: any) {
   return (
@@ -75,10 +77,9 @@ export default function GardenListUI(props: any) {
                       {/* 번역API 버튼 자리? */}
                       <ContentsTranslate>번역한 내용</ContentsTranslate>
                     </ContentsTranslateBox>
-                    <ContentsImg />
-                    {/* {el.commentCount > 0 && (
-                        
-                        )} */}
+                    {/* 캐러셀 */}
+                    <GardenImg boardId={el.id} video={el.video} />
+                    {/* <ContentsImg /> */}
                     <LikeAndCommentCountBox>
                       {props.commentListVal[index] ? (
                         <CommentListBtn

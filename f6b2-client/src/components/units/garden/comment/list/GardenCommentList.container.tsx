@@ -2,7 +2,11 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../../commons/store";
-import { DELETE_COMMENT, FETCH_COMMENTS } from "../../../../commons/queries";
+import {
+  DELETE_COMMENT,
+  FETCH_COMMENTS,
+  LIKE_COMMENT,
+} from "../../../../commons/queries";
 import GardenCommentListUI from "./GardenCommentList.presenter";
 
 export default function GardenCommentList(props: any) {
@@ -45,6 +49,28 @@ export default function GardenCommentList(props: any) {
     setCommentEditVal(newCommentEditVal);
   };
 
+  // 댓글 좋아요
+  const [likeComment] = useMutation(LIKE_COMMENT);
+  const onClickCommentLike = async (event) => {
+    try {
+      await likeComment({
+        variables: {
+          commentId: event.currentTarget.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_COMMENTS,
+            variables: {
+              boardId: props.boardElId,
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <GardenCommentListUI
       boardElId={props.boardElId}
@@ -53,6 +79,7 @@ export default function GardenCommentList(props: any) {
       commentEditBtn={commentEditBtn}
       commentEditVal={commentEditVal}
       loginInfo={loginInfo}
+      onClickCommentLike={onClickCommentLike}
     />
   );
 }
