@@ -62,26 +62,29 @@ export const WrapperRowItem = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  height: 40px;
+  height: 45px;
   margin-bottom: 7px;
-  cursor: pointer;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ImageItem = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background-color: #c4c4c4;
   margin-right: 6px;
 `;
 
 export const PItem = styled.p`
   width: 100%;
-  height: 28px;
+  height: auto;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 16px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  flex-wrap: wrap;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   display: -webkit-box;
@@ -95,7 +98,7 @@ export const SliderTab = styled(Slider)`
 
 export const PDate = styled.p`
   width: 100%;
-  height: auto;
+  height: 12px;
   font-style: normal;
   font-weight: 400;
   font-size: 10px;

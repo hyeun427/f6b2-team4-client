@@ -19,6 +19,9 @@ export const WrapperColItem = styled.div`
   width: 106px;
   height: 152px;
   margin: 10px 10px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ImageItem = styled.img`
@@ -54,13 +57,15 @@ export const PItemDate = styled.p`
   font-weight: 400;
   font-size: 10px;
   line-height: 14px;
-  text-align: center;
+  text-align: left;
   color: #000000;
   text-shadow: 6px 6px 6px rgba(0, 0, 0, 0.25);
+  margin: 0px;
 `;
 
 export const IconLike = styled(FcLike)`
   font-size: 10px;
+  margin-right: 5px;
 `;
 
 export const PItemLikeCount = styled.p`
@@ -72,4 +77,5 @@ export const PItemLikeCount = styled.p`
   line-height: 14px;
   text-align: right;
   color: #000000;
+  margin: 0px;
 `;

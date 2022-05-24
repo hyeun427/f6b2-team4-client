@@ -22,27 +22,13 @@ export default function UserEditContainer(props) {
     setIsNewLang(event.target.value as string);
   };
 
-  //   fetchUserId:
-  // email: "zintagi@naver.com"
-  // id: "60c028ab-2e02-4a59-b421-17a2791da74d"
-  // image: "test"
-  // myLang: "한국어"
-  // name: "zintagi"
-  // newLang: "한국어"
-
   useEffect(() => {
     setFileUrls(props?.user?.fetchUserId?.image);
     setIsName(props?.user?.fetchUserId?.name);
     setIsNewLang(props?.user?.fetchUserId?.newLang);
   }, []);
 
-  // console.log(props?.user?.fetchUserId?.image);
-  // console.log([fileUrls]);
-
   const onChangeFileUrls = (fileUrl: string) => {
-    // const newFileUrls = fileUrls;
-    // newFileUrls.push(fileUrl);
-
     setFileUrls(fileUrl);
   };
 
@@ -61,16 +47,6 @@ export default function UserEditContainer(props) {
   const onChangeNewPw = (event) => {
     setIsNewPW(event.target.value);
   };
-
-  // type UpdateUserInput {
-  //   name: String
-  //   image: String
-  //   email: String
-  //   password: String
-  //   myLang: String
-  //   newLang: String
-  //   currentRegion: String
-  //   }
 
   const onClickUpdate = async () => {
     try {

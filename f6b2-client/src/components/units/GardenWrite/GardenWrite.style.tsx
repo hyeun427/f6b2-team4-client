@@ -83,32 +83,40 @@ export const WrapperRowIcon = styled.div`
 
 export const ImageItempWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100px;
+  flex-direction: row;
+  width: auto;
   height: auto;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 export const ImageThumbnail = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
-  margin-right: 20px;
+  border-radius: 10%;
 `;
 
 export const VideoItempWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100px;
+  flex-direction: row;
+  width: auto;
   height: auto;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 export const VideoThumbnail = styled.video`
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
-  margin-right: 20px;
+  border-radius: 10%;
+`;
+
+export const WrapperItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
 `;
