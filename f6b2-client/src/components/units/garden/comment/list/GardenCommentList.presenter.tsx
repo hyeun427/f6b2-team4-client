@@ -7,12 +7,19 @@ import {
   CommentName,
   CommentProfile,
   CommentText,
+  CommentVideo,
+  ContentWrapper,
   CreatedAt,
   DeleteBtn,
   EditBtn,
+  Like,
+  LikeWrapper,
+  MediaBox,
+  OtherBtns,
+  Row1,
 } from "./GardenCommentList.styles";
 import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
-import GardenCommentWrite from "../write/GardenCommentWrite.container";
+import { AiOutlineHeart } from "react-icons/ai";
 import GardenCommentEdit from "../edit/GardenCommentEdit.container";
 
 export default function GardenCommentListUI(props) {
@@ -24,23 +31,39 @@ export default function GardenCommentListUI(props) {
             <CommentProfile />
             <CommentContentsBox>
               <CommentInfo>
-                <CommentName>{el.writer.name}</CommentName>
+                <Row1>
+                  <CommentName>{el.writer.name}</CommentName>
+                  {props.loginInfo.name === el.writer.name && (
+                    <OtherBtns>
+                      <EditBtn onClick={props.commentEditBtn(index)}>
+                        <MdModeEditOutline size={14} />
+                      </EditBtn>
+                      <DeleteBtn
+                        onClick={props.onClickDeleteComment}
+                        id={el.id}
+                      >
+                        <MdOutlineClear size={14} />
+                      </DeleteBtn>
+                    </OtherBtns>
+                  )}
+                </Row1>
                 <CreatedAt>{el.createdAt}</CreatedAt>
               </CommentInfo>
-              <CommentText>{el.content}</CommentText>
-              <CommentImg></CommentImg>
+              <ContentWrapper>
+                <CommentText>{el.content}</CommentText>
+                <Like onClick={props.onClickCommentLike} id={el.id}>
+                  <AiOutlineHeart />
+                  {el.likes}
+                </Like>
+              </ContentWrapper>
+              <MediaBox>
+                {el.image !== "empty" && <CommentImg src={el.image} />}
+                {el.video !== "empty" && <CommentVideo src={el.video} />}
+              </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}
-            {props.loginInfo.name === el.writer.name && (
-              <CommentBtns>
-                <EditBtn onClick={props.commentEditBtn(index)}>
-                  <MdModeEditOutline />
-                </EditBtn>
-                <DeleteBtn onClick={props.onClickDeleteComment} id={el.id}>
-                  <MdOutlineClear />
-                </DeleteBtn>
-              </CommentBtns>
-            )}
+
+            <CommentBtns></CommentBtns>
           </CommentListBox>
           {/* 댓글 수정창! */}
           {props.commentEditVal[index] && (

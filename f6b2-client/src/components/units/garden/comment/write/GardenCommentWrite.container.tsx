@@ -22,8 +22,6 @@ export default function GardenCommentWrite(props: any) {
         variables: {
           createCommentInput: {
             content: comment,
-            image: "test",
-            video: "test",
           },
           boardId: props.boardId,
         },

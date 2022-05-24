@@ -15,16 +15,14 @@ export const CommentProfile = styled.img`
   border-radius: 50px;
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 13px;
 
   //test
   background-color: gray;
 `;
 
 export const CommentContentsBox = styled.main`
-  background-color: #a4b1da;
-  padding: 15px;
-  border-radius: 15px 15px 15px 15px;
+  width: 90%;
 `;
 
 export const CommentInfo = styled.div`
@@ -40,20 +38,28 @@ export const CommentName = styled.article`
 export const CommentText = styled.article`
   font-weight: 400;
   font-size: 12px;
-  color: white;
+  color: black;
   margin-top: 10px;
+  width: 300px;
 `;
 
 export const CommentImg = styled.img`
   width: 200px;
   margin-top: 5px;
+`;
 
-  // test
-  height: 150px;
-  background-color: gray;
+export const CommentVideo = styled.video`
+  width: 200px;
+  margin-top: 5px;
+`;
+
+export const MediaBox = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CommentBtns = styled.section`
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -78,4 +84,27 @@ export const CreatedAt = styled.time`
   font-weight: 400;
   font-size: 11px;
   color: #767676;
+`;
+
+export const Like = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 12px;
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const OtherBtns = styled.div`
+  margin-left: 20px;
+`;
+
+export const Row1 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;

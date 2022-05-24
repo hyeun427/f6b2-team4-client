@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d4e8ea;
+  background-color: white;
   padding-top: 45px;
 `;
 export const WrapperRight = styled.div`
@@ -47,21 +47,22 @@ export const WrapperRight = styled.div`
 export const InputSearchBar = styled.input`
   width: 100%;
   height: 31px;
-  background: rgba(255, 255, 255, 0.55);
-  border-radius: 25px;
   border: none;
   margin-bottom: 20px;
   color: #909090;
   padding: 8px 20px;
+
+  background: rgba(219, 219, 219, 0.55);
+  border-radius: 25px;
 `;
 
 export const GardenListBox = styled.main`
   width: 100%;
   padding: 30px;
+  border: 1px solid #dbdbdb;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 25px;
-  border: 2px solid #727da1;
-  background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
 export const WriterInfoBox = styled.section`
@@ -121,13 +122,13 @@ export const ContentsTranslateBox = styled.article`
   padding: 5px;
 `;
 
-export const ContentsImg = styled.img`
-  width: 335px;
-  height: 221px;
-  margin-top: 30px;
-  // test
-  background-color: gray;
-`;
+// export const ContentsImg = styled.img`
+//   width: 335px;
+//   height: 221px;
+//   margin-top: 30px;
+//   // test
+//   background-color: gray;
+// `;
 
 export const ContentsTranslate = styled.div`
   font-weight: 400;

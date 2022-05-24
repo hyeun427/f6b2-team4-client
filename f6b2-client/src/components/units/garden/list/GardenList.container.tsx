@@ -3,7 +3,7 @@ import { useState } from "react";
 import GardenListUI from "./GardenList.presenter";
 import {
   FETCH_BOARDS,
-  FETCH_COMMENTS,
+  FETCH_BOARD_IMAGE,
   FETCH_SAVED_BOARDS,
   SAVE_BOARD,
 } from "../../../commons/queries";

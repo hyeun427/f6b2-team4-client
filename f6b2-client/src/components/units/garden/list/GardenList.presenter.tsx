@@ -5,7 +5,6 @@ import {
   CommentListBtn,
   Contents,
   ContentsBox,
-  ContentsImg,
   ContentsTranslate,
   ContentsTranslateBox,
   CreatedAt,
@@ -32,6 +31,7 @@ import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
 import DailyWordContainer from "../../dailyword/dailyword.container";
 import ArchiveContainer from "../../archivelist/archivelist.container";
 import InfiniteScroll from "react-infinite-scroller";
+import GardenImg from "../gardenImg/gardenImg.container";
 
 export default function GardenListUI(props: any) {
   return (
@@ -75,10 +75,9 @@ export default function GardenListUI(props: any) {
                       {/* 번역API 버튼 자리? */}
                       <ContentsTranslate>번역한 내용</ContentsTranslate>
                     </ContentsTranslateBox>
-                    <ContentsImg />
-                    {/* {el.commentCount > 0 && (
-                        
-                        )} */}
+                    {/* 캐러셀 */}
+                    <GardenImg boardId={el.id} video={el.video} />
+                    {/* <ContentsImg /> */}
                     <LikeAndCommentCountBox>
                       {props.commentListVal[index] ? (
                         <CommentListBtn
