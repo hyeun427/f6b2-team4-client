@@ -74,7 +74,6 @@ export default function GardenWriteContainer() {
           },
         ],
       });
-      console.log(imageResult);
       setIsContent('');
       setFileUrls([]);
       setVideoUrls([]);

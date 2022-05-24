@@ -1,31 +1,15 @@
 // import WebcamRecord from '../../commons/records';
 import * as L from './GardenWrite.style';
 import { IGardenWrite } from './GardenWrite.type';
-import {
-  BiVideoRecording,
-  // BiImageAlt,
-  BiCaretRightSquare,
-} from 'react-icons/bi';
+import { BiVideoRecording } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
 import ImageUpload from '../../commons/upload';
 import { v4 as uuidv4 } from 'uuid';
 import VideoUpload from '../../commons/videoupload';
 import { Box, Modal } from '@mui/material';
 import VideoRecord from './videorecord/videorecord.container';
-// import Webcam from 'react-webcam';
-
-// import dynamic from 'next/dynamic';
-// const VideoRecorder = dynamic(() => import('react-video-recorder'), {
-//   ssr: false,
-// });
 
 export default function GardenWriteUI(props: IGardenWrite) {
-  // const videoConstraints = {
-  //   width: 800,
-  //   height: 600,
-  //   facingMode: 'user',
-  // };
-
   const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -71,7 +55,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
           aria-describedby='modal-modal-description'
         >
           <Box sx={style}>
-            <VideoRecord />
+            <VideoRecord onChangeVideoUrls={props.onChangeVideoUrls} />
           </Box>
         </Modal>
 

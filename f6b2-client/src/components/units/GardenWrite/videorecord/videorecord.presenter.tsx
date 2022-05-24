@@ -1,21 +1,21 @@
-import Webcam from 'react-webcam';
-
+import VideoRecorder from 'react-video-recorder';
+import VideoUpload from '../../../commons/videoupload';
 export default function VideoRecordUI(props) {
   return (
     <>
-      <Webcam audio={true} ref={props.webcamRef} />
-      {props.capturing ? (
-        <button onClick={props.handleStopCaptureClick}>Stop Capture</button>
-      ) : (
-        <button onClick={props.handleStartCaptureClick}>Start Capture</button>
-      )}
-      {props.recordedChunks.length > 0 && (
-        <button onClick={props.handleDownload}>Download</button>
-      )}
+      <VideoRecorder
+        constraints={{
+          audio: true,
+          video: true,
+        }}
+        isFlipped={false}
+        onRecordingComplete={props.onRecordingComplete}
+      />
+      <VideoUpload
+        type={'record'}
+        recordUrls={props.recordUrls}
+        onChangeVideoUrls={props.onChangeVideoUrls}
+      />
     </>
   );
 }
-
-// ReactDOM.render(<WebcamStreamCapture />, document.getElementById("root"));
-
-// https://www.npmjs.com/package/react-webcam
