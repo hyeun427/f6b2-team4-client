@@ -22,6 +22,7 @@ export default function GardenCommentWrite(props: any) {
         variables: {
           createCommentInput: {
             content: comment,
+            image: fileUrls[0],
           },
           boardId: props.boardId,
         },
@@ -36,6 +37,7 @@ export default function GardenCommentWrite(props: any) {
       });
       alert("댓글작성성공!");
       setComment("");
+      setFileUrls([]);
     } catch (error) {
       alert(error);
     }
@@ -70,6 +72,16 @@ export default function GardenCommentWrite(props: any) {
     }
   };
 
+  // 1. 이미지 URL을 받기 위한 set 선언
+  const [fileUrls, setFileUrls] = useState([]);
+
+  // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+  const onChangeFileUrls = (fileUrl: string) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.push(fileUrl);
+    setFileUrls(newFileUrls);
+  };
+
   return (
     <GardenCommentWriteUI
       onChangeComment={onChangeComment}
@@ -78,6 +90,8 @@ export default function GardenCommentWrite(props: any) {
       commentEl={props.commentEl}
       isEdit={props.isEdit}
       comment={comment}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
     />
   );
 }
