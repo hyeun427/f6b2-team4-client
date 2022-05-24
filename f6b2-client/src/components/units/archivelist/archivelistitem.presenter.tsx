@@ -1,23 +1,34 @@
+import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { getDate } from '../../../commons/libraries/utils';
+import { FETCH_BOARD_IMAGE } from '../userprofile/usertab/usertabitem.queries';
 import * as Archive from './archivelist.style';
 import { IArchiveItem } from './archivelist.type';
 
 export default function ArchiveItemUI(props: IArchiveItem) {
   const router = useRouter();
+  const { data: boardImage } = useQuery(FETCH_BOARD_IMAGE, {
+    variables: { boardId: props.el.id },
+  });
   const onClickArchiveItem = () => {
     router.push(`/garden/${props.el.board.id}`);
   };
-  console.log(props.el);
+
   return (
     <>
-      {props.el.isSaved ? (
-        <Archive.WrapperRowItem onClick={onClickArchiveItem}>
-          <Archive.ImageItem src='https://picsum.photos/200' />
+      <Archive.WrapperRowItem onClick={onClickArchiveItem}>
+        <Archive.ImageItem
+          src={
+            boardImage?.fetchBoardImage[0]?.image.includes('http')
+              ? boardImage?.fetchBoardImage[0]?.image
+              : '/image/default1.jpg'
+          }
+        />
+        <Archive.WrapperCol>
           <Archive.PItem>{props.el.board.content}</Archive.PItem>
-        </Archive.WrapperRowItem>
-      ) : (
-        ''
-      )}
+          <Archive.PDate>{getDate(props.el.board.createdAt)}</Archive.PDate>
+        </Archive.WrapperCol>
+      </Archive.WrapperRowItem>
     </>
   );
 }

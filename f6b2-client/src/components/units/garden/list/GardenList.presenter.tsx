@@ -1,5 +1,5 @@
-import GardenCommentList from "../comment/list/GardenCommentList.container";
-import GardenCommentWrite from "../comment/write/GardenCommentWrite.container";
+import GardenCommentList from '../comment/list/GardenCommentList.container';
+import GardenCommentWrite from '../comment/write/GardenCommentWrite.container';
 import {
   CommentCount,
   CommentListBtn,
@@ -23,15 +23,15 @@ import {
   WrapperRight,
   GardenWrapper,
   NameRow,
-} from "./GardenList.styles";
-import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
-import GardenBestList from "../bestList/GardenBestList.container";
+} from './GardenList.styles';
+import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from 'react-icons/md';
+import GardenBestList from '../bestList/GardenBestList.container';
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
-import { getDate } from "../../../../commons/libraries/utils";
-import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
-import DailyWordContainer from "../../dailyword/dailyword.container";
-import ArchiveContainer from "../../archivelist/archivelist.container";
-import InfiniteScroll from "react-infinite-scroller";
+import { getDate } from '../../../../commons/libraries/utils';
+import GardenWriteContainer from '../../GardenWrite/GardenWrite.container';
+import DailyWordContainer from '../../dailyword/dailyword.container';
+import ArchiveContainer from '../../archivelist/archivelist.container';
+import InfiniteScroll from 'react-infinite-scroller';
 
 export default function GardenListUI(props: any) {
   return (
@@ -42,7 +42,7 @@ export default function GardenListUI(props: any) {
           <DailyWordContainer />
         </WrapperLeft>
         <Wrapper>
-          <InputSearchBar defaultValue={"Search"} />
+          <InputSearchBar defaultValue={'Search'} />
           <GardenBestList />
           {/* <InfiniteScroll
             pageStart={0}
@@ -62,7 +62,7 @@ export default function GardenListUI(props: any) {
                       <NameRow>
                         <WriterName>{el.writer.name}</WriterName>
                         <MdBookmarkBorder
-                          size={"16"}
+                          size={'16'}
                           onClick={() => props.onClickSaved(el)}
                         />
                       </NameRow>
@@ -97,11 +97,11 @@ export default function GardenListUI(props: any) {
                       )}
                       <LikeAndCommentCount>
                         <Like onClick={props.onClickLikeBoard} id={el.id}>
-                          <MdThumbUp size={"13"} /> {el.likes}
+                          <MdThumbUp size={'13'} /> {el.likes}
                         </Like>
                         {/* 해당 게시글의 댓글 갯수 */}
                         <CommentCount>
-                          <MdQuestionAnswer size={"13"} /> {el.commentsCount}
+                          <MdQuestionAnswer size={'13'} /> {el.commentsCount}
                         </CommentCount>
                       </LikeAndCommentCount>
                     </LikeAndCommentCountBox>

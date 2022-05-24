@@ -16,7 +16,7 @@ export default function UserEditContainer(props) {
   const [isRegion, setIsRegion] = useState('');
   const [isCurPW, setIsCurPW] = useState('');
   const [isNewPW, setIsNewPW] = useState('');
-  const [fileUrls, setFileUrls] = useState([]);
+  const [fileUrls, setFileUrls] = useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setIsNewLang(event.target.value as string);
@@ -30,10 +30,20 @@ export default function UserEditContainer(props) {
   // name: "zintagi"
   // newLang: "한국어"
 
+  useEffect(() => {
+    setFileUrls(props?.user?.fetchUserId?.image);
+    setIsName(props?.user?.fetchUserId?.name);
+    setIsNewLang(props?.user?.fetchUserId?.newLang);
+  }, []);
+
+  // console.log(props?.user?.fetchUserId?.image);
+  // console.log([fileUrls]);
+
   const onChangeFileUrls = (fileUrl: string) => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls.push(fileUrl);
-    setFileUrls(newFileUrls);
+    // const newFileUrls = fileUrls;
+    // newFileUrls.push(fileUrl);
+
+    setFileUrls(fileUrl);
   };
 
   const handleChangeRegion = (event: SelectChangeEvent) => {
@@ -72,7 +82,7 @@ export default function UserEditContainer(props) {
             newLang: isNewLang,
             // currentRegion: isRegion,
             password: isNewPW,
-            image: fileUrls[0],
+            image: fileUrls,
           },
         },
         refetchQueries: [
