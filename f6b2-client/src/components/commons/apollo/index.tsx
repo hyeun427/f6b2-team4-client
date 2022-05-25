@@ -56,7 +56,8 @@ export default function ApolloConfig(props: IApolloProps) {
 
   const uploadLink = createUploadLink({
     // uri: 'hiosi123.shop/graphql',
-    uri: 'https://team04backend.shop/graphql',
+    // uri: 'https://team04backend.shop/graphql',
+    uri: 'https://langbee.shop/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: 'include',
   }) as unknown as ApolloLink;
