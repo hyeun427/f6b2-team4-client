@@ -7,11 +7,3 @@ export const GardenBestListBox = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 `;
-
-export const GardenBest = styled.img`
-  width: 116px;
-  height: 210px;
-  background-color: white;
-  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.25);
-  border-radius: 22px;
-`;
