@@ -4,58 +4,56 @@ export const CommentWriteBox = styled.main`
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  margin-top: 8px;
-  border-top: 1px solid lightgray;
+  margin-top: 20px;
+
+  // test
+  /* background-color: gray; */
 `;
 
 export const CommentWriteProfile = styled.img`
-  width: 20px;
-  height: 20px;
-  border-radius: 40px;
-  margin-right: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  margin-right: 15px;
 
   //test
   background-color: gray;
 `;
 
-export const CommentWriteInputBox = styled.div`
+export const CommentWriteInputBox = styled.article`
+  width: 385px;
+  height: 34px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 34px;
-  border-radius: 3px;
+  background: #ffffff;
+  border: 1px solid #dbdbdb;
 `;
 
 export const CommentWriteInput = styled.input`
   width: 100%;
-  height: 34px;
-  border-radius: 3px;
+  height: 24px;
   border: none;
+  margin-left: 3.5px;
   font-weight: 400;
   font-size: 12px;
   padding-left: 9.5px;
-  ::placeholder {
-    font-size: 9px;
-  }
-  // test
-  /* background-color: red; */
 `;
 
 export const CommentWriteBtn = styled.section`
+  width: 130px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  margin-left: 8px;
 `;
 
 export const SubmitBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
 `;
 
@@ -63,15 +61,34 @@ export const ImgBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
+  margin-left: 13px;
 `;
 
 export const VideoBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
-  margin-right: 3px;
+  margin-left: 13px;
+`;
+
+export const ImageThumbnail = styled.img`
+  width: 300px;
+  object-fit: cover;
+  margin-top: 20px;
+`;
+
+export const VideoThumbnail = styled.video`
+  width: 300px;
+  object-fit: cover;
+  margin-top: 20px;
+`;
+
+export const Thumbnail = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

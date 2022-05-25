@@ -11,38 +11,36 @@ export const GardenWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 850px;
-  height: 600px;
+  width: 860px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
-  border-radius: 25px;
-  border: 2px solid #727da1;
+  border: 1px solid #dbdbdb;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 `;
 
 export const GardenListBox = styled.main`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
-  background-color: white;
+  padding-right: 29px;
 `;
 
-export const ContentsImg = styled.img`
-  /* 이미지 연결 후 수정하기 */
-  width: 480px;
-  height: 480px;
+export const ContentsImg = styled.div`
+  width: 430px;
+  height: 500px;
   object-fit: cover;
-  /* 완성 후 삭제 할 것 */
-  background-color: #ffb950;
 `;
 
 export const RightWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 340px;
+  padding: 29px 0px;
 `;
 
 export const WriterInfoBox = styled.div`

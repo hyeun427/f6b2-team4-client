@@ -7,7 +7,7 @@ import {
   ImgBtn,
   SubmitBtn,
   VideoBtn,
-} from "./GardenCommentWrite.styles";
+} from "./GardenDetailCommentWrite.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
 
 export default function GardenDetailCommentWriteUI(props: any) {

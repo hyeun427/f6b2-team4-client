@@ -3,23 +3,26 @@ import { getDate } from "../../../commons/libraries/utils";
 import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../commons/store";
-import GardenDetailCommentList from "./detailcomment/list/GardenCommentList.container";
-import GardenImg from "../garden/gardenImg/gardenImg.container";
+
+import GardenDetailImg from "./detailImg/gardenDetailImg.container";
+import GardenDetailCommentList from "./detailcomment/list/GardenDetailCommentList.container";
+import GardenDetailCommentWrite from "./detailcomment/write/GardenDetailCommentWrite.container";
+import TranslateGarden from "../../commons/translate/garden";
 
 export default function GardenDetailUI(props: any) {
-  // console.log(props.data?.fetchBoard.commentsCount, "댓글수나오냐");
   const [loginInfo] = useRecoilState(userInfoState);
   return (
     <>
       <S.GardenWrapper>
         <S.Wrapper>
           <S.GardenListBox key={props.data?.fetchBoard.id}>
-            <S.ContentsImg />
             {/* 이미지 */}
-            {/* <GardenImg
-              boardId={props.data?.fetchBoard.id}
-              video={props.data?.fetchBoard.video}
-            /> */}
+            <S.ContentsImg>
+              <GardenDetailImg
+                boardId={props.data?.fetchBoard.id}
+                video={props.data?.fetchBoard.video}
+              />
+            </S.ContentsImg>
             <S.RightWrapper>
               <S.WriterInfoBox>
                 <S.WriterInfo>
@@ -42,12 +45,13 @@ export default function GardenDetailUI(props: any) {
 
               <S.ContentsBox>
                 <S.Contents>{props.data?.fetchBoard.content}</S.Contents>
-                {/* 번역API 버튼 자리? */}
                 <S.ContentsTranslateBox>
-                  <S.ContentsTranslate>번역한 내용</S.ContentsTranslate>
+                  <TranslateGarden
+                    content={props.data?.fetchBoard.content}
+                    myLang={props.data?.fetchBoard.writer.myLang}
+                  />
                 </S.ContentsTranslateBox>
 
-                {/* 댓글 부분 다시 수정할 것 */}
                 <S.LikeAndCommentCountBox>
                   <S.LikeAndCommentCount>
                     <S.Like>
@@ -69,12 +73,13 @@ export default function GardenDetailUI(props: any) {
                     </S.CommentCount>
                   </S.LikeAndCommentCount>
                 </S.LikeAndCommentCountBox>
-                {/* 댓글 수정하기 */}
+                {/* 댓글 목록 불러오기 */}
                 <GardenDetailCommentList
                   boardElId={props.boardElId}
                   loginInfo={loginInfo}
                 />
-                {/* <GardenCommentList boardElId={props.boardElId} /> */}
+                {/* 댓글 작성하기 */}
+                <GardenDetailCommentWrite />
               </S.ContentsBox>
             </S.RightWrapper>
           </S.GardenListBox>
