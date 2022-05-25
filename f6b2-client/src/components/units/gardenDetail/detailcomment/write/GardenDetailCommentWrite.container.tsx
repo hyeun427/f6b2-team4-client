@@ -5,9 +5,9 @@ import {
   FETCH_COMMENTS,
   UPDATE_COMMENT,
 } from "../../../../commons/queries";
-import GardenCommentWriteUI from "./GardenCommentWrite.presenter";
+import GardenDetailCommentWriteUI from "./GardenDetailCommentWrite.presenter";
 
-export default function GardenDetailCommentWrite(props: any) {
+export default function GardenCommentWrite(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
   const [comment, setComment] = useState("");
@@ -22,8 +22,8 @@ export default function GardenDetailCommentWrite(props: any) {
         variables: {
           createCommentInput: {
             content: comment,
-            image: "test",
-            video: "test",
+            image: fileUrls[0],
+            video: videoUrls[0],
           },
           boardId: props.boardId,
         },
@@ -37,13 +37,15 @@ export default function GardenDetailCommentWrite(props: any) {
         ],
       });
       alert("댓글작성성공!");
+      setComment("");
+      setFileUrls([]);
+      setVideoUrls([]);
     } catch (error) {
       alert(error);
     }
   };
 
   const onClickCommentUpdate = async () => {
-    console.log(props.boardId);
     const myVariables = {
       updateCommentInput: {},
       commentId: props.commentEl?.id,
@@ -60,24 +62,49 @@ export default function GardenDetailCommentWrite(props: any) {
           {
             query: FETCH_COMMENTS,
             variables: {
-              boardId: props.boardId,
+              boardId: props.boardElId,
             },
           },
         ],
       });
       alert("댓글수정 성공!");
+      setComment("");
     } catch (error) {
       alert(error);
     }
   };
 
+  // 1. 이미지 URL을 받기 위한 set 선언
+  const [fileUrls, setFileUrls] = useState([]);
+
+  // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
+  const onChangeFileUrls = (fileUrl: string) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls.push(fileUrl);
+    setFileUrls(newFileUrls);
+  };
+
+  // 비디오 올리기
+  const [videoUrls, setVideoUrls] = useState([]);
+
+  const onChangeVideoUrls = (fileUrl: string) => {
+    const newVideoUrls = [...videoUrls];
+    newVideoUrls.push(fileUrl);
+    setVideoUrls(newVideoUrls);
+  };
+
   return (
-    <GardenCommentWriteUI
+    <GardenDetailCommentWriteUI
       onChangeComment={onChangeComment}
       onClickCommentWrite={onClickCommentWrite}
       onClickCommentUpdate={onClickCommentUpdate}
       commentEl={props.commentEl}
       isEdit={props.isEdit}
+      comment={comment}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
+      onChangeVideoUrls={onChangeVideoUrls}
+      videoUrls={videoUrls}
     />
   );
 }

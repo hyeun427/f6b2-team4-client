@@ -2,14 +2,14 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../../commons/store";
-import { DELETE_COMMENT, FETCH_COMMENTS } from "../../../../commons/queries";
-import GardenCommentListUI from "./GardenCommentList.presenter";
-import * as timeago from "timeago.js";
-import ko from "timeago.js/lib/lang/ko";
+import {
+  DELETE_COMMENT,
+  FETCH_COMMENTS,
+  LIKE_COMMENT,
+} from "../../../../commons/queries";
+import GardenDetailCommentListUI from "./GardenDetailCommentList.presenter";
 
 export default function GardenDetailCommentList(props: any) {
-  timeago.register("ko", ko);
-
   const { data: comments } = useQuery(FETCH_COMMENTS, {
     variables: {
       boardId: props.boardElId,
@@ -42,20 +42,44 @@ export default function GardenDetailCommentList(props: any) {
 
   const [commentEditVal, setCommentEditVal] = useState([false]);
   // 댓글수정버튼 클릭 시, 수정창이 보인다
+  console.log(commentEditVal);
   const commentEditBtn = (index) => (event) => {
     const newCommentEditVal = [...commentEditVal];
     newCommentEditVal[index] = !commentEditVal[index];
     setCommentEditVal(newCommentEditVal);
   };
 
+  // 댓글 좋아요
+  const [likeComment] = useMutation(LIKE_COMMENT);
+  const onClickCommentLike = async (event) => {
+    try {
+      await likeComment({
+        variables: {
+          commentId: event.currentTarget.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_COMMENTS,
+            variables: {
+              boardId: props.boardElId,
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
-    <GardenCommentListUI
+    <GardenDetailCommentListUI
       boardElId={props.boardElId}
       comments={comments}
       onClickDeleteComment={onClickDeleteComment}
       commentEditBtn={commentEditBtn}
       commentEditVal={commentEditVal}
       loginInfo={loginInfo}
+      onClickCommentLike={onClickCommentLike}
     />
   );
 }

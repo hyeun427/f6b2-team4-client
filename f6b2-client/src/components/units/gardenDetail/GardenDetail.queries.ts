@@ -11,10 +11,11 @@ export const FETCH_BOARD = gql`
       writer {
         id
         name
-        mylang
-        newlang
+        myLang
+        newLang
       }
       createdAt
+      updatedAt
     }
   }
 `;
