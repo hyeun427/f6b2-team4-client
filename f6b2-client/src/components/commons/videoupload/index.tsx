@@ -8,7 +8,7 @@ import {
 import styled from '@emotion/styled';
 import { UPLOAD_FILE } from '../queries';
 import { BiCaretRightSquare } from 'react-icons/bi';
-import * as S from '../../units/community/write/CommunityWrite.styles';
+import { ImFileVideo } from 'react-icons/im';
 
 export const UploadVideoWrapper = styled.div`
   width: 30px;
@@ -34,6 +34,10 @@ export const RecordSaveButton = styled.button`
   cursor: pointer;
 `;
 
+export const IconLike = styled(ImFileVideo)`
+  font-size: 15px;
+`;
+
 export default function VideoUpload(props: {
   onChangeVideoUrls?: (fileUrl: string) => void;
   videoUrls?: Array<string>;
@@ -41,6 +45,10 @@ export default function VideoUpload(props: {
   recordUrls?: Array<string>;
   handleClose?: () => void;
 }) {
+  // type
+  // garden : 가든 게시물 작성
+  // comment : 댓글 게시물 작성
+
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [videoUrl, setVideoUrl] = useState<string | undefined>('');
@@ -98,10 +106,8 @@ export default function VideoUpload(props: {
             color={'#FFB950'}
           />
         )}
-        {props.type === 'community' && (
-          <S.ImgBtn>
-            <S.BsFileEarmarkIcon />
-          </S.ImgBtn>
+        {props.type === 'comment' && (
+          <ImFileVideo onClick={onClickVideo} size={'15'} />
         )}
 
         <input

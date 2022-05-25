@@ -149,3 +149,15 @@ export default function Home() {
 ```javascript
 <TimeAgo datetime={newDate} locale='ko' />
 ```
+
+## Language 코드 받는 법
+
+- 파일 경로 : f6b2-client/src/commons/libraries/utils.ts
+
+- `getLangCode` import 하기
+- 사용법
+
+```javascript
+getLangCode('한국어');
+// result : ko
+```

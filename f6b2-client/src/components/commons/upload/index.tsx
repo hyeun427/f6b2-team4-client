@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client';
 import { ChangeEvent, useRef, useState } from 'react';
-import { checkFileValidation } from '../../../commons/libraries/validation';
 import {
   IMutation,
   IMutationUploadFileArgs,
@@ -11,6 +10,8 @@ import { UPLOAD_FILE } from '../../commons/queries';
 import { BiImageAlt } from 'react-icons/bi';
 import * as S from '../../../components/units/community/write/CommunityWrite.styles';
 import * as Edit from '../../units/userprofile/useredit/useredit.style';
+
+import { AiOutlineFileImage } from 'react-icons/ai';
 
 export const UploadImageWrapper = styled.div`
   width: 30px;
@@ -26,12 +27,16 @@ export const UploadButton = styled.button`
 `;
 
 export default function ImageUpload(props: {
-  // setInputs: (arg0: any) => void;
-  // inputs: any;
   onChangeFileUrls: (fileUrl: string) => void;
   fileUrls: Array<string>;
   type: string;
 }) {
+  // type
+  // garden : 가든 게시물 작성
+  // community : 커뮤니티 게시물 작성
+  // edit : user 정보 수정
+  // comment : 댓글 게시물 작성
+
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [, setImageUrl] = useState<string | undefined>('');
@@ -42,8 +47,6 @@ export default function ImageUpload(props: {
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    // const isValid = checkFileValidation(file);
-    // if (!isValid) return;
 
     try {
       const { data: resultImgUrl } = await uploadFile({
@@ -74,6 +77,9 @@ export default function ImageUpload(props: {
         </S.ImgBtn>
       )}
       {props.type === 'edit' && <Edit.IconEdit onClick={onClickImage} />}
+      {props.type === 'comment' && (
+        <AiOutlineFileImage onClick={onClickImage} size={'15'} />
+      )}
       <input
         id='images'
         style={{ display: 'none' }}

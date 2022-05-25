@@ -24,6 +24,8 @@ export default function GardenWriteUI(props: IGardenWrite) {
     borderRadius: '25px',
   };
 
+  console.log(props.videoUrls);
+
   return (
     <L.WrapperDiv>
       <L.WrapperRow>
@@ -75,24 +77,20 @@ export default function GardenWriteUI(props: IGardenWrite) {
         />
       </L.WrapperRowIcon>
       <L.WrapperItem>
-        {props.videoUrls?.map((el) => (
-          <>
-            <L.VideoItempWrap>
-              <Badge badgeContent={'X'} color='primary'>
-                <L.VideoThumbnail
-                  controls
-                  key={uuidv4()}
-                  src={
-                    el.startsWith('https', 0)
-                      ? el
-                      : `https://storage.googleapis.com/${el}`
-                  }
-                />
-                {/* <button onClick={props.onClickImageDelete(index)}>삭제</button> */}
-              </Badge>
-            </L.VideoItempWrap>
-          </>
-        ))}
+        <L.VideoItempWrap>
+          {props.videoUrls ? (
+            <Badge
+              badgeContent={'X'}
+              color='primary'
+              onClick={props.onClickVideoDelete}
+            >
+              <L.VideoThumbnail controls key={uuidv4()} src={props.videoUrls} />
+            </Badge>
+          ) : (
+            ''
+          )}
+        </L.VideoItempWrap>
+
         {props.fileUrls?.map((el, index) => (
           <>
             <L.ImageItempWrap>
