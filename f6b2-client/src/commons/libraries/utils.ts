@@ -7,10 +7,19 @@ export const getDate = (date: string | number | Date) => {
   return yyyymmdd;
 };
 
-// const event = new Date();
-// {event.toString()}
-// <br />
-// {event.toISOString()}
-// <br />
-// {event.toLocaleDateString()}
-// {event.toLocaleTimeString()}
+export const getLangCode = (newLang: string) => {
+  const langList = [
+    '한국어',
+    'English',
+    '日本語',
+    'español',
+    'Français',
+    '中国',
+  ];
+
+  const newLangCode = ['ko', 'en', 'ja', 'es', 'fr', 'zh'];
+
+  const index = langList.indexOf(newLang);
+
+  return newLangCode[index];
+};

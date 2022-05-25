@@ -12,7 +12,7 @@ import GardenWriteUI from './GardenWrite.presenter';
 export default function GardenWriteContainer() {
   const [isContent, setIsContent] = useState('');
   const [fileUrls, setFileUrls] = useState([]);
-  const [videoUrls, setVideoUrls] = useState([]);
+  const [videoUrls, setVideoUrls] = useState('');
 
   const [createGarden] = useMutation(CREATE_BOARD);
   const [createImage] = useMutation(CREATE_BOARD_IMAGE);
@@ -44,15 +44,16 @@ export default function GardenWriteContainer() {
 
   // 업로드 된 비디오 경로 받아오기
   const onChangeVideoUrls = (fileUrl: string) => {
-    const newVideoUrls = [...videoUrls];
-    newVideoUrls.push(fileUrl);
+    console.log(fileUrl);
+    // const newVideoUrls = [...videoUrls];
+    // newVideoUrls.push(fileUrl);
     setVideoUrls(fileUrl);
   };
 
-  const onClickVideoDelete = (index) => () => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls.splice(index, 1);
-    setFileUrls(newFileUrls);
+  const onClickVideoDelete = () => {
+    // const newFileUrls = [...fileUrls];
+    // newFileUrls.splice(index, 1);
+    setVideoUrls('');
   };
 
   // 가든 게시물 생성하기 버튼
@@ -67,11 +68,10 @@ export default function GardenWriteContainer() {
         variables: {
           createBoardInput: {
             content: String(isContent),
-            video: videoUrls[0],
+            video: videoUrls,
           },
         },
       });
-      console.log(resultCreateBoard);
 
       // 이미지 쿼리
       const { data: imageResult } = await createImage({
@@ -87,7 +87,7 @@ export default function GardenWriteContainer() {
       });
       setIsContent('');
       setFileUrls([]);
-      setVideoUrls([]);
+      setVideoUrls('');
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -107,6 +107,7 @@ export default function GardenWriteContainer() {
       handleOpen={handleOpen}
       handleClose={handleClose}
       onClickImageDelete={onClickImageDelete}
+      onClickVideoDelete={onClickVideoDelete}
     />
   );
 }
