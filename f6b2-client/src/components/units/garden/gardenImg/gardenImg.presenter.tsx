@@ -5,13 +5,6 @@ import Slider from "react-slick";
 import { Image } from "antd";
 import "antd/dist/antd.css";
 
-const ContentsImg = styled.img`
-  width: 335px;
-  height: 205px;
-  margin-top: 30px;
-  object-fit: cover;
-`;
-
 const SliderChild = styled.div`
   width: 335px;
   height: 221px;
@@ -64,18 +57,25 @@ const SliderGarden = styled(Slider)`
 
 const Image1 = styled(Image)`
   object-fit: cover;
+  border-radius: 10px;
 `;
 
 const Video = styled.video`
   width: 335px;
   height: 225px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+const Wrapper = styled.div`
+  margin-bottom: 10px;
 `;
 
 export default function GardenImgUI(props) {
   // 캐러셀 세팅
   const settings = {
     dots: true,
-    appendDots: (dots) => <ul style={{ marginBottom: "25px" }}> {dots} </ul>,
+    // appendDots: (dots) => <ul style={{ marginBottom: "25px" }}> {dots} </ul>,
     lazyLoad: false,
     infinite: false,
     speed: 500,
@@ -84,7 +84,7 @@ export default function GardenImgUI(props) {
   };
   console.log("AAAA", props.video);
   return (
-    <>
+    <Wrapper>
       {props.video !== "temporary url" ||
       props.data?.fetchBoardImage.length > 0 ? (
         <SliderGarden {...settings}>
@@ -108,6 +108,6 @@ export default function GardenImgUI(props) {
       ) : (
         ""
       )}
-    </>
+    </Wrapper>
   );
 }

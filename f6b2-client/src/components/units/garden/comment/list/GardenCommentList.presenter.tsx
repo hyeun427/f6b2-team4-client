@@ -13,14 +13,21 @@ import {
   DeleteBtn,
   EditBtn,
   Like,
-  LikeWrapper,
   MediaBox,
   OtherBtns,
   Row1,
 } from "./GardenCommentList.styles";
+import styled from "@emotion/styled";
 import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import GardenCommentEdit from "../edit/GardenCommentEdit.container";
+import { Image } from "antd";
+import "antd/dist/antd.css";
+
+const Image1 = styled(Image)`
+  object-fit: cover;
+  border-radius: 10px;
+`;
 
 export default function GardenCommentListUI(props) {
   return (
@@ -57,8 +64,10 @@ export default function GardenCommentListUI(props) {
                 </Like>
               </ContentWrapper>
               <MediaBox>
-                {el.image !== "empty" && <CommentImg src={el.image} />}
-                {el.video !== "empty" && <CommentVideo src={el.video} />}
+                {el.image !== "empty" && <Image1 src={el.image} width={300} />}
+                {el.video !== "empty" && (
+                  <CommentVideo src={el.video} controls />
+                )}
               </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}

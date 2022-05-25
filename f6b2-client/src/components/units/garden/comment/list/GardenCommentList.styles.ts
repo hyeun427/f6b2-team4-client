@@ -45,12 +45,14 @@ export const CommentText = styled.article`
 
 export const CommentImg = styled.img`
   width: 200px;
-  margin-top: 5px;
+  margin-top: 10px;
+  border-radius: 10px;
 `;
 
 export const CommentVideo = styled.video`
-  width: 200px;
-  margin-top: 5px;
+  width: 300px;
+  margin-top: 10px;
+  border-radius: 10px;
 `;
 
 export const MediaBox = styled.div`

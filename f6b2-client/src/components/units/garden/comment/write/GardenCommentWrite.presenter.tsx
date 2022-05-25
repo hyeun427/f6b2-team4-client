@@ -7,10 +7,13 @@ import {
   ImageThumbnail,
   ImgBtn,
   SubmitBtn,
+  Thumbnail,
   VideoBtn,
+  VideoThumbnail,
 } from "./GardenCommentWrite.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
 import ImageUpload from "../../../../commons/upload";
+import VideoUpload from "../../../../commons/videoupload";
 
 export default function GardenCommentWriteUI(props: any) {
   return (
@@ -45,21 +48,38 @@ export default function GardenCommentWriteUI(props: any) {
               />
             </ImgBtn>
             <VideoBtn>
-              <MdPhotoCameraFront />
+              <VideoUpload
+                onChangeVideoUrls={props.onChangeVideoUrls}
+                videoUrls={props.videoUrls}
+                type={"garden"}
+              />
             </VideoBtn>
           </CommentWriteBtn>
         </CommentWriteInputBox>
       </CommentWriteBox>
-      {props.fileUrls?.map((el, index) => (
-        <ImageThumbnail
-          key={index}
-          src={
-            el.startsWith("https", 0)
-              ? el
-              : `https://storage.googleapis.com/${el}`
-          }
-        />
-      ))}
+      <Thumbnail>
+        {props.fileUrls?.map((el, index) => (
+          <ImageThumbnail
+            key={index}
+            src={
+              el.startsWith("https", 0)
+                ? el
+                : `https://storage.googleapis.com/${el}`
+            }
+          />
+        ))}
+        {props.videoUrls?.map((el, index) => (
+          <VideoThumbnail
+            key={index}
+            src={
+              el.startsWith("https", 0)
+                ? el
+                : `https://storage.googleapis.com/${el}`
+            }
+            controls
+          />
+        ))}
+      </Thumbnail>
     </>
   );
 }
