@@ -5,7 +5,8 @@ export async function getAccessToken() {
   try {
     const graphQLClient = new GraphQLClient(
       // 'hiosi123.shop/graphql',
-      'https://team04backend.shop/graphql',
+      // 'https://team04backend.shop/graphql',
+      'https://langbee.shop/graphql',
       { credentials: 'include' }
     );
 
