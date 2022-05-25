@@ -1,13 +1,12 @@
 import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import { func } from "prop-types";
 import { useState } from "react";
 import { Translate, Translator } from "react-auto-translate";
 import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../commons/store";
+import { getLangCode } from "../../../../commons/libraries/utils";
+import { userInfoState } from "../../../../commons/store";
 
-export default function TranslateButton(props) {
+export default function TranslateGarden(props) {
   const [userInfo] = useRecoilState(userInfoState);
 
   const Wrapper = styled.div``;
@@ -33,9 +32,8 @@ export default function TranslateButton(props) {
     <Wrapper>
       <Translator
         googleApiKey="AIzaSyBwuUqwo_UbRpvYykdibLlA_luu47IXG5M"
-        from="ja" // 작성자 mylang
-        // to="ja" // 로그인유저 mylang
-        to={userInfo?.myLang} // 로그인유저 mylang ko en ja
+        from={getLangCode(props.myLang)} // 작성자 mylang
+        to={getLangCode(userInfo?.myLang)} // 로그인유저 mylang
       >
         <Button onClick={onClickTranslate}>번역보기</Button>
         {isTranslate === true && (
