@@ -31,7 +31,6 @@ export default function ArchiveUI(props: IArchive) {
         </>
       ) : (
         <>
-          <Archive.InputSearchBar placeholder='Search' />
           <Archive.WrapperColItem>
             <Archive.SliderTab {...settings}>
               {props.data?.fetchSavedBoards

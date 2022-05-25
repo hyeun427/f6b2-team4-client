@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { AiOutlineVideoCamera } from 'react-icons/ai';
 
 export const WrapperDiv = styled.div`
   display: flex;
@@ -68,8 +69,19 @@ export const ImgIcon = styled.img`
 `;
 
 export const ButtonSave = styled.button`
-  width: 100%;
-  height: auto;
+  width: 100px;
+  height: 25px;
+  background: #ffb950;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  display: ${(props) => !!!props.isContent && 'none'};
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  text-align: center;
 `;
 
 export const WrapperRowIcon = styled.div`
@@ -79,6 +91,7 @@ export const WrapperRowIcon = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
+  padding-top: 10px;
 `;
 
 export const ImageItempWrap = styled.div`
@@ -119,4 +132,12 @@ export const WrapperItem = styled.div`
   width: 100%;
   height: auto;
   padding: 10px 15px;
+`;
+
+export const GardenRecordUpload = styled(AiOutlineVideoCamera)`
+  font-size: 30px;
+  color: #ffb950;
+  :hover {
+    cursor: pointer;
+  }
 `;

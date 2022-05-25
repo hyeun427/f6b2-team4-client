@@ -24,8 +24,6 @@ export default function GardenWriteUI(props: IGardenWrite) {
     borderRadius: '25px',
   };
 
-  console.log(props.videoUrls);
-
   return (
     <L.WrapperDiv>
       <L.WrapperRow>
@@ -46,11 +44,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
         ></L.TextareaContents>
       </L.WrapperRow>
       <L.WrapperRowIcon>
-        <BiVideoRecording
-          size={'30'}
-          color={'#FFB950'}
-          onClick={props.handleOpen}
-        />
+        <L.GardenRecordUpload onClick={props.handleOpen} />
         <Modal
           open={props.open}
           onClose={props.handleClose}
@@ -87,10 +81,9 @@ export default function GardenWriteUI(props: IGardenWrite) {
               <L.VideoThumbnail controls key={uuidv4()} src={props.videoUrls} />
             </Badge>
           ) : (
-            ''
+            <></>
           )}
         </L.VideoItempWrap>
-
         {props.fileUrls?.map((el, index) => (
           <>
             <L.ImageItempWrap>
@@ -113,7 +106,9 @@ export default function GardenWriteUI(props: IGardenWrite) {
         ))}
       </L.WrapperItem>
 
-      <L.ButtonSave onClick={props.onClickSave}>저장하기</L.ButtonSave>
+      <L.ButtonSave onClick={props.onClickSave} isContent={props.isContent}>
+        Upload
+      </L.ButtonSave>
     </L.WrapperDiv>
   );
 }

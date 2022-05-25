@@ -30,6 +30,9 @@ export const WrapperRow = styled.div`
   font-weight: 700;
   font-size: 13px;
   line-height: 19px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #767676;
 `;
 
 export const InputSearchBar = styled.input`
