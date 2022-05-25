@@ -251,3 +251,23 @@ export const FETCH_BOARD_IMAGE = gql`
     }
   }
 `;
+
+// 검색 한 글 목록 불러오기
+export const SEARCH_BOARD_CONTENT = gql`
+  query searchBoardContent($content: String!) {
+    searchBoardContent(content: $content) {
+      id
+      content
+      video
+      likes
+      # createdAt
+      commentsCount
+      writer {
+        id
+        name
+        myLang
+        newLang
+      }
+    }
+  }
+`;

@@ -86,9 +86,9 @@ export default function GardenImgUI(props) {
   console.log(props.data?.fetchBoardImage);
   return (
     <Wrapper>
-      {props.video !== "null" || props.data?.fetchBoardImage.length > 0 ? (
+      {props.video !== "" || props.data?.fetchBoardImage.length > 0 ? (
         <SliderGarden {...settings}>
-          {props.video !== "null" ? (
+          {props.video !== "" ? (
             <SliderChild>
               <Video src={props.video} controls />
             </SliderChild>
