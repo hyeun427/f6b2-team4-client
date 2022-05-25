@@ -12,7 +12,7 @@ import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../commons/store";
 import { useRouter } from "next/router";
 
-export default function GardenList() {
+export default function GardenSearchList() {
   const router = useRouter();
   const [saveGarden] = useMutation(SAVE_BOARD);
   const { data, fetchMore } = useQuery(FETCH_BOARDS);
