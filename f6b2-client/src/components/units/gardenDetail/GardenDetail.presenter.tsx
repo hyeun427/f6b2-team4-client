@@ -4,9 +4,10 @@ import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
 import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../commons/store";
 import GardenDetailCommentList from "./detailcomment/list/GardenCommentList.container";
+import GardenImg from "../garden/gardenImg/gardenImg.container";
 
 export default function GardenDetailUI(props: any) {
-  console.log(props.data?.fetchBoard.commentsCount, "댓글수나오냐");
+  // console.log(props.data?.fetchBoard.commentsCount, "댓글수나오냐");
   const [loginInfo] = useRecoilState(userInfoState);
   return (
     <>
@@ -14,7 +15,11 @@ export default function GardenDetailUI(props: any) {
         <S.Wrapper>
           <S.GardenListBox key={props.data?.fetchBoard.id}>
             <S.ContentsImg />
-
+            {/* 이미지 */}
+            {/* <GardenImg
+              boardId={props.data?.fetchBoard.id}
+              video={props.data?.fetchBoard.video}
+            /> */}
             <S.RightWrapper>
               <S.WriterInfoBox>
                 <S.WriterInfo>
@@ -64,6 +69,7 @@ export default function GardenDetailUI(props: any) {
                     </S.CommentCount>
                   </S.LikeAndCommentCount>
                 </S.LikeAndCommentCountBox>
+                {/* 댓글 수정하기 */}
                 <GardenDetailCommentList
                   boardElId={props.boardElId}
                   loginInfo={loginInfo}
