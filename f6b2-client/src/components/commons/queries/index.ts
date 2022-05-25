@@ -260,7 +260,7 @@ export const SEARCH_BOARD_CONTENT = gql`
       content
       video
       likes
-      # createdAt
+      createdAt
       commentsCount
       writer {
         id

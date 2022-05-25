@@ -130,7 +130,7 @@ export default function GardenSearchUI(props: any) {
                           style={{ cursor: "pointer" }}
                         />
                       </NameRow>
-                      {/* <CreatedAt>{getDate(el.createdAt)}</CreatedAt> */}
+                      <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                     </WriterInfo>
                   </WriterInfoBox>
                   <ContentsBox>

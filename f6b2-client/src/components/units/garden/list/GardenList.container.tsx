@@ -36,13 +36,13 @@ export default function GardenList() {
     try {
       await likeBoard({
         variables: {
-          boardId: event.target.id,
+          boardId: event.currentTarget.id,
         },
         refetchQueries: [
           {
             query: FETCH_BOARDS,
             variables: {
-              boardId: event.target.id,
+              boardId: event.currentTarget.id,
             },
           },
         ],
