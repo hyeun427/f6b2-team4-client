@@ -23,6 +23,7 @@ export default function GardenCommentWrite(props: any) {
           createCommentInput: {
             content: comment,
             image: fileUrls[0],
+            video: videoUrls[0],
           },
           boardId: props.boardId,
         },
@@ -38,6 +39,7 @@ export default function GardenCommentWrite(props: any) {
       alert("댓글작성성공!");
       setComment("");
       setFileUrls([]);
+      setVideoUrls([]);
     } catch (error) {
       alert(error);
     }
@@ -82,6 +84,15 @@ export default function GardenCommentWrite(props: any) {
     setFileUrls(newFileUrls);
   };
 
+  // 비디오 올리기
+  const [videoUrls, setVideoUrls] = useState([]);
+
+  const onChangeVideoUrls = (fileUrl: string) => {
+    const newVideoUrls = [...videoUrls];
+    newVideoUrls.push(fileUrl);
+    setVideoUrls(newVideoUrls);
+  };
+
   return (
     <GardenCommentWriteUI
       onChangeComment={onChangeComment}
@@ -92,6 +103,8 @@ export default function GardenCommentWrite(props: any) {
       comment={comment}
       onChangeFileUrls={onChangeFileUrls}
       fileUrls={fileUrls}
+      onChangeVideoUrls={onChangeVideoUrls}
+      videoUrls={videoUrls}
     />
   );
 }

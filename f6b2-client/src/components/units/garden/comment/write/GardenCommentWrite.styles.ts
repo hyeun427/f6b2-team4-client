@@ -76,7 +76,19 @@ export const VideoBtn = styled.button`
 `;
 
 export const ImageThumbnail = styled.img`
-  width: 448px;
+  width: 300px;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-top: 20px;
+`;
+
+export const VideoThumbnail = styled.video`
+  width: 300px;
+  object-fit: cover;
+  margin-top: 20px;
+`;
+
+export const Thumbnail = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
