@@ -188,6 +188,10 @@ export default function LayoutHeader() {
     router.push('/signin');
   };
 
+  const onClickCharge = () => {
+    router.push('/charge');
+  };
+
   // material Ui handleing fuc
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -248,7 +252,7 @@ export default function LayoutHeader() {
           <MyPoint style={{ margin: '10' }} />
 
           {isToken ? (
-            <SpanPoint>
+            <SpanPoint onClick={onClickCharge}>
               {data?.fetchUser.points.toLocaleString('ko-KR')} P
             </SpanPoint>
           ) : (
