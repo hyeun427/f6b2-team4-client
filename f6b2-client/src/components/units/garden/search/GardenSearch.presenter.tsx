@@ -34,7 +34,7 @@ import ArchiveContainer from "../../archivelist/archivelist.container";
 import InfiniteScroll from "react-infinite-scroller";
 import GardenImg from "../gardenImg/gardenImg.container";
 
-export default function GardenListUI(props: any) {
+export default function GardenSearchListUI(props: any) {
   return (
     <>
       <GardenWrapper>
