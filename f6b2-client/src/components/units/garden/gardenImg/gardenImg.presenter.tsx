@@ -82,13 +82,13 @@ export default function GardenImgUI(props) {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  console.log("AAAA", props.video);
+
+  console.log(props.data?.fetchBoardImage);
   return (
     <Wrapper>
-      {props.video !== "temporary url" ||
-      props.data?.fetchBoardImage.length > 0 ? (
+      {props.video !== "null" || props.data?.fetchBoardImage.length > 0 ? (
         <SliderGarden {...settings}>
-          {props.video !== "temporary url" ? (
+          {props.video !== "null" ? (
             <SliderChild>
               <Video src={props.video} controls />
             </SliderChild>

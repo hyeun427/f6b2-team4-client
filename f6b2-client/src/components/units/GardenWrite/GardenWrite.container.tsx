@@ -1,19 +1,21 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { ChangeEvent, useState } from 'react';
+import { useMutation, useQuery } from "@apollo/client";
+import { ChangeEvent, useState } from "react";
 import {
   CREATE_BOARD,
   FETCH_USER_LOGGED_IN,
   FETCH_BOARDS,
-} from '../../commons/queries';
+} from "../../commons/queries";
 
-import { CREATE_BOARD_IMAGE } from './GardenWrite.queries';
-import GardenWriteUI from './GardenWrite.presenter';
+import { CREATE_BOARD_IMAGE } from "./GardenWrite.queries";
+import GardenWriteUI from "./GardenWrite.presenter";
 
 export default function GardenWriteContainer() {
-  const [isContent, setIsContent] = useState('');
+  const [isContent, setIsContent] = useState("");
   const [fileUrls, setFileUrls] = useState([]);
+
   const [videoUrls, setVideoUrls] = useState('');
   const [isSave, setIsSave] = useState(false);
+
 
   const [createGarden] = useMutation(CREATE_BOARD);
   const [createImage] = useMutation(CREATE_BOARD_IMAGE);
@@ -54,13 +56,13 @@ export default function GardenWriteContainer() {
   const onClickVideoDelete = () => {
     // const newFileUrls = [...fileUrls];
     // newFileUrls.splice(index, 1);
-    setVideoUrls('');
+    setVideoUrls("");
   };
 
   // 가든 게시물 생성하기 버튼
   const onClickSave = async () => {
-    if (isContent === '') {
-      alert('Please Enter your words');
+    if (isContent === "") {
+      alert("Please Enter your words");
       return;
     }
 
@@ -86,9 +88,9 @@ export default function GardenWriteContainer() {
           },
         ],
       });
-      setIsContent('');
+      setIsContent("");
       setFileUrls([]);
-      setVideoUrls('');
+      setVideoUrls("");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

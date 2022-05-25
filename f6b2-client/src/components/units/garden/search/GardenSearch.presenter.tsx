@@ -33,9 +33,8 @@ import DailyWordContainer from "../../dailyword/dailyword.container";
 import ArchiveContainer from "../../archivelist/archivelist.container";
 import InfiniteScroll from "react-infinite-scroller";
 import GardenImg from "../gardenImg/gardenImg.container";
-import TranslateGarden from "../../../commons/translate/garden";
 
-export default function GardenListUI(props: any) {
+export default function GardenSearchListUI(props: any) {
   return (
     <>
       <GardenWrapper>
@@ -75,10 +74,6 @@ export default function GardenListUI(props: any) {
                     <Contents>{el.content}</Contents>
                     <ContentsTranslateBox>
                       {/* 번역API 버튼 자리? */}
-                      <TranslateGarden
-                        content={el.content}
-                        myLang={el.writer.myLang}
-                      />
                       <ContentsTranslate>번역한 내용</ContentsTranslate>
                     </ContentsTranslateBox>
                     {/* 캐러셀 */}
@@ -144,8 +139,7 @@ export default function GardenListUI(props: any) {
                     <Contents>{el.content}</Contents>
                     <ContentsTranslateBox>
                       {/* 번역API 버튼 자리? */}
-                      <TranslateGarden content={el.content} />
-                      {/* <ContentsTranslate>번역한 내용</ContentsTranslate> */}
+                      <ContentsTranslate>번역한 내용</ContentsTranslate>
                     </ContentsTranslateBox>
                     {/* 캐러셀 */}
                     <GardenImg boardId={el.id} video={el.video} />
