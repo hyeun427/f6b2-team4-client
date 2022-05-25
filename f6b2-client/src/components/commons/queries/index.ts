@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -211,6 +211,8 @@ export const FETCH_COMMUNITY_BOARD = gql`
       writer {
         id
         name
+        myLang
+        newLang
       }
     }
   }
