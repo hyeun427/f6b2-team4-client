@@ -95,6 +95,12 @@ export default function GardenList() {
     router.push(`/profile/${event.target.id}`);
   };
 
+  // 검색 키워드
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const onChangeSearchKeyword = (event) => {
+    setSearchKeyword(event.target.value);
+  };
+
   return (
     <GardenListUI
       commentListVal={commentListVal}
@@ -106,6 +112,8 @@ export default function GardenList() {
       loginUserInfo={loginUserInfo}
       onClickUserProfile={onClickUserProfile}
       isToken={isToken}
+      onChangeSearchKeyword={onChangeSearchKeyword}
+      searchKeyword={searchKeyword}
     />
   );
 }

@@ -1,18 +1,19 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import GardenListUI from "./GardenList.presenter";
+import GardenListUI from "./GardenSearch.presenter";
 import {
   FETCH_BOARDS,
   FETCH_SAVED_BOARDS,
   SAVE_BOARD,
+  SEARCH_BOARD_CONTENT,
 } from "../../../commons/queries";
 import { IBoard } from "../../../../commons/types/generated/types";
-import { LIKE_BOARD } from "./GardenList.queries";
+import { LIKE_BOARD } from "./GardenSearch.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../commons/store";
 import { useRouter } from "next/router";
 
-export default function GardenSearchList() {
+export default function GardenSearch(props) {
   const router = useRouter();
   const [saveGarden] = useMutation(SAVE_BOARD);
   const { data, fetchMore } = useQuery(FETCH_BOARDS);
@@ -21,6 +22,15 @@ export default function GardenSearchList() {
   const [loginUserInfo] = useRecoilState(userInfoState);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
+
+  // 검색 불러오기
+  const { data: searchBoard } = useQuery(SEARCH_BOARD_CONTENT, {
+    variables: {
+      content: props.searchKeyword,
+    },
+  });
+
+  console.log("키워드", props.searchKeyword);
 
   // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
@@ -95,6 +105,12 @@ export default function GardenSearchList() {
     router.push(`/profile/${event.target.id}`);
   };
 
+  // 검색 키워드
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const onChangeSearchKeyword = (event) => {
+    setSearchKeyword(event.target.value);
+  };
+
   return (
     <GardenListUI
       commentListVal={commentListVal}
@@ -106,6 +122,9 @@ export default function GardenSearchList() {
       loginUserInfo={loginUserInfo}
       onClickUserProfile={onClickUserProfile}
       isToken={isToken}
+      onChangeSearchKeyword={onChangeSearchKeyword}
+      searchKeyword={searchKeyword}
+      searchBoard={searchBoard}
     />
   );
 }

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -183,6 +183,13 @@ export const NameRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const InputSearchBarWrapper = styled.div`
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `;
