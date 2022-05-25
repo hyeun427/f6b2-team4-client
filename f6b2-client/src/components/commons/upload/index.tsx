@@ -5,7 +5,6 @@ import {
   IMutationUploadFileArgs,
 } from '../../../commons/types/generated/types';
 import styled from '@emotion/styled';
-import { Modal } from 'antd';
 import { UPLOAD_FILE } from '../../commons/queries';
 import { BiImageAlt } from 'react-icons/bi';
 import * as S from '../../../components/units/community/write/CommunityWrite.styles';
@@ -24,6 +23,14 @@ export const UploadButton = styled.button`
   width: 100px;
   height: 100px;
   background: #bdbdbd;
+`;
+
+export const GardenImageUpload = styled(AiOutlineFileImage)`
+  font-size: 30px;
+  color: #ffb950;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export default function ImageUpload(props: {
@@ -52,7 +59,6 @@ export default function ImageUpload(props: {
       const { data: resultImgUrl } = await uploadFile({
         variables: { files: [file] },
       });
-      console.log(resultImgUrl);
 
       setImageUrl(resultImgUrl?.uploadFile[3]);
       props.onChangeFileUrls(String(resultImgUrl?.uploadFile[3]));
@@ -67,9 +73,7 @@ export default function ImageUpload(props: {
 
   return (
     <UploadImageWrapper>
-      {props.type === 'garden' && (
-        <BiImageAlt onClick={onClickImage} size={'30'} color={'#FFB950'} />
-      )}
+      {props.type === 'garden' && <GardenImageUpload onClick={onClickImage} />}
 
       {props.type === 'community' && (
         <S.ImgBtn>

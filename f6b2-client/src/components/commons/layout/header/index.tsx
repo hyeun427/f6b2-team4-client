@@ -4,15 +4,15 @@ import { useRecoilState } from 'recoil';
 import { accessTokenState, userInfoState } from '../../../../commons/store';
 import { useMutation, useQuery } from '@apollo/client';
 import { FETCH_USER_LOGGED_IN, LOG_OUT } from '../../queries';
-import { FaRegUserCircle } from 'react-icons/fa';
 import { CgBee } from 'react-icons/cg';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import React, { useEffect } from 'react';
+import { IoFlowerOutline } from 'react-icons/io5';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 60px;
+  height: 83px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -45,7 +45,7 @@ const PLogoLang = styled.span`
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 40px;
   line-height: 36px;
   color: #ffffff;
 `;
@@ -54,9 +54,9 @@ const PLogoB = styled.span`
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 40px;
   line-height: 36px;
-  color: #a4b1da;
+  color: #ffb950;
 `;
 
 const WrapperHeaderMenu = styled.div`
@@ -75,15 +75,36 @@ const BtnHeader = styled.button`
   color: white;
   background-color: #3a3939;
   font-family: 'Istok Web';
+  margin: 0px 35px;
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 25px;
+  line-height: 36px;
   text-align: center;
-  margin: 0px 35px;
+  color: #ffffff;
 
   :hover {
-    color: #a4b1da;
+    color: #ffb950;
+    cursor: pointer;
+  }
+`;
+
+const MyBee = styled(CgBee)`
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+  :hover {
+    color: #ffb950;
+    cursor: pointer;
+  }
+`;
+
+const MyPoint = styled(IoFlowerOutline)`
+  font-size: 30px;
+  text-align: center;
+  color: #ffffff;
+  :hover {
+    color: #ffb950;
     cursor: pointer;
   }
 `;
@@ -96,7 +117,6 @@ const WrapperHeaderInfo = styled.div`
   width: 15%;
   height: 100%;
   color: white;
-
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
@@ -105,12 +125,27 @@ const WrapperHeaderInfo = styled.div`
   text-align: center;
 `;
 
+const SpanPoint = styled.span`
+  height: auto;
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const SpanLogin = styled.span`
   font-family: 'Istok Web';
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
   color: #ffffff;
   :hover {
     cursor: pointer;
@@ -131,8 +166,6 @@ export default function LayoutHeader() {
   // save login user data in global state
   useEffect(() => {
     setUserInfo(data?.fetchUser);
-    console.log(data);
-    console.log(userInfo);
   }, [data]);
 
   const onClickLogo = () => {
@@ -193,12 +226,7 @@ export default function LayoutHeader() {
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
-          <FaRegUserCircle
-            color='white'
-            size={'20'}
-            style={{ margin: '10' }}
-            onClick={handleMenu}
-          />
+          <MyBee style={{ margin: '10' }} onClick={handleMenu} />
 
           {isToken ? (
             <>
@@ -217,10 +245,12 @@ export default function LayoutHeader() {
             <></>
           )}
 
-          <CgBee color='white' size={'20'} style={{ margin: '10' }} />
+          <MyPoint style={{ margin: '10' }} />
 
           {isToken ? (
-            <>{data?.fetchUser.points} P</>
+            <SpanPoint>
+              {data?.fetchUser.points.toLocaleString('ko-KR')} P
+            </SpanPoint>
           ) : (
             <>
               <SpanLogin onClick={onClickSignIn}>Login</SpanLogin>

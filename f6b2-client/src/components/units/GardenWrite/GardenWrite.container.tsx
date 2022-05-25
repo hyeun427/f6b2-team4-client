@@ -13,6 +13,7 @@ export default function GardenWriteContainer() {
   const [isContent, setIsContent] = useState('');
   const [fileUrls, setFileUrls] = useState([]);
   const [videoUrls, setVideoUrls] = useState('');
+  const [isSave, setIsSave] = useState(false);
 
   const [createGarden] = useMutation(CREATE_BOARD);
   const [createImage] = useMutation(CREATE_BOARD_IMAGE);
@@ -108,6 +109,7 @@ export default function GardenWriteContainer() {
       handleClose={handleClose}
       onClickImageDelete={onClickImageDelete}
       onClickVideoDelete={onClickVideoDelete}
+      isSave={isSave}
     />
   );
 }
