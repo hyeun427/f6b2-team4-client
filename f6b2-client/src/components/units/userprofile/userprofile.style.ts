@@ -51,7 +51,7 @@ export const WrapperMyContents = styled.div`
   justify-content: center;
   align-items: center;
   width: 702px;
-  height: 465px;
+  height: auto;
   background-color: #fff;
   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;

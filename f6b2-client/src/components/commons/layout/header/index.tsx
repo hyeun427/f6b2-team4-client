@@ -8,7 +8,7 @@ import { CgBee } from 'react-icons/cg';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import React, { useEffect } from 'react';
-import { IoFlowerOutline } from 'react-icons/io5';
+import { BsFlower1 } from 'react-icons/bs';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,7 +42,7 @@ const WrapperLogo = styled.div`
 `;
 
 const LogoImg = styled.img`
-  width: auto;
+  width: 74px;
   height: auto;
   cursor: pointer;
 `;
@@ -105,7 +105,7 @@ const MyBee = styled(CgBee)`
   }
 `;
 
-const MyPoint = styled(IoFlowerOutline)`
+const MyPoint = styled(BsFlower1)`
   font-size: 18px;
   text-align: center;
   color: #ffffff;
@@ -241,7 +241,7 @@ export default function LayoutHeader() {
     <Wrapper>
       <WrapperHeader>
         <WrapperLogo onClick={onClickLogo}>
-          <LogoImg src='/image/logo.svg' />
+          <LogoImg src='/image/logowhite.png' />
         </WrapperLogo>
         <WrapperHeaderMenu>
           <BtnHeader onClick={onClickGarden}>Garden</BtnHeader>

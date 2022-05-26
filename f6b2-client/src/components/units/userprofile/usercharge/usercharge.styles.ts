@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { BsThreeDotsVertical, BsThreeDots } from 'react-icons/bs';
 
 export const WrapperColStart = styled.div`
   display: flex;
@@ -52,12 +53,15 @@ export const WrapperRow53 = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 export const WrapperRow61 = styled.div`
-  width: 61%;
+  width: 65%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
 `;
 
 export const H3Title = styled.h3`
@@ -69,19 +73,33 @@ export const H3Title = styled.h3`
 `;
 
 export const PDate = styled.p`
-  width: 67px;
+  width: 120px;
   font-size: 9px;
   text-align: center;
+  margin: 0px;
 `;
 
 export const PPoint = styled.p`
   width: 170px;
   font-size: 12px;
-  text-align: center;
+  text-align: right;
+  padding-right: 10px;
+  color: ${(props) => (props.status === 'CANCELLED' ? 'red' : 'black')};
+  margin: 0px;
+`;
+
+export const PPrice = styled.p`
+  width: 170px;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
+  color: ${(props) => (props.status === 'CANCELLED' ? 'red' : 'black')};
+  margin: 0px;
 `;
 
 export const Connector = styled.div`
   width: 100%;
+  height: 2px;
   border-bottom: 2px dashed #a8a8a8;
 `;
 
@@ -90,4 +108,11 @@ export const PTextCharge = styled.p`
   font-size: 9px;
   text-align: center;
   margin: 0px;
+`;
+
+export const IconDot = styled(BsThreeDots)`
+  font-size: 35px;
+  :hover {
+    cursor: pointer;
+  }
 `;
