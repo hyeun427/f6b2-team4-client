@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { AiOutlineSearch } from "react-icons/ai";
 import { GiHearts } from "react-icons/gi";
 
 export const Wrapper = styled.div`
@@ -7,16 +6,18 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding-bottom: 40px;
-  height: 673px;
+  /* padding-bottom: 40px; */
+  height: 605px;
 `;
 
 export const Header = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 47px;
-  width: 783px;
+  align-items: baseline;
+  margin-top: 68px;
+  margin-bottom: 55px;
+  width: 756px;
+  line-height: 1.2;
 `;
 
 export const PageName = styled.div`
@@ -24,68 +25,30 @@ export const PageName = styled.div`
   font-weight: 600;
 `;
 
-export const BarBtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 220px;
-  height: 73px;
-`;
-
-export const SearchbarWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 0px 5px;
-  width: 100%;
-  background-color: #dbdbdb;
-  border: none;
-  border-radius: 5px;
-`;
-
-export const Searchbar = styled.input`
-  width: 100%;
-  background-color: #dbdbdb;
-  border: none;
-  border-radius: 5px;
-  :focus {
-    outline: none;
-  }
-`;
-
-export const AiOutlineSearchIcon = styled(AiOutlineSearch)`
-  color: #a4b1da;
-  margin: 0px 5px;
-`;
-
-export const BtnWrapper = styled.div`
-  width: 138px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`;
-
-export const Button = styled.button`
+export const Button = styled.div`
   cursor: pointer;
-  width: 66px;
-  height: 27px;
-  background-color: #3a3939;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  color: black;
   font-size: 13px;
   font-weight: 700;
-  color: white;
-  border: none;
-  border-radius: 17px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 7px;
   :hover {
     cursor: pointer;
-    width: 66px;
-    height: 27px;
-    background-color: #ffb950;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    color: #ffb950;
     font-size: 13px;
     font-weight: 700;
-    color: white;
-    border: none;
-    border-radius: 17px;
+    text-align: center;
+    border: 2px solid #ffb950;
+    border-radius: 7px;
+    transform: scale(1.15);
+    transition: 0.4s;
   }
 `;
 

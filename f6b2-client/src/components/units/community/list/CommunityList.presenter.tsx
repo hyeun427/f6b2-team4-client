@@ -63,31 +63,12 @@ export default function CommunityListUI(props: ICommunityListUIProps) {
     <S.Wrapper>
       <S.Header>
         <S.PageName>Community</S.PageName>
-        {/* 검색창 및 버튼 Wrapper */}
-        <S.BarBtnWrapper>
-          {/* 검색창 Wrapper */}
-          <S.SearchbarWrapper>
-            <S.Searchbar />
-            <S.AiOutlineSearchIcon />
-          </S.SearchbarWrapper>
-          {/* 버튼 Wrapper */}
-          <S.BtnWrapper>
-            <S.Button>filter</S.Button>
-            <S.Button onClick={props.onClickMoveToWrite}>Create</S.Button>
-          </S.BtnWrapper>
-        </S.BarBtnWrapper>
+        <S.Button onClick={props.onClickMoveToWrite}>+</S.Button>
       </S.Header>
 
       <S.Body>
         <Slider1 {...settings}>
           {props.data?.fetchCommunityBoards.map((el) => (
-            // <S.ContentsWrapper key={el.id}>
-            //   <S.Img
-            //     id={el.id}
-            //     src={"/community/default.png"}
-            //     onClick={props.onClickContent}
-            //   />
-
             <S.ContentsWrapper key={el.id}>
               <S.Img
                 id={el.id}
