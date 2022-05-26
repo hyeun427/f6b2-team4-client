@@ -11,7 +11,7 @@ import { BiCaretRightSquare } from 'react-icons/bi';
 import { ImFileVideo } from 'react-icons/im';
 
 export const UploadVideoWrapper = styled.div`
-  width: 30px;
+  width: auto;
   display: flex;
   flex-direction: column;
 `;

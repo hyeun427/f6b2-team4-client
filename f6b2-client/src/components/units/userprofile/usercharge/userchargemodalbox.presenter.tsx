@@ -17,7 +17,6 @@ export const WrapperModalBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 `;
 
 export const H2Title = styled.h2`
@@ -34,6 +33,21 @@ export const PExplane = styled.p`
   font-size: 16px;
   font-style: bold;
   text-align: Center;
+`;
+
+export const ButtonCancle = styled.button`
+  width: 100px;
+  height: 25px;
+  background: #ffb950;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  text-align: center;
 `;
 
 export default function CancleModalBox(props) {
@@ -61,7 +75,7 @@ export default function CancleModalBox(props) {
     <WrapperModalBox>
       <H2Title>Cancle</H2Title>
       <PExplane>정말 취소하시겠습니까?</PExplane>
-      <button onClick={onClickCancle}>취소하기</button>
+      <ButtonCancle onClick={onClickCancle}>취소하기</ButtonCancle>
     </WrapperModalBox>
   );
 }
