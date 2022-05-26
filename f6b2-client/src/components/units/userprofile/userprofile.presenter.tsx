@@ -82,7 +82,9 @@ export default function UserProfileUI(props) {
           <Profile.WrapperColCenter onClick={props.onClickTab} id={'myhive'}>
             <Profile.IconMyHive istab={props.istab} />
             <Profile.PMyGardenText>My Hive</Profile.PMyGardenText>
-            <Profile.PMyGardenCount>33</Profile.PMyGardenCount>
+            <Profile.PMyGardenCount>
+              {props.userCommunity?.length}
+            </Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
 
           {props.isMy ? (
@@ -92,7 +94,9 @@ export default function UserProfileUI(props) {
             >
               <Profile.IconMyCharge istab={props.istab} />
               <Profile.PMyGardenText>Charge History</Profile.PMyGardenText>
-              <Profile.PMyGardenCount>33</Profile.PMyGardenCount>
+              <Profile.PMyGardenCount>
+                {props.receipts?.fetchReceipts?.length}
+              </Profile.PMyGardenCount>
             </Profile.WrapperColCenter>
           ) : (
             ''
@@ -106,13 +110,8 @@ export default function UserProfileUI(props) {
           <Profile.WrapperRowNoMargin>
             <Profile.SliderTab {...settings}>
               {props.userGarden?.map((el, index) => (
-                <Profile.WrapperRowItem>
-                  <UserTabItemUI
-                    key={uuidv4}
-                    el={el}
-                    number={index}
-                    istab={props.istab}
-                  />
+                <Profile.WrapperRowItem key={uuidv4()}>
+                  <UserTabItemUI el={el} number={index} istab={props.istab} />
                 </Profile.WrapperRowItem>
               ))}
             </Profile.SliderTab>
@@ -124,13 +123,8 @@ export default function UserProfileUI(props) {
           <Profile.WrapperRowNoMargin>
             <Profile.SliderTab {...settings}>
               {props.community?.fetchCommunityBoards?.map((el, index) => (
-                <Profile.WrapperRowItem>
-                  <UserTabItemUI
-                    key={uuidv4}
-                    el={el}
-                    number={index}
-                    istab={props.istab}
-                  />
+                <Profile.WrapperRowItem key={uuidv4()}>
+                  <UserTabItemUI el={el} number={index} istab={props.istab} />
                 </Profile.WrapperRowItem>
               ))}
             </Profile.SliderTab>
@@ -138,7 +132,11 @@ export default function UserProfileUI(props) {
         ) : (
           ''
         )}
-        {props.istab === 'mycharge' ? <UserChargeContainer /> : ''}
+        {props.istab === 'mycharge' ? (
+          <UserChargeContainer receipts={props.receipts} />
+        ) : (
+          ''
+        )}
       </Profile.WrapperMyContents>
     </Profile.WrapperRow>
   );

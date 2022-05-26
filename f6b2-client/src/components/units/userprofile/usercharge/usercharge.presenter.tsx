@@ -1,7 +1,8 @@
 import * as Charge from './usercharge.styles';
 import Barcode from 'react-barcode';
+import UserChargeItem from './userchargeitem.presenter';
 
-export default function UserChargeUI() {
+export default function UserChargeUI(props) {
   const options = {
     width: 2,
     height: 40,
@@ -25,7 +26,6 @@ export default function UserChargeUI() {
   return (
     <>
       <Charge.WrapperColStart>
-        {/* <Charge.ImageDefault src='/image/undraw_no_data_re_kwbl.svg' /> */}
         <Charge.H2Title>RECEIPT #174375</Charge.H2Title>
         <Charge.DividerTitle></Charge.DividerTitle>
         <Charge.WrapperRow56>
@@ -46,30 +46,10 @@ export default function UserChargeUI() {
           <Charge.H3Title>Price</Charge.H3Title>
         </Charge.WrapperRow53>
         {/* 충전, 사용내역 시작 */}
-        <Charge.WrapperRow61>
-          <Charge.PDate>YYYY.MM.DD</Charge.PDate>
-          <Charge.PPoint>0000P</Charge.PPoint>
-          <Charge.Connector></Charge.Connector>
-          <Charge.PPoint>00000W</Charge.PPoint>
-        </Charge.WrapperRow61>
-        <Charge.WrapperRow61>
-          <Charge.PDate>YYYY.MM.DD</Charge.PDate>
-          <Charge.PPoint>0000P</Charge.PPoint>
-          <Charge.Connector></Charge.Connector>
-          <Charge.PPoint>00000W</Charge.PPoint>
-        </Charge.WrapperRow61>
-        <Charge.WrapperRow61>
-          <Charge.PDate>YYYY.MM.DD</Charge.PDate>
-          <Charge.PPoint>0000P</Charge.PPoint>
-          <Charge.Connector></Charge.Connector>
-          <Charge.PPoint>00000W</Charge.PPoint>
-        </Charge.WrapperRow61>
-        <Charge.WrapperRow61>
-          <Charge.PDate>YYYY.MM.DD</Charge.PDate>
-          <Charge.PPoint>0000P</Charge.PPoint>
-          <Charge.Connector></Charge.Connector>
-          <Charge.PPoint>00000W</Charge.PPoint>
-        </Charge.WrapperRow61>
+        {props.receipts.fetchReceipts.map((el) => (
+          <UserChargeItem el={el} />
+        ))}
+
         <Charge.DividerPoint></Charge.DividerPoint>
         <Charge.WrapperRow56>
           <Charge.Ptext>CARD #</Charge.Ptext>
@@ -81,15 +61,15 @@ export default function UserChargeUI() {
         </Charge.WrapperRow56>
         <Charge.WrapperRow56>
           <Charge.Ptext>TOTAL CHARGED POINTS</Charge.Ptext>
-          <Charge.Ptext>4440P</Charge.Ptext>
+          <Charge.Ptext>{props.totalPoint}P</Charge.Ptext>
         </Charge.WrapperRow56>
         <Charge.WrapperRow56>
           <Charge.Ptext>TOTAL PRICE</Charge.Ptext>
-          <Charge.Ptext>44000W</Charge.Ptext>
+          <Charge.Ptext>{props.totalPoint * 10}W</Charge.Ptext>
         </Charge.WrapperRow56>
         <Charge.DividerPoint></Charge.DividerPoint>
         <Charge.PTextCharge>THANK YOUR FOR YOUR PAYMENT!</Charge.PTextCharge>
-        <Barcode value={'Langbe'} {...options} />
+        <Barcode value={'Langb'} {...options} />
       </Charge.WrapperColStart>
     </>
   );

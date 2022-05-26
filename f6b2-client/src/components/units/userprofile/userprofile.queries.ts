@@ -23,6 +23,23 @@ export const FETCH_COMMUNITY_BOARDS = gql`
       createdAt
       likes
       image
+      writer {
+        id
+        communityBoardCounts
+      }
+    }
+  }
+`;
+
+export const FETCH_RECEIPTS = gql`
+  query fetchReceipts {
+    fetchReceipts {
+      id
+      impUid
+      point
+      price
+      purchasedAt
+      status
     }
   }
 `;
