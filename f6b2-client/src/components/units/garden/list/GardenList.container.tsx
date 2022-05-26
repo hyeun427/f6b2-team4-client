@@ -15,10 +15,18 @@ import { useRouter } from "next/router";
 export default function GardenList() {
   const router = useRouter();
   const [saveGarden] = useMutation(SAVE_BOARD);
-  const { data, fetchMore } = useQuery(FETCH_BOARDS);
-  const [likeBoard] = useMutation(LIKE_BOARD);
   //  로그인 된 회원 정보(글로벌)
   const [loginUserInfo] = useRecoilState(userInfoState);
+  console.log(loginUserInfo);
+
+  const { data, fetchMore } = useQuery(FETCH_BOARDS, {
+    variables: {
+      pageSize: 5,
+      page: 1,
+      myLang: loginUserInfo?.newLang,
+    },
+  });
+  const [likeBoard] = useMutation(LIKE_BOARD);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
 
@@ -76,19 +84,19 @@ export default function GardenList() {
   };
 
   // 무한스크롤
-  // const loadFunc = () => {
-  //   if (!data) return;
-  //   fetchMore({
-  //     variables: { page: Math.ceil(data?.fetchBoards.length / 10) + 1 },
-  //     updateQuery: (prev, { fetchMoreResult }) => {
-  //       if (!fetchMoreResult.fetchBoards)
-  //         return { fetchBoards: [...prev.fetchBoards] };
-  //       return {
-  //         fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
-  //       };
-  //     },
-  //   });
-  // };
+  const loadFunc = () => {
+    if (!data) return;
+    fetchMore({
+      variables: { page: Math.ceil(data?.fetchBoards.length / 5) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchBoards)
+          return { fetchBoards: [...prev.fetchBoards] };
+        return {
+          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
+        };
+      },
+    });
+  };
 
   // 가든에서 유저 프로필 클릭 시...
   const onClickUserProfile = (event) => {
@@ -107,7 +115,7 @@ export default function GardenList() {
       onClickCommentListBtn={onClickCommentListBtn}
       data={data}
       onClickSaved={onClickSaved}
-      // loadFunc={loadFunc}
+      loadFunc={loadFunc}
       onClickLikeBoard={onClickLikeBoard}
       loginUserInfo={loginUserInfo}
       onClickUserProfile={onClickUserProfile}

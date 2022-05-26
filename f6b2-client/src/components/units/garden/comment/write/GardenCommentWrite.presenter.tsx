@@ -44,14 +44,14 @@ export default function GardenCommentWriteUI(props: any) {
               <ImageUpload
                 onChangeFileUrls={props.onChangeFileUrls}
                 fileUrls={props.fileUrls}
-                type={"garden"}
+                type={"comment"}
               />
             </ImgBtn>
             <VideoBtn>
               <VideoUpload
                 onChangeVideoUrls={props.onChangeVideoUrls}
                 videoUrls={props.videoUrls}
-                type={"garden"}
+                type={"comment"}
               />
             </VideoBtn>
           </CommentWriteBtn>
