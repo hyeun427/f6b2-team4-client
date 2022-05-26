@@ -38,7 +38,6 @@ import TranslateGarden from "../../../commons/translate/garden";
 import GardenSearch from "../search/GardenSearch.container";
 
 export default function GardenListUI(props: any) {
-  console.log("DATA", props.data);
   return (
     <>
       <GardenWrapper>

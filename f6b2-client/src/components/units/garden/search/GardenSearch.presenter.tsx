@@ -38,7 +38,6 @@ import TranslateGarden from "../../../commons/translate/garden";
 import GardenSearch from "../search/GardenSearch.container";
 
 export default function GardenSearchUI(props: any) {
-  console.log("검색결과", props.searchBoard);
   return (
     <>
       <GardenWrapper>

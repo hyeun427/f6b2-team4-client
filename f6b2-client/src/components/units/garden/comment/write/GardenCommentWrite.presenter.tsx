@@ -58,27 +58,10 @@ export default function GardenCommentWriteUI(props: any) {
         </CommentWriteInputBox>
       </CommentWriteBox>
       <Thumbnail>
-        {props.fileUrls?.map((el, index) => (
-          <ImageThumbnail
-            key={index}
-            src={
-              el.startsWith("https", 0)
-                ? el
-                : `https://storage.googleapis.com/${el}`
-            }
-          />
-        ))}
-        {props.videoUrls?.map((el, index) => (
-          <VideoThumbnail
-            key={index}
-            src={
-              el.startsWith("https", 0)
-                ? el
-                : `https://storage.googleapis.com/${el}`
-            }
-            controls
-          />
-        ))}
+        {props.fileUrls !== "" && <ImageThumbnail src={props.fileUrls} />}
+        {props.videoUrls !== "" && (
+          <VideoThumbnail src={props.videoUrls} controls />
+        )}
       </Thumbnail>
     </>
   );

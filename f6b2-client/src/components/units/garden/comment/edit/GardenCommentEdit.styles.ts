@@ -74,3 +74,26 @@ export const VideoBtn = styled.button`
   cursor: pointer;
   margin-left: 13px;
 `;
+
+export const MediaWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const Img = styled.img`
+  width: 180px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+export const Video = styled.video`
+  width: 180px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+export const Wrapper = styled.div``;

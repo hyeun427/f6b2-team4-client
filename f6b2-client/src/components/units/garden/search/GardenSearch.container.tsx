@@ -30,8 +30,6 @@ export default function GardenSearch(props) {
     },
   });
 
-  console.log("키워드", props.searchKeyword);
-
   // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
   const onClickCommentListBtn = (index) => (event) => {
@@ -42,7 +40,6 @@ export default function GardenSearch(props) {
 
   // 좋아요 클릭
   const onClickLikeBoard = async (event) => {
-    console.log(event.currentTarget.id);
     try {
       await likeBoard({
         variables: {

@@ -83,7 +83,6 @@ export default function GardenImgUI(props) {
     slidesToScroll: 1,
   };
 
-  console.log(props.data?.fetchBoardImage);
   return (
     <Wrapper>
       {props.video !== "" || props.data?.fetchBoardImage.length > 0 ? (
