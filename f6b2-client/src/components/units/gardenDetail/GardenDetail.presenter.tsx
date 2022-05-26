@@ -8,9 +8,11 @@ import GardenDetailImg from "./detailImg/gardenDetailImg.container";
 import GardenDetailCommentList from "./detailcomment/list/GardenDetailCommentList.container";
 import GardenDetailCommentWrite from "./detailcomment/write/GardenDetailCommentWrite.container";
 import TranslateGarden from "../../commons/translate/garden";
+import DropdownIcon from "./dropDown";
 
 export default function GardenDetailUI(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
+
   return (
     <>
       <S.GardenWrapper>
@@ -34,11 +36,9 @@ export default function GardenDetailUI(props: any) {
                     {getDate(props.data?.fetchBoard.createdAt)}
                   </S.CreatedAt>
                 </S.WriterInfo>
-                {/* 수정버튼 */}
+                {/* 수정,삭제버튼 */}
                 {props.data?.fetchBoard.writer.id === loginInfo?.id && (
-                  <S.IconWrapper>
-                    <S.EditIcon />
-                  </S.IconWrapper>
+                  <DropdownIcon />
                 )}
                 {props.data?.fetchBoard.writer.id !== loginInfo?.id && ""}
               </S.WriterInfoBox>

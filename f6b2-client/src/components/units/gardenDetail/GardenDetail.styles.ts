@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { BiEdit } from "react-icons/bi";
+import { RiFileEditLine, RiDeleteBinLine } from "react-icons/ri";
 
 export const GardenWrapper = styled.div`
   display: flex;
@@ -156,7 +156,15 @@ export const IconWrapper = styled.button`
   cursor: pointer;
 `;
 
-export const EditIcon = styled(BiEdit)`
+export const EditIcon = styled(RiFileEditLine)`
+  color: black;
+  width: 24px;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  :hover {
+    color: #ffb950;
+  }
+`;
+export const DeleteIcon = styled(RiDeleteBinLine)`
   color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
