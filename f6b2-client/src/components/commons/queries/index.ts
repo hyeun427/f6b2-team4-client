@@ -49,6 +49,7 @@ export const FETCH_BOARDS = gql`
       content
       video
       likes
+      commentsCount
       writer {
         id
         name
