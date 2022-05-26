@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { BsFileEarmarkImage } from "react-icons/bs";
 import { MdUploadFile } from "react-icons/md";
-import { IUploadBtnProps } from "./CommunityWrite.types";
+import { IUploadBtnProps } from "../Project/f6b2-team4-client/f6b2-client/src/components/units/community/write/CommunityWrite.types";
 
 export const OutWrapper = styled.div`
   background-color: white;
@@ -116,20 +116,21 @@ export const RightWrapper = styled.div`
 export const TitleWrapper = styled.div`
   height: 29px;
   margin-bottom: 17px;
+  width: 280px;
 `;
 
 export const TitleInput = styled.input`
   padding-left: 9px;
   width: 100%;
   height: 29px;
+  color: white;
   text-align: start;
-  background: #ffffff;
+  background: #3a3939;
   border: 1px solid #dbdbdb;
-  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   ::placeholder {
-    color: #767676;
-    font-size: 15px;
+    color: #cdcdcd;
+    font-size: 14px;
   }
   :focus {
     outline: none;
@@ -146,20 +147,24 @@ export const Line = styled.div`
 export const ReactQuillWrapper = styled.div`
   margin-top: 17px;
   width: 280px;
+  background-color: rgba(0, 0, 0, 0);
 
   .quill {
-    background: #ffffff;
+    color: white;
+    background: #3a3939;
     border: 1px solid #dbdbdb;
     box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
   }
   .ql-toolbar ql-snow {
     height: 36px;
+    color: white;
   }
   .ql-toolbar.ql-snow {
     border: none;
     border-bottom: 2px solid #b9b9b9;
     font-size: 8px;
+    color: #cdcdcd;
   }
 
   .ql-container {
@@ -168,8 +173,21 @@ export const ReactQuillWrapper = styled.div`
   .ql-container.ql-snow {
     border: none;
   }
+  .quill > .ql-container > .ql-editor.ql-blank::before {
+    color: #cdcdcd;
+    font-size: 14px;
+  }
   .ql-formats {
     size: 7px;
+  }
+
+  .ql-toolbar .ql-stroke {
+    fill: none;
+    stroke: #cdcdcd;
+  }
+
+  .ql-toolbar .ql-picker {
+    color: #cdcdcd;
   }
 `;
 

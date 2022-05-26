@@ -63,7 +63,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
             </S.TitleWrapper>
 
             {/* 라인 */}
-            <S.Line></S.Line>
+            {/* <S.Line></S.Line> */}
             {/* 내용 */}
             <S.ReactQuillWrapper>
               {!props.isEdit && (
@@ -71,7 +71,7 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
                   <ReactQuill
                     onChange={props.onChangeContent}
                     modules={modules}
-                    placeholder={"Enter your story here..."}
+                    placeholder={"Enter your story here"}
                   />
 
                   <S.Error>{props.contentError}</S.Error>
