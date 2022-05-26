@@ -150,8 +150,8 @@ const SpanLogin = styled.span`
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 45px;
+  font-size: 14px;
+  line-height: 21px;
   text-align: center;
   color: #ffffff;
   :hover {

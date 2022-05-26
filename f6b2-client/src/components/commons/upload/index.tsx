@@ -13,7 +13,7 @@ import * as Edit from '../../units/userprofile/useredit/useredit.style';
 import { AiOutlineFileImage } from 'react-icons/ai';
 
 export const UploadImageWrapper = styled.div`
-  width: 30px;
+  width: auto;
   display: flex;
   flex-direction: column;
 `;
