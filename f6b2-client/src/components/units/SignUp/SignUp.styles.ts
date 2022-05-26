@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-color: #d4e8ea;
+  background: #ffb950;
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 69px;
 `;
 
 export const SignUpTitle = styled.h1`

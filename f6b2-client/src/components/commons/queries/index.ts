@@ -41,21 +41,21 @@ export const FETCH_USERS = gql`
   }
 `;
 
+// 가든 리스트 + 무한스크롤
 export const FETCH_BOARDS = gql`
-  query fetchBoards {
-    fetchBoards {
+  query fetchBoards($pageSize: Float, $page: Float, $myLang: String) {
+    fetchBoards(pageSize: $pageSize, page: $page, myLang: $myLang) {
       id
       content
       video
       likes
-      createdAt
-      commentsCount
       writer {
         id
         name
         myLang
         newLang
       }
+      createdAt
     }
   }
 `;

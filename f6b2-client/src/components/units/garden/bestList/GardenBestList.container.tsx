@@ -4,8 +4,8 @@ import { userInfoState } from "../../../../commons/store";
 import GardenBestListUI from "./GardenBestList.presenter";
 
 const FETCH_BOARDS = gql`
-  query fetchBoards($bestboardCount: Float, $language: String) {
-    fetchBoards(bestboardCount: $bestboardCount, language: $language) {
+  query fetchBoards($bestboardCount: Float, $myLang: String) {
+    fetchBoards(bestboardCount: $bestboardCount, myLang: $myLang) {
       id
       content
       video
@@ -24,7 +24,7 @@ export default function GardenBestList() {
   const { data } = useQuery(FETCH_BOARDS, {
     variables: {
       bestboardCount: 4,
-      language: loginInfo?.myLang,
+      myLang: loginInfo?.newLang,
     },
   });
   return <GardenBestListUI data={data} />;
