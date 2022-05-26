@@ -12,7 +12,7 @@ import { IoFlowerOutline } from 'react-icons/io5';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 83px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -38,6 +38,12 @@ const WrapperLogo = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+`;
+
+const LogoImg = styled.img`
+  width: auto;
+  height: auto;
   cursor: pointer;
 `;
 
@@ -78,8 +84,8 @@ const BtnHeader = styled.button`
   margin: 0px 35px;
   font-style: normal;
   font-weight: 700;
-  font-size: 25px;
-  line-height: 36px;
+  font-size: 14px;
+  line-height: 21px;
   text-align: center;
   color: #ffffff;
 
@@ -90,7 +96,7 @@ const BtnHeader = styled.button`
 `;
 
 const MyBee = styled(CgBee)`
-  font-size: 30px;
+  font-size: 18px;
   text-align: center;
   color: #ffffff;
   :hover {
@@ -100,7 +106,7 @@ const MyBee = styled(CgBee)`
 `;
 
 const MyPoint = styled(IoFlowerOutline)`
-  font-size: 30px;
+  font-size: 18px;
   text-align: center;
   color: #ffffff;
   :hover {
@@ -130,12 +136,13 @@ const SpanPoint = styled.span`
   font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 45px;
+  font-size: 14px;
+  line-height: 21px;
   text-align: center;
   color: #ffffff;
   :hover {
     cursor: pointer;
+    color: #ffb950;
   }
 `;
 
@@ -149,6 +156,19 @@ const SpanLogin = styled.span`
   color: #ffffff;
   :hover {
     cursor: pointer;
+  }
+`;
+
+const WrapperPoint = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  :hover {
+    cursor: pointer;
+    color: #ffb950;
   }
 `;
 
@@ -221,8 +241,7 @@ export default function LayoutHeader() {
     <Wrapper>
       <WrapperHeader>
         <WrapperLogo onClick={onClickLogo}>
-          <PLogoLang>Lang</PLogoLang>
-          <PLogoB>B</PLogoB>
+          <LogoImg src='/image/logo.svg' />
         </WrapperLogo>
         <WrapperHeaderMenu>
           <BtnHeader onClick={onClickGarden}>Garden</BtnHeader>
@@ -230,8 +249,7 @@ export default function LayoutHeader() {
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
-          <MyBee style={{ margin: '10' }} onClick={handleMenu} />
-
+          <MyBee style={{ margin: '5' }} onClick={handleMenu} />
           {isToken ? (
             <>
               <Menu
@@ -249,12 +267,13 @@ export default function LayoutHeader() {
             <></>
           )}
 
-          <MyPoint style={{ margin: '10' }} />
-
           {isToken ? (
-            <SpanPoint onClick={onClickCharge}>
-              {data?.fetchUser.points.toLocaleString('ko-KR')} P
-            </SpanPoint>
+            <WrapperPoint onClick={onClickCharge}>
+              <MyPoint style={{ margin: '10' }} />
+              <SpanPoint>
+                {data?.fetchUser.points.toLocaleString('ko-KR')} P
+              </SpanPoint>
+            </WrapperPoint>
           ) : (
             <>
               <SpanLogin onClick={onClickSignIn}>Login</SpanLogin>
