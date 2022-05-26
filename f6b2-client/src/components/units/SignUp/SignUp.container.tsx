@@ -66,17 +66,13 @@ export default function SignUp() {
 
   const onChangeEmail = (event: any) => {
     setEmail(event.target.value);
-    console.log("email:" + email);
   };
 
   const onChangeAuthNum = (event: any) => {
     setAuthNum(event.target.value);
-    console.log("authNum" + authNum);
   };
 
   const onClickAuthNumCheck = async () => {
-    console.log("auth보내는 email값: " + email);
-    console.log("auth보내는 authNum값: " + authNum);
     const result = await verification({
       variables: {
         email: email,
@@ -113,7 +109,6 @@ export default function SignUp() {
       setAuthDisable(true);
       setAuthCheckDisable(false);
       alert("인증메일이 발송되었습니다!");
-      console.log(result);
     } catch (error) {
       alert(error);
     }

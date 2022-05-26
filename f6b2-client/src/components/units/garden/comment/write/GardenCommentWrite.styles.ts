@@ -79,12 +79,14 @@ export const ImageThumbnail = styled.img`
   width: 300px;
   object-fit: cover;
   margin-top: 20px;
+  border-radius: 10px;
 `;
 
 export const VideoThumbnail = styled.video`
   width: 300px;
   object-fit: cover;
   margin-top: 20px;
+  border-radius: 10px;
 `;
 
 export const Thumbnail = styled.div`

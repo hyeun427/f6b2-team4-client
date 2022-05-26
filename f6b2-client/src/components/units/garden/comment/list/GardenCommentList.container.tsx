@@ -19,7 +19,6 @@ export default function GardenCommentList(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
 
   const onClickDeleteComment = async (event) => {
-    console.log(event.target.id);
     try {
       await deleteComment({
         variables: {
@@ -42,7 +41,7 @@ export default function GardenCommentList(props: any) {
 
   const [commentEditVal, setCommentEditVal] = useState([false]);
   // 댓글수정버튼 클릭 시, 수정창이 보인다
-  console.log(commentEditVal);
+
   const commentEditBtn = (index) => (event) => {
     const newCommentEditVal = [...commentEditVal];
     newCommentEditVal[index] = !commentEditVal[index];

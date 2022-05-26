@@ -61,8 +61,6 @@ export default function GardenBestBox(props) {
     },
   });
 
-  console.log("IMAGE", typeof data?.fetchBoardImage[0]?.image);
-
   const onClickMoveToDetail = () => {
     router.push("/garden/" + props.el.id);
   };

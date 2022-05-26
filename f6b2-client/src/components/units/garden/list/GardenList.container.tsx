@@ -17,7 +17,6 @@ export default function GardenList() {
   const [saveGarden] = useMutation(SAVE_BOARD);
   //  로그인 된 회원 정보(글로벌)
   const [loginUserInfo] = useRecoilState(userInfoState);
-  console.log(loginUserInfo);
 
   const { data, fetchMore } = useQuery(FETCH_BOARDS, {
     variables: {
@@ -40,7 +39,6 @@ export default function GardenList() {
 
   // 좋아요 클릭
   const onClickLikeBoard = async (event) => {
-    console.log(event.currentTarget.id);
     try {
       await likeBoard({
         variables: {
