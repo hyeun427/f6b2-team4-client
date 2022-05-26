@@ -22,8 +22,6 @@ export default function ChargeStation() {
     btn4: false,
   });
 
-  console.log(isClicked);
-
   const onClickButton = (btnName: string) => (event) => {
     const point = Number(
       event.target.innerText.replace('P', '').replace(',', '')
@@ -62,15 +60,17 @@ export default function ChargeStation() {
         amount: isSelect,
         buyer_email: userInfo.email,
         buyer_name: userInfo.name,
-        buyer_tel: '',
+        buyer_tel: '010-0000-0000',
         buyer_addr: '',
         buyer_postcode: '',
         // m_redirect_url: 'http://localhost:3000/usedmarket',
       },
       async (rsp: any) => {
         // callback
+        console.log(rsp);
         if (rsp.success) {
           // 결제 성공 시 로직,
+          console.log(rsp);
           const response = await buyPoint({
             variables: {
               impUid: rsp.imp_uid,
@@ -89,9 +89,6 @@ export default function ChargeStation() {
           });
 
           alert('결제가 완료되었습니다');
-
-          console.log(rsp);
-          console.log(response);
         } else {
           // 결제 실패 시 로직,
           alert('결제에 실패했습니다. 다시 시도해 주세요');

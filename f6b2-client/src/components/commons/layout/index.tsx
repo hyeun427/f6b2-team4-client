@@ -23,7 +23,7 @@ const BodyWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 83px;
+  padding-top: 60px;
   padding-bottom: 100px;
   background-color: white;
 `;
