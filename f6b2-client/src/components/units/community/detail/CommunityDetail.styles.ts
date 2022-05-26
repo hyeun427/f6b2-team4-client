@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { GiHearts } from "react-icons/gi";
-import { BiReceipt, BiEdit, BiTrash } from "react-icons/bi";
+import { RiFileEditLine, RiDeleteBinLine } from "react-icons/ri";
+import { BsListUl } from "react-icons/bs";
 import { ICommunityDetailUIProps } from "./CommunityDetail.types";
 
 export const OutWrapper = styled.div`
@@ -128,7 +129,7 @@ export const IconWrapper = styled.button`
   cursor: pointer;
 `;
 
-export const ListIcon = styled(BiReceipt)`
+export const ListIcon = styled(BsListUl)`
   color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
@@ -137,7 +138,7 @@ export const ListIcon = styled(BiReceipt)`
   }
 `;
 
-export const EditIcon = styled(BiEdit)`
+export const EditIcon = styled(RiFileEditLine)`
   color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
@@ -146,7 +147,7 @@ export const EditIcon = styled(BiEdit)`
   }
 `;
 
-export const DeleteIcon = styled(BiTrash)`
+export const DeleteIcon = styled(RiDeleteBinLine)`
   color: black;
   width: 24px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
