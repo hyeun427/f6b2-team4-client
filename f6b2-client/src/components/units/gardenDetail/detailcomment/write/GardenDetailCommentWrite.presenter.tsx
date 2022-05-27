@@ -32,7 +32,7 @@ export default function GardenDetailCommentWriteUI(props: any) {
             {props.isEdit !== true ? (
               // 댓글등록
               <SubmitBtn onClick={props.onClickCommentWrite}>
-                <MdForwardToInbox />
+                <MdForwardToInbox style={{ fontSize: "17" }} />
               </SubmitBtn>
             ) : (
               // 댓글수정
