@@ -36,19 +36,19 @@ export default function SignInUI(props: ISingninPresenter) {
         <U.BtnMoveSignUp onClick={props.onClickMoveSignUp}>
           Don’t have any account? ➤ Go sign up
         </U.BtnMoveSignUp>
-        <U.ButtonGoogle>
+        <U.ButtonGoogle href='https://langbee.shop/login/google'>
           <U.WarperBtnContents>
             <U.ImageBtnIcon src={'/image/google.png'} />
             <U.PBtnText>Log in via Google</U.PBtnText>
           </U.WarperBtnContents>
         </U.ButtonGoogle>
-        <U.ButtonKakao>
+        <U.ButtonKakao href='https://langbee.shop/login/kakao'>
           <U.WarperBtnContents>
             <U.ImageBtnIcon src={'/image/kakao.png'} />
             <U.PBtnText>Log in via Kakao</U.PBtnText>
           </U.WarperBtnContents>
         </U.ButtonKakao>
-        <U.ButtonNaver>
+        <U.ButtonNaver href='https://langbee.shop/login/naver'>
           <U.WarperBtnContents>
             <U.ImageBtnIcon src={'/image/naver.png'} />
             <U.PBtnText>Log in via Naver</U.PBtnText>

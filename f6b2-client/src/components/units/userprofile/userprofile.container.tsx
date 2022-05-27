@@ -51,14 +51,6 @@ export default function UserProfileContainer() {
 
   const { data: receipts } = useQuery(FETCH_RECEIPTS);
 
-  // const copyReceipts = [];
-
-  // useEffect(() => {
-  //   copyReceipts = [...receipts];
-  // }, []);
-
-  // console.log(copyReceipts);
-
   //  data 중에 router.query.id 와 data.fetchBoards.writer.id 가 일치 하는 경우의 board와 community를 찾아내야 한다.
   const userGarden = boards?.fetchBoards?.filter(
     (el: any) => el.writer.id === router.query.id

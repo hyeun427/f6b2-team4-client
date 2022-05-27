@@ -4,17 +4,15 @@ export default function ChargeStationUI(props) {
   return (
     <Charge.WrapperCol>
       <Charge.H2Title>Charging Station</Charge.H2Title>
-      <Charge.WrapperColCurPoint>
-        <Charge.PCurPointText>Current Point</Charge.PCurPointText>
-        <Charge.WrapperRowCurPoint>
-          <Charge.PCurPointNum>
-            {props?.userInfo?.points.toLocaleString('ko-KR')}
-          </Charge.PCurPointNum>
-          <Charge.PCurPointNum>P</Charge.PCurPointNum>
-        </Charge.WrapperRowCurPoint>
-      </Charge.WrapperColCurPoint>
       <Charge.WrapperRowDetail>
+        {/* 왼쪽 박스 */}
         <Charge.WrapperColDetail>
+          <Charge.WrapperColCurPoint>
+            <Charge.PCurPointNum>
+              {props?.userInfo?.points.toLocaleString('ko-KR')}
+            </Charge.PCurPointNum>
+            <Charge.PCurPointText>POINT</Charge.PCurPointText>
+          </Charge.WrapperColCurPoint>
           <Charge.WrapperRowItem>
             <Charge.PDetail>Charging Points</Charge.PDetail>
             <Charge.PChargePoint>
