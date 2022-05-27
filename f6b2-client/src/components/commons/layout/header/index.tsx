@@ -109,10 +109,6 @@ const MyPoint = styled(BsFlower1)`
   font-size: 18px;
   text-align: center;
   color: #ffffff;
-  :hover {
-    color: #ffb950;
-    cursor: pointer;
-  }
 `;
 
 const WrapperHeaderInfo = styled.div`

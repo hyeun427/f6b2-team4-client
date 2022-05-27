@@ -20,6 +20,7 @@ export default function ChargeStation() {
     btn2: false,
     btn3: false,
     btn4: false,
+    btn5: false,
   });
 
   const onClickButton = (btnName: string) => (event) => {
@@ -32,6 +33,7 @@ export default function ChargeStation() {
       btn2: false,
       btn3: false,
       btn4: false,
+      btn5: false,
       [btnName]: true,
     });
   };
@@ -74,7 +76,7 @@ export default function ChargeStation() {
           const response = await buyPoint({
             variables: {
               impUid: rsp.imp_uid,
-              price: isSelect,
+              price: isSelect * 10,
             },
             refetchQueries: [
               {

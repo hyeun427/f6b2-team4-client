@@ -36,26 +36,30 @@ export default function SignInContainer() {
   const client = useApolloClient();
 
   const onClickSignin = async (data: any) => {
-    const result = await loginUser({
-      variables: data,
-    });
+    try {
+      const result = await loginUser({
+        variables: data,
+      });
 
-    const accessToken = result.data.login;
-    setAccessToken(accessToken);
-    localStorage.setItem('accessToken', accessToken);
+      const accessToken = result.data.login;
+      setAccessToken(accessToken);
+      localStorage.setItem('accessToken', accessToken);
 
-    const resultUserInfo = await client.query({
-      query: FETCH_USER_LOGGED_IN,
-      context: {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      const resultUserInfo = await client.query({
+        query: FETCH_USER_LOGGED_IN,
+        context: {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      },
-    });
+      });
 
-    const userInfo = resultUserInfo.data.fetchUserLoggedIn;
-    setUserInfo(userInfo);
-    router.push('/garden');
+      const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+      setUserInfo(userInfo);
+      router.push('/garden');
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
   };
 
   const onClickMoveSignUp = () => {

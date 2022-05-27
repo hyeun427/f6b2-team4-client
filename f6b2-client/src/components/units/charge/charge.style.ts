@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Hexagon from 'react-hexagon';
 
 export const WrapperCol = styled.div`
   display: flex;
@@ -134,7 +135,7 @@ export const PChargePoint = styled.p`
 
 export const WrapperColBtn = styled.div`
   width: 340px;
-  height: 191px;
+  height: 288px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -144,19 +145,19 @@ export const WrapperColBtn = styled.div`
 export const WrapperRowBtn = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 90px;
 `;
 
 export const BtnPoint = styled.button`
   font-family: 'Noto Sans';
-  width: 140px;
-  height: 50px;
+  position: relative;
+  width: 100px;
+  height: 55px;
   background: ${(props) => (props.isClicked ? '#ffb950' : '#ffffff')};
   border: ${(props) => (props.isClicked ? '#dbdbdb' : '#dfa349')};
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
@@ -167,6 +168,64 @@ export const BtnPoint = styled.button`
     border: #dfa349;
     background: #ffb950;
     color: white;
+  }
+  :before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid white;
+  }
+  :after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid white;
+  }
+`;
+
+export const BthHexa = styled.button`
+  width: 80px;
+  height: 44px;
+  background: white;
+  position: relative;
+  border: 1px solid #dbdbdb;
+
+  :before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid #dbdbdb;
+    border-right: 39px solid transparent;
+    border-bottom: 20px solid white;
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 20px solid white;
+  }
+
+  :hover {
+    background-color: #ffb950;
   }
 `;
 
@@ -186,5 +245,66 @@ export const BtnCharge = styled.button`
   border: none;
   :hover {
     background: #ffb950;
+  }
+`;
+
+/* prettier-ignore */
+export const BtnHexagon = styled(Hexagon)`
+  width: 80px;
+  height: 90px;
+  margin-right: 5px;
+  background-image: url(${(props) => props.isClicked ? props.btnname + '.svg' : props.btnname + '_c.svg'});
+
+  /* background-image: url(${(props) => props.btnname + '.svg'}); */
+
+  :hover {
+    background-image: url(${(props) => props.btnname + '_c.svg'});
+    stroke: #e0a54d;
+  }
+`;
+
+/* prettier-ignore */
+export const BtnHexa = styled.button`
+  width: 80px;
+  height: 89px;
+  background-color:transparent;
+  padding: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  background-image: url(${(props) => props.isClicked ? '/image/point_b.svg' : '/image/point_a.svg'});
+  color: ${(props) => props.isClicked ? 'white' : 'black'};
+
+  :hover {
+    background-image: url('/image/point_b.svg');
+    color: white;
+  }
+`;
+
+/* prettier-ignore */
+export const BtnHexaCharge = styled.button`
+  width: 80px;
+  height: 89px;
+  background-color:transparent;
+  padding: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  background-image: url(${(props) => props.isClicked ? '/image/charge_b.svg' : '/image/charge_a.svg'});
+  color: ${(props) => props.isClicked ? 'white' : 'black'};
+
+  :hover {
+    background-image: url('/image/charge_b.svg');
+    color: white;
   }
 `;
