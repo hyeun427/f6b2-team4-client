@@ -1,15 +1,15 @@
-import { useMutation } from '@apollo/client';
-import { ChangeEvent, useRef, useState } from 'react';
+import { useMutation } from "@apollo/client";
+import { ChangeEvent, useRef, useState } from "react";
 import {
   IMutation,
   IMutationUploadFileArgs,
-} from '../../../commons/types/generated/types';
-import styled from '@emotion/styled';
-import { UPLOAD_FILE } from '../../commons/queries';
-import * as S from '../../../components/units/community/write/CommunityWrite.styles';
-import * as Edit from '../../units/userprofile/useredit/useredit.style';
+} from "../../../commons/types/generated/types";
+import styled from "@emotion/styled";
+import { UPLOAD_FILE } from "../../commons/queries";
+import * as S from "../../../components/units/community/write/CommunityWrite.styles";
+import * as Edit from "../../units/userprofile/useredit/useredit.style";
 
-import { AiOutlineFileImage } from 'react-icons/ai';
+import { AiOutlineFileImage } from "react-icons/ai";
 
 export const UploadImageWrapper = styled.div`
   width: auto;
@@ -45,9 +45,9 @@ export default function ImageUpload(props: {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [, setImageUrl] = useState<string | undefined>('');
+  const [, setImageUrl] = useState<string | undefined>("");
   const [uploadFile] = useMutation<
-    Pick<IMutation, 'uploadFile'>,
+    Pick<IMutation, "uploadFile">,
     IMutationUploadFileArgs
   >(UPLOAD_FILE);
 
@@ -72,21 +72,21 @@ export default function ImageUpload(props: {
 
   return (
     <UploadImageWrapper>
-      {props.type === 'garden' && <GardenImageUpload onClick={onClickImage} />}
+      {props.type === "garden" && <GardenImageUpload onClick={onClickImage} />}
 
-      {props.type === 'community' && (
+      {props.type === "community" && (
         <S.ImgBtn>
           <S.BsFileEarmarkIcon onClick={onClickImage} />
         </S.ImgBtn>
       )}
-      {props.type === 'edit' && <Edit.IconEdit onClick={onClickImage} />}
-      {props.type === 'comment' && (
-        <AiOutlineFileImage onClick={onClickImage} size={'15'} />
+      {props.type === "edit" && <Edit.IconEdit onClick={onClickImage} />}
+      {props.type === "comment" && (
+        <AiOutlineFileImage onClick={onClickImage} size={"18"} />
       )}
       <input
-        id='images'
-        style={{ display: 'none' }}
-        type='file'
+        id="images"
+        style={{ display: "none" }}
+        type="file"
         onChange={onChangeFile}
         ref={fileRef}
       />
