@@ -84,12 +84,7 @@ export const SignUpItemBtn = styled.button`
   font-size: 12px;
   padding: 12px 16px;
   color: #f8f9fa;
-  background: linear-gradient(
-      96.63deg,
-      #965de8 0%,
-      rgba(255, 255, 255, 0.100415) 99.98%
-    ),
-    #6559ee;
+  background: #ffb950;
   border-radius: 10px;
   cursor: pointer;
   :disabled {
@@ -137,8 +132,6 @@ export const WrapperRadio = styled.div`
   align-items: center;
 `;
 
-export const InputRadio = styled.input``;
-
 export const LabelRadio = styled.label`
   font-style: normal;
   font-weight: 400;
@@ -155,17 +148,23 @@ export const PFindId = styled.p`
   color: #767676;
 `;
 
-export const ButtonGoogle = styled.button`
+export const ButtonGoogle = styled.a`
   width: 298px;
   height: 29px;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   background: #ffffff;
   margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 `;
 
 export const WarperBtnContents = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -185,9 +184,10 @@ export const PBtnText = styled.p`
   font-size: 10px;
   line-height: 14px;
   color: #000000;
+  margin: 0px;
 `;
 
-export const ButtonKakao = styled.button`
+export const ButtonKakao = styled.a`
   width: 298px;
   height: 29px;
   border: none;
@@ -195,13 +195,15 @@ export const ButtonKakao = styled.button`
   background: #fee500;
   border: none;
   margin-bottom: 16px;
+  text-decoration: none;
 `;
 
-export const ButtonNaver = styled.button`
+export const ButtonNaver = styled.a`
   width: 298px;
   height: 29px;
   border: none;
   border-radius: 10px;
   background: #06bd34;
   border: none;
+  text-decoration: none;
 `;

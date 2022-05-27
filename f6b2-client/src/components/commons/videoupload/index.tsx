@@ -7,7 +7,6 @@ import {
 } from '../../../commons/types/generated/types';
 import styled from '@emotion/styled';
 import { UPLOAD_FILE } from '../queries';
-import { BiCaretRightSquare } from 'react-icons/bi';
 import { ImFileVideo } from 'react-icons/im';
 
 export const UploadVideoWrapper = styled.div`

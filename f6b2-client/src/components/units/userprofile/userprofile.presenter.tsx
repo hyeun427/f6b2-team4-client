@@ -67,10 +67,10 @@ export default function UserProfileUI(props) {
             {props.user?.fetchUserId?.newLang}
           </Profile.PDetailValue>
         </Profile.WrapperRowDetail>
-        <Profile.WrapperRowDetail>
+        {/* <Profile.WrapperRowDetail>
           <Profile.PDetailTitle>Current Region</Profile.PDetailTitle>
           <Profile.PDetailValue>Busan</Profile.PDetailValue>
-        </Profile.WrapperRowDetail>
+        </Profile.WrapperRowDetail> */}
         <Profile.WrapperRowTab>
           <Profile.WrapperColCenter onClick={props.onClickTab} id={'mygarden'}>
             <Profile.IconMyGarden istab={props.istab} />

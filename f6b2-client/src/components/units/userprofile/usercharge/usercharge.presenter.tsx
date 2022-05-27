@@ -1,7 +1,6 @@
 import * as Charge from './usercharge.styles';
 import Barcode from 'react-barcode';
 import UserChargeItem from './userchargeitem.presenter';
-import { useEffect } from 'react';
 
 export default function UserChargeUI(props) {
   const options = {
@@ -23,13 +22,6 @@ export default function UserChargeUI(props) {
     marginLeft: undefined,
     marginRight: undefined,
   };
-
-  // console.log(tmp);
-
-  // useEffect(() => {
-  //   const tmp = props.receipts.fetchReceipts;
-  //   console.log(tmp.sort((a, b) => a.purchasedAt - b.purchasedAt));
-  // }, []);
 
   return (
     <>

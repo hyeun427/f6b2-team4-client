@@ -6,7 +6,6 @@ import {
 } from '../../../commons/types/generated/types';
 import styled from '@emotion/styled';
 import { UPLOAD_FILE } from '../../commons/queries';
-import { BiImageAlt } from 'react-icons/bi';
 import * as S from '../../../components/units/community/write/CommunityWrite.styles';
 import * as Edit from '../../units/userprofile/useredit/useredit.style';
 

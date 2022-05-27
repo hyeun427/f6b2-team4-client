@@ -3,15 +3,17 @@ import styled from '@emotion/styled';
 export const WrapperCol = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 900px;
   height: 500px;
-  padding: 56px 91px 65px 91px;
+  padding: 37px 91px 42px 91px;
   margin-top: 107px;
   border: 1px solid #dbdbdb;
   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  background-image: url('/image/paybg.png');
+  object-fit: cover;
 `;
 
 export const H2Title = styled.h2`
@@ -25,13 +27,20 @@ export const H2Title = styled.h2`
 `;
 
 export const WrapperColCurPoint = styled.div`
-  width: 100%;
-  height: 107px;
+  width: 120px;
+  height: 120px;
   background: #3a3939;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  padding-top: 32px;
-  margin-top: 26px;
+  border-radius: 50%;
+  margin-bottom: 47px;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border-image: linear-gradient(to right, #fbfcb9be, #ffcdf3aa, #65d3ffaa); */
+  /* border-image-slice: 1;
+  background-origin: border-box;
+  background-clip: content-box, border-box; */
 `;
 
 export const WrapperRowCurPoint = styled.div`
@@ -44,23 +53,25 @@ export const WrapperRowCurPoint = styled.div`
 `;
 
 export const PCurPointText = styled.p`
+  margin: 0px;
   font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 11px;
   text-align: center;
   color: #ffffff;
-  margin: 0px;
+  height: auto;
 `;
 
 export const PCurPointNum = styled.p`
+  margin: 0px;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 25px;
+  line-height: 25px;
   text-align: center;
-  color: #ffffff;
-  margin: 0px;
+  color: #ffb950;
+  height: auto;
 `;
 
 export const WrapperRowDetail = styled.div`
@@ -69,20 +80,20 @@ export const WrapperRowDetail = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 191px;
-  margin-top: 10px;
+  margin-top: 51px;
 `;
 
 export const WrapperColDetail = styled.div`
-  width: 340px;
-  height: 191px;
-  background: #3a3939;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  width: 267px;
+  height: 288px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0px 42px;
+  padding: 37px 14px 42px 14px;
+  background: #3a3939;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 50px;
 `;
 
 export const PDetail = styled.p`

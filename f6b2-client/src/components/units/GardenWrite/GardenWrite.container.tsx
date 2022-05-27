@@ -8,8 +8,10 @@ import {
 
 import { CREATE_BOARD_IMAGE } from './GardenWrite.queries';
 import GardenWriteUI from './GardenWrite.presenter';
+import { useRouter } from 'next/router';
 
 export default function GardenWriteContainer() {
+  const router = useRouter();
   const [isContent, setIsContent] = useState('');
   const [fileUrls, setFileUrls] = useState([]);
   const [videoUrls, setVideoUrls] = useState('');
@@ -44,15 +46,10 @@ export default function GardenWriteContainer() {
 
   // 업로드 된 비디오 경로 받아오기
   const onChangeVideoUrls = (fileUrl: string) => {
-    console.log(fileUrl);
-    // const newVideoUrls = [...videoUrls];
-    // newVideoUrls.push(fileUrl);
     setVideoUrls(fileUrl);
   };
 
   const onClickVideoDelete = () => {
-    // const newFileUrls = [...fileUrls];
-    // newFileUrls.splice(index, 1);
     setVideoUrls('');
   };
 
@@ -85,9 +82,11 @@ export default function GardenWriteContainer() {
           },
         ],
       });
+      console.log(resultCreateBoard);
       setIsContent('');
       setFileUrls([]);
       setVideoUrls('');
+      router.push(`/garden/${resultCreateBoard.createBoard.id}`);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

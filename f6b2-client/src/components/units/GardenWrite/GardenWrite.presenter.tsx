@@ -1,7 +1,6 @@
 // import WebcamRecord from '../../commons/records';
 import * as L from './GardenWrite.style';
 import { IGardenWrite } from './GardenWrite.type';
-import { BiVideoRecording } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
 import ImageUpload from '../../commons/upload';
 import { v4 as uuidv4 } from 'uuid';
