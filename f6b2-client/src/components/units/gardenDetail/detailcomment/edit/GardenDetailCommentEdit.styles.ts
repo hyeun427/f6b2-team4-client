@@ -7,7 +7,9 @@ export const CommentWriteBox = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  background-color: black;
+
+  // test
+  /* background-color: gray; */
 `;
 
 export const CommentWriteProfile = styled.img`
@@ -22,10 +24,9 @@ export const CommentWriteProfile = styled.img`
 
 export const CommentWriteInputBox = styled.article`
   width: 385px;
-  height: 30px;
+  height: 34px;
   display: flex;
   flex-direction: row;
-
   align-items: center;
   background: #ffffff;
   border: 1px solid #dbdbdb;
@@ -38,21 +39,21 @@ export const CommentWriteInput = styled.input`
   margin-left: 3.5px;
   font-weight: 400;
   font-size: 12px;
-  background-color: red;
+  padding-left: 9.5px;
 `;
 
 export const CommentWriteBtn = styled.section`
   width: 130px;
   display: flex;
   flex-direction: row;
-  /* margin-left: 8px; */
+  margin-left: 8px;
 `;
 
 export const SubmitBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
 `;
 
@@ -60,7 +61,7 @@ export const ImgBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
   margin-left: 13px;
 `;
@@ -69,27 +70,30 @@ export const VideoBtn = styled.button`
   border: none;
   background: none;
   color: black;
-  font-size: 10px;
+  font-size: 25px;
   cursor: pointer;
   margin-left: 13px;
 `;
 
-export const ImageThumbnail = styled.img`
-  width: 300px;
-  object-fit: cover;
-  margin-top: 20px;
-  border-radius: 10px;
-`;
-
-export const VideoThumbnail = styled.video`
-  width: 300px;
-  object-fit: cover;
-  margin-top: 20px;
-  border-radius: 10px;
-`;
-
-export const Thumbnail = styled.div`
+export const MediaWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
+
+export const Img = styled.img`
+  width: 180px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+export const Video = styled.video`
+  width: 180px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
+export const Wrapper = styled.div``;

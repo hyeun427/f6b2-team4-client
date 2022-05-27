@@ -20,10 +20,10 @@ import {
 import styled from "@emotion/styled";
 import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
-// import GardenCommentEdit from "../edit/GardenCommentEdit.container";
 import { Image } from "antd";
 import "antd/dist/antd.css";
 import { getDate } from "../../../../../commons/libraries/utils";
+import GardenDetailCommentEdit from "../edit/GardenDetailCommentEdit.container";
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -65,10 +65,8 @@ export default function GardenDetailCommentListUI(props) {
                 </Like>
               </ContentWrapper>
               <MediaBox>
-                {el.image !== "empty" && <Image1 src={el.image} width={300} />}
-                {el.video !== "empty" && (
-                  <CommentVideo src={el.video} controls />
-                )}
+                {el.image !== "" && <Image1 src={el.image} width={300} />}
+                {el.video !== "" && <CommentVideo src={el.video} controls />}
               </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}
@@ -76,13 +74,13 @@ export default function GardenDetailCommentListUI(props) {
             <CommentBtns></CommentBtns>
           </CommentListBox>
           {/* 댓글 수정창! */}
-          {/* {props.commentEditVal[index] && (
-            <GardenCommentEdit
+          {props.commentEditVal[index] && (
+            <GardenDetailCommentEdit
               commentEl={el}
               isEdit={true}
               boardElId={props.boardElId}
             />
-          )} */}
+          )}
         </>
       ))}
     </>

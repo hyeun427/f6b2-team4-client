@@ -14,17 +14,19 @@ export default function GardenDetailUI(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
 
   return (
-    <>
+    <S.Outer>
       <S.GardenWrapper>
         <S.Wrapper>
           <S.GardenListBox key={props.data?.fetchBoard.id}>
             {/* 이미지 */}
+            {/* <S.LeftWrapper> */}
             <S.ContentsImg>
               <GardenDetailImg
                 boardId={props.data?.fetchBoard.id}
                 video={props.data?.fetchBoard.video}
               />
             </S.ContentsImg>
+            {/* </S.LeftWrapper> */}
             <S.RightWrapper>
               <S.WriterInfoBox>
                 <S.WriterInfo>
@@ -74,10 +76,12 @@ export default function GardenDetailUI(props: any) {
                   </S.LikeAndCommentCount>
                 </S.LikeAndCommentCountBox>
                 {/* 댓글 목록 불러오기 */}
-                <GardenDetailCommentList
-                  boardElId={props.boardElId}
-                  loginInfo={loginInfo}
-                />
+                <S.CommentBox>
+                  <GardenDetailCommentList
+                    boardElId={props.boardElId}
+                    loginInfo={loginInfo}
+                  />
+                </S.CommentBox>
                 {/* 댓글 작성하기 */}
                 <GardenDetailCommentWrite />
               </S.ContentsBox>
@@ -85,6 +89,6 @@ export default function GardenDetailUI(props: any) {
           </S.GardenListBox>
         </S.Wrapper>
       </S.GardenWrapper>
-    </>
+    </S.Outer>
   );
 }

@@ -1,13 +1,19 @@
 import styled from "@emotion/styled";
 import { RiFileEditLine, RiDeleteBinLine } from "react-icons/ri";
 
+export const Outer = styled.div`
+  width: 100vw;
+  height: 100%;
+  margin-top: 72px;
+`;
+
 export const GardenWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 730px;
+  width: 100vw;
+  height: 100%;
 `;
 
 export const Wrapper = styled.div`
@@ -30,6 +36,8 @@ export const GardenListBox = styled.main`
   padding-right: 29px;
 `;
 
+export const LeftWrapper = styled.div``;
+
 export const ContentsImg = styled.div`
   width: 430px;
   height: 500px;
@@ -39,8 +47,9 @@ export const ContentsImg = styled.div`
 export const RightWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 340px;
-  padding: 29px 0px;
+  /* justify-content: space-between; */
+  width: 350px;
+  padding: 20px 0px;
 `;
 
 export const WriterInfoBox = styled.div`
@@ -89,12 +98,11 @@ export const Contents = styled.div`
   font-weight: 400;
   font-size: 12px;
   margin-top: 5px;
-  margin-bottom: 15px;
 `;
 
 export const ContentsTranslateBox = styled.article`
   width: 100%;
-  border-top: 1px solid gray;
+  height: 60px;
   border-bottom: 1px solid gray;
   padding: 5px;
 `;
@@ -171,4 +179,9 @@ export const DeleteIcon = styled(RiDeleteBinLine)`
   :hover {
     color: #ffb950;
   }
+`;
+export const CommentBox = styled.div`
+  width: 100%;
+  height: 250px;
+  overflow: auto;
 `;

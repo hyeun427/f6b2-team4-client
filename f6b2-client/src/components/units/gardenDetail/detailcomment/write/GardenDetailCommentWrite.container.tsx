@@ -1,4 +1,5 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   CREATE_COMMENT,
@@ -11,6 +12,7 @@ export default function GardenCommentWrite(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
   const [comment, setComment] = useState("");
+  const router = useRouter();
 
   const onChangeComment = (event: any) => {
     setComment(event.target.value);
@@ -22,24 +24,24 @@ export default function GardenCommentWrite(props: any) {
         variables: {
           createCommentInput: {
             content: comment,
-            image: fileUrls[0],
-            video: videoUrls[0],
+            image: fileUrls,
+            video: videoUrls,
           },
-          boardId: props.boardId,
+          boardId: router.query.boardId,
         },
         refetchQueries: [
           {
             query: FETCH_COMMENTS,
             variables: {
-              boardId: props.boardId,
+              boardId: router.query.boardId,
             },
           },
         ],
       });
       alert("댓글작성성공!");
       setComment("");
-      setFileUrls([]);
-      setVideoUrls([]);
+      setFileUrls("");
+      setVideoUrls("");
     } catch (error) {
       alert(error);
     }
@@ -75,22 +77,16 @@ export default function GardenCommentWrite(props: any) {
   };
 
   // 1. 이미지 URL을 받기 위한 set 선언
-  const [fileUrls, setFileUrls] = useState([]);
-
+  const [fileUrls, setFileUrls] = useState("");
   // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
   const onChangeFileUrls = (fileUrl: string) => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls.push(fileUrl);
-    setFileUrls(newFileUrls);
+    setFileUrls(fileUrl);
   };
 
   // 비디오 올리기
-  const [videoUrls, setVideoUrls] = useState([]);
-
+  const [videoUrls, setVideoUrls] = useState("");
   const onChangeVideoUrls = (fileUrl: string) => {
-    const newVideoUrls = [...videoUrls];
-    newVideoUrls.push(fileUrl);
-    setVideoUrls(newVideoUrls);
+    setVideoUrls(fileUrl);
   };
 
   return (
