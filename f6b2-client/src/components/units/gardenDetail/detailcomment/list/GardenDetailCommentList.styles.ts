@@ -1,19 +1,19 @@
 import styled from "@emotion/styled";
 
 export const CommentListBox = styled.div`
-  width: 100%;
-  height: 180px;
   display: flex;
   flex-direction: row;
   margin-top: 15px;
   border-top: 1px solid gray;
-  padding-top: 15px;
+  width: 100%;
 `;
 
 export const CommentProfile = styled.img`
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
+  margin-top: 13px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  margin-right: 5px;
   //test
   background-color: gray;
 `;
@@ -30,13 +30,6 @@ export const CommentInfo = styled.div`
 export const CommentName = styled.article`
   font-weight: 700;
   font-size: 14px;
-  margin: 0px 5px;
-`;
-
-export const CreatedAt = styled.time`
-  font-size: 8px;
-  margin: 0px 5px;
-  color: #65676b;
 `;
 
 export const CommentText = styled.article`
@@ -86,11 +79,11 @@ export const DeleteBtn = styled.button`
   cursor: pointer;
 `;
 
-// export const CreatedAt = styled.time`
-//   font-weight: 400;
-//   font-size: 11px;
-//   color: #767676;
-// `;
+export const CreatedAt = styled.time`
+  font-weight: 400;
+  font-size: 11px;
+  color: #767676;
+`;
 
 export const Like = styled.button`
   border: none;

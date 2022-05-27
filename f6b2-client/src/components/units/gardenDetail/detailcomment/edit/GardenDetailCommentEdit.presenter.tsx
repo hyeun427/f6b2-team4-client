@@ -4,29 +4,29 @@ import {
   CommentWriteInput,
   CommentWriteInputBox,
   CommentWriteProfile,
-  ImageThumbnail,
+  Img,
   ImgBtn,
+  MediaWrapper,
   SubmitBtn,
-  Thumbnail,
+  Video,
   VideoBtn,
-  VideoThumbnail,
-} from "./GardenDetailCommentWrite.styles";
+  Wrapper,
+} from "./GardenDetailCommentEdit.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
 import ImageUpload from "../../../../commons/upload";
 import VideoUpload from "../../../../commons/videoupload";
 
-export default function GardenDetailCommentWriteUI(props: any) {
+export default function GardenDetailCommentEditUI(props: any) {
   return (
-    <>
+    <Wrapper>
       <CommentWriteBox>
         <CommentWriteProfile />
         <CommentWriteInputBox>
           <CommentWriteInput
-            placeholder="Enter Your Comment Here!"
+            placeholder="Edit Your Comment Here!"
             type={"text"}
             onChange={props.onChangeComment}
-            // value={props.comment || props.commentEl?.content || ""}
-            value={props.comment}
+            defaultValue={props.commentEl?.content}
           />
           <CommentWriteBtn>
             {props.isEdit !== true ? (
@@ -57,12 +57,14 @@ export default function GardenDetailCommentWriteUI(props: any) {
           </CommentWriteBtn>
         </CommentWriteInputBox>
       </CommentWriteBox>
-      <Thumbnail>
-        {props.fileUrls !== "" && <ImageThumbnail src={props.fileUrls} />}
-        {props.videoUrls !== "" && (
-          <VideoThumbnail src={props.videoUrls} controls />
+      <MediaWrapper>
+        {props.fileUrls === "" && <Img src={props.commentEl.image} />}
+        {props.videoUrls === "" && (
+          <Video src={props.commentEl.video} controls />
         )}
-      </Thumbnail>
-    </>
+        {props.fileUrls !== "" && <Img src={props.fileUrls} />}
+        {props.videoUrls !== "" && <Video src={props.videoUrls} controls />}
+      </MediaWrapper>
+    </Wrapper>
   );
 }
