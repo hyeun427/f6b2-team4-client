@@ -1,5 +1,4 @@
 import * as Charge from './charge.style';
-
 export default function ChargeStationUI(props) {
   return (
     <Charge.WrapperCol>
@@ -31,34 +30,45 @@ export default function ChargeStationUI(props) {
         </Charge.WrapperColDetail>
         <Charge.WrapperColBtn>
           <Charge.WrapperRowBtn>
-            <Charge.BtnPoint
+            <Charge.BtnHexa
               isClicked={props.isClicked.btn1}
               onClick={props.onClickButton('btn1')}
             >
               100P
-            </Charge.BtnPoint>
-            <Charge.BtnPoint
+            </Charge.BtnHexa>
+
+            <Charge.BtnHexa
               isClicked={props.isClicked.btn2}
               onClick={props.onClickButton('btn2')}
             >
               300P
-            </Charge.BtnPoint>
-          </Charge.WrapperRowBtn>
-          <Charge.WrapperRowBtn>
-            <Charge.BtnPoint
+            </Charge.BtnHexa>
+            <Charge.BtnHexa
               isClicked={props.isClicked.btn3}
               onClick={props.onClickButton('btn3')}
             >
-              1,000P
-            </Charge.BtnPoint>
-            <Charge.BtnPoint
+              500P
+            </Charge.BtnHexa>
+          </Charge.WrapperRowBtn>
+          <Charge.WrapperRowBtn>
+            <Charge.BtnHexa
               isClicked={props.isClicked.btn4}
               onClick={props.onClickButton('btn4')}
             >
-              3,000P
-            </Charge.BtnPoint>
+              1000P
+            </Charge.BtnHexa>
+            <Charge.BtnHexa
+              isClicked={props.isClicked.btn5}
+              onClick={props.onClickButton('btn5')}
+            >
+              3000P
+            </Charge.BtnHexa>
           </Charge.WrapperRowBtn>
-          <Charge.BtnCharge onClick={props.requestPay}>Charge</Charge.BtnCharge>
+          <Charge.WrapperRowBtn>
+            <Charge.BtnHexaCharge onClick={props.requestPay}>
+              Charge
+            </Charge.BtnHexaCharge>
+          </Charge.WrapperRowBtn>
         </Charge.WrapperColBtn>
       </Charge.WrapperRowDetail>
     </Charge.WrapperCol>
