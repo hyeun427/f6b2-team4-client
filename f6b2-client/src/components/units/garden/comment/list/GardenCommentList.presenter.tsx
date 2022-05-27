@@ -64,10 +64,8 @@ export default function GardenCommentListUI(props) {
                 </Like>
               </ContentWrapper>
               <MediaBox>
-                {el.image !== "empty" && <Image1 src={el.image} width={300} />}
-                {el.video !== "empty" && (
-                  <CommentVideo src={el.video} controls />
-                )}
+                {el.image !== "" && <Image1 src={el.image} width={300} />}
+                {el.video !== "" && <CommentVideo src={el.video} controls />}
               </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}

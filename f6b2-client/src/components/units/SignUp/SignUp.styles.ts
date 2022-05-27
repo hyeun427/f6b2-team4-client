@@ -60,12 +60,7 @@ export const EmailInput = styled.input`
 export const AuthCallBtn = styled.button`
   width: 66px;
   height: 20px;
-  background: linear-gradient(
-      96.63deg,
-      #965de8 0%,
-      rgba(255, 255, 255, 0.100415) 99.98%
-    ),
-    #6559ee;
+  background: #ffb950;
   border-radius: 10px;
   /* margin-top: 30px; */
   border: none;
@@ -110,12 +105,7 @@ export const AuthInput = styled.input`
 export const AuthSubmitBtn = styled.button`
   width: 66px;
   height: 20px;
-  background: linear-gradient(
-      96.63deg,
-      #965de8 0%,
-      rgba(255, 255, 255, 0.100415) 99.98%
-    ),
-    #6559ee;
+  background: #ffb950;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -229,12 +219,7 @@ export const SignUpBtn = styled.button`
   height: 41px;
   border: 1px solid #dbdbdb;
   background: none;
-  background: linear-gradient(
-      96.63deg,
-      #965de8 0%,
-      rgba(255, 255, 255, 0.100415) 99.98%
-    ),
-    #6559ee;
+  background: #ffb950;
   border-radius: 10px;
   font-weight: 400;
   font-size: 12px;

@@ -199,7 +199,7 @@ export default function GardenListUI(props: any) {
                       ""
                     )}
                   </div>
-                ))}
+                )) || <div></div>}
               </InfiniteScroll>
             </>
           )}
