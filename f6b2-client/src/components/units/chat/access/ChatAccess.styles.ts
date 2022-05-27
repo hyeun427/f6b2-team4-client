@@ -92,6 +92,9 @@ export const JoinChatBtn = styled.button`
   font-size: 14px;
   color: #ffffff;
   cursor: pointer;
+  :disabled {
+    background: gray;
+  }
 `;
 
 export const SelectList = styled.option``;
