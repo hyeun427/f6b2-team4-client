@@ -34,16 +34,12 @@ export const RecordSaveButton = styled.button`
 `;
 
 export const GardenVideoUpload = styled(ImFileVideo)`
-  font-size: 25px;
+  font-size: 15px;
   color: #ffb950;
   :hover {
     cursor: pointer;
   }
 `;
-
-// export const IconLike = styled(ImFileVideo)`
-//   font-size: 15px;
-// `;
 
 export default function VideoUpload(props: {
   onChangeVideoUrls?: (fileUrl: string) => void;
