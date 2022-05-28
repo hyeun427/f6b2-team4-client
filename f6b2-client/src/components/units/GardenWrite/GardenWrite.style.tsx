@@ -141,3 +141,15 @@ export const GardenRecordUpload = styled(AiOutlineVideoCamera)`
     cursor: pointer;
   }
 `;
+
+export const MoveToLogin = styled.button`
+  width: 100px;
+  height: 40px;
+  background-color: #ffb950;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  :hover {
+    cursor: pointer;
+  }
+`;
