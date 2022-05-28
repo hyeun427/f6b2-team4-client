@@ -59,7 +59,7 @@ export default function ChargeStation() {
         pay_method: 'card',
         // merchant_uid: 'ORD20180131-0000011',
         name: 'LagnB Point',
-        amount: isSelect,
+        amount: isSelect * 10,
         buyer_email: userInfo.email,
         buyer_name: userInfo.name,
         buyer_tel: '010-0000-0000',
