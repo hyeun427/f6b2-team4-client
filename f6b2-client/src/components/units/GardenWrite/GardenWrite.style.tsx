@@ -87,7 +87,7 @@ export const ButtonSave = styled.button`
 export const WrapperRowIcon = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
@@ -135,8 +135,10 @@ export const WrapperItem = styled.div`
 `;
 
 export const GardenRecordUpload = styled(AiOutlineVideoCamera)`
-  font-size: 30px;
+  font-size: 17px;
   color: #ffb950;
+  margin-right: 18px;
+
   :hover {
     cursor: pointer;
   }

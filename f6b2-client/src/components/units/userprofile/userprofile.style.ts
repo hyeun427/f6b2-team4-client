@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import { BsStack } from 'react-icons/bs';
-import { AiOutlineAppstore, AiFillFire } from 'react-icons/ai';
+import { BsHouseDoor } from 'react-icons/bs';
+import { AiOutlineFire } from 'react-icons/ai';
+import { BiHive } from 'react-icons/bi';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Modal, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 export const WrapperColCenter = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ export const WrapperColUserinfo = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 260px;
-  height: 465px;
+  height: 408px;
   background: #ffffff;
   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
   padding: 15px 19px;
@@ -80,8 +81,8 @@ export const ButtonEdit = styled.button`
 `;
 
 export const ImageProfile = styled.img`
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background-color: #e4c2ff;
   margin-top: 10px;
@@ -94,7 +95,7 @@ export const H3ProfileName = styled.h3`
   line-height: 29px;
   text-align: center;
   color: #000000;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-top: 6px;
 `;
 
@@ -104,6 +105,7 @@ export const WrapperRowDetail = styled.div`
   justify-content: space-between;
   width: 100%;
   height: auto;
+  margin-bottom: 8px;
 `;
 
 export const PDetailTitle = styled.p`
@@ -157,19 +159,19 @@ export const PMyGardenCount = styled.p`
   color: #000000;
 `;
 
-export const IconMyGarden = styled(BsStack)`
+export const IconMyGarden = styled(BsHouseDoor)`
   color: ${(props) => (props.istab === 'mygarden' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
-export const IconMyHive = styled(AiOutlineAppstore)`
+export const IconMyHive = styled(BiHive)`
   color: ${(props) => (props.istab === 'myhive' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;
 `;
 
-export const IconMyCharge = styled(AiFillFire)`
+export const IconMyCharge = styled(AiOutlineFire)`
   color: ${(props) => (props.istab === 'mycharge' ? '#ffb950' : 'black')};
   font-size: 25px;
   cursor: pointer;

@@ -10,6 +10,11 @@
     "generate": "graphql-codegen"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
+    "query-string": "^6.13.1",
+    "socket.io-client": "^2.3.0",
+    "react-emoji": "^0.5.0",
+    "react-scroll-to-bottom": "^3.0.0",
     "@apollo/client": "^3.5.10",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",

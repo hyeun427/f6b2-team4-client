@@ -10,9 +10,9 @@ import {
   Title,
   UserName,
   Wrapper,
-} from './ChatAccess.styles';
+} from './join.style';
 
-export default function ChatAccessUI(props) {
+export default function JoinPresenter(props) {
   return (
     <>
       <Wrapper>

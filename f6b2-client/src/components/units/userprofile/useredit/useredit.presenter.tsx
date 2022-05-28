@@ -21,7 +21,7 @@ export default function UserEditUI(props) {
       </Edit.WrapperRowCenter>
       <Edit.WrapperRow>
         <Edit.PLabel>New Language</Edit.PLabel>
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, borderRadius: 25 }}>
           <FormControl fullWidth>
             <NativeSelect
               defaultValue={props?.user?.fetchUserId?.newLang}
