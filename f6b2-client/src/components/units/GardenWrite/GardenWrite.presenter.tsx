@@ -8,6 +8,8 @@ import VideoUpload from '../../commons/videoupload';
 import { Box, Modal } from '@mui/material';
 import VideoRecord from './videorecord/videorecord.container';
 import Badge from '@mui/material/Badge';
+import lottie from 'lottie-web';
+import { useEffect, useRef } from 'react';
 
 export default function GardenWriteUI(props: IGardenWrite) {
   const style = {
@@ -23,91 +25,116 @@ export default function GardenWriteUI(props: IGardenWrite) {
     borderRadius: '25px',
   };
 
+  const bee1Container = useRef();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: bee1Container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('../../../../public/lottie/bee1.json'),
+    });
+  }, []);
+
   return (
     <L.WrapperDiv>
-      <L.WrapperRow>
-        <L.WrapperImgProfile>
-          {props.data?.fetchUser?.image.includes('http') ? (
-            <L.ImgProfile src={props.data?.fetchUser?.image} />
-          ) : (
-            <FaRegUserCircle />
-          )}
-        </L.WrapperImgProfile>
-        <L.H2ProfileName>{props.data?.fetchUser?.name}</L.H2ProfileName>
-      </L.WrapperRow>
-      <L.WrapperRow>
-        <L.TextareaContents
-          onChange={props.onChangeContents}
-          placeholder='Enter Your Words Here'
-          value={props.isContent || ''}
-        ></L.TextareaContents>
-      </L.WrapperRow>
-      <L.WrapperRowIcon>
-        <L.GardenRecordUpload onClick={props.handleOpen} />
-        <Modal
-          open={props.open}
-          onClose={props.handleClose}
-          aria-labelledby='modal-modal-title'
-          aria-describedby='modal-modal-description'
-        >
-          <Box sx={style}>
-            <VideoRecord
-              onChangeVideoUrls={props.onChangeVideoUrls}
-              handleClose={props.handleClose}
-            />
-          </Box>
-        </Modal>
-
-        <ImageUpload
-          onChangeFileUrls={props.onChangeFileUrls}
-          fileUrls={props.fileUrls}
-          type={'garden'}
-        />
-        <VideoUpload
-          onChangeVideoUrls={props.onChangeVideoUrls}
-          videoUrls={props.videoUrls}
-          type={'garden'}
-        />
-      </L.WrapperRowIcon>
-      <L.WrapperItem>
-        <L.VideoItempWrap>
-          {props.videoUrls ? (
-            <Badge
-              badgeContent={'X'}
-              color='primary'
-              onClick={props.onClickVideoDelete}
+      {props.isToken ? (
+        <>
+          <L.WrapperRow>
+            <L.WrapperImgProfile>
+              {props.data?.fetchUser?.image.includes('http') ? (
+                <L.ImgProfile src={props.data?.fetchUser?.image} />
+              ) : (
+                <FaRegUserCircle />
+              )}
+            </L.WrapperImgProfile>
+            <L.H2ProfileName>{props.data?.fetchUser?.name}</L.H2ProfileName>
+          </L.WrapperRow>
+          <L.WrapperRow>
+            <L.TextareaContents
+              onChange={props.onChangeContents}
+              placeholder='Enter Your Words Here'
+              value={props.isContent || ''}
+            ></L.TextareaContents>
+          </L.WrapperRow>
+          <L.WrapperRowIcon>
+            <L.GardenRecordUpload onClick={props.handleOpen} />
+            <Modal
+              open={props.open}
+              onClose={props.handleClose}
+              aria-labelledby='modal-modal-title'
+              aria-describedby='modal-modal-description'
             >
-              <L.VideoThumbnail controls key={uuidv4()} src={props.videoUrls} />
-            </Badge>
-          ) : (
-            <></>
-          )}
-        </L.VideoItempWrap>
-        {props.fileUrls?.map((el, index) => (
-          <>
-            <L.ImageItempWrap>
-              <Badge
-                badgeContent={'X'}
-                color='secondary'
-                onClick={props.onClickImageDelete(index)}
-              >
-                <L.ImageThumbnail
-                  key={uuidv4()}
-                  src={
-                    el.startsWith('https', 0)
-                      ? el
-                      : `https://storage.googleapis.com/${el}`
-                  }
+              <Box sx={style}>
+                <VideoRecord
+                  onChangeVideoUrls={props.onChangeVideoUrls}
+                  handleClose={props.handleClose}
                 />
-              </Badge>
-            </L.ImageItempWrap>
-          </>
-        ))}
-      </L.WrapperItem>
+              </Box>
+            </Modal>
 
-      <L.ButtonSave onClick={props.onClickSave} isContent={props.isContent}>
-        Upload
-      </L.ButtonSave>
+            <ImageUpload
+              onChangeFileUrls={props.onChangeFileUrls}
+              fileUrls={props.fileUrls}
+              type={'garden'}
+            />
+            <VideoUpload
+              onChangeVideoUrls={props.onChangeVideoUrls}
+              videoUrls={props.videoUrls}
+              type={'garden'}
+            />
+          </L.WrapperRowIcon>
+          <L.WrapperItem>
+            <L.VideoItempWrap>
+              {props.videoUrls ? (
+                <Badge
+                  badgeContent={'X'}
+                  color='primary'
+                  onClick={props.onClickVideoDelete}
+                >
+                  <L.VideoThumbnail
+                    controls
+                    key={uuidv4()}
+                    src={props.videoUrls}
+                  />
+                </Badge>
+              ) : (
+                <></>
+              )}
+            </L.VideoItempWrap>
+            {props.fileUrls?.map((el, index) => (
+              <>
+                <L.ImageItempWrap>
+                  <Badge
+                    badgeContent={'X'}
+                    color='secondary'
+                    onClick={props.onClickImageDelete(index)}
+                  >
+                    <L.ImageThumbnail
+                      key={uuidv4()}
+                      src={
+                        el.startsWith('https', 0)
+                          ? el
+                          : `https://storage.googleapis.com/${el}`
+                      }
+                    />
+                  </Badge>
+                </L.ImageItempWrap>
+              </>
+            ))}
+          </L.WrapperItem>
+
+          <L.ButtonSave onClick={props.onClickSave} isContent={props.isContent}>
+            Upload
+          </L.ButtonSave>
+        </>
+      ) : (
+        <>
+          <div ref={bee1Container}></div>
+          <L.MoveToLogin onClick={props.onClickLogin}>Log In</L.MoveToLogin>
+        </>
+      )}
     </L.WrapperDiv>
   );
 }

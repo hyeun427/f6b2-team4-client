@@ -9,9 +9,12 @@ import {
 import { CREATE_BOARD_IMAGE } from './GardenWrite.queries';
 import GardenWriteUI from './GardenWrite.presenter';
 import { useRouter } from 'next/router';
+import { accessTokenState } from '../../../commons/store';
+import { useRecoilState } from 'recoil';
 
 export default function GardenWriteContainer() {
   const router = useRouter();
+  const [isToken] = useRecoilState(accessTokenState);
   const [isContent, setIsContent] = useState('');
   const [fileUrls, setFileUrls] = useState([]);
   const [videoUrls, setVideoUrls] = useState('');
@@ -82,7 +85,6 @@ export default function GardenWriteContainer() {
           },
         ],
       });
-      console.log(resultCreateBoard);
       setIsContent('');
       setFileUrls([]);
       setVideoUrls('');
@@ -92,8 +94,14 @@ export default function GardenWriteContainer() {
     }
   };
 
+  const onClickLogin = () => {
+    router.push(`/signin`);
+  };
+
   return (
     <GardenWriteUI
+      onClickLogin={onClickLogin}
+      isToken={isToken}
       onChangeContents={onChangeContents}
       onClickSave={onClickSave}
       data={data}

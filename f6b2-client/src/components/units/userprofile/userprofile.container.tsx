@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../commons/store';
+import { accessTokenState, userInfoState } from '../../../commons/store';
 import { FETCH_BOARDS } from '../../commons/queries';
 import UserProfileUI from './userprofile.presenter';
 import {
@@ -16,10 +16,11 @@ import { MouseEvent } from 'react';
 
 export default function UserProfileContainer() {
   const [userInfo] = useRecoilState(userInfoState);
+  const [isToken, setIsToken] = useRecoilState(accessTokenState);
   const [istab, setIsTab] = useState('mygarden');
   const [isMy, setIsMy] = useState(false);
   const router = useRouter();
-
+  console.log(isToken);
   // 본인 여부 확인
   useEffect(() => {
     if (userInfo.id === router.query.id) setIsMy(true);

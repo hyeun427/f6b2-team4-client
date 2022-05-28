@@ -141,3 +141,35 @@ export const PNodataSub = styled.p`
   text-align: center;
   color: #505050;
 `;
+
+export const MoveToLogin = styled.button`
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: #ffb950;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const WapperLogin = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const WapperLottie = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+`;

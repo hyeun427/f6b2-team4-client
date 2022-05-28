@@ -50,7 +50,7 @@ export default function ChargeStationUI(props) {
               500P
             </Charge.BtnHexa>
           </Charge.WrapperRowBtn>
-          <Charge.WrapperRowBtn>
+          <Charge.WrapperRowBtn2>
             <Charge.BtnHexa
               isClicked={props.isClicked.btn4}
               onClick={props.onClickButton('btn4')}
@@ -63,12 +63,12 @@ export default function ChargeStationUI(props) {
             >
               3000P
             </Charge.BtnHexa>
-          </Charge.WrapperRowBtn>
-          <Charge.WrapperRowBtn>
+          </Charge.WrapperRowBtn2>
+          <Charge.WrapperRowBtn3>
             <Charge.BtnHexaCharge onClick={props.requestPay}>
               Charge
             </Charge.BtnHexaCharge>
-          </Charge.WrapperRowBtn>
+          </Charge.WrapperRowBtn3>
         </Charge.WrapperColBtn>
       </Charge.WrapperRowDetail>
     </Charge.WrapperCol>
