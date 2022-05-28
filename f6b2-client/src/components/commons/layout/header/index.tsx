@@ -197,7 +197,7 @@ export default function LayoutHeader() {
   };
 
   const onClickChat = () => {
-    router.push("/chat");
+    router.push("http://localhost:3001/");
   };
 
   const onClickSignIn = () => {

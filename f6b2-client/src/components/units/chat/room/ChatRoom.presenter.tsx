@@ -25,40 +25,39 @@ import {
 export default function ChatRoomUI(props) {
   return (
     <>
-      <Head>
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
-          integrity="sha512-f0AM6x08kthGzMyDHZjBgjBCPp8V8ovlHYCI1jMkhViTeX3MykGCf/DnN1khWss/6d1105eAG4TniSKy6UhZrw=="
-          crossorigin="anonymous"
-        ></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="js/main.js"></script>
-      </Head>
       <Wrapper>
         <ChatRoomBox>
           <Header>
-            <Title>English</Title>
+            <Title>{props.room}</Title>
           </Header>
           <MainBox>
             <Sidebar>
               <NameWrapper>
-                <UserName>Users</UserName>
-                <MemberName>Jay</MemberName>
+                <UserName>{props.name}</UserName>
+
+                <MemberName>aa</MemberName>
               </NameWrapper>
               <ExitBtn>Exit Chat Room</ExitBtn>
             </Sidebar>
             <ChatRoom>
-              <TalkBox>
-                <UserInfo>
-                  <Name>Jay</Name>
-                  <CreatedAt>5:24 PM</CreatedAt>
-                </UserInfo>
-                <Content>Hello!</Content>
-              </TalkBox>
+              {props.messages?.map((el, index) => (
+                <TalkBox key={index}>
+                  <UserInfo>
+                    <Name>Jay</Name>
+                    <CreatedAt>5:24 PM</CreatedAt>
+                  </UserInfo>
+                  <Content>{el}</Content>
+                </TalkBox>
+              ))}
               <InputBoxWrapper>
                 <InputBox>
-                  <MessageInput placeholder="Enter your text here" />
-                  <SubmitBtn>Submit</SubmitBtn>
+                  <MessageInput
+                    placeholder="Enter your text here"
+                    onChange={props.onChangeMessage}
+                  />
+                  <SubmitBtn onClick={props.onClickSendMessage}>
+                    Submit
+                  </SubmitBtn>
                 </InputBox>
               </InputBoxWrapper>
             </ChatRoom>
