@@ -22,7 +22,6 @@ export default function GardenSearch(props) {
   const [loginUserInfo] = useRecoilState(userInfoState);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
-
   // 검색 불러오기
   const { data: searchBoard } = useQuery(SEARCH_BOARD_CONTENT, {
     variables: {
@@ -120,7 +119,7 @@ export default function GardenSearch(props) {
       onClickUserProfile={onClickUserProfile}
       isToken={isToken}
       onChangeSearchKeyword={onChangeSearchKeyword}
-      searchKeyword={searchKeyword}
+      searchKeyword={props.searchKeyword}
       searchBoard={searchBoard}
     />
   );

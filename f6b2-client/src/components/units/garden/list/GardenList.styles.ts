@@ -56,6 +56,9 @@ export const InputSearchBar = styled.input`
 
   background: rgba(219, 219, 219, 0.55);
   border-radius: 25px;
+  :focus {
+    outline: none;
+  }
 `;
 
 export const GardenListBox = styled.main`
