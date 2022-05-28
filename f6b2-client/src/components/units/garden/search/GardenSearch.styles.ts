@@ -31,7 +31,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding-top: 45px;
 `;
 export const WrapperRight = styled.div`
   width: 236px;
@@ -65,6 +64,7 @@ export const GardenListBox = styled.main`
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 25px;
   margin-bottom: 50px;
+  margin-top: 20px;
 `;
 
 export const WriterInfoBox = styled.section`
