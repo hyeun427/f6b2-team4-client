@@ -22,6 +22,9 @@ export const Header = styled.div`
   height: 52px;
   background-color: #3a3939;
   border-radius: 10px 10px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Title = styled.div`
