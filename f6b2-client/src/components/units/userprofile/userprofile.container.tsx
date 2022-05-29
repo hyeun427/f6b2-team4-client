@@ -20,7 +20,7 @@ export default function UserProfileContainer() {
   const [istab, setIsTab] = useState('mygarden');
   const [isMy, setIsMy] = useState(false);
   const router = useRouter();
-  console.log(isToken);
+
   // 본인 여부 확인
   useEffect(() => {
     if (userInfo.id === router.query.id) setIsMy(true);

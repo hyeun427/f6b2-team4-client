@@ -8,7 +8,7 @@ export const WrapperCol = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
-  padding: 0px 99px;
+  padding: 0px 80px;
 `;
 
 export const PName = styled.p`
@@ -28,6 +28,7 @@ export const WrapperRow = styled.div`
   width: 100%;
   height: 40px;
   margin: 5px 0px;
+  margin-bottom: 20px;
 `;
 
 export const ImgProfile = styled.img`
@@ -50,6 +51,7 @@ export const WrapperRowCenter = styled.div`
   align-items: center;
   width: auto;
   height: 23px;
+  margin-bottom: 20px;
 `;
 
 export const PLabel = styled.p`
@@ -62,11 +64,13 @@ export const PLabel = styled.p`
 export const InputPW = styled.input`
   border: none;
   border-bottom: 1px solid #dbdbdb;
+  width: 190px;
+  font-size: 14px;
 `;
 
 export const ButtonSave = styled.button`
   width: 262px;
-  height: 25px;
+  height: 30px;
   background: #ffb950;
   border: 1px solid #ffb950;
   border-radius: 10px;
@@ -76,12 +80,12 @@ export const ButtonSave = styled.button`
 
 export const InputName = styled.input`
   border: none;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: none;
   width: auto;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 23px;
   text-align: center;
-  margin-right: 10px;
+  margin-right: 5px;
 `;

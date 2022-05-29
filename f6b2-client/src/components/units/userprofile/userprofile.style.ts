@@ -16,6 +16,22 @@ export const WrapperColCenter = styled.div`
   height: 100%;
 `;
 
+export const WrapperColStart = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+`;
+
+export const WrapperLottie = styled.div`
+  width: 100%;
+  height: 300px;
+  padding-top: 10px;
+`;
+
 export const WrapperRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -84,7 +100,7 @@ export const ImageProfile = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #e4c2ff;
+  background-color: white;
   margin-top: 10px;
 `;
 

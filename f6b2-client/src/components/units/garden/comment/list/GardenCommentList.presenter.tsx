@@ -17,13 +17,16 @@ import {
   OtherBtns,
   ProfileWrapper,
   Row1,
-} from "./GardenCommentList.styles";
-import styled from "@emotion/styled";
-import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
-import GardenCommentEdit from "../edit/GardenCommentEdit.container";
-import { Image } from "antd";
-import "antd/dist/antd.css";
+} from './GardenCommentList.styles';
+import styled from '@emotion/styled';
+import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
+import { AiOutlineHeart } from 'react-icons/ai';
+import GardenCommentEdit from '../edit/GardenCommentEdit.container';
+import { Image } from 'antd';
+import 'antd/dist/antd.css';
+import * as timeago from 'timeago.js';
+import ko from 'timeago.js/lib/lang/ko';
+import TimeAgo from 'timeago-react';
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -31,6 +34,7 @@ const Image1 = styled(Image)`
 `;
 
 export default function GardenCommentListUI(props) {
+  timeago.register('ko', ko);
   return (
     <>
       {props.comments?.fetchComments.map((el, index) => (
@@ -65,7 +69,9 @@ export default function GardenCommentListUI(props) {
                     </OtherBtns>
                   )}
                 </Row1>
-                <CreatedAt>{el.createdAt}</CreatedAt>
+                <CreatedAt datetime={el.createdAt} locale='ko'>
+                  {/* <TimeAgo datetime={el.createdAt} locale='ko' /> */}
+                </CreatedAt>
               </CommentInfo>
               <ContentWrapper>
                 <CommentText>{el.content}</CommentText>
@@ -75,8 +81,8 @@ export default function GardenCommentListUI(props) {
                 </Like>
               </ContentWrapper>
               <MediaBox>
-                {el.image !== "" && <Image1 src={el.image} width={300} />}
-                {el.video !== "" && <CommentVideo src={el.video} controls />}
+                {el.image !== '' && <Image1 src={el.image} width={300} />}
+                {el.video !== '' && <CommentVideo src={el.video} controls />}
               </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}

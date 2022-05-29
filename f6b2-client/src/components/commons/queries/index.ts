@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
@@ -94,6 +94,7 @@ export const FETCH_SAVED_BOARDS = gql`
         id
         content
         createdAt
+        video
       }
       isSaved
       isLiked

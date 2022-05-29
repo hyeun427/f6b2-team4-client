@@ -5,8 +5,33 @@ import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
 import UserEditContainer from './useredit/useredit.container';
 import UserChargeContainer from './usercharge/usercharge.container';
+import lottie from 'lottie-web';
+import { useEffect, useRef } from 'react';
 
 export default function UserProfileUI(props) {
+  const beeFlyingContainer = useRef();
+  const beeHiveContainer = useRef();
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: beeFlyingContainer.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: require('../../../../public/lottie/flyingbee2.json'),
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   lottie.loadAnimation({
+  //     container: beeHiveContainer.current,
+  //     renderer: 'svg',
+  //     loop: true,
+  //     autoplay: true,
+  //     animationData: require('../../../../public/lottie/bee-hive.json'),
+  //   });
+  // }, []);
+
   // react slick setting
   const settings = {
     dots: false,
@@ -28,7 +53,10 @@ export default function UserProfileUI(props) {
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
+    borderRadius: '25px',
   };
+
+  console.log(props.userGarden?.length);
 
   return (
     <Profile.WrapperRow>
@@ -51,7 +79,13 @@ export default function UserProfileUI(props) {
             </Box>
           </Modal>
         </Profile.WrapperRowEnd>
-        <Profile.ImageProfile src={props.user?.fetchUserId?.image} />
+        <Profile.ImageProfile
+          src={
+            props.user?.fetchUserId?.image.includes('http')
+              ? props.user?.fetchUserId?.image
+              : '/image/defaultuser.png'
+          }
+        />
         <Profile.H3ProfileName>
           {props.user?.fetchUserId?.name}
         </Profile.H3ProfileName>
@@ -104,26 +138,46 @@ export default function UserProfileUI(props) {
       <Profile.WrapperMyContents>
         {props.istab === 'mygarden' ? (
           <Profile.WrapperRowNoMargin>
-            <Profile.SliderTab {...settings}>
-              {props.userGarden?.map((el, index) => (
-                <Profile.WrapperRowItem key={uuidv4()}>
-                  <UserTabItemUI el={el} number={index} istab={props.istab} />
-                </Profile.WrapperRowItem>
-              ))}
-            </Profile.SliderTab>
+            {props.userGarden?.length === 0 ? (
+              <>
+                <Profile.WrapperColStart>
+                  <h2>There is No Garden..</h2>
+                  {props.userGarden?.length}
+                  <Profile.WrapperLottie
+                    ref={beeFlyingContainer}
+                  ></Profile.WrapperLottie>
+                </Profile.WrapperColStart>
+              </>
+            ) : (
+              <Profile.SliderTab {...settings}>
+                {props.userGarden?.map((el, index) => (
+                  <Profile.WrapperRowItem key={uuidv4()}>
+                    <UserTabItemUI el={el} number={index} istab={props.istab} />
+                  </Profile.WrapperRowItem>
+                ))}
+              </Profile.SliderTab>
+            )}
           </Profile.WrapperRowNoMargin>
         ) : (
           ''
         )}
         {props.istab === 'myhive' ? (
           <Profile.WrapperRowNoMargin>
-            <Profile.SliderTab {...settings}>
-              {props.community?.fetchCommunityBoards?.map((el, index) => (
-                <Profile.WrapperRowItem key={uuidv4()}>
-                  <UserTabItemUI el={el} number={index} istab={props.istab} />
-                </Profile.WrapperRowItem>
-              ))}
-            </Profile.SliderTab>
+            {props.community?.fetchCommunityBoards.length === 0 ? (
+              <>
+                <Profile.WrapperColStart>
+                  <h2>There is No Hive..</h2>
+                </Profile.WrapperColStart>
+              </>
+            ) : (
+              <Profile.SliderTab {...settings}>
+                {props.community?.fetchCommunityBoards?.map((el, index) => (
+                  <Profile.WrapperRowItem key={uuidv4()}>
+                    <UserTabItemUI el={el} number={index} istab={props.istab} />
+                  </Profile.WrapperRowItem>
+                ))}
+              </Profile.SliderTab>
+            )}
           </Profile.WrapperRowNoMargin>
         ) : (
           ''
