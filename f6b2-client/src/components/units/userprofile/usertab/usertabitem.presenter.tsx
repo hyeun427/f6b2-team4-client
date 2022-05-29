@@ -17,6 +17,29 @@ export default function UserTabItemUI(props) {
 
   return (
     <TabItem.WrapperColItem onClick={onClickMoveDetail}>
+      {props.istab === 'mygarden' ? (
+        props.el?.video?.includes('http') ? (
+          <TabItem.VideoItem src={props.el?.video} autoPlay muted loop />
+        ) : (
+          <TabItem.ImageItem
+            src={
+              boardImage?.fetchBoardImage[0]?.image.includes('http')
+                ? boardImage?.fetchBoardImage[0]?.image
+                : '/image/default1.jpg'
+            }
+          />
+        )
+      ) : (
+        <TabItem.ImageItem
+          src={
+            props.el?.image?.includes('http')
+              ? props.el?.image
+              : '/image/default2.jpg'
+          }
+        />
+      )}
+
+      {/* 
       <TabItem.ImageItem
         src={
           props.istab === 'mygarden'
@@ -27,7 +50,7 @@ export default function UserTabItemUI(props) {
             ? props.el.image
             : '/image/default2.jpg'
         }
-      />
+      /> */}
       <TabItem.WrapperRowItem>
         <TabItem.PItemDate>{getDate(props.el.createdAt)}</TabItem.PItemDate>
         <TabItem.WrapperRowRightItem>

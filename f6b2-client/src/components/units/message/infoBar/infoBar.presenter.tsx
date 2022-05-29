@@ -11,7 +11,7 @@ export default function InfoUI(props) {
       </div>
       <div className='rightInnerContainer'>
         <a href='/'>
-          <img src={'/icon/closeIcon'} alt='close icon' />
+          <img src={'/icon/closeIcon.png'} alt='close icon' />
         </a>
       </div>
     </div>

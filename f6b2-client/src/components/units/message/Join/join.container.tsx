@@ -7,7 +7,6 @@ export default function JoinContainer() {
   const [name, setName] = useState('');
   const [language, setLanguage] = useState('');
   const [access, setAccess] = useState(true);
-  console.log('join');
 
   const onChangeName = (event) => {
     setName(event.target.value);

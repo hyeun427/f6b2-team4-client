@@ -8,27 +8,24 @@ export default function UserEditUI(props) {
   return (
     <Edit.WrapperCol>
       <Edit.ImgProfile src={props?.fileUrls} />
-      <ImageUpload
-        type='edit'
-        onChangeFileUrls={props.onChangeFileUrls}
-        fileUrls={props.fileUrls}
-      />
       <Edit.WrapperRowCenter>
         <Edit.InputName
           defaultValue={props?.user?.fetchUserId?.name}
           onChange={props.onChangeName}
         />
+        <ImageUpload
+          type='edit'
+          onChangeFileUrls={props.onChangeFileUrls}
+          fileUrls={props.fileUrls}
+        />
       </Edit.WrapperRowCenter>
       <Edit.WrapperRow>
         <Edit.PLabel>New Language</Edit.PLabel>
-        <Box sx={{ minWidth: 120, borderRadius: 25 }}>
+        <Box sx={{ minWidth: 190 }}>
           <FormControl fullWidth>
             <NativeSelect
               defaultValue={props?.user?.fetchUserId?.newLang}
-              inputProps={{
-                name: 'lang',
-                id: 'uncontrolled-native',
-              }}
+              inputProps={{ style: { fontSize: 14 } }}
               onChange={props.handleChange}
             >
               <option value={'한국어'}>한국어</option>
@@ -41,7 +38,7 @@ export default function UserEditUI(props) {
           </FormControl>
         </Box>
       </Edit.WrapperRow>
-      <Edit.WrapperRow>
+      {/* <Edit.WrapperRow>
         <Edit.PLabel>Current Region</Edit.PLabel>
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
@@ -58,7 +55,7 @@ export default function UserEditUI(props) {
             </NativeSelect>
           </FormControl>
         </Box>
-      </Edit.WrapperRow>
+      </Edit.WrapperRow> */}
       <Edit.WrapperRow>
         <Edit.PLabel>Current Password</Edit.PLabel>
         <Edit.InputPW
