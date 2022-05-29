@@ -5,5 +5,5 @@ export const GardenBestListBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 17px;
 `;

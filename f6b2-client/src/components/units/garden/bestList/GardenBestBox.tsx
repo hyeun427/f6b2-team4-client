@@ -13,11 +13,13 @@ const GardenBest = styled.div`
   position: relative;
 `;
 
-const Profile = styled.div`
+const Profile = styled.img`
   width: 25px;
   height: 25px;
   border-radius: 50px;
-  background-color: gray;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  background-color: white;
 `;
 
 const Background = styled.img`
@@ -65,6 +67,8 @@ export default function GardenBestBox(props) {
     router.push("/garden/" + props.el.id);
   };
 
+  console.log("aaa", props.el);
+
   return (
     <GardenBest onClick={onClickMoveToDetail}>
       {/* {props.el.video !== "" ? (
@@ -99,7 +103,15 @@ export default function GardenBestBox(props) {
       )}
 
       <ProfileWrapper>
-        <Profile />
+        {props.el.writer.image?.includes("http") ? (
+          <Profile src={props.el.writer.image} />
+        ) : (
+          <Profile
+            src={
+              "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+            }
+          />
+        )}
       </ProfileWrapper>
     </GardenBest>
   );

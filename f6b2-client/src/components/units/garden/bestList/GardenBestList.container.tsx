@@ -13,6 +13,7 @@ const FETCH_BOARDS = gql`
       writer {
         id
         name
+        image
       }
       createdAt
     }

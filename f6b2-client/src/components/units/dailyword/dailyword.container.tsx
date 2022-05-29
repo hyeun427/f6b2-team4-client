@@ -17,7 +17,7 @@ export default function DailyWordContainer() {
         "https://random-words-api.vercel.app/word"
       );
       console.log("result", result);
-      setWord(result?.data[0]?.word);
+      setWord(result?.data[0]?.word || "");
     };
     todaysWord();
   }, []);

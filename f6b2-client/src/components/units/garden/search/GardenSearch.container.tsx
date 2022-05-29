@@ -53,7 +53,6 @@ export default function GardenSearch(props) {
           },
         ],
       });
-      alert("좋아요!");
     } catch (error) {
       alert(error);
     }

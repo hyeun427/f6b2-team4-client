@@ -1,5 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../../commons/store";
 import {
   CREATE_COMMENT,
   FETCH_COMMENTS,
@@ -11,6 +13,7 @@ export default function GardenCommentWrite(props: any) {
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
   const [comment, setComment] = useState("");
+  const [loginInfo] = useRecoilState(userInfoState);
 
   const onChangeComment = (event: any) => {
     setComment(event.target.value);
@@ -36,7 +39,6 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      alert("댓글작성성공!");
       setComment("");
       setFileUrls("");
       setVideoUrls("");
@@ -67,7 +69,6 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      alert("댓글수정 성공!");
       setComment("");
     } catch (error) {
       alert(error);
@@ -99,6 +100,7 @@ export default function GardenCommentWrite(props: any) {
       fileUrls={fileUrls}
       onChangeVideoUrls={onChangeVideoUrls}
       videoUrls={videoUrls}
+      loginInfo={loginInfo}
     />
   );
 }

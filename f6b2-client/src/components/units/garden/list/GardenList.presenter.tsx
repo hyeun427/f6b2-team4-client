@@ -22,9 +22,13 @@ import {
   WrapperRight,
   GardenWrapper,
   NameRow,
-  InputSearchBarWrapper,
 } from "./GardenList.styles";
-import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
+import {
+  MdQuestionAnswer,
+  MdThumbUp,
+  MdBookmarkBorder,
+  MdBookmark,
+} from "react-icons/md";
 import GardenBestList from "../bestList/GardenBestList.container";
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
 
@@ -65,18 +69,50 @@ export default function GardenListUI(props: any) {
                     {props.loginUserInfo?.newLang === el.writer.myLang ? (
                       <GardenListBox>
                         <WriterInfoBox>
-                          <WriterProfile
-                            onClick={props.onClickUserProfile}
-                            id={el.writer.id}
-                          />
+                          {/* 프로필사진 공사중!!!!! */}
+                          {el.writer.image.includes("http") ? (
+                            <WriterProfile
+                              onClick={props.onClickUserProfile}
+                              id={el.writer.id}
+                              src={el.writer.image}
+                            />
+                          ) : (
+                            <WriterProfile
+                              onClick={props.onClickUserProfile}
+                              id={el.writer.id}
+                              src={
+                                "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+                              }
+                            />
+                          )}
                           <WriterInfo>
                             <NameRow>
                               <WriterName>{el.writer.name}</WriterName>
-                              <MdBookmarkBorder
-                                size={"22"}
-                                onClick={() => props.onClickSaved(el)}
-                                style={{ cursor: "pointer" }}
-                              />
+                              {/* 저장하기 공사중!!! */}
+                              {props.savedInfo?.fetchSavedBoards.isSaved ===
+                                true &&
+                              props.savedInfo?.fetchSavedBoards.board.id ===
+                                el.id ? (
+                                <MdBookmarkBorder
+                                  size={"22"}
+                                  onClick={() => props.onClickSaved(el)}
+                                  style={{ cursor: "pointer" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {props.savedInfo?.fetchSavedBoards.isSaved ===
+                                true &&
+                              props.savedInfo?.fetchSavedBoards.board.id ===
+                                el.id ? (
+                                <MdBookmark
+                                  size={"22"}
+                                  onClick={() => props.onClickSaved(el)}
+                                  style={{ cursor: "pointer" }}
+                                />
+                              ) : (
+                                ""
+                              )}
                             </NameRow>
                             <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                           </WriterInfo>
@@ -94,7 +130,7 @@ export default function GardenListUI(props: any) {
                           <GardenImg boardId={el.id} video={el.video} />
                           {/* <ContentsImg /> */}
                           <LikeAndCommentCountBox>
-                            {props.commentListVal[index] ? (
+                            {/* {props.commentListVal[index] ? (
                               <CommentListBtn
                                 onClick={props.onClickCommentListBtn(index)}
                                 id={el.id}
@@ -108,13 +144,17 @@ export default function GardenListUI(props: any) {
                               >
                                 open
                               </CommentListBtn>
-                            )}
+                            )} */}
+                            <div></div>
                             <LikeAndCommentCount>
                               <Like onClick={props.onClickLikeBoard} id={el.id}>
                                 <MdThumbUp size={"13"} /> {el.likes}
                               </Like>
                               {/* 해당 게시글의 댓글 갯수 */}
-                              <CommentCount>
+                              <CommentCount
+                                onClick={props.onClickCommentListBtn(index)}
+                                id={el.id}
+                              >
                                 <MdQuestionAnswer size={"13"} />{" "}
                                 {el.commentsCount}
                               </CommentCount>
@@ -135,10 +175,21 @@ export default function GardenListUI(props: any) {
                     {!props.isToken ? (
                       <GardenListBox>
                         <WriterInfoBox>
-                          <WriterProfile
-                            onClick={props.onClickUserProfile}
-                            id={el.writer.id}
-                          />
+                          {el.writer.image.includes("http") ? (
+                            <WriterProfile
+                              onClick={props.onClickUserProfile}
+                              id={el.writer.id}
+                              src={el.writer.image}
+                            />
+                          ) : (
+                            <WriterProfile
+                              onClick={props.onClickUserProfile}
+                              id={el.writer.id}
+                              src={
+                                "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+                              }
+                            />
+                          )}
                           <WriterInfo>
                             <NameRow>
                               <WriterName>{el.writer.name}</WriterName>
@@ -161,7 +212,7 @@ export default function GardenListUI(props: any) {
                           <GardenImg boardId={el.id} video={el.video} />
                           {/* <ContentsImg /> */}
                           <LikeAndCommentCountBox>
-                            {props.commentListVal[index] ? (
+                            {/* {props.commentListVal[index] ? (
                               <CommentListBtn
                                 onClick={props.onClickCommentListBtn(index)}
                                 id={el.id}
@@ -175,8 +226,12 @@ export default function GardenListUI(props: any) {
                               >
                                 open
                               </CommentListBtn>
-                            )}
-                            <LikeAndCommentCount>
+                            )} */}
+                            <div></div>
+                            <LikeAndCommentCount
+                              onClick={props.onClickCommentListBtn(index)}
+                              id={el.id}
+                            >
                               <Like onClick={props.onClickLikeBoard} id={el.id}>
                                 <MdThumbUp size={"13"} /> {el.likes}
                               </Like>

@@ -15,6 +15,7 @@ import {
   Like,
   MediaBox,
   OtherBtns,
+  ProfileWrapper,
   Row1,
 } from "./GardenCommentList.styles";
 import styled from "@emotion/styled";
@@ -35,12 +36,22 @@ export default function GardenCommentListUI(props) {
       {props.comments?.fetchComments.map((el, index) => (
         <>
           <CommentListBox key={index}>
-            <CommentProfile />
+            <ProfileWrapper>
+              {el.writer.image.includes("http") ? (
+                <CommentProfile src={el.writer.image} />
+              ) : (
+                <CommentProfile
+                  src={
+                    "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+                  }
+                />
+              )}
+            </ProfileWrapper>
             <CommentContentsBox>
               <CommentInfo>
                 <Row1>
                   <CommentName>{el.writer.name}</CommentName>
-                  {props.loginInfo.name === el.writer.name && (
+                  {props.loginInfo?.name === el.writer.name && (
                     <OtherBtns>
                       <EditBtn onClick={props.commentEditBtn(index)}>
                         <MdModeEditOutline size={14} />

@@ -13,6 +13,7 @@ import {
   Wrapper,
 } from "./GardenCommentEdit.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
+import { BiSend } from "react-icons/bi";
 import ImageUpload from "../../../../commons/upload";
 import VideoUpload from "../../../../commons/videoupload";
 
@@ -20,7 +21,11 @@ export default function GardenCommentEditUI(props: any) {
   return (
     <Wrapper>
       <CommentWriteBox>
-        <CommentWriteProfile />
+        {props.loginInfo?.image.includes("http") ? (
+          <CommentWriteProfile src={props.loginInfo?.image} />
+        ) : (
+          <CommentWriteProfile src="https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png" />
+        )}
         <CommentWriteInputBox>
           <CommentWriteInput
             placeholder="Edit Your Comment Here!"
@@ -32,12 +37,12 @@ export default function GardenCommentEditUI(props: any) {
             {props.isEdit !== true ? (
               // 댓글등록
               <SubmitBtn onClick={props.onClickCommentWrite}>
-                <MdForwardToInbox />
+                <BiSend />
               </SubmitBtn>
             ) : (
               // 댓글수정
               <SubmitBtn onClick={props.onClickCommentUpdate}>
-                <MdForwardToInbox />
+                <BiSend />
               </SubmitBtn>
             )}
             <ImgBtn>
@@ -58,9 +63,15 @@ export default function GardenCommentEditUI(props: any) {
         </CommentWriteInputBox>
       </CommentWriteBox>
       <MediaWrapper>
-        {props.fileUrls === "" && <Img src={props.commentEl.image} />}
-        {props.videoUrls === "" && (
+        {props.fileUrls === "" && props.commentEl.image.includes("http") ? (
+          <Img src={props.commentEl.image} />
+        ) : (
+          ""
+        )}
+        {props.videoUrls === "" && props.commentEl.video.includes("http") ? (
           <Video src={props.commentEl.video} controls />
+        ) : (
+          ""
         )}
         {props.fileUrls !== "" && <Img src={props.fileUrls} />}
         {props.videoUrls !== "" && <Video src={props.videoUrls} controls />}
