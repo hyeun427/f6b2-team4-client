@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const FETCH_BOARD = gql`
   query fetchBoard($boardId: String!) {
@@ -13,6 +13,7 @@ export const FETCH_BOARD = gql`
         name
         myLang
         newLang
+        image
       }
       createdAt
       updatedAt

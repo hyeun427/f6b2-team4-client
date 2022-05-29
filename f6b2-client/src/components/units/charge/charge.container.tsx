@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client';
+import { Router, useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { accessTokenState, userInfoState } from '../../../commons/store';
@@ -22,6 +23,7 @@ export default function ChargeStation() {
     btn4: false,
     btn5: false,
   });
+  const router = useRouter();
 
   const onClickButton = (btnName: string) => (event) => {
     const point = Number(
@@ -81,16 +83,15 @@ export default function ChargeStation() {
             refetchQueries: [
               {
                 query: FETCH_USER_LOGGED_IN,
-                context: {
-                  headers: {
-                    Authorization: `Bearer ${isToken}`,
-                  },
-                },
+                // context: {
+                //   headers: {
+                //     Authorization: `Bearer ${isToken}`,
+                //   },
+                // },
               },
             ],
           });
-
-          alert('결제가 완료되었습니다');
+          router.push('/charge/thanks');
         } else {
           // 결제 실패 시 로직,
           alert('결제에 실패했습니다. 다시 시도해 주세요');
