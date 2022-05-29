@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import TimeAgo from 'timeago-react';
 
 export const CommentListBox = styled.div`
   width: 100%;
@@ -82,7 +83,7 @@ export const DeleteBtn = styled.button`
   cursor: pointer;
 `;
 
-export const CreatedAt = styled.time`
+export const CreatedAt = styled(TimeAgo)`
   font-weight: 400;
   font-size: 11px;
   color: #767676;

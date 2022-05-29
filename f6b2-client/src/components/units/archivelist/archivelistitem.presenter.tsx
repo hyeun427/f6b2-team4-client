@@ -17,13 +17,17 @@ export default function ArchiveItemUI(props: IArchiveItem) {
   return (
     <>
       <Archive.WrapperRowItem onClick={onClickArchiveItem}>
-        <Archive.ImageItem
-          src={
-            boardImage?.fetchBoardImage[0]?.image.includes('http')
-              ? boardImage?.fetchBoardImage[0]?.image
-              : '/image/default1.jpg'
-          }
-        />
+        {props.el.board.video.includes('http') ? (
+          <Archive.VideoItem src={props.el.board.video} autoPlay muted loop />
+        ) : (
+          <Archive.ImageItem
+            src={
+              boardImage?.fetchBoardImage[0]?.image.includes('http')
+                ? boardImage?.fetchBoardImage[0]?.image
+                : '/image/default1.jpg'
+            }
+          />
+        )}
         <Archive.WrapperCol>
           <Archive.PItem>{props.el.board.content}</Archive.PItem>
           <Archive.PDate>{getDate(props.el.board.createdAt)}</Archive.PDate>

@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 
+export const WrapperItem = styled.div`
+  width: auto;
+  height: auto;
+`;
+
 export const WrapperColItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,9 +27,51 @@ export const WrapperColItem = styled.div`
   :hover {
     cursor: pointer;
   }
+  /* @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 100%;
+    height: 150%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#399953, #399953),
+      linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33),
+      linear-gradient(#377af5, #377af5);
+    animation: rotate 4s linear infinite;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: white;
+    border-radius: 5px;
+  } */
 `;
 
 export const ImageItem = styled.img`
+  width: 106px;
+  height: 130px;
+  object-fit: cover;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 8px;
+`;
+
+export const VideoItem = styled.video`
   width: 106px;
   height: 130px;
   object-fit: cover;

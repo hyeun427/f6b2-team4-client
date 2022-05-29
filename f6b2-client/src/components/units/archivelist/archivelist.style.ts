@@ -19,6 +19,11 @@ export const WrapperDiv = styled.div`
   border-radius: 0px 50px;
 `;
 
+export const WrapperLottie = styled.div`
+  width: 50px;
+  height: 50px;
+`;
+
 export const WrapperRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,7 +37,6 @@ export const WrapperRow = styled.div`
   line-height: 19px;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #767676;
 `;
 
 export const InputSearchBar = styled.input`
@@ -77,6 +81,7 @@ export const ImageItem = styled.img`
   height: 45px;
   background-color: #c4c4c4;
   margin-right: 6px;
+  border-radius: 10px;
 `;
 
 export const PItem = styled.p`
@@ -172,4 +177,13 @@ export const WapperLottie = styled.div`
   justify-content: center;
   align-items: center;
   padding-right: 40px;
+`;
+
+export const VideoItem = styled.video`
+  width: 45px;
+  height: 45px;
+  background-color: #c4c4c4;
+  margin-right: 6px;
+  object-fit: cover;
+  border-radius: 10px;
 `;
