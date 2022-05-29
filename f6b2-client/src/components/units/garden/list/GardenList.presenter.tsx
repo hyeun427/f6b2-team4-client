@@ -89,30 +89,32 @@ export default function GardenListUI(props: any) {
                             <NameRow>
                               <WriterName>{el.writer.name}</WriterName>
                               {/* 저장하기 공사중!!! */}
-                              {props.savedInfo?.fetchSavedBoards.isSaved ===
-                                true &&
-                              props.savedInfo?.fetchSavedBoards.board.id ===
-                                el.id ? (
-                                <MdBookmarkBorder
-                                  size={"22"}
-                                  onClick={() => props.onClickSaved(el)}
-                                  style={{ cursor: "pointer" }}
-                                />
-                              ) : (
-                                ""
-                              )}
-                              {props.savedInfo?.fetchSavedBoards.isSaved ===
-                                true &&
-                              props.savedInfo?.fetchSavedBoards.board.id ===
-                                el.id ? (
-                                <MdBookmark
-                                  size={"22"}
-                                  onClick={() => props.onClickSaved(el)}
-                                  style={{ cursor: "pointer" }}
-                                />
-                              ) : (
-                                ""
-                              )}
+                              {/* {props.savedInfo?.fetchSavedBoards.map(
+                                (el2, index2) => (
+                                  <>
+                                    {el2.board.id === el.id &&
+                                    el2.isSaved === false ? (
+                                      <MdBookmarkBorder
+                                        size={"22"}
+                                        onClick={() => props.onClickSaved(el)}
+                                        style={{ cursor: "pointer" }}
+                                      />
+                                    ) : (
+                                      <MdBookmark
+                                        size={"22"}
+                                        onClick={() => props.onClickSaved(el)}
+                                        style={{ cursor: "pointer" }}
+                                      />
+                                    )}
+                                  </>
+                                )
+                              )} */}
+
+                              {/* <MdBookmark
+                                size={"22"}
+                                onClick={() => props.onClickSaved(el)}
+                                style={{ cursor: "pointer" }}
+                              /> */}
                             </NameRow>
                             <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                           </WriterInfo>

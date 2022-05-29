@@ -67,8 +67,6 @@ export default function GardenBestBox(props) {
     router.push("/garden/" + props.el.id);
   };
 
-  console.log("aaa", props.el);
-
   return (
     <GardenBest onClick={onClickMoveToDetail}>
       {/* {props.el.video !== "" ? (
