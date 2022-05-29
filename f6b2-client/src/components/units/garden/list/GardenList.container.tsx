@@ -35,7 +35,6 @@ export default function GardenList() {
   const [likeBoard] = useMutation(LIKE_BOARD);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
-  const [isSaved, setIsSaved] = useState(false);
 
   // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
@@ -83,7 +82,6 @@ export default function GardenList() {
           },
         ],
       });
-      setIsSaved((prev) => !prev);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -115,10 +113,7 @@ export default function GardenList() {
     setSearchKeyword(event.target.value);
   };
 
-  // console.log('SAVED', savedInfo?.fetchSavedBoards);
-  // console.log('USERID', loginUserInfo?.id);
-  console.log(isSaved);
-
+  console.log(savedInfo);
   return (
     <GardenListUI
       commentListVal={commentListVal}
@@ -133,7 +128,6 @@ export default function GardenList() {
       onChangeSearchKeyword={onChangeSearchKeyword}
       searchKeyword={searchKeyword}
       savedInfo={savedInfo}
-      isSaved={isSaved}
     />
   );
 }

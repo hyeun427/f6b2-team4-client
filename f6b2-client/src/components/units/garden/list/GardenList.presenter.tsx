@@ -40,6 +40,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import GardenImg from '../gardenImg/gardenImg.container';
 import TranslateGarden from '../../../commons/translate/garden';
 import GardenSearch from '../search/GardenSearch.container';
+import _ from 'lodash';
 
 export default function GardenListUI(props: any) {
   return (
@@ -69,7 +70,6 @@ export default function GardenListUI(props: any) {
                     {props.loginUserInfo?.newLang === el.writer.myLang ? (
                       <GardenListBox>
                         <WriterInfoBox>
-                          {/* 프로필사진 공사중!!!!! */}
                           {el.writer.image.includes('http') ? (
                             <WriterProfile
                               onClick={props.onClickUserProfile}
@@ -80,63 +80,34 @@ export default function GardenListUI(props: any) {
                             <WriterProfile
                               onClick={props.onClickUserProfile}
                               id={el.writer.id}
-                              src={
-                                'https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png'
-                              }
+                              src={'/image/defaultuser.png'}
                             />
                           )}
                           <WriterInfo>
                             <NameRow>
                               <WriterName>{el.writer.name}</WriterName>
-
-                              {/* {props.savedInfo?.fetchSavedBoards.map((el2) =>
-                                el2.board.id === el.id ? (
-                                  el2.isSaved ? (
-                                    <MdBookmark
-                                      size={'22'}
-                                      onClick={() => props.onClickSaved(el)}
-                                      style={{ cursor: 'pointer' }}
-                                    />
-                                  ) : (
-                                    <MdBookmarkBorder
-                                      size={'22'}
-                                      onClick={() => props.onClickSaved(el)}
-                                      style={{ cursor: 'pointer' }}
-                                    />
-                                  )
-                                ) : (
-                                  ''
-                                )
-                              )} */}
-
-                              {/* 저장하기 공사중!!! */}
-                              {/* {props.savedInfo?.fetchSavedBoards.map(
-                                (el2, index2) => (
-                                  <>
-                                    {el2.board.id === el.id &&
-                                    el2.isSaved === false ? (
-                                      <MdBookmarkBorder
-                                        size={"22"}
+                              {props.savedInfo?.fetchSavedBoards.filter(
+                                (el2) => el2.board.id === el.id
+                              ).length > 0 ? (
+                                props.savedInfo?.fetchSavedBoards.map((el3) =>
+                                  el3.board.id === el.id ? (
+                                    el3.isSaved ? (
+                                      <MdBookmark
+                                        size={'22'}
                                         onClick={() => props.onClickSaved(el)}
-                                        style={{ cursor: "pointer" }}
+                                        style={{ cursor: 'pointer' }}
                                       />
                                     ) : (
-                                      <MdBookmark
-                                        size={"22"}
+                                      <MdBookmarkBorder
+                                        size={'22'}
                                         onClick={() => props.onClickSaved(el)}
-                                        style={{ cursor: "pointer" }}
+                                        style={{ cursor: 'pointer' }}
                                       />
-                                    )}
-                                  </>
+                                    )
+                                  ) : (
+                                    ''
+                                  )
                                 )
-                              )} */}
-
-                              {props.isSaved ? (
-                                <MdBookmark
-                                  size={'22'}
-                                  onClick={() => props.onClickSaved(el)}
-                                  style={{ cursor: 'pointer' }}
-                                />
                               ) : (
                                 <MdBookmarkBorder
                                   size={'22'}

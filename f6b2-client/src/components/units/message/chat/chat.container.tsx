@@ -18,18 +18,16 @@ export default function Chat() {
   // let socket;
 
   useEffect(() => {
-    console.log('useEffect');
     const socket = io(ENDPOINT);
     setName(String(router.query.chatInfo)?.split('-')[0]);
     setRoom(String(router.query.chatInfo)?.split('-')[1]);
 
     socket.emit('join', { name, room }, (error) => {
-      console.log(name, room, 'join');
       if (error) {
         alert(error);
       }
     });
-  }, [ENDPOINT, name, room]);
+  }, [name, room]);
 
   // useEffect(() => {
   //   socket.on('message', (message) => {
