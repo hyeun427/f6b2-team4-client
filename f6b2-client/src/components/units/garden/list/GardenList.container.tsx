@@ -18,6 +18,7 @@ export default function GardenList() {
   //  로그인 된 회원 정보(글로벌)
   const [loginUserInfo] = useRecoilState(userInfoState);
 
+  // 좋아요/ 저장하기 여부
   const { data: savedInfo } = useQuery(FETCH_SAVED_BOARDS, {
     variables: {
       userId: loginUserInfo?.id,
@@ -34,6 +35,8 @@ export default function GardenList() {
   const [likeBoard] = useMutation(LIKE_BOARD);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
+
+  console.log(data);
 
   // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
@@ -112,7 +115,8 @@ export default function GardenList() {
     setSearchKeyword(event.target.value);
   };
 
-  console.log(data?.fetchBoards);
+  console.log("SAVED", savedInfo?.fetchSavedBoards);
+  console.log("USERID", loginUserInfo?.id);
 
   return (
     <GardenListUI
