@@ -12,38 +12,36 @@ export default function Chat() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [connected, setConnected] = useState(false);
-
   const ENDPOINT = 'http://34.97.19.44:5000/';
   const router = useRouter();
-  console.log(connected);
-  let socket;
+
+  // let socket;
 
   useEffect(() => {
     console.log('useEffect');
-    socket = io(ENDPOINT);
+    const socket = io(ENDPOINT);
     setName(String(router.query.chatInfo)?.split('-')[0]);
     setRoom(String(router.query.chatInfo)?.split('-')[1]);
 
     socket.emit('join', { name, room }, (error) => {
       console.log(name, room, 'join');
-      setConnected(true);
       if (error) {
         alert(error);
       }
     });
   }, [ENDPOINT, name, room]);
 
-  useEffect(() => {
-    socket.on('message', (message) => {
-      setMessages((msgs) => [...msgs, message]);
-      console.log(message);
-    });
+  // useEffect(() => {
+  //   socket.on('message', (message) => {
+  //     setMessages((msgs) => [...msgs, message]);
+  //     console.log(message);
+  //   });
 
-    socket.on('roomData', ({ users }) => {
-      setUsers(users);
-      console.log(users);
-    });
-  }, []);
+  //   socket.on('roomData', ({ users }) => {
+  //     setUsers(users);
+  //     console.log(users);
+  //   });
+  // }, []);
 
   const sendMessage = (event) => {
     console.log('메시지전송', event);

@@ -1,11 +1,11 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import GardenListUI from "./GardenDetail.presenter";
-import { FETCH_BOARD } from "./GardenDetail.queries";
-import { SAVE_BOARD } from "../../commons/queries";
-import { IBoard } from "../../../commons/types/generated/types";
-import { LIKE_BOARD } from "./GardenDetail.queries";
-import { useRouter } from "next/router";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import GardenListUI from './GardenDetail.presenter';
+import { FETCH_BOARD } from './GardenDetail.queries';
+import { SAVE_BOARD } from '../../commons/queries';
+import { IBoard } from '../../../commons/types/generated/types';
+import { LIKE_BOARD } from './GardenDetail.queries';
+import { useRouter } from 'next/router';
 
 export default function GardenDetail() {
   const router = useRouter();
@@ -27,7 +27,6 @@ export default function GardenDetail() {
 
   // 좋아요 클릭
   const onClickLikeBoard = async (event) => {
-    console.log(event.currentTarget.id);
     try {
       await likeBoard({
         variables: {
@@ -42,7 +41,6 @@ export default function GardenDetail() {
           },
         ],
       });
-      alert("좋아요!");
     } catch (error) {
       alert(error);
     }

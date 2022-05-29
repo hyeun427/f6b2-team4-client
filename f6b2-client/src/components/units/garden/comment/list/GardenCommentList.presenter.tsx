@@ -26,7 +26,6 @@ import { Image } from 'antd';
 import 'antd/dist/antd.css';
 import * as timeago from 'timeago.js';
 import ko from 'timeago.js/lib/lang/ko';
-import TimeAgo from 'timeago-react';
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -41,12 +40,12 @@ export default function GardenCommentListUI(props) {
         <>
           <CommentListBox key={index}>
             <ProfileWrapper>
-              {el.writer.image.includes("http") ? (
+              {el.writer.image.includes('http') ? (
                 <CommentProfile src={el.writer.image} />
               ) : (
                 <CommentProfile
                   src={
-                    "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+                    'https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png'
                   }
                 />
               )}

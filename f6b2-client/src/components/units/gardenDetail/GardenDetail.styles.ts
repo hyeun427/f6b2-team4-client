@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { RiFileEditLine, RiDeleteBinLine } from "react-icons/ri";
+import styled from '@emotion/styled';
+import { RiFileEditLine, RiDeleteBinLine } from 'react-icons/ri';
 
 export const Outer = styled.div`
   width: 100vw;
@@ -73,7 +73,7 @@ export const WriterProfile = styled.img`
   border-radius: 50%;
 
   /* 완성 후 삭제 */
-  background-color: gray;
+  background-color: white;
 `;
 
 export const WriterName = styled.div`
