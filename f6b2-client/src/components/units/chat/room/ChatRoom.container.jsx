@@ -12,8 +12,30 @@ export default function ChatRoom() {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const ENDPOINT = "http://34.97.19.44:5000/";
 
-  const ENDPOINT = "https://react-chat-page.herokuapp.com/";
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    setName(String(router.query.chatInfo)?.split("-")[0]);
+    setRoom(String(router.query.chatInfo)?.split("-")[1]);
+
+    socket.emit("join", { name, room }, (error) => {
+      if (error) {
+      }
+    });
+  }, [name, room]);
+
+  useEffect(() => {
+    socket.on("message", (message) => {
+      setMessages((msgs) => [...msgs, [message]]);
+    });
+
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+  });
+
+  console.log(messages);
 
   const onChangeMessage = (event) => {
     setMessage(event.target.value);
@@ -21,39 +43,12 @@ export default function ChatRoom() {
 
   const onClickSendMessage = () => {
     if (message) {
-      socket.emit(message);
+      socket.emit("sendMessage", message, () => setMessage(""));
     }
   };
 
-  useEffect(() => {
-    socket = io(ENDPOINT);
-
-    setName(String(router.query.chatInfo)?.split("-")[0]);
-    setRoom(String(router.query.chatInfo)?.split("-")[1]);
-
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
-  }, [ENDPOINT]);
-
-  useEffect(() => {
-    socket.on("message", (message) => {
-      setMessages((msgs) => [...msgs, message]);
-    });
-
-    socket.on("roomData", ({ users }) => {
-      setUsers(users);
-    });
-  }, []);
-
-  const sendMessage = (event) => {
-    event.preventDefault();
-
-    if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
-    }
+  const onClickExitChat = () => {
+    router.push("/garden");
   };
 
   return (
@@ -64,6 +59,7 @@ export default function ChatRoom() {
       onClickSendMessage={onClickSendMessage}
       messages={messages}
       users={users}
+      onClickExitChat={onClickExitChat}
     />
   );
 }

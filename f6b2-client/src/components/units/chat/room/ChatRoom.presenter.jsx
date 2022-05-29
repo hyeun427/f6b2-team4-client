@@ -23,32 +23,48 @@ import {
 } from "./ChatRoom.styles";
 
 export default function ChatRoomUI(props) {
+  console.log(props.messages);
   return (
     <>
       <Wrapper>
         <ChatRoomBox>
           <Header>
             <Title>{props.room}</Title>
+            <div
+              style={{ color: "white", fontSize: "40px" }}
+              onClick={props.onClickExitChat}
+            >
+              x
+            </div>
           </Header>
           <MainBox>
             <Sidebar>
               <NameWrapper>
                 <UserName>{props.name}</UserName>
-
-                <MemberName>aa</MemberName>
+                {props.users !== "" && (
+                  <>
+                    {props.users.map((el) => (
+                      <MemberName>{el.name}</MemberName>
+                    ))}
+                  </>
+                )}
               </NameWrapper>
               <ExitBtn>Exit Chat Room</ExitBtn>
             </Sidebar>
             <ChatRoom>
-              {props.messages?.map((el, index) => (
-                <TalkBox key={index}>
-                  <UserInfo>
-                    <Name>Jay</Name>
-                    <CreatedAt>5:24 PM</CreatedAt>
-                  </UserInfo>
-                  <Content>{el}</Content>
-                </TalkBox>
-              ))}
+              {props.messages !== "" && (
+                <>
+                  {props.messages.map((el) => (
+                    <TalkBox>
+                      <UserInfo>
+                        <Name></Name>
+                        <CreatedAt>5:24 PM</CreatedAt>
+                      </UserInfo>
+                      <Content>{el[0].text}</Content>
+                    </TalkBox>
+                  ))}
+                </>
+              )}
               <InputBoxWrapper>
                 <InputBox>
                   <MessageInput
