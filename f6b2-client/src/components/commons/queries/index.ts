@@ -217,6 +217,7 @@ export const FETCH_COMMUNITY_BOARD = gql`
         name
         myLang
         newLang
+        image
       }
     }
   }

@@ -34,3 +34,8 @@ export const restoreAccessTokenLoadable = selector({
     return newAccessToken;
   },
 });
+
+export const mySaveLike = atom({
+  key: 'mySaveLikeContents',
+  default: [],
+});

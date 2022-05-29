@@ -31,12 +31,19 @@ const Image1 = styled(Image)`
 `;
 
 export default function GardenDetailCommentListUI(props) {
+  console.log(props.comments);
   return (
     <>
       {props.comments?.fetchComments.map((el, index) => (
         <>
           <CommentListBox key={index}>
-            <CommentProfile />
+            <CommentProfile
+              src={
+                el.writer?.image.includes('http')
+                  ? el.writer?.image
+                  : '/image/defaultuser.png'
+              }
+            />
             <CommentContentsBox>
               <CommentInfo>
                 <Row1>
