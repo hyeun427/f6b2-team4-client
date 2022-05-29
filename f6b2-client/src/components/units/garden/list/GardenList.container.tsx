@@ -1,16 +1,16 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import GardenListUI from "./GardenList.presenter";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import GardenListUI from './GardenList.presenter';
 import {
   FETCH_BOARDS,
   FETCH_SAVED_BOARDS,
   SAVE_BOARD,
-} from "../../../commons/queries";
-import { IBoard } from "../../../../commons/types/generated/types";
-import { LIKE_BOARD } from "./GardenList.queries";
-import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../../../commons/store";
-import { useRouter } from "next/router";
+} from '../../../commons/queries';
+import { IBoard } from '../../../../commons/types/generated/types';
+import { LIKE_BOARD } from './GardenList.queries';
+import { useRecoilState } from 'recoil';
+import { accessTokenState, userInfoState } from '../../../../commons/store';
+import { useRouter } from 'next/router';
 
 export default function GardenList() {
   const router = useRouter();
@@ -35,8 +35,7 @@ export default function GardenList() {
   const [likeBoard] = useMutation(LIKE_BOARD);
   // 엑세스 토큰
   const [isToken, setIsToken] = useRecoilState(accessTokenState);
-
-  console.log(data);
+  const [isSaved, setIsSaved] = useState(false);
 
   // 댓글 펼치기
   const [commentListVal, setCommentListVal] = useState([false]);
@@ -84,6 +83,7 @@ export default function GardenList() {
           },
         ],
       });
+      setIsSaved((prev) => !prev);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -110,13 +110,14 @@ export default function GardenList() {
   };
 
   // 검색 키워드
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState('');
   const onChangeSearchKeyword = (event) => {
     setSearchKeyword(event.target.value);
   };
 
-  console.log("SAVED", savedInfo?.fetchSavedBoards);
-  console.log("USERID", loginUserInfo?.id);
+  // console.log('SAVED', savedInfo?.fetchSavedBoards);
+  // console.log('USERID', loginUserInfo?.id);
+  console.log(isSaved);
 
   return (
     <GardenListUI
@@ -132,6 +133,7 @@ export default function GardenList() {
       onChangeSearchKeyword={onChangeSearchKeyword}
       searchKeyword={searchKeyword}
       savedInfo={savedInfo}
+      isSaved={isSaved}
     />
   );
 }

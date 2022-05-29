@@ -1,13 +1,13 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../../../commons/store";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../../commons/store';
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
   LIKE_COMMENT,
-} from "../../../../commons/queries";
-import GardenDetailCommentListUI from "./GardenDetailCommentList.presenter";
+} from '../../../../commons/queries';
+import GardenDetailCommentListUI from './GardenDetailCommentList.presenter';
 
 export default function GardenDetailCommentList(props: any) {
   const { data: comments } = useQuery(FETCH_COMMENTS, {
@@ -19,7 +19,6 @@ export default function GardenDetailCommentList(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
 
   const onClickDeleteComment = async (event) => {
-    console.log(event.target.id);
     try {
       await deleteComment({
         variables: {
@@ -34,7 +33,7 @@ export default function GardenDetailCommentList(props: any) {
           },
         ],
       });
-      alert("댓글삭제!");
+      alert('댓글삭제!');
     } catch (error) {
       alert(error);
     }

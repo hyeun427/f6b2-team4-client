@@ -1,17 +1,20 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useMutation, useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../../commons/store';
 import {
   CREATE_COMMENT,
   FETCH_COMMENTS,
   UPDATE_COMMENT,
-} from "../../../../commons/queries";
-import GardenDetailCommentWriteUI from "./GardenDetailCommentWrite.presenter";
+} from '../../../../commons/queries';
+import GardenDetailCommentWriteUI from './GardenDetailCommentWrite.presenter';
 
 export default function GardenCommentWrite(props: any) {
+  const [loginUserInfo] = useRecoilState(userInfoState);
   const [createComment] = useMutation(CREATE_COMMENT);
   const [updateComment] = useMutation(UPDATE_COMMENT);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const router = useRouter();
 
   const onChangeComment = (event: any) => {
@@ -38,10 +41,10 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      alert("댓글작성성공!");
-      setComment("");
-      setFileUrls("");
-      setVideoUrls("");
+
+      setComment('');
+      setFileUrls('');
+      setVideoUrls('');
     } catch (error) {
       alert(error);
     }
@@ -53,7 +56,7 @@ export default function GardenCommentWrite(props: any) {
       commentId: props.commentEl?.id,
     };
 
-    if (comment !== "") {
+    if (comment !== '') {
       myVariables.updateCommentInput.content = comment;
     }
 
@@ -69,22 +72,22 @@ export default function GardenCommentWrite(props: any) {
           },
         ],
       });
-      alert("댓글수정 성공!");
-      setComment("");
+      alert('댓글수정 성공!');
+      setComment('');
     } catch (error) {
       alert(error);
     }
   };
 
   // 1. 이미지 URL을 받기 위한 set 선언
-  const [fileUrls, setFileUrls] = useState("");
+  const [fileUrls, setFileUrls] = useState('');
   // 2. 업로드 컴포넌트에 넘겨줄 콜백 함수(?)
   const onChangeFileUrls = (fileUrl: string) => {
     setFileUrls(fileUrl);
   };
 
   // 비디오 올리기
-  const [videoUrls, setVideoUrls] = useState("");
+  const [videoUrls, setVideoUrls] = useState('');
   const onChangeVideoUrls = (fileUrl: string) => {
     setVideoUrls(fileUrl);
   };
@@ -101,6 +104,7 @@ export default function GardenCommentWrite(props: any) {
       fileUrls={fileUrls}
       onChangeVideoUrls={onChangeVideoUrls}
       videoUrls={videoUrls}
+      loginUserInfo={loginUserInfo}
     />
   );
 }

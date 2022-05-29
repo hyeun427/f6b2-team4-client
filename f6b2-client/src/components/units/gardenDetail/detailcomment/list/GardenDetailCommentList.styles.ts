@@ -16,7 +16,7 @@ export const CommentProfile = styled.img`
   border-radius: 50px;
   margin-right: 5px;
   //test
-  background-color: gray;
+  background-color: white;
 `;
 
 export const CommentContentsBox = styled.main`
