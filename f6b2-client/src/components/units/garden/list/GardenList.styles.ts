@@ -67,7 +67,7 @@ export const GardenListBox = styled.main`
   border: 1px solid #dbdbdb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 17px;
 `;
 
 export const WriterInfoBox = styled.section`
@@ -82,9 +82,11 @@ export const WriterProfile = styled.img`
   border-radius: 50px;
   margin-right: 10px;
   cursor: pointer;
+  object-fit: cover;
+  background-color: white;
 
   // test
-  background-color: gray;
+  /* background-color: gray; */
 `;
 
 export const WriterInfo = styled.article`
@@ -165,6 +167,7 @@ export const Like = styled.button`
 export const CommentCount = styled.div`
   font-weight: 400;
   font-size: 12px;
+  cursor: pointer;
 `;
 
 export const CommentListBtn = styled.button`

@@ -18,6 +18,12 @@ export default function GardenList() {
   //  로그인 된 회원 정보(글로벌)
   const [loginUserInfo] = useRecoilState(userInfoState);
 
+  const { data: savedInfo } = useQuery(FETCH_SAVED_BOARDS, {
+    variables: {
+      userId: loginUserInfo?.id,
+    },
+  });
+
   const { data, fetchMore } = useQuery(FETCH_BOARDS, {
     variables: {
       pageSize: 5,
@@ -53,7 +59,6 @@ export default function GardenList() {
           },
         ],
       });
-      alert("좋아요!");
     } catch (error) {
       alert(error);
     }
@@ -107,6 +112,8 @@ export default function GardenList() {
     setSearchKeyword(event.target.value);
   };
 
+  console.log(data?.fetchBoards);
+
   return (
     <GardenListUI
       commentListVal={commentListVal}
@@ -120,6 +127,7 @@ export default function GardenList() {
       isToken={isToken}
       onChangeSearchKeyword={onChangeSearchKeyword}
       searchKeyword={searchKeyword}
+      savedInfo={savedInfo}
     />
   );
 }

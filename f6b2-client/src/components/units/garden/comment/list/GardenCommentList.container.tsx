@@ -33,7 +33,6 @@ export default function GardenCommentList(props: any) {
           },
         ],
       });
-      alert("댓글삭제!");
     } catch (error) {
       alert(error);
     }

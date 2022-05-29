@@ -12,6 +12,7 @@ import {
   VideoThumbnail,
 } from "./GardenCommentWrite.styles";
 import { MdForwardToInbox, MdPhoto, MdPhotoCameraFront } from "react-icons/md";
+import { BiSend } from "react-icons/bi";
 import ImageUpload from "../../../../commons/upload";
 import VideoUpload from "../../../../commons/videoupload";
 
@@ -19,7 +20,15 @@ export default function GardenCommentWriteUI(props: any) {
   return (
     <>
       <CommentWriteBox>
-        <CommentWriteProfile />
+        {props.loginInfo?.image.includes("http") ? (
+          <CommentWriteProfile src={props.loginInfo?.image} />
+        ) : (
+          <CommentWriteProfile
+            src={
+              "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+            }
+          />
+        )}
         <CommentWriteInputBox>
           <CommentWriteInput
             placeholder="Enter Your Comment Here!"
@@ -32,7 +41,7 @@ export default function GardenCommentWriteUI(props: any) {
             {props.isEdit !== true ? (
               // 댓글등록
               <SubmitBtn onClick={props.onClickCommentWrite}>
-                <MdForwardToInbox />
+                <BiSend />
               </SubmitBtn>
             ) : (
               // 댓글수정

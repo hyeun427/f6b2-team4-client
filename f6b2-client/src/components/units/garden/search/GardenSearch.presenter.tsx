@@ -42,16 +42,29 @@ export default function GardenSearchUI(props: any) {
     <>
       <GardenWrapper>
         <Wrapper>
-          "{props.searchKeyword}"로(으로) 찾은 결과 입니다
+          <div style={{ marginBottom: "15px", fontSize: "15px" }}>
+            "{props.searchKeyword}"로(으로) 찾은 결과 입니다
+          </div>
           <>
             {props.searchBoard?.searchBoardContent.map((el, index) => (
               <div key={index}>
                 <GardenListBox>
                   <WriterInfoBox>
-                    <WriterProfile
-                      onClick={props.onClickUserProfile}
-                      id={el.writer.id}
-                    />
+                    {el.writer.image.includes("http") ? (
+                      <WriterProfile
+                        onClick={props.onClickUserProfile}
+                        id={el.writer.id}
+                        src={el.writer.image}
+                      />
+                    ) : (
+                      <WriterProfile
+                        onClick={props.onClickUserProfile}
+                        id={el.writer.id}
+                        src={
+                          "https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png"
+                        }
+                      />
+                    )}
                     <WriterInfo>
                       <NameRow>
                         <WriterName>{el.writer.name}</WriterName>
@@ -74,7 +87,7 @@ export default function GardenSearchUI(props: any) {
                     <GardenImg boardId={el.id} video={el.video} />
                     {/* <ContentsImg /> */}
                     <LikeAndCommentCountBox>
-                      {props.commentListVal[index] ? (
+                      {/* {props.commentListVal[index] ? (
                         <CommentListBtn
                           onClick={props.onClickCommentListBtn(index)}
                           id={el.id}
@@ -88,13 +101,17 @@ export default function GardenSearchUI(props: any) {
                         >
                           open
                         </CommentListBtn>
-                      )}
+                      )} */}
+                      <div></div>
                       <LikeAndCommentCount>
                         <Like onClick={props.onClickLikeBoard} id={el.id}>
                           <MdThumbUp size={"13"} /> {el.likes}
                         </Like>
                         {/* 해당 게시글의 댓글 갯수 */}
-                        <CommentCount>
+                        <CommentCount
+                          onClick={props.onClickCommentListBtn(index)}
+                          id={el.id}
+                        >
                           <MdQuestionAnswer size={"13"} /> {el.commentsCount}
                         </CommentCount>
                       </LikeAndCommentCount>

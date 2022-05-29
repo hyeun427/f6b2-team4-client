@@ -16,10 +16,8 @@ export const CommentProfile = styled.img`
   border-radius: 50px;
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 13px;
-
-  //test
-  background-color: gray;
+  margin-top: 10px;
+  background-color: white;
 `;
 
 export const CommentContentsBox = styled.main`
@@ -111,4 +109,9 @@ export const Row1 = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const ProfileWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
 `;

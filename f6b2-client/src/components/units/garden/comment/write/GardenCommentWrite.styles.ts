@@ -17,9 +17,7 @@ export const CommentWriteProfile = styled.img`
   height: 30px;
   border-radius: 50px;
   margin-right: 15px;
-
-  //test
-  background-color: gray;
+  background-color: white;
 `;
 
 export const CommentWriteInputBox = styled.article`

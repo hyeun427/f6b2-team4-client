@@ -17,6 +17,7 @@ export const CommentWriteProfile = styled.img`
   height: 30px;
   border-radius: 50px;
   margin-right: 15px;
+  background-color: white;
 
   //test
   background-color: gray;

@@ -55,6 +55,7 @@ export const FETCH_BOARDS = gql`
         name
         myLang
         newLang
+        image
       }
       createdAt
     }
@@ -96,6 +97,7 @@ export const FETCH_SAVED_BOARDS = gql`
         video
       }
       isSaved
+      isLiked
     }
   }
 `;
@@ -269,6 +271,7 @@ export const SEARCH_BOARD_CONTENT = gql`
         name
         myLang
         newLang
+        image
       }
     }
   }
