@@ -1,11 +1,16 @@
-import styled from '@emotion/styled';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
-import { IoChatbubbleOutline } from 'react-icons/io5';
-import { BsSearch } from 'react-icons/bs';
+import styled from "@emotion/styled";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { IoChatbubbleOutline } from "react-icons/io5";
+import { BsSearch } from "react-icons/bs";
 
 export const TmpDiv = styled.div`
   width: 100%;
   height: 60px;
+`;
+
+export const DivTmp = styled.div`
+  width: auto;
+  height: auto; ;
 `;
 
 export const GardenWrapper = styled.div`
@@ -95,7 +100,7 @@ export const WriterProfile = styled.img`
 export const WriterInfo = styled.article`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 export const WriterName = styled.strong`

@@ -29,6 +29,11 @@ import { BiSend } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ChatRoomUI(props) {
+  let aa;
+  if (props.backGround === "한국어") {
+    aa =
+      "https://cdn.discordapp.com/attachments/974505238029533295/980855928381390918/korean.png";
+  }
   return (
     <>
       <Wrapper>
@@ -38,12 +43,12 @@ export default function ChatRoomUI(props) {
           </Header>
           <MainBox>
             <Sidebar>
-              <NameWrapper>
+              <NameWrapper style={{ position: "relative" }}>
                 <UserName>{props.name}</UserName>
                 {props.users !== "" && (
                   <>
                     {props.users.map((el) => (
-                      <MemberName key={uuidv4()}>- {el.name}</MemberName>
+                      <MemberName key={uuidv4()}>▻ {el.name}</MemberName>
                     ))}
                   </>
                 )}

@@ -34,6 +34,7 @@ export default function ChatAccess() {
   const onClickMoveToChat = async () => {
     try {
       await usePoint();
+      router.push("/chat/" + name + "-" + language);
     } catch (error) {
       alert(error);
       return;
