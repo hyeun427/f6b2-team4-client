@@ -265,7 +265,15 @@ export default function LayoutHeader() {
 
           {isToken ? (
             <WrapperPoint onClick={onClickCharge}>
+              {/* <motion.div
+                animate={{
+                  scale: [1, 2, 2, 1, 1],
+                  rotate: [0, 0, 270, 270, 0],
+                  borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+                }}
+              > */}
               <MyPoint style={{ margin: '10' }} />
+              {/* </motion.div> */}
               <SpanPoint>
                 {data?.fetchUser.points.toLocaleString('ko-KR')} P
               </SpanPoint>
