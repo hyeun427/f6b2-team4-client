@@ -1,9 +1,7 @@
-import Head from "next/head";
 import {
   ChatRoom,
   ChatRoomBox,
   Content,
-  CreatedAt,
   ExitBtn,
   Header,
   InputBox,
@@ -11,17 +9,24 @@ import {
   MainBox,
   MemberName,
   MessageInput,
+  MyContent,
+  MyName,
+  MyUserInfo,
   Name,
   NameWrapper,
   Sidebar,
   SubmitBtn,
   TalkBox,
+  TalkMyBox,
   TalkWrapper,
   Title,
   UserInfo,
   UserName,
   Wrapper,
 } from "./ChatRoom.styles";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { BiSend } from "react-icons/bi";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 export default function ChatRoomUI(props) {
   return (
@@ -30,12 +35,6 @@ export default function ChatRoomUI(props) {
         <ChatRoomBox>
           <Header>
             <Title>{props.room}</Title>
-            <div
-              style={{ color: "white", fontSize: "40px" }}
-              onClick={props.onClickExitChat}
-            >
-              x
-            </div>
           </Header>
           <MainBox>
             <Sidebar>
@@ -44,23 +43,37 @@ export default function ChatRoomUI(props) {
                 {props.users !== "" && (
                   <>
                     {props.users.map((el) => (
-                      <MemberName>{el.name}</MemberName>
+                      <MemberName>- {el.name}</MemberName>
                     ))}
                   </>
                 )}
               </NameWrapper>
-              <ExitBtn>Exit Chat Room</ExitBtn>
+              <ExitBtn onClick={props.onClickExitChat}>
+                <RiArrowGoBackLine style={{ marginRight: "10px" }} />
+                Exit Chat Room
+              </ExitBtn>
             </Sidebar>
             <ChatRoom>
               {props.messages !== "" && (
-                <TalkWrapper>
+                <TalkWrapper ref={props.messageBoxRef}>
                   {props.messages.map((el) => (
-                    <TalkBox>
-                      <UserInfo>
-                        <Name>{el.user}</Name>
-                      </UserInfo>
-                      <Content>{el.text}</Content>
-                    </TalkBox>
+                    <>
+                      {el.user !== props.name ? (
+                        <TalkBox>
+                          <UserInfo>
+                            <Name>{el.user}</Name>
+                          </UserInfo>
+                          <Content>{el.text}</Content>
+                        </TalkBox>
+                      ) : (
+                        <TalkMyBox>
+                          <MyUserInfo>
+                            <MyName>{el.user}</MyName>
+                          </MyUserInfo>
+                          <MyContent>{el.text}</MyContent>
+                        </TalkMyBox>
+                      )}
+                    </>
                   ))}
                 </TalkWrapper>
               )}
@@ -69,9 +82,15 @@ export default function ChatRoomUI(props) {
                   <MessageInput
                     placeholder="Enter your text here"
                     onChange={props.onChangeMessage}
+                    onKeyPress={props.onKeyPressSubmit}
+                    onClick={props.onClickSendMessage}
+                    value={props.message}
                   />
-                  <SubmitBtn onClick={props.onClickSendMessage}>
-                    Submit
+                  <SubmitBtn
+                    onClick={props.onClickSendMessage}
+                    disabled={props.sendValid}
+                  >
+                    <BiSend />
                   </SubmitBtn>
                 </InputBox>
               </InputBoxWrapper>

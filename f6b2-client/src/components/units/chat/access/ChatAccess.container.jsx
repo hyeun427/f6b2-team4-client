@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatAccessUI from "./ChatAccess.presenter";
 
 export default function ChatAccess() {
@@ -8,20 +8,18 @@ export default function ChatAccess() {
   const [language, setLanguage] = useState("");
   const [access, setAccess] = useState(true);
 
-  const onChangeName = (event) => {
-    setName(event.target.value);
-
+  useEffect(() => {
     if (name !== "" && language !== "") {
       setAccess(false);
     }
+  });
+
+  const onChangeName = (event) => {
+    setName(event.target.value);
   };
 
   const onChangeLanguage = (event) => {
     setLanguage(event.target.value);
-
-    if (name !== "" && language !== "") {
-      setAccess(false);
-    }
   };
 
   const onClickMoveToChat = () => {

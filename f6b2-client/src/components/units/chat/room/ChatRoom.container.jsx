@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatRoomUI from "./ChatRoom.presenter";
 import io from "socket.io-client";
 
@@ -13,7 +13,18 @@ export default function ChatRoom() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "http://34.97.19.44:5000/";
-  // const ENDPOINT = "https://react-chat-page.herokuapp.com/";
+  const [sendValid, setSendValid] = useState(true);
+  const messageBoxRef = useRef();
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    if (message !== "") {
+      setSendValid(false);
+    }
+  }, [message]);
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -43,11 +54,23 @@ export default function ChatRoom() {
   const onClickSendMessage = () => {
     if (message) {
       socket.emit("sendMessage", message, name, room);
+      setMessage("");
+      setSendValid(true);
     }
   };
 
   const onClickExitChat = () => {
-    router.push("/garden");
+    document.location.href = "/chat";
+  };
+
+  const onKeyPressSubmit = (event) => {
+    if (event.key == "Enter") onClickSendMessage();
+  };
+
+  const scrollToBottom = () => {
+    if (messageBoxRef.current) {
+      messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
+    }
   };
 
   return (
@@ -59,6 +82,10 @@ export default function ChatRoom() {
       messages={messages}
       users={users}
       onClickExitChat={onClickExitChat}
+      onKeyPressSubmit={onKeyPressSubmit}
+      message={message}
+      sendValid={sendValid}
+      messageBoxRef={messageBoxRef}
     />
   );
 }
