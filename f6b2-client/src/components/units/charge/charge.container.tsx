@@ -83,11 +83,6 @@ export default function ChargeStation() {
             refetchQueries: [
               {
                 query: FETCH_USER_LOGGED_IN,
-                // context: {
-                //   headers: {
-                //     Authorization: `Bearer ${isToken}`,
-                //   },
-                // },
               },
             ],
           });

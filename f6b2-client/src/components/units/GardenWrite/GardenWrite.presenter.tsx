@@ -10,7 +10,6 @@ import VideoRecord from './videorecord/videorecord.container';
 import Badge from '@mui/material/Badge';
 import lottie from 'lottie-web';
 import { useEffect, useRef } from 'react';
-import { Tooltip } from '@mui/material';
 
 export default function GardenWriteUI(props: IGardenWrite) {
   const bee1Container = useRef();
