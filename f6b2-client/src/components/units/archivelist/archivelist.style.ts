@@ -86,17 +86,18 @@ export const ImageItem = styled.img`
 
 export const PItem = styled.p`
   width: 100%;
-  height: auto;
+  height: 28px;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 16px;
-  /* overflow: hidden; */
-  flex-wrap: wrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
   display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  margin: 0px;
+  margin-bottom: 3px;
 `;
 
 export const SliderTab = styled(Slider)`
@@ -112,6 +113,7 @@ export const PDate = styled.p`
   font-size: 10px;
   line-height: 14px;
   color: #949494;
+  margin: 0px;
 `;
 
 export const WrapperCol = styled.div`

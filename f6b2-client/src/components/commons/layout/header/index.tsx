@@ -1,15 +1,15 @@
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../../../commons/store";
-import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_USER_LOGGED_IN, LOG_OUT, USE_POINT } from "../../queries";
-import { CgBee } from "react-icons/cg";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import React, { useEffect, useState } from "react";
-import { BsFlower1 } from "react-icons/bs";
-import { Box, Modal } from "@mui/material";
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { accessTokenState, userInfoState } from '../../../../commons/store';
+import { useMutation, useQuery } from '@apollo/client';
+import { FETCH_USER_LOGGED_IN, LOG_OUT, USE_POINT } from '../../queries';
+import { CgBee } from 'react-icons/cg';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import React, { useEffect, useState } from 'react';
+import { BsFlower1 } from 'react-icons/bs';
+import { Box, Modal } from '@mui/material';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -49,7 +49,7 @@ const LogoImg = styled.img`
 `;
 
 const PLogoLang = styled.span`
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -58,7 +58,7 @@ const PLogoLang = styled.span`
 `;
 
 const PLogoB = styled.span`
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -81,7 +81,7 @@ const BtnHeader = styled.button`
   border: none;
   color: white;
   background-color: #3a3939;
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   margin: 0px 35px;
   font-style: normal;
   font-weight: 700;
@@ -120,7 +120,7 @@ const WrapperHeaderInfo = styled.div`
   width: 15%;
   height: 100%;
   color: white;
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -130,7 +130,7 @@ const WrapperHeaderInfo = styled.div`
 
 const SpanPoint = styled.span`
   height: auto;
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -144,7 +144,7 @@ const SpanPoint = styled.span`
 `;
 
 const SpanLogin = styled.span`
-  font-family: "Istok Web";
+  font-family: 'Istok Web';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -195,27 +195,27 @@ export default function LayoutHeader() {
   }, [data]);
 
   const onClickLogo = () => {
-    router.push("/");
+    router.push('/');
   };
 
   const onClickChat = () => {
-    router.push("/chat");
+    router.push('/chat');
   };
 
   const onClickGarden = () => {
-    router.push("/garden");
+    router.push('/garden');
   };
 
   const onClickCommunity = () => {
-    router.push("/community");
+    router.push('/community');
   };
 
   const onClickSignIn = () => {
-    router.push("/signin");
+    router.push('/signin');
   };
 
   const onClickCharge = () => {
-    router.push("/charge");
+    router.push('/charge');
   };
 
   // material Ui handleing fuc
@@ -231,8 +231,8 @@ export default function LayoutHeader() {
     try {
       await userLogOut();
       handleClose();
-      setIsToken("");
-      router.push("/garden");
+      setIsToken('');
+      router.push('/garden');
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -247,7 +247,7 @@ export default function LayoutHeader() {
     <Wrapper>
       <WrapperHeader>
         <WrapperLogo onClick={onClickLogo}>
-          <LogoImg src="/image/logowhite.png" />
+          <LogoImg src='/image/logowhite.png' />
         </WrapperLogo>
         <WrapperHeaderMenu>
           <BtnHeader onClick={onClickGarden}>Garden</BtnHeader>
@@ -255,11 +255,11 @@ export default function LayoutHeader() {
           <BtnHeader onClick={onClickChat}>Chat</BtnHeader>
         </WrapperHeaderMenu>
         <WrapperHeaderInfo>
-          <MyBee style={{ margin: "5" }} onClick={handleMenu} />
           {isToken ? (
             <>
+              <MyBee style={{ margin: '5' }} onClick={handleMenu} />
               <Menu
-                id="menu-appbar"
+                id='menu-appbar'
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
@@ -275,11 +275,10 @@ export default function LayoutHeader() {
 
           {isToken ? (
             <WrapperPoint onClick={onClickCharge}>
-
-              <MyPoint style={{ margin: "10" }} />
+              <MyPoint style={{ margin: '10' }} />
 
               <SpanPoint>
-                {data?.fetchUser.points.toLocaleString("ko-KR")} P
+                {data?.fetchUser.points.toLocaleString('ko-KR')} P
               </SpanPoint>
             </WrapperPoint>
           ) : (

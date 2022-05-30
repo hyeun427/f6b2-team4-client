@@ -9,7 +9,7 @@ export const WrapperCol = styled.div`
   width: 900px;
   height: 500px;
   padding: 37px 91px 42px 91px;
-  margin-top: 107px;
+  margin-top: 95px;
   border: 1px solid #dbdbdb;
   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -167,7 +167,7 @@ export const WrapperRowBtn3 = styled.div`
   width: 100%;
   height: 90px;
   position: absolute;
-  top: 440px;
+  top: 450px;
 `;
 
 export const BtnPoint = styled.button`

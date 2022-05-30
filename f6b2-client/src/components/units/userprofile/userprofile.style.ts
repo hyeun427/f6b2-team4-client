@@ -102,6 +102,7 @@ export const ImageProfile = styled.img`
   border-radius: 50%;
   background-color: white;
   margin-top: 10px;
+  object-fit: cover;
 `;
 
 export const H3ProfileName = styled.h3`
