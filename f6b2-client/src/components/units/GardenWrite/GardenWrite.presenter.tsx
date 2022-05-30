@@ -100,7 +100,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
                   />
                 </Badge>
               ) : (
-                <></>
+                ''
               )}
             </L.VideoItempWrap>
             {props.fileUrls?.map((el, index) => (

@@ -1,9 +1,9 @@
-import styled from "@emotion/styled";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { Image } from "antd";
-import "antd/dist/antd.css";
+import styled from '@emotion/styled';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+import { Image } from 'antd';
+import 'antd/dist/antd.css';
 
 const SliderChild = styled.div`
   width: 335px;
@@ -18,23 +18,23 @@ const SliderGarden = styled(Slider)`
 
   .slick-prev:before,
   .slick-next:before {
-    font-family: "slick";
+    font-family: 'slick';
     font-size: 40px;
     color: black;
   }
 
   .slick-prev:before {
-    content: "<";
+    content: '<';
   }
-  [dir="rtl"] .slick-prev:before {
-    content: ">";
+  [dir='rtl'] .slick-prev:before {
+    content: '>';
   }
 
   .slick-next:before {
-    content: ">";
+    content: '>';
   }
-  [dir="rtl"] .slick-next:before {
-    content: "<";
+  [dir='rtl'] .slick-next:before {
+    content: '<';
   }
 
   .slick-prev {
@@ -85,14 +85,14 @@ export default function GardenImgUI(props) {
 
   return (
     <Wrapper>
-      {props.video !== "" || props.data?.fetchBoardImage.length > 0 ? (
+      {props.video !== '' || props.data?.fetchBoardImage.length > 0 ? (
         <SliderGarden {...settings}>
-          {props.video !== "" ? (
+          {props.video !== '' ? (
             <SliderChild>
               <Video src={props.video} controls />
             </SliderChild>
           ) : (
-            ""
+            ''
           )}
           {props.data?.fetchBoardImage.map((el, index) => (
             <div key={index}>
@@ -105,7 +105,7 @@ export default function GardenImgUI(props) {
           ))}
         </SliderGarden>
       ) : (
-        ""
+        ''
       )}
     </Wrapper>
   );

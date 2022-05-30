@@ -26,6 +26,8 @@ import {
   LikeOff,
   CommentIcon,
   SpanCommentCount,
+  WrapperSearch,
+  IconSearch,
 } from './GardenList.styles';
 import {
   MdQuestionAnswer,
@@ -33,6 +35,8 @@ import {
   MdBookmarkBorder,
   MdBookmark,
 } from 'react-icons/md';
+import { BsSearch } from 'react-icons/bs';
+
 import GardenBestList from '../bestList/GardenBestList.container';
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
 
@@ -55,10 +59,13 @@ export default function GardenListUI(props: any) {
           <DailyWordContainer />
         </WrapperLeft>
         <Wrapper>
-          <InputSearchBar
-            placeholder={'Search'}
-            onChange={props.onChangeSearchKeyword}
-          />
+          <WrapperSearch>
+            <InputSearchBar
+              // placeholder={'Search'}
+              onChange={props.onChangeSearchKeyword}
+            />
+            <IconSearch />
+          </WrapperSearch>
           {props.searchKeyword ? (
             <GardenSearch searchKeyword={props.searchKeyword} />
           ) : (

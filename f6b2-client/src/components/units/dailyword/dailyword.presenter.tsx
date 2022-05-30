@@ -1,5 +1,5 @@
-import TranslateWord from "../../commons/translate/word";
-import * as Dword from "./dailyword.style";
+import TranslateWord from '../../commons/translate/word';
+import * as Dword from './dailyword.style';
 
 export default function DailyWordUI(props: any) {
   return (

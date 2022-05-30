@@ -51,7 +51,7 @@ export default function SignInUI(props: ISingninPresenter) {
         <U.ButtonNaver href='https://langbee.shop/login/naver'>
           <U.WarperBtnContents>
             <U.ImageBtnIcon src={'/image/naver.png'} />
-            <U.PBtnText>Log in via Naver</U.PBtnText>
+            <U.PBtnText style={{ color: 'white' }}>Log in via Naver</U.PBtnText>
           </U.WarperBtnContents>
         </U.ButtonNaver>
       </U.SignUpWrapperDiv>

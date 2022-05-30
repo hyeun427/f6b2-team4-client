@@ -81,12 +81,12 @@ export default function GardenCommentListUI(props) {
                       el3.isLiked ? (
                         <Like onClick={props.onClickCommentLike} id={el.id}>
                           <LikeOn />
-                          {el.likes}
+                          {/* {el.likes} */}
                         </Like>
                       ) : (
                         <Like onClick={props.onClickCommentLike} id={el.id}>
                           <LikeOff />
-                          {el.likes}
+                          {/* {el.likes} */}
                         </Like>
                       )
                     ) : (
@@ -96,7 +96,7 @@ export default function GardenCommentListUI(props) {
                 ) : (
                   <Like onClick={props.onClickCommentLike} id={el.id}>
                     <LikeOff />
-                    {el.likes}
+                    {/* {el.likes} */}
                   </Like>
                 )}
               </ContentWrapper>
