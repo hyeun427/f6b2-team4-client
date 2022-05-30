@@ -75,6 +75,13 @@ export const ExitBtn = styled.button`
   font-weight: 700;
   font-size: 14px;
   color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    background: #ffb950;
+  }
 `;
 
 export const ChatRoom = styled.div`
@@ -86,14 +93,14 @@ export const ChatRoom = styled.div`
 `;
 
 export const TalkBox = styled.div`
-  width: 563px;
-  height: 50px;
+  width: 300px;
   background: #ffb950;
   border-radius: 30px 30px 30px 0px;
   padding: 12px;
   padding-left: 30px;
   padding-right: 30px;
-  margin-top: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: 40px;
 `;
 
@@ -105,19 +112,13 @@ export const UserInfo = styled.div`
 
 export const Name = styled.div`
   font-weight: 700;
-  font-size: 12px;
+  font-size: 15px;
   color: #000000;
-`;
-
-export const CreatedAt = styled.div`
-  font-weight: 400;
-  font-size: 12px;
-  color: #ffffff;
 `;
 
 export const Content = styled.div`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   color: #000000;
 `;
 
@@ -127,7 +128,7 @@ export const InputBoxWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-top: 1px solid #dbdbdb;
-  margin-top: 25px;
+  padding: 10px;
 `;
 
 export const InputBox = styled.div`
@@ -135,7 +136,7 @@ export const InputBox = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 563px;
-  height: 62px;
+  height: 40px;
   background: #ffffff;
   border: 1px solid #dbdbdb;
   border-radius: 30px;
@@ -156,14 +157,42 @@ export const MessageInput = styled.input`
 `;
 
 export const SubmitBtn = styled.button`
+  border: none;
   background: none;
-  border: 1px solid black;
-  width: 100px;
-  height: 30px;
   margin-right: 5px;
-  border-radius: 30px;
+  cursor: pointer;
 `;
 
 export const TalkWrapper = styled.div`
   overflow: auto;
+`;
+
+export const TalkMyBox = styled.div`
+  width: 300px;
+  background: #3a3939;
+  border-radius: 30px 30px 0px 30px;
+  padding: 12px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 310px;
+`;
+
+export const MyUserInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const MyName = styled.div`
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+`;
+
+export const MyContent = styled.div`
+  font-weight: 400;
+  font-size: 13px;
+  color: white;
 `;
