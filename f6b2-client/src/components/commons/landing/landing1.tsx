@@ -169,8 +169,7 @@ const Text = styled.div`
 `;
 
 const MoveGarden = styled.div`
-  margin-top: 600px;
-  /* padding-left: 550px; */
+  margin-top: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,11 +185,15 @@ const MoveGarden = styled.div`
   inset: 0;
   /* 내가 추가 */
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-  animation: ${explore} 2s 2s linear infinite;
+  animation: ${explore} 2s 3s linear infinite;
+  /* animation: ${explore} 2s 3s linear infinite; */
   opacity: 0;
   position: absolute;
   z-index: 1;
   cursor: pointer;
+  :hover {
+    animation-play-state: paused;
+  }
 `;
 
 export default function Landing1() {
