@@ -8,6 +8,11 @@ export const TmpDiv = styled.div`
   height: 60px;
 `;
 
+export const DivTmp = styled.div`
+  width: auto;
+  height: auto; ;
+`;
+
 export const GardenWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -94,7 +99,7 @@ export const WriterProfile = styled.img`
 export const WriterInfo = styled.article`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 export const WriterName = styled.strong`

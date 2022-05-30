@@ -9,6 +9,7 @@ export default function ChatRoom() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [backGround, setBackground] = useState("");
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -29,6 +30,7 @@ export default function ChatRoom() {
   useEffect(() => {
     socket = io(ENDPOINT);
     setName(String(router.query.chatInfo)?.split("-")[0]);
+    setBackground(String(router.query.chatInfo)?.split("-")[1]);
     setRoom(String(router.query.chatInfo)?.split("-")[1]);
 
     socket.emit("join", { name, room }, (error) => {
@@ -86,6 +88,7 @@ export default function ChatRoom() {
       message={message}
       sendValid={sendValid}
       messageBoxRef={messageBoxRef}
+      backGround={backGround}
     />
   );
 }

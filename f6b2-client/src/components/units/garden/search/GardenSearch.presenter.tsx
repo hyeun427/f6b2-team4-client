@@ -28,10 +28,12 @@ import {
   WrapperIconRow,
   LikeOn,
   LikeOff,
+  DivTmp,
 } from "./GardenSearch.styles";
 import {
   MdQuestionAnswer,
   MdThumbUp,
+  MdBookmark,
   MdBookmarkBorder,
   MdKeyboardArrowDown,
 } from "react-icons/md";
@@ -77,14 +79,67 @@ export default function GardenSearchUI(props: any) {
                     )}
                     <WriterInfo>
                       <NameRow>
-                        <WriterName>{el.writer.name}</WriterName>
-                        <MdBookmarkBorder
-                          size={"22"}
-                          onClick={() => props.onClickSaved(el)}
-                          style={{ cursor: "pointer", color: "#FFB950" }}
-                        />
+                        <DivTmp>
+                          <WriterName>{el.writer.name}</WriterName>
+                          <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
+                        </DivTmp>
+                        {props.savedInfo?.fetchSavedBoards.filter(
+                          (el2) => el2.board.id === el.id
+                        ).length > 0 ? (
+                          props.savedInfo?.fetchSavedBoards.map((el3) =>
+                            el3.board.id === el.id ? (
+                              el3.isSaved ? (
+                                <motion.div
+                                  whileHover={{ scale: 1.25 }}
+                                  transition={{ duration: 0.3 }}
+                                  key={String(uuidv4())}
+                                >
+                                  <MdBookmark
+                                    size={"22"}
+                                    onClick={() => props.onClickSaved(el)}
+                                    style={{
+                                      cursor: "pointer",
+                                      color: "#FFB950",
+                                    }}
+                                  />
+                                </motion.div>
+                              ) : (
+                                <motion.div
+                                  whileHover={{ scale: 1.25 }}
+                                  transition={{ duration: 0.3 }}
+                                  key={String(uuidv4())}
+                                >
+                                  <MdBookmarkBorder
+                                    size={"22"}
+                                    onClick={() => props.onClickSaved(el)}
+                                    style={{
+                                      cursor: "pointer",
+                                      color: "#FFB950",
+                                    }}
+                                  />
+                                </motion.div>
+                              )
+                            ) : (
+                              ""
+                            )
+                          )
+                        ) : (
+                          <motion.div
+                            whileHover={{ scale: 1.4 }}
+                            transition={{ duration: 0.3 }}
+                            key={String(uuidv4())}
+                          >
+                            <MdBookmarkBorder
+                              size={"22"}
+                              onClick={() => props.onClickSaved(el)}
+                              style={{
+                                cursor: "pointer",
+                                color: "#FFB950",
+                              }}
+                            />
+                          </motion.div>
+                        )}
                       </NameRow>
-                      <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
                     </WriterInfo>
                   </WriterInfoBox>
                   <ContentsBox>

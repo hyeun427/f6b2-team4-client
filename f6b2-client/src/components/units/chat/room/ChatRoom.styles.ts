@@ -69,7 +69,7 @@ export const ExitBtn = styled.button`
   border: none;
   background: none;
   width: 259px;
-  height: 62px;
+  height: 61px;
   background: #3a3939;
   border-radius: 0px 0px 0px 10px;
   font-weight: 700;
