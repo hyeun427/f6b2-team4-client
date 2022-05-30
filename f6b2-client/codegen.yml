@@ -1,4 +1,4 @@
-schema: https://team04backend.shop/graphql
+schema: https://langbee.shop/graphql
 generates:
   ./src/commons/types/generated/types.ts:
     plugins:
