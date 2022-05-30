@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-// import styled, { keyframes } from "styled-components";
 
 const hexaFade = keyframes`
   0% {
@@ -18,16 +17,16 @@ const textScale = keyframes`
     opacity: 0;
     text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
   }
-  50% {
+  /* 50% {
     color: white;
     transform: scale(1.05);
     opacity: 1;
     text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
-  }
+  } */
   100% {
     color: white;
     transform: scale(1);
-    opacity: 0;
+    opacity: 1;
     text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
   }
 
@@ -50,15 +49,16 @@ const Main = styled.div`
   --f: calc(2 * var(--s) * var(--r) + 4 * var(--mv) - 2 * var(--vc) - 2px);
   /* 내가 추가한 것 */
   background-color: #3a3939;
-  height: 730px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 `;
 
 // 육각형들 부모요소
 const Container = styled.div`
   grid-column: 1/-1;
-  max-width: 1440px;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   font-size: 0; /*disable white space between inline block element */
   position: relative;
@@ -99,7 +99,8 @@ const Hexa1 = styled.div`
   );
   margin-bottom: calc(var(--mv) - var(--vc));
   animation: ${hexaFade} 3s;
-  animation-delay: (2random () * 1s);
+
+  /* animation-delay: (2random () * 1s); */
 `;
 
 // 검정 육각형
@@ -141,7 +142,8 @@ const Text = styled.div`
   inset: 0;
   /* 내가 추가 */
   text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
-  animation: ${textScale} 2s 2s linear infinite;
+  animation: ${textScale} 2s 2s;
+  animation-fill-mode: forwards;
   opacity: 0;
   position: absolute;
   z-index: 1;
@@ -213,8 +215,7 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
@@ -248,8 +249,8 @@ export default function Landing1() {
         <Hexa2></Hexa2>
         {/* row8 */}
         <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
@@ -282,7 +283,70 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
       </Container>
