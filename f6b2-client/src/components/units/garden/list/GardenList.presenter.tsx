@@ -22,6 +22,10 @@ import {
   WrapperRight,
   GardenWrapper,
   NameRow,
+  LikeOn,
+  LikeOff,
+  CommentIcon,
+  SpanCommentCount,
 } from './GardenList.styles';
 import {
   MdQuestionAnswer,
@@ -132,34 +136,58 @@ export default function GardenListUI(props: any) {
                           <GardenImg boardId={el.id} video={el.video} />
                           {/* <ContentsImg /> */}
                           <LikeAndCommentCountBox>
-                            {/* {props.commentListVal[index] ? (
-                              <CommentListBtn
-                                onClick={props.onClickCommentListBtn(index)}
-                                id={el.id}
-                              >
-                                close
-                              </CommentListBtn>
-                            ) : (
-                              <CommentListBtn
-                                onClick={props.onClickCommentListBtn(index)}
-                                id={el.id}
-                              >
-                                open
-                              </CommentListBtn>
-                            )} */}
-                            <div></div>
+                            {/* <div></div> */}
                             <LikeAndCommentCount>
-                              <Like onClick={props.onClickLikeBoard} id={el.id}>
-                                <MdThumbUp size={'13'} /> {el.likes}
-                              </Like>
-                              {/* 해당 게시글의 댓글 갯수 */}
                               <CommentCount
                                 onClick={props.onClickCommentListBtn(index)}
                                 id={el.id}
                               >
-                                <MdQuestionAnswer size={'13'} />{' '}
-                                {el.commentsCount}
+                                <CommentIcon size={'13'} />{' '}
+                                <SpanCommentCount>
+                                  {el.commentsCount}
+                                </SpanCommentCount>
                               </CommentCount>
+                              {/* <LikeOn />
+                              <LikeOff /> */}
+
+                              {props.savedInfo?.fetchSavedBoards.filter(
+                                (element) => element.board.id === el.id
+                              ).length > 0 ? (
+                                props.savedInfo?.fetchSavedBoards.map(
+                                  (element2) =>
+                                    element2.board.id === el.id ? (
+                                      element2.isLiked ? (
+                                        <Like
+                                          onClick={props.onClickLikeBoard}
+                                          id={el.id}
+                                        >
+                                          <LikeOn /> {el.likes}
+                                        </Like>
+                                      ) : (
+                                        <Like
+                                          onClick={props.onClickLikeBoard}
+                                          id={el.id}
+                                        >
+                                          <LikeOff /> {el.likes}
+                                        </Like>
+                                      )
+                                    ) : (
+                                      ''
+                                    )
+                                )
+                              ) : (
+                                <Like
+                                  onClick={props.onClickLikeBoard}
+                                  id={el.id}
+                                >
+                                  <LikeOff size={'13'} /> {el.likes}
+                                </Like>
+                              )}
+
+                              {/* <Like onClick={props.onClickLikeBoard} id={el.id}>
+                                <MdThumbUp size={'13'} /> {el.likes}
+                              </Like> */}
+                              {/* 해당 게시글의 댓글 갯수 */}
                             </LikeAndCommentCount>
                           </LikeAndCommentCountBox>
                         </ContentsBox>

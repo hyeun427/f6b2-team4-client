@@ -58,6 +58,12 @@ export default function GardenList() {
               boardId: event.currentTarget.id,
             },
           },
+          {
+            query: FETCH_SAVED_BOARDS,
+            variables: {
+              userId: loginUserInfo.id,
+            },
+          },
         ],
       });
     } catch (error) {
