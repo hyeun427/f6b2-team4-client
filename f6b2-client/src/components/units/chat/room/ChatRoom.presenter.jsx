@@ -26,7 +26,7 @@ import {
 } from "./ChatRoom.styles";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { BiSend } from "react-icons/bi";
-import ScrollToBottom from "react-scroll-to-bottom";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ChatRoomUI(props) {
   return (
@@ -43,7 +43,7 @@ export default function ChatRoomUI(props) {
                 {props.users !== "" && (
                   <>
                     {props.users.map((el) => (
-                      <MemberName>- {el.name}</MemberName>
+                      <MemberName key={uuidv4()}>- {el.name}</MemberName>
                     ))}
                   </>
                 )}
@@ -57,7 +57,7 @@ export default function ChatRoomUI(props) {
               {props.messages !== "" && (
                 <TalkWrapper ref={props.messageBoxRef}>
                   {props.messages.map((el) => (
-                    <>
+                    <div key={uuidv4()}>
                       {el.user !== props.name ? (
                         <TalkBox>
                           <UserInfo>
@@ -73,7 +73,7 @@ export default function ChatRoomUI(props) {
                           <MyContent>{el.text}</MyContent>
                         </TalkMyBox>
                       )}
-                    </>
+                    </div>
                   ))}
                 </TalkWrapper>
               )}
