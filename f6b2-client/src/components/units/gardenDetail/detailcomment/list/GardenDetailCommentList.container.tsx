@@ -7,11 +7,9 @@ import {
   FETCH_COMMENTS,
   FETCH_SAVED_BOARDS,
   LIKE_COMMENT,
-
-} from '../../../../commons/queries';
-import { FETCH_MYLIKED_COMMENT } from '../../../garden/comment/list/GrdenCommentList.queries';
-import GardenDetailCommentListUI from './GardenDetailCommentList.presenter';
-
+} from "../../../../commons/queries";
+import { FETCH_MYLIKED_COMMENT } from "../../../garden/comment/list/GrdenCommentList.queries";
+import GardenDetailCommentListUI from "./GardenDetailCommentList.presenter";
 
 export default function GardenDetailCommentList(props: any) {
   const [loginUserInfo] = useRecoilState(userInfoState);
@@ -26,7 +24,6 @@ export default function GardenDetailCommentList(props: any) {
       userId: loginUserInfo?.id,
     },
   });
-
   const [deleteComment] = useMutation(DELETE_COMMENT);
   const [loginInfo] = useRecoilState(userInfoState);
 
@@ -45,7 +42,6 @@ export default function GardenDetailCommentList(props: any) {
           },
         ],
       });
-
     } catch (error) {
       alert(error);
     }

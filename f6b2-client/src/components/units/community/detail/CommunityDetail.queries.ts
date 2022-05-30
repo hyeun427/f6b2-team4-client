@@ -7,7 +7,7 @@ export const DELETE_COMMUNITY_BOARD = gql`
   }
 `;
 
-// 커뮤니티 좋아요
+// 커뮤니티 좋아요 갯수 불러오기
 export const LIKE_COMMUNITY_BOARD = gql`
   mutation likeCommunityBoard($communityBoardId: String!) {
     likeCommunityBoard(communityBoardId: $communityBoardId)
@@ -27,6 +27,19 @@ export const FETCH_COMMUNITY_BOARD = gql`
       writer {
         id
         name
+      }
+    }
+  }
+`;
+
+// 커뮤니티 좋아요 내역 불러오기
+export const FETCH_LIKED_COMMUNITY_BOARD = gql`
+  query fetchLikedCommunityBoard($userId: String) {
+    fetchLikedCommunityBoard(userId: $userId) {
+      id
+      isLiked
+      communityBoard {
+        id
       }
     }
   }

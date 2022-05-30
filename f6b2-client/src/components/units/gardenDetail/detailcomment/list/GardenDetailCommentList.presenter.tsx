@@ -16,22 +16,16 @@ import {
   MediaBox,
   OtherBtns,
   Row1,
-
-
-
-
-
   LikeOn,
   LikeOff,
-} from './GardenDetailCommentList.styles';
-import styled from '@emotion/styled';
-import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { Image } from 'antd';
-import 'antd/dist/antd.css';
-import { getDate } from '../../../../../commons/libraries/utils';
-import GardenDetailCommentEdit from '../edit/GardenDetailCommentEdit.container';
-
+} from "./GardenDetailCommentList.styles";
+import styled from "@emotion/styled";
+import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
+import { AiOutlineHeart } from "react-icons/ai";
+import { Image } from "antd";
+import "antd/dist/antd.css";
+import { getDate } from "../../../../../commons/libraries/utils";
+import GardenDetailCommentEdit from "../edit/GardenDetailCommentEdit.container";
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -93,7 +87,7 @@ export default function GardenDetailCommentListUI(props) {
                         </Like>
                       )
                     ) : (
-                      ''
+                      ""
                     )
                   )
                 ) : (
@@ -102,7 +96,6 @@ export default function GardenDetailCommentListUI(props) {
                     {/* {el.likes} */}
                   </Like>
                 )}
-
                 {/* <Like onClick={props.onClickCommentLike} id={el.id}>
                   <AiOutlineHeart />
                   {el.likes}
