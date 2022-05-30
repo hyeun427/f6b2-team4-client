@@ -1,4 +1,6 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { IoChatbubbleOutline } from 'react-icons/io5';
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -144,12 +146,12 @@ export const ContentsTranslate = styled.div`
 `;
 
 export const LikeAndCommentCountBox = styled.div`
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 12px;
 `;
 
 export const Like = styled.button`
@@ -161,12 +163,12 @@ export const Like = styled.button`
 
   margin-right: 30px;
   padding-right: 30px;
-  border-right: 1px solid gray;
 `;
 
 export const CommentCount = styled.div`
   font-weight: 400;
   font-size: 12px;
+  margin-right: 9px;
   cursor: pointer;
 `;
 
@@ -182,6 +184,7 @@ export const CommentListBtn = styled.button`
 export const LikeAndCommentCount = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -198,4 +201,22 @@ export const InputSearchBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const LikeOn = styled(BsHeartFill)`
+  font-size: 13px;
+  color: red;
+`;
+
+export const LikeOff = styled(BsHeart)`
+  font-size: 13px;
+`;
+
+export const CommentIcon = styled(IoChatbubbleOutline)`
+  font-size: 13px;
+`;
+
+export const SpanCommentCount = styled.span`
+  font-size: 12px;
+  line-height: 18px;
 `;
