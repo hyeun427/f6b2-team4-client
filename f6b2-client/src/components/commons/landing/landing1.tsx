@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import { useRouter } from "next/router";
 
 const hexaFade = keyframes`
   0% {
@@ -29,8 +30,28 @@ const textScale = keyframes`
     opacity: 1;
     text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
   }
+`;
 
-  `;
+const explore = keyframes`
+  0% {
+    color: white;
+    transform: scale(1);
+    opacity: 0.5;
+    text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    color: white;
+    transform: scale(1.05);
+    opacity: 1;
+    text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    color: white;
+    transform: scale(1);
+    opacity: 0.5;
+    text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
+  }
+`;
 
 // 랜딩 전체 배경
 const Main = styled.div`
@@ -99,8 +120,6 @@ const Hexa1 = styled.div`
   );
   margin-bottom: calc(var(--mv) - var(--vc));
   animation: ${hexaFade} 3s;
-
-  /* animation-delay: (2random () * 1s); */
 `;
 
 // 검정 육각형
@@ -149,15 +168,44 @@ const Text = styled.div`
   z-index: 1;
 `;
 
+const MoveGarden = styled.div`
+  margin-top: 600px;
+  /* padding-left: 550px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 아래는 변경하지 말 것 */
+  width: 100%;
+  height: 50px;
+  /* white-space: pre; */
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  inset: 0;
+  /* 내가 추가 */
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  animation: ${explore} 2s 2s linear infinite;
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+`;
+
 export default function Landing1() {
+  const router = useRouter();
+  const onClickMoveToGarden = () => {
+    router.push("/garden");
+  };
+
   return (
     <Main>
       <Container style={{ animationDelay: "0.3" }}>
         <Text>BUILD YOUR HIVE</Text>
+        <MoveGarden onClick={onClickMoveToGarden}>Click to explore</MoveGarden>
         {/* row1 */}
-        <Hexa1
-        // style={{ animationName: "hexaFade", animationDelay: "0.3" }}
-        ></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
