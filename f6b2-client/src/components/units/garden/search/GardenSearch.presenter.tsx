@@ -1,5 +1,5 @@
-import GardenCommentList from '../comment/list/GardenCommentList.container';
-import GardenCommentWrite from '../comment/write/GardenCommentWrite.container';
+import GardenCommentList from "../comment/list/GardenCommentList.container";
+import GardenCommentWrite from "../comment/write/GardenCommentWrite.container";
 import {
   CommentCount,
   CommentListBtn,
@@ -23,34 +23,46 @@ import {
   GardenWrapper,
   NameRow,
   InputSearchBarWrapper,
-} from './GardenSearch.styles';
-import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from 'react-icons/md';
-import GardenBestList from '../bestList/GardenBestList.container';
+  CommentIcon,
+  SpanCommentCount,
+  WrapperIconRow,
+  LikeOn,
+  LikeOff,
+} from "./GardenSearch.styles";
+import {
+  MdQuestionAnswer,
+  MdThumbUp,
+  MdBookmarkBorder,
+  MdKeyboardArrowDown,
+} from "react-icons/md";
+import GardenBestList from "../bestList/GardenBestList.container";
 // 날짜 데이터 yyyy-mm-dd 로 변경 모듈
 
-import { getDate } from '../../../../commons/libraries/utils';
-import GardenWriteContainer from '../../GardenWrite/GardenWrite.container';
-import DailyWordContainer from '../../dailyword/dailyword.container';
-import ArchiveContainer from '../../archivelist/archivelist.container';
-import InfiniteScroll from 'react-infinite-scroller';
-import GardenImg from '../gardenImg/gardenImg.container';
-import TranslateGarden from '../../../commons/translate/garden';
-import GardenSearch from '../search/GardenSearch.container';
+import { motion } from "framer-motion";
+import { getDate } from "../../../../commons/libraries/utils";
+import GardenWriteContainer from "../../GardenWrite/GardenWrite.container";
+import DailyWordContainer from "../../dailyword/dailyword.container";
+import ArchiveContainer from "../../archivelist/archivelist.container";
+import InfiniteScroll from "react-infinite-scroller";
+import GardenImg from "../gardenImg/gardenImg.container";
+import TranslateGarden from "../../../commons/translate/garden";
+import GardenSearch from "../search/GardenSearch.container";
+import { v4 as uuidv4 } from "uuid";
 
 export default function GardenSearchUI(props: any) {
   return (
     <>
       <GardenWrapper>
         <Wrapper>
-          <div style={{ marginBottom: '15px', fontSize: '15px' }}>
-            "{props.searchKeyword}"로(으로) 찾은 결과 입니다
+          <div style={{ marginBottom: "15px", fontSize: "15px" }}>
+            Search Result for "{props.searchKeyword}"
           </div>
           <>
             {props.searchBoard?.searchBoardContent.map((el, index) => (
               <div key={index}>
                 <GardenListBox>
                   <WriterInfoBox>
-                    {el.writer.image.includes('http') ? (
+                    {el.writer.image.includes("http") ? (
                       <WriterProfile
                         onClick={props.onClickUserProfile}
                         id={el.writer.id}
@@ -60,16 +72,16 @@ export default function GardenSearchUI(props: any) {
                       <WriterProfile
                         onClick={props.onClickUserProfile}
                         id={el.writer.id}
-                        src={'/image/defaultuser.png'}
+                        src={"/image/defaultuser.png"}
                       />
                     )}
                     <WriterInfo>
                       <NameRow>
                         <WriterName>{el.writer.name}</WriterName>
                         <MdBookmarkBorder
-                          size={'22'}
+                          size={"22"}
                           onClick={() => props.onClickSaved(el)}
-                          style={{ cursor: 'pointer' }}
+                          style={{ cursor: "pointer", color: "#FFB950" }}
                         />
                       </NameRow>
                       <CreatedAt>{getDate(el.createdAt)}</CreatedAt>
@@ -79,39 +91,94 @@ export default function GardenSearchUI(props: any) {
                     <Contents>{el.content}</Contents>
                     <ContentsTranslateBox>
                       {/* 번역API 버튼 자리? */}
-                      <TranslateGarden content={el.content} />
+                      <TranslateGarden
+                        content={el.content}
+                        myLang={el.writer.myLang}
+                      />
                     </ContentsTranslateBox>
                     {/* 캐러셀 */}
                     <GardenImg boardId={el.id} video={el.video} />
                     {/* <ContentsImg /> */}
                     <LikeAndCommentCountBox>
-                      {/* {props.commentListVal[index] ? (
-                        <CommentListBtn
-                          onClick={props.onClickCommentListBtn(index)}
-                          id={el.id}
-                        >
-                          close
-                        </CommentListBtn>
-                      ) : (
-                        <CommentListBtn
-                          onClick={props.onClickCommentListBtn(index)}
-                          id={el.id}
-                        >
-                          open
-                        </CommentListBtn>
-                      )} */}
-                      <div></div>
+                      {/* <div></div> */}
                       <LikeAndCommentCount>
-                        <Like onClick={props.onClickLikeBoard} id={el.id}>
-                          <MdThumbUp size={'13'} /> {el.likes}
-                        </Like>
-                        {/* 해당 게시글의 댓글 갯수 */}
                         <CommentCount
                           onClick={props.onClickCommentListBtn(index)}
                           id={el.id}
                         >
-                          <MdQuestionAnswer size={'13'} /> {el.commentsCount}
+                          <motion.div
+                            whileHover={{ scale: 1.4 }}
+                            transition={{ duration: 0.3 }}
+                            key={String(uuidv4())}
+                          >
+                            <CommentIcon size={"13"} />{" "}
+                          </motion.div>
+                          <SpanCommentCount>
+                            {el.commentsCount}
+                          </SpanCommentCount>
                         </CommentCount>
+
+                        {props.savedInfo?.fetchSavedBoards.filter(
+                          (element) => element.board.id === el.id
+                        ).length > 0 ? (
+                          props.savedInfo?.fetchSavedBoards.map((element2) =>
+                            element2.board.id === el.id ? (
+                              element2.isLiked ? (
+                                <Like
+                                  onClick={props.onClickLikeBoard}
+                                  id={el.id}
+                                >
+                                  <WrapperIconRow>
+                                    <motion.div
+                                      whileHover={{ scale: 1.4 }}
+                                      transition={{ duration: 0.3 }}
+                                      key={String(uuidv4())}
+                                    >
+                                      <LikeOn />
+                                    </motion.div>
+                                  </WrapperIconRow>
+                                  {el.likes}
+                                </Like>
+                              ) : (
+                                <Like
+                                  onClick={props.onClickLikeBoard}
+                                  id={el.id}
+                                >
+                                  <motion.div
+                                    whileHover={{ scale: 1.4 }}
+                                    transition={{ duration: 0.3 }}
+                                    key={String(uuidv4())}
+                                  >
+                                    <LikeOff />
+                                  </motion.div>
+
+                                  {el.likes}
+                                </Like>
+                              )
+                            ) : (
+                              ""
+                            )
+                          )
+                        ) : (
+                          <Like onClick={props.onClickLikeBoard} id={el.id}>
+                            <LikeOff size={"13"} /> {el.likes}
+                          </Like>
+                        )}
+
+                        {/* <Like onClick={props.onClickLikeBoard} id={el.id}>
+                                <MdThumbUp size={'13'} /> {el.likes}
+                              </Like> */}
+                        {/* 해당 게시글의 댓글 갯수 */}
+                        <MdKeyboardArrowDown
+                          onClick={props.onClickCommentListBtn(index)}
+                          id={el.id}
+                          size={20}
+                          style={{
+                            marginLeft: "320px",
+                            marginBottom: "5px",
+                            cursor: "pointer",
+                          }}
+                        />
                       </LikeAndCommentCount>
                     </LikeAndCommentCountBox>
                   </ContentsBox>

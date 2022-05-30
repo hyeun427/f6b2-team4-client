@@ -31,12 +31,12 @@ export default function ChatAccess() {
     setLanguage(event.target.value);
   };
 
-  const onClickMoveToChat = () => {
+  const onClickMoveToChat = async () => {
     try {
-      usePoint();
-      router.push("/chat/" + name + "-" + language);
+      await usePoint();
     } catch (error) {
       alert(error);
+      return;
     }
   };
 
