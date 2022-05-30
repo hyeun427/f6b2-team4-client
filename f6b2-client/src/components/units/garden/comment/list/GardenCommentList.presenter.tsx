@@ -22,12 +22,13 @@ import {
 } from './GardenCommentList.styles';
 import styled from '@emotion/styled';
 import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
-import { AiOutlineHeart } from 'react-icons/ai';
 import GardenCommentEdit from '../edit/GardenCommentEdit.container';
 import { Image } from 'antd';
 import 'antd/dist/antd.css';
 import * as timeago from 'timeago.js';
 import ko from 'timeago.js/lib/lang/ko';
+import { v4 as uuidv4 } from 'uuid';
+import { Tooltip } from '@mui/material';
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -40,7 +41,7 @@ export default function GardenCommentListUI(props) {
     <>
       {props.comments?.fetchComments.map((el, index) => (
         <>
-          <CommentListBox key={index}>
+          <CommentListBox key={String(uuidv4())}>
             <ProfileWrapper>
               {el.writer.image.includes('http') ? (
                 <CommentProfile src={el.writer.image} />
@@ -54,15 +55,19 @@ export default function GardenCommentListUI(props) {
                   <CommentName>{el.writer.name}</CommentName>
                   {props.loginInfo?.name === el.writer.name && (
                     <OtherBtns>
-                      <EditBtn onClick={props.commentEditBtn(index)}>
-                        <MdModeEditOutline size={14} />
-                      </EditBtn>
-                      <DeleteBtn
-                        onClick={props.onClickDeleteComment}
-                        id={el.id}
-                      >
-                        <MdOutlineClear size={14} />
-                      </DeleteBtn>
+                      <Tooltip title='Edit Comment'>
+                        <EditBtn onClick={props.commentEditBtn(index)}>
+                          <MdModeEditOutline size={14} />
+                        </EditBtn>
+                      </Tooltip>
+                      <Tooltip title='Delete Comment'>
+                        <DeleteBtn
+                          onClick={props.onClickDeleteComment}
+                          id={el.id}
+                        >
+                          <MdOutlineClear size={14} />
+                        </DeleteBtn>
+                      </Tooltip>
                     </OtherBtns>
                   )}
                 </Row1>
