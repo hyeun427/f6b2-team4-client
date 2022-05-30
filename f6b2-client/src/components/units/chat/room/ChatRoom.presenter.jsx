@@ -16,6 +16,7 @@ import {
   Sidebar,
   SubmitBtn,
   TalkBox,
+  TalkWrapper,
   Title,
   UserInfo,
   UserName,
@@ -23,7 +24,6 @@ import {
 } from "./ChatRoom.styles";
 
 export default function ChatRoomUI(props) {
-  console.log(props.messages);
   return (
     <>
       <Wrapper>
@@ -53,17 +53,16 @@ export default function ChatRoomUI(props) {
             </Sidebar>
             <ChatRoom>
               {props.messages !== "" && (
-                <>
+                <TalkWrapper>
                   {props.messages.map((el) => (
                     <TalkBox>
                       <UserInfo>
-                        <Name></Name>
-                        <CreatedAt>5:24 PM</CreatedAt>
+                        <Name>{el.user}</Name>
                       </UserInfo>
-                      <Content>{el[0].text}</Content>
+                      <Content>{el.text}</Content>
                     </TalkBox>
                   ))}
-                </>
+                </TalkWrapper>
               )}
               <InputBoxWrapper>
                 <InputBox>

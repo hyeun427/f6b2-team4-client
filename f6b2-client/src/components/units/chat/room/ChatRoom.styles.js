@@ -93,7 +93,7 @@ export const TalkBox = styled.div`
   padding: 12px;
   padding-left: 30px;
   padding-right: 30px;
-  margin-top: 40px;
+  margin-top: 25px;
   margin-left: 40px;
 `;
 
@@ -127,6 +127,7 @@ export const InputBoxWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-top: 1px solid #dbdbdb;
+  margin-top: 25px;
 `;
 
 export const InputBox = styled.div`
@@ -134,7 +135,7 @@ export const InputBox = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 563px;
-  height: 40px;
+  height: 62px;
   background: #ffffff;
   border: 1px solid #dbdbdb;
   border-radius: 30px;
@@ -144,6 +145,7 @@ export const InputBox = styled.div`
 
 export const MessageInput = styled.input`
   width: 100%;
+
   border: none;
   background: none;
   :focus {
@@ -160,4 +162,8 @@ export const SubmitBtn = styled.button`
   height: 30px;
   margin-right: 5px;
   border-radius: 30px;
+`;
+
+export const TalkWrapper = styled.div`
+  overflow: auto;
 `;
