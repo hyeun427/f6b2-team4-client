@@ -127,7 +127,6 @@ export const Contents = styled.div`
 
 export const ContentsTranslateBox = styled.article`
   width: 100%;
-  border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   padding: 5px;
 `;

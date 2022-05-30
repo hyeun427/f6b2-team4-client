@@ -1,12 +1,12 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { FETCH_COMMUNITY_BOARD } from "../../../commons/queries";
-import CommunityDetailUI from "./CommunityDetail.presenter";
+import { useMutation, useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { FETCH_COMMUNITY_BOARD } from '../../../commons/queries';
+import CommunityDetailUI from './CommunityDetail.presenter';
 import {
   LIKE_COMMUNITY_BOARD,
   DELETE_COMMUNITY_BOARD,
-} from "./CommunityDetail.queries";
+} from './CommunityDetail.queries';
 
 export default function CommunityDetail() {
   const router = useRouter();
@@ -15,13 +15,12 @@ export default function CommunityDetail() {
     variables: { communityBoardId: router.query.communityBoardId },
   });
 
-
   // 삭제gql 가져오기
   const [deleteCommunityBoard] = useMutation(DELETE_COMMUNITY_BOARD);
 
   // 리스트로 이동
   const onClickMoveToList = () => {
-    router.push("/community");
+    router.push('/community');
   };
 
   // 글 수정하기
@@ -35,10 +34,10 @@ export default function CommunityDetail() {
       await deleteCommunityBoard({
         variables: { communityBoardId: String(router.query.communityBoardId) },
       });
-      alert("삭제가 완료되었습니다.");
-      router.push("/community");
+      alert('삭제가 완료되었습니다.');
+      router.push('/community');
     } catch (error) {
-      alert("에러ㅠ");
+      alert('에러ㅠ');
     }
   };
   const [isLike, setIsLike] = useState(false);
@@ -65,9 +64,7 @@ export default function CommunityDetail() {
           },
         ],
       });
-    } catch (error) {
-      alert("에러ㅠ");
-    }
+    } catch (error) {}
   };
 
   // 다른 유저 프로필로 이동
