@@ -7,6 +7,7 @@ export const WrapperDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 236px;
+  min-height: 185px;
   height: auto;
   background-color: #fff;
   padding: 20px 20px;
@@ -99,7 +100,7 @@ export const ImageItempWrap = styled.div`
   flex-direction: row;
   width: auto;
   height: auto;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 export const ImageThumbnail = styled.img`
@@ -114,7 +115,7 @@ export const VideoItempWrap = styled.div`
   flex-direction: row;
   width: auto;
   height: auto;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 export const VideoThumbnail = styled.video`
@@ -131,7 +132,7 @@ export const WrapperItem = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
 `;
 
 export const GardenRecordUpload = styled(AiOutlineVideoCamera)`

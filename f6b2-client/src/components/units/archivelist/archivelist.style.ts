@@ -9,7 +9,7 @@ export const WrapperDiv = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 415px;
+  height: 382px;
   background-color: #fff;
   border: 2px solid #727da1;
   border-radius: 20px;

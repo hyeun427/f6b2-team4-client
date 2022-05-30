@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import { IoChatbubbleOutline } from 'react-icons/io5';
+import { BsSearch } from 'react-icons/bs';
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -64,7 +65,7 @@ export const InputSearchBar = styled.input`
 `;
 
 export const GardenListBox = styled.main`
-  width: 100%;
+  width: 510px;
   padding: 30px;
   border: 1px solid #dbdbdb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -219,4 +220,18 @@ export const CommentIcon = styled(IoChatbubbleOutline)`
 export const SpanCommentCount = styled.span`
   font-size: 12px;
   line-height: 18px;
+`;
+
+export const WrapperSearch = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const IconSearch = styled(BsSearch)`
+  position: relative;
+  font-size: 18px;
+  left: -30px;
+  top: -10px;
 `;

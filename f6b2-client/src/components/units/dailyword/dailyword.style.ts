@@ -6,9 +6,9 @@ export const WrapperDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 149px;
   background-color: #fff;
-  padding: 27px 15px 30px 15px;
+  padding: 27px 30px 30px 30px;
   border: 1px solid #dbdbdb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 0px 50px;
@@ -23,9 +23,13 @@ export const WrapperRow = styled.div`
 `;
 
 export const H3Title = styled.h3`
-  font-size: 15px;
+  font-family: 'Istok Web';
+  font-size: 13px;
   text-align: left;
   margin-bottom: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 19px;
 `;
 
 export const WrapperCol = styled.div`
@@ -42,12 +46,13 @@ export const PNewLang = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
+  margin: 0px;
 `;
 
 export const Divider = styled.div`
   width: 180px;
   border-bottom: 2px solid #bfbfbf;
-  margin: 7px 0px 13px 0px;
+  margin: 5px 0px 5px 0px;
 `;
 
 export const PMyLang = styled.p`
