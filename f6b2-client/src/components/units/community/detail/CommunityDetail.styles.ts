@@ -51,7 +51,7 @@ export const Writer = styled.div`
 
 export const Date = styled.div`
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   color: #000000;
   text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
@@ -75,6 +75,7 @@ export const Img = styled.img`
   margin-bottom: 45px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  object-fit: cover;
 `;
 
 export const LikesWrapper = styled.div`
@@ -107,7 +108,7 @@ export const Detail = styled.div`
 export const Title = styled.div`
   margin-bottom: 10px;
   padding-bottom: 10px;
-  font-size: 11px;
+  font-size: 16px;
   color: #ffffff;
   border-bottom: 1px solid #cdcdcd;
 `;
@@ -119,7 +120,7 @@ export const ContentsBox = styled.div`
 `;
 
 export const Contents = styled.div`
-  font-size: 11px;
+  font-size: 13px;
   color: #ffffff;
   margin-bottom: 5px;
 `;
@@ -127,7 +128,6 @@ export const Contents = styled.div`
 export const BtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 120px;
 `;
 
 export const IconWrapper = styled.button`

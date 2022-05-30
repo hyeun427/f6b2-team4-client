@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const CommentWriteBox = styled.main`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
 `;
@@ -26,6 +26,7 @@ export const CommentWriteInputBox = styled.article`
   align-items: center;
   background: #ffffff;
   border: 1px solid #dbdbdb;
+  border-radius: 10px;
 `;
 
 export const CommentWriteInput = styled.input`
