@@ -38,10 +38,6 @@ export const WrapperColCurPoint = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border-image: linear-gradient(to right, #fbfcb9be, #ffcdf3aa, #65d3ffaa); */
-  /* border-image-slice: 1;
-  background-origin: border-box;
-  background-clip: content-box, border-box; */
 `;
 
 export const WrapperRowCurPoint = styled.div`
@@ -73,6 +69,8 @@ export const PCurPointNum = styled.p`
   text-align: center;
   color: #ffb950;
   height: auto;
+  padding-top: 10px;
+  margin-bottom: 3px;
 `;
 
 export const WrapperRowDetail = styled.div`
@@ -106,11 +104,12 @@ export const PDetail = styled.p`
   margin: 0px;
   text-align: center;
   width: 50%;
+  padding-left: 20px;
 `;
 
 export const Divider = styled.div`
-  width: 255px;
-  border-bottom: 2px solid white;
+  width: 220px;
+  border-bottom: 1px solid white;
   margin: 6px 0px;
 `;
 
@@ -341,4 +340,16 @@ export const SpanChargeText = styled.span`
   position: relative;
   left: -5px;
   top: -5px;
+`;
+
+export const Span100 = styled.span`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: black;
+  position: relative;
+  left: -3px;
+  top: -1px;
 `;
