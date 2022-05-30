@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import LayoutHeader from './header';
+import Home from '../../../../pages';
 
 const WrapperLayout = styled.div`
   width: 100%;
@@ -53,12 +54,17 @@ export default function Layout(props: ILayoutProps) {
 
   return (
     <WrapperLayout>
-      {!isHiddenHeader && <LayoutHeader />}
-      <BodyWrapper
-        style={{ backgroundColor: `${isBodyColor ? '#ffb950' : 'white'}` }}
-      >
-        <Body>{props.children}</Body>
-      </BodyWrapper>
+      {isHiddenHeader && <Home />}
+      {!isHiddenHeader && (
+        <>
+          <LayoutHeader />
+          <BodyWrapper
+            style={{ backgroundColor: `${isBodyColor ? '#ffb950' : 'white'}` }}
+          >
+            <Body>{props.children}</Body>
+          </BodyWrapper>
+        </>
+      )}
     </WrapperLayout>
   );
 }

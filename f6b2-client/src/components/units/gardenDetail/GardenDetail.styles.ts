@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import { RiFileEditLine, RiDeleteBinLine } from 'react-icons/ri';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import { IoChatbubbleOutline } from 'react-icons/io5';
 
 export const Outer = styled.div`
   width: 100vw;
@@ -114,7 +116,7 @@ export const ContentsTranslate = styled.div`
 `;
 
 export const LikeAndCommentCountBox = styled.div`
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -128,10 +130,8 @@ export const Like = styled.button`
   cursor: pointer;
   font-weight: 400;
   font-size: 12px;
-
-  margin-right: 30px;
-  padding-right: 30px;
-  border-right: 1px solid gray;
+  margin-right: 10px;
+  /* padding-right: 3px; */
 `;
 
 export const CommentCount = styled.div`
@@ -184,4 +184,18 @@ export const CommentBox = styled.div`
   width: 100%;
   height: 250px;
   overflow: auto;
+`;
+
+export const LikeOn = styled(BsHeartFill)`
+  font-size: 13px;
+  color: red;
+`;
+
+export const LikeOff = styled(BsHeart)`
+  font-size: 13px;
+`;
+
+export const CommentIcon = styled(IoChatbubbleOutline)`
+  font-size: 13px;
+  margin-right: 3px;
 `;

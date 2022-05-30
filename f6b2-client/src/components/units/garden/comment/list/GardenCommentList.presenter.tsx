@@ -36,7 +36,6 @@ const Image1 = styled(Image)`
 
 export default function GardenCommentListUI(props) {
   timeago.register('ko', ko);
-  console.log('페치커멘트', props.comments?.fetchComments);
   return (
     <>
       {props.comments?.fetchComments.map((el, index) => (

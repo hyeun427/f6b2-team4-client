@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import TimeAgo from 'timeago-react';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 export const CommentListBox = styled.div`
   display: flex;
@@ -108,4 +109,13 @@ export const Row1 = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const LikeOn = styled(BsHeartFill)`
+  font-size: 13px;
+  color: red;
+`;
+
+export const LikeOff = styled(BsHeart)`
+  font-size: 13px;
 `;

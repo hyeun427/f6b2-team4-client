@@ -5,16 +5,26 @@ import { userInfoState } from '../../../../../commons/store';
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
+  FETCH_SAVED_BOARDS,
   LIKE_COMMENT,
 } from '../../../../commons/queries';
+import { FETCH_MYLIKED_COMMENT } from '../../../garden/comment/list/GrdenCommentList.queries';
 import GardenDetailCommentListUI from './GardenDetailCommentList.presenter';
 
 export default function GardenDetailCommentList(props: any) {
+  const [loginUserInfo] = useRecoilState(userInfoState);
   const { data: comments } = useQuery(FETCH_COMMENTS, {
     variables: {
       boardId: props.boardElId,
     },
   });
+
+  const { data: myLike } = useQuery(FETCH_MYLIKED_COMMENT, {
+    variables: {
+      userId: loginUserInfo?.id,
+    },
+  });
+
   const [deleteComment] = useMutation(DELETE_COMMENT);
   const [loginInfo] = useRecoilState(userInfoState);
 
@@ -33,7 +43,6 @@ export default function GardenDetailCommentList(props: any) {
           },
         ],
       });
-      alert('댓글삭제!');
     } catch (error) {
       alert(error);
     }
@@ -41,7 +50,7 @@ export default function GardenDetailCommentList(props: any) {
 
   const [commentEditVal, setCommentEditVal] = useState([false]);
   // 댓글수정버튼 클릭 시, 수정창이 보인다
-  console.log(commentEditVal);
+
   const commentEditBtn = (index) => (event) => {
     const newCommentEditVal = [...commentEditVal];
     newCommentEditVal[index] = !commentEditVal[index];
@@ -63,6 +72,12 @@ export default function GardenDetailCommentList(props: any) {
               boardId: props.boardElId,
             },
           },
+          {
+            query: FETCH_MYLIKED_COMMENT,
+            variables: {
+              userId: loginInfo?.id,
+            },
+          },
         ],
       });
     } catch (error) {
@@ -79,6 +94,7 @@ export default function GardenDetailCommentList(props: any) {
       commentEditVal={commentEditVal}
       loginInfo={loginInfo}
       onClickCommentLike={onClickCommentLike}
+      myLike={myLike}
     />
   );
 }
