@@ -141,7 +141,7 @@ export default function UserProfileUI(props) {
             {props.userGarden?.length === 0 ? (
               <>
                 <Profile.WrapperColStart>
-                  <h2>There is No Garden..</h2>
+                  <h2>Your Garden is Empty</h2>
                   {props.userGarden?.length}
                   <Profile.WrapperLottie
                     ref={beeFlyingContainer}
@@ -166,7 +166,7 @@ export default function UserProfileUI(props) {
             {props.community?.fetchCommunityBoards.length === 0 ? (
               <>
                 <Profile.WrapperColStart>
-                  <h2>There is No Hive..</h2>
+                  <h2>Your Hive is Empty</h2>
                 </Profile.WrapperColStart>
               </>
             ) : (
