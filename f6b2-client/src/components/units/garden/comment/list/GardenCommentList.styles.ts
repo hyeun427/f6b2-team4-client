@@ -1,13 +1,13 @@
-import styled from '@emotion/styled';
-import TimeAgo from 'timeago-react';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import styled from "@emotion/styled";
+import TimeAgo from "timeago-react";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
 
 export const CommentListBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 15px;
-  border-top: 1px solid #dbdbdb;
+  margin-top: 10px;
+  /* border-top: 1px solid #dbdbdb; */
   padding-top: 15px;
 `;
 
@@ -17,12 +17,12 @@ export const CommentProfile = styled.img`
   border-radius: 50px;
   margin-right: 10px;
   margin-left: 10px;
-  margin-top: 10px;
+
   background-color: white;
 `;
 
 export const CommentContentsBox = styled.main`
-  width: 90%;
+  width: 100%;
 `;
 
 export const CommentInfo = styled.div`
@@ -39,7 +39,6 @@ export const CommentText = styled.article`
   font-weight: 400;
   font-size: 12px;
   color: black;
-  margin-top: 10px;
   width: 300px;
 `;
 
@@ -86,9 +85,12 @@ export const CreatedAt = styled(TimeAgo)`
   font-weight: 400;
   font-size: 11px;
   color: #767676;
+  margin-left: 10px;
 `;
 
 export const Like = styled.button`
+  display: flex;
+  align-items: center;
   border: none;
   background: none;
   cursor: pointer;
@@ -100,6 +102,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: 50px;
 `;
 
 export const OtherBtns = styled.div`
@@ -124,4 +127,19 @@ export const LikeOn = styled(BsHeartFill)`
 
 export const LikeOff = styled(BsHeart)`
   font-size: 13px;
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const LikeNumber = styled.div`
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+
+  color: #767676;
 `;

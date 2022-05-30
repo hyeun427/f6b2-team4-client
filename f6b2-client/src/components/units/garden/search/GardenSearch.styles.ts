@@ -1,4 +1,7 @@
 import styled from "@emotion/styled";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { IoChatbubbleOutline } from "react-icons/io5";
+import { BsSearch } from "react-icons/bs";
 
 export const TmpDiv = styled.div`
   width: 100%;
@@ -55,10 +58,13 @@ export const InputSearchBar = styled.input`
 
   background: rgba(219, 219, 219, 0.55);
   border-radius: 25px;
+  :focus {
+    outline: none;
+  }
 `;
 
 export const GardenListBox = styled.main`
-  width: 100%;
+  width: 510px;
   padding: 30px;
   border: 1px solid #dbdbdb;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
@@ -78,9 +84,11 @@ export const WriterProfile = styled.img`
   border-radius: 50px;
   margin-right: 10px;
   cursor: pointer;
+  object-fit: cover;
+  background-color: white;
 
   // test
-  background-color: white;
+  /* background-color: gray; */
 `;
 
 export const WriterInfo = styled.article`
@@ -118,7 +126,6 @@ export const Contents = styled.div`
 
 export const ContentsTranslateBox = styled.article`
   width: 100%;
-  border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   padding: 5px;
 `;
@@ -138,30 +145,37 @@ export const ContentsTranslate = styled.div`
 `;
 
 export const LikeAndCommentCountBox = styled.div`
-  width: 85%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 `;
 
 export const Like = styled.button`
+  width: auto;
   border: none;
   background: none;
   cursor: pointer;
   font-weight: 400;
   font-size: 12px;
-
   margin-right: 30px;
-  padding-right: 30px;
-  border-right: 1px solid gray;
+  /* padding-right: 30px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const CommentCount = styled.div`
   font-weight: 400;
   font-size: 12px;
+  margin-right: 9px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const CommentListBtn = styled.button`
@@ -176,6 +190,7 @@ export const CommentListBtn = styled.button`
 export const LikeAndCommentCount = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -191,5 +206,48 @@ export const InputSearchBarWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const LikeOn = styled(BsHeartFill)`
+  font-size: 13px;
+  color: red;
+  margin-right: 5px;
+`;
+
+export const LikeOff = styled(BsHeart)`
+  font-size: 13px;
+  margin-right: 5px;
+`;
+
+export const CommentIcon = styled(IoChatbubbleOutline)`
+  font-size: 13px;
+  margin-right: 5px;
+`;
+
+export const SpanCommentCount = styled.span`
+  font-size: 12px;
+  line-height: 18px;
+`;
+
+export const WrapperSearch = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const IconSearch = styled(BsSearch)`
+  position: relative;
+  font-size: 18px;
+  left: -30px;
+  top: -10px;
+`;
+
+export const WrapperIconRow = styled.div`
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 `;
