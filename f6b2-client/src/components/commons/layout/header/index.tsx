@@ -275,7 +275,9 @@ export default function LayoutHeader() {
 
           {isToken ? (
             <WrapperPoint onClick={onClickCharge}>
+
               <MyPoint style={{ margin: "10" }} />
+
               <SpanPoint>
                 {data?.fetchUser.points.toLocaleString("ko-KR")} P
               </SpanPoint>

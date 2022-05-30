@@ -328,3 +328,15 @@ export const BtnHexaCharge = styled.button`
     color: white;
   }
 `;
+
+export const SpanChargeText = styled.span`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  left: -5px;
+  top: -5px;
+`;

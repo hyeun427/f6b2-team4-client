@@ -14,7 +14,7 @@ export const WrapperCol = styled.div`
 
 export const Welcome = styled.div`
   width: 800px;
-  height: 600px;
+  height: 500px;
 `;
 
 export const ButtonMovetoSignin = styled.button`

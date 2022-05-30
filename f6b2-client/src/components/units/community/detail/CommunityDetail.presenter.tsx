@@ -62,13 +62,36 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
             />
 
             {/* 좋아요 */}
-            {props.isLike ? (
-              <S.LikesWrapper onClick={props.onClickLike}>
-                <S.IconWrapper>
-                  <GiHearts style={{ color: "#FF5B5B" }} />
-                </S.IconWrapper>
-                <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
-              </S.LikesWrapper>
+            {props.myLike?.fetchLikedCommunityBoard.filter(
+              (el) =>
+                el?.communityBoard?.id === props.data?.fetchCommunityBoard.id
+            ).length > 0 ? (
+              props.myLike?.fetchLikedCommunityBoard.map((el2) =>
+                el2.communityBoard?.id ===
+                props.data?.fetchCommunityBoard.id ? (
+                  el2.isLiked ? (
+                    <S.LikesWrapper onClick={props.onClickLike}>
+                      <S.IconWrapper>
+                        <GiHearts style={{ color: "#FF5B5B" }} />
+                      </S.IconWrapper>
+                      <S.Likes>
+                        {props.data?.fetchCommunityBoard?.likes}
+                      </S.Likes>
+                    </S.LikesWrapper>
+                  ) : (
+                    <S.LikesWrapper onClick={props.onClickLike}>
+                      <S.IconWrapper>
+                        <S.GiHeartsIcon />
+                      </S.IconWrapper>
+                      <S.Likes>
+                        {props.data?.fetchCommunityBoard?.likes}
+                      </S.Likes>
+                    </S.LikesWrapper>
+                  )
+                ) : (
+                  ""
+                )
+              )
             ) : (
               <S.LikesWrapper onClick={props.onClickLike}>
                 <S.IconWrapper>

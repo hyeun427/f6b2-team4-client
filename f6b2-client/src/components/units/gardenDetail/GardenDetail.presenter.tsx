@@ -1,17 +1,9 @@
-import * as S from "./GardenDetail.styles";
-import { getDate } from "../../../commons/libraries/utils";
-import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from "react-icons/md";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../commons/store";
 
-
-
-
-
-
-
-
-
+import * as S from './GardenDetail.styles';
+import { getDate } from '../../../commons/libraries/utils';
+import { MdQuestionAnswer, MdThumbUp, MdBookmarkBorder } from 'react-icons/md';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../commons/store';
 import GardenDetailImg from './detailImg/gardenDetailImg.container';
 import GardenDetailCommentList from './detailcomment/list/GardenDetailCommentList.container';
 import GardenDetailCommentWrite from './detailcomment/write/GardenDetailCommentWrite.container';
@@ -20,6 +12,7 @@ import DropdownIcon from './dropDown';
 import { FETCH_MYLIKED_COMMENT } from '../garden/comment/list/GrdenCommentList.queries';
 import { useQuery } from '@apollo/client';
 import { FETCH_SAVED_BOARDS } from '../../commons/queries';
+
 
 export default function GardenDetailUI(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
@@ -31,7 +24,6 @@ export default function GardenDetailUI(props: any) {
 
   // props.data.fetchBoard.id
   //
-
 
   return (
     <S.Outer>
@@ -52,9 +44,9 @@ export default function GardenDetailUI(props: any) {
                 <S.WriterInfo>
                   <S.WriterProfile
                     src={
-                      props.data?.fetchBoard?.writer.image.includes("http")
+                      props.data?.fetchBoard?.writer.image.includes('http')
                         ? props.data?.fetchBoard?.writer.image
-                        : "/image/defaultuser.png"
+                        : '/image/defaultuser.png'
                     }
                   />
                   <S.WriterName>
@@ -68,7 +60,7 @@ export default function GardenDetailUI(props: any) {
                 {props.data?.fetchBoard.writer.id === loginInfo?.id && (
                   <DropdownIcon />
                 )}
-                {props.data?.fetchBoard.writer.id !== loginInfo?.id && ""}
+                {props.data?.fetchBoard.writer.id !== loginInfo?.id && ''}
               </S.WriterInfoBox>
 
               <S.ContentsBox>
@@ -82,7 +74,6 @@ export default function GardenDetailUI(props: any) {
 
                 <S.LikeAndCommentCountBox>
                   <S.LikeAndCommentCount>
-
                     {/* 댓글 수 나옴 */}
                     <S.CommentCount>
                       <S.CommentIcon />
@@ -112,7 +103,7 @@ export default function GardenDetailUI(props: any) {
                             </S.Like>
                           )
                         ) : (
-                          ''
+                          ""
                         )
                       )
                     ) : (
@@ -120,7 +111,7 @@ export default function GardenDetailUI(props: any) {
                         onClick={props.onClickLikeBoard}
                         id={props.data?.fetchBoard.id}
                       >
-                        <S.LikeOff /> {props.data?.fetchBoard.id}
+                        <S.LikeOff /> {props.data?.fetchBoard.likes}
                       </S.Like>
                     )}
 
