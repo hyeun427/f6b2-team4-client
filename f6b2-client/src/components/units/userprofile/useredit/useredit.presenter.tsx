@@ -8,15 +8,17 @@ export default function UserEditUI(props) {
   return (
     <Edit.WrapperCol>
       <Edit.ImgProfile src={props?.fileUrls} />
-      <Edit.WrapperRowCenter>
-        <Edit.InputName
-          defaultValue={props?.user?.fetchUserId?.name}
-          onChange={props.onChangeName}
-        />
+      <Edit.WrapperUpload>
         <ImageUpload
           type='edit'
           onChangeFileUrls={props.onChangeFileUrls}
           fileUrls={props.fileUrls}
+        />
+      </Edit.WrapperUpload>
+      <Edit.WrapperRowCenter>
+        <Edit.InputName
+          defaultValue={props?.user?.fetchUserId?.name}
+          onChange={props.onChangeName}
         />
       </Edit.WrapperRowCenter>
       <Edit.WrapperRow>

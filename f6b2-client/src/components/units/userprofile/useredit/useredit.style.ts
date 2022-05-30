@@ -31,6 +31,12 @@ export const WrapperRow = styled.div`
   margin-bottom: 20px;
 `;
 
+export const WrapperUpload = styled.div`
+  position: relative;
+  top: -20px;
+  right: -40px;
+`;
+
 export const ImgProfile = styled.img`
   width: 80px;
   height: 80px;
@@ -43,6 +49,7 @@ export const ImgProfile = styled.img`
 export const IconEdit = styled(FaEdit)`
   font-size: 16px;
   color: #ffb950;
+  cursor: pointer;
 `;
 
 export const WrapperRowCenter = styled.div`

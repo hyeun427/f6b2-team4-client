@@ -82,6 +82,7 @@ export const ImageItem = styled.img`
   background-color: #c4c4c4;
   margin-right: 6px;
   border-radius: 10px;
+  object-fit: cover;
 `;
 
 export const PItem = styled.p`
