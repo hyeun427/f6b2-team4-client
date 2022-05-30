@@ -17,6 +17,8 @@ import {
   OtherBtns,
   ProfileWrapper,
   Row1,
+  LikeOn,
+  LikeOff,
 } from './GardenCommentList.styles';
 import styled from '@emotion/styled';
 import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
@@ -43,11 +45,7 @@ export default function GardenCommentListUI(props) {
               {el.writer.image.includes('http') ? (
                 <CommentProfile src={el.writer.image} />
               ) : (
-                <CommentProfile
-                  src={
-                    'https://cdn.discordapp.com/attachments/974505238029533295/980389912345972736/defaultuser.png'
-                  }
-                />
+                <CommentProfile src={'/image/defaultuser.png'} />
               )}
             </ProfileWrapper>
             <CommentContentsBox>
@@ -74,10 +72,33 @@ export default function GardenCommentListUI(props) {
               </CommentInfo>
               <ContentWrapper>
                 <CommentText>{el.content}</CommentText>
-                <Like onClick={props.onClickCommentLike} id={el.id}>
-                  <AiOutlineHeart />
-                  {el.likes}
-                </Like>
+
+                {props.myLike?.fetchLikedComment.filter(
+                  (el2) => el2.comment.id === el.id
+                ).length > 0 ? (
+                  props.myLike?.fetchLikedComment.map((el3) =>
+                    el3.comment.id === el.id ? (
+                      el3.isLiked ? (
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
+                          <LikeOn />
+                          {el.likes}
+                        </Like>
+                      ) : (
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
+                          <LikeOff />
+                          {el.likes}
+                        </Like>
+                      )
+                    ) : (
+                      ''
+                    )
+                  )
+                ) : (
+                  <Like onClick={props.onClickCommentLike} id={el.id}>
+                    <LikeOff />
+                    {el.likes}
+                  </Like>
+                )}
               </ContentWrapper>
               <MediaBox>
                 {el.image !== '' && <Image1 src={el.image} width={300} />}

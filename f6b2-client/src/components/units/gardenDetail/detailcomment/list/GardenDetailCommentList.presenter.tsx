@@ -16,14 +16,22 @@ import {
   MediaBox,
   OtherBtns,
   Row1,
-} from "./GardenDetailCommentList.styles";
-import styled from "@emotion/styled";
-import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Image } from "antd";
-import "antd/dist/antd.css";
-import { getDate } from "../../../../../commons/libraries/utils";
-import GardenDetailCommentEdit from "../edit/GardenDetailCommentEdit.container";
+
+
+
+
+
+  LikeOn,
+  LikeOff,
+} from './GardenDetailCommentList.styles';
+import styled from '@emotion/styled';
+import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { Image } from 'antd';
+import 'antd/dist/antd.css';
+import { getDate } from '../../../../../commons/libraries/utils';
+import GardenDetailCommentEdit from '../edit/GardenDetailCommentEdit.container';
+
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -67,10 +75,38 @@ export default function GardenDetailCommentListUI(props) {
               </CommentInfo>
               <ContentWrapper>
                 <CommentText>{el.content}</CommentText>
-                <Like onClick={props.onClickCommentLike} id={el.id}>
+
+                {props.myLike?.fetchLikedComment.filter(
+                  (el2) => el2.comment.id === el.id
+                ).length > 0 ? (
+                  props.myLike?.fetchLikedComment.map((el3) =>
+                    el3.comment.id === el.id ? (
+                      el3.isLiked ? (
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
+                          <LikeOn />
+                          {/* {el.likes} */}
+                        </Like>
+                      ) : (
+                        <Like onClick={props.onClickCommentLike} id={el.id}>
+                          <LikeOff />
+                          {/* {el.likes} */}
+                        </Like>
+                      )
+                    ) : (
+                      ''
+                    )
+                  )
+                ) : (
+                  <Like onClick={props.onClickCommentLike} id={el.id}>
+                    <LikeOff />
+                    {/* {el.likes} */}
+                  </Like>
+                )}
+
+                {/* <Like onClick={props.onClickCommentLike} id={el.id}>
                   <AiOutlineHeart />
                   {el.likes}
-                </Like>
+                </Like> */}
               </ContentWrapper>
               <MediaBox>
                 {el.image !== "" && <Image1 src={el.image} width={300} />}

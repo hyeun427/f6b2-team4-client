@@ -2,16 +2,25 @@ import { useMutation, useQuery } from '@apollo/client';
 import { useState } from 'react';
 import GardenListUI from './GardenDetail.presenter';
 import { FETCH_BOARD } from './GardenDetail.queries';
-import { SAVE_BOARD } from '../../commons/queries';
+import { FETCH_SAVED_BOARDS, SAVE_BOARD } from '../../commons/queries';
 import { IBoard } from '../../../commons/types/generated/types';
 import { LIKE_BOARD } from './GardenDetail.queries';
 import { useRouter } from 'next/router';
+import { userInfoState } from '../../../commons/store';
+import { useRecoilState } from 'recoil';
 
 export default function GardenDetail() {
   const router = useRouter();
   // 글 가져오기
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
+  });
+  const [loginInfo] = useRecoilState(userInfoState);
+
+  const { data: savedInfo } = useQuery(FETCH_SAVED_BOARDS, {
+    variables: {
+      userId: loginInfo?.id,
+    },
   });
 
   const [saveGarden] = useMutation(SAVE_BOARD);
@@ -36,7 +45,13 @@ export default function GardenDetail() {
           {
             query: FETCH_BOARD,
             variables: {
-              boardId: event.target.id,
+              boardId: event.currentTarget.id,
+            },
+          },
+          {
+            query: FETCH_SAVED_BOARDS,
+            variables: {
+              userId: loginInfo.id,
             },
           },
         ],
@@ -68,6 +83,7 @@ export default function GardenDetail() {
       onClickSaved={onClickSaved}
       onClickLikeBoard={onClickLikeBoard}
       boardElId={router.query.boardId}
+      savedInfo={savedInfo}
     />
   );
 }

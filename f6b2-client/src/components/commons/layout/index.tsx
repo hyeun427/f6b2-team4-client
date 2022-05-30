@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import LayoutHeader from './header';
+import Home from '../../../../pages';
 
 const WrapperLayout = styled.div`
   width: 100%;
@@ -37,25 +38,33 @@ export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
   const BODY_YELLOW = [
-    // 헤더 숨길 페이지 사용법 예시
+    // Body 배경 다른 페이지 페이지 사용법 예시
     '/signin',
     '/signup',
     '/profile/[id]',
   ];
 
+  const HIDDEN_HEADER = [
+    // Body 배경 다른 페이지 페이지 사용법 예시
+    '/',
+  ];
+
   const isBodyColor = BODY_YELLOW.includes(router.pathname);
+  const isHiddenHeader = HIDDEN_HEADER.includes(router.pathname);
 
   return (
     <WrapperLayout>
-      {
-        // !isHiddenHeader &&
-        <LayoutHeader />
-      }
-      <BodyWrapper
-        style={{ backgroundColor: `${isBodyColor ? '#ffb950' : 'white'}` }}
-      >
-        <Body>{props.children}</Body>
-      </BodyWrapper>
+      {isHiddenHeader && <Home />}
+      {!isHiddenHeader && (
+        <>
+          <LayoutHeader />
+          <BodyWrapper
+            style={{ backgroundColor: `${isBodyColor ? '#ffb950' : 'white'}` }}
+          >
+            <Body>{props.children}</Body>
+          </BodyWrapper>
+        </>
+      )}
     </WrapperLayout>
   );
 }

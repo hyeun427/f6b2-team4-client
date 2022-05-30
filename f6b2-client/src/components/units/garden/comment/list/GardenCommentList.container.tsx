@@ -1,22 +1,30 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { userInfoState } from "../../../../../commons/store";
+import { useMutation, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { userInfoState } from '../../../../../commons/store';
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
   LIKE_COMMENT,
-} from "../../../../commons/queries";
-import GardenCommentListUI from "./GardenCommentList.presenter";
+} from '../../../../commons/queries';
+import GardenCommentListUI from './GardenCommentList.presenter';
+import { FETCH_MYLIKED_COMMENT } from './GrdenCommentList.queries';
 
 export default function GardenCommentList(props: any) {
+  const [loginInfo] = useRecoilState(userInfoState);
   const { data: comments } = useQuery(FETCH_COMMENTS, {
     variables: {
       boardId: props.boardElId,
     },
   });
+
+  const { data: myLike } = useQuery(FETCH_MYLIKED_COMMENT, {
+    variables: {
+      userId: loginInfo?.id,
+    },
+  });
+
   const [deleteComment] = useMutation(DELETE_COMMENT);
-  const [loginInfo] = useRecoilState(userInfoState);
 
   const onClickDeleteComment = async (event) => {
     try {
@@ -62,6 +70,12 @@ export default function GardenCommentList(props: any) {
               boardId: props.boardElId,
             },
           },
+          {
+            query: FETCH_MYLIKED_COMMENT,
+            variables: {
+              userId: loginInfo?.id,
+            },
+          },
         ],
       });
     } catch (error) {
@@ -78,6 +92,7 @@ export default function GardenCommentList(props: any) {
       commentEditVal={commentEditVal}
       loginInfo={loginInfo}
       onClickCommentLike={onClickCommentLike}
+      myLike={myLike}
     />
   );
 }

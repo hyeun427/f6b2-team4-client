@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const CommentWriteBox = styled.main`
   width: 100%;
@@ -15,7 +15,7 @@ export const CommentWriteProfile = styled.img`
   margin-right: 5px;
 
   //test
-  background-color: gray;
+  background-color: white;
 `;
 
 export const CommentWriteInputBox = styled.article`
