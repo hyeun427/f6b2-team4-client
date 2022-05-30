@@ -49,7 +49,7 @@ const Main = styled.div`
   --f: calc(2 * var(--s) * var(--r) + 4 * var(--mv) - 2 * var(--vc) - 2px);
   /* 내가 추가한 것 */
   background-color: #3a3939;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   overflow: hidden;
 `;
@@ -150,7 +150,6 @@ const Text = styled.div`
 `;
 
 export default function Landing1() {
-  const random = () => {};
   return (
     <Main>
       <Container style={{ animationDelay: "0.3" }}>
