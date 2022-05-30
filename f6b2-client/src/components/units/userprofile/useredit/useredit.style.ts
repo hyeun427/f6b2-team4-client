@@ -37,6 +37,7 @@ export const ImgProfile = styled.img`
   border-radius: 50%;
   background-color: gray;
   margin-bottom: 6px;
+  object-fit: cover;
 `;
 
 export const IconEdit = styled(FaEdit)`

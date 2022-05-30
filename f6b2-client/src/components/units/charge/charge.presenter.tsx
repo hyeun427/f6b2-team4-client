@@ -65,7 +65,10 @@ export default function ChargeStationUI(props) {
             </Charge.BtnHexa>
           </Charge.WrapperRowBtn2>
           <Charge.WrapperRowBtn3>
-            <Charge.BtnHexaCharge onClick={props.requestPay}>
+            <Charge.BtnHexaCharge
+              onClick={props.requestPay}
+              isSelect={props.isSelect}
+            >
               <Charge.SpanChargeText>Charge</Charge.SpanChargeText>
             </Charge.BtnHexaCharge>
           </Charge.WrapperRowBtn3>

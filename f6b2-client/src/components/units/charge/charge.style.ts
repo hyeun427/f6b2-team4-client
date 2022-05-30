@@ -9,7 +9,7 @@ export const WrapperCol = styled.div`
   width: 900px;
   height: 500px;
   padding: 37px 91px 42px 91px;
-  margin-top: 107px;
+  margin-top: 95px;
   border: 1px solid #dbdbdb;
   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -167,7 +167,7 @@ export const WrapperRowBtn3 = styled.div`
   width: 100%;
   height: 90px;
   position: absolute;
-  top: 440px;
+  top: 450px;
 `;
 
 export const BtnPoint = styled.button`
@@ -320,13 +320,15 @@ export const BtnHexaCharge = styled.button`
   font-size: 15px;
   line-height: 22px;
   text-align: center;
-  background-image: url(${(props) => props.isClicked ? '/image/charge_b.svg' : '/image/charge_a.svg'});
-  color: ${(props) => props.isClicked ? 'white' : 'black'};
+  background-image: url(${(props) => props.isSelect ? '/image/charge_b.svg' : '/image/charge_a.svg'});
+  color: ${(props) => props.isSelect ? 'white' : 'black'};
 
-  :hover {
+
+
+  /* :hover {
     background-image: url('/image/charge_b.svg');
     color: white;
-  }
+  } */
 `;
 
 export const SpanChargeText = styled.span`

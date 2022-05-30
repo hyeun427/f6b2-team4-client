@@ -116,7 +116,6 @@ export default function UserProfileUI(props) {
               {props.userCommunity?.length}
             </Profile.PMyGardenCount>
           </Profile.WrapperColCenter>
-
           {props.isMy ? (
             <Profile.WrapperColCenter
               onClick={props.onClickTab}
@@ -142,10 +141,6 @@ export default function UserProfileUI(props) {
               <>
                 <Profile.WrapperColStart>
                   <h2>Your Garden is Empty</h2>
-                  {props.userGarden?.length}
-                  <Profile.WrapperLottie
-                    ref={beeFlyingContainer}
-                  ></Profile.WrapperLottie>
                 </Profile.WrapperColStart>
               </>
             ) : (

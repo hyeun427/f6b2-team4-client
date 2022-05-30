@@ -45,7 +45,7 @@ export default function SignUpComplete() {
   }, []);
 
   const onClickSignin = () => {
-    router.push('/signup');
+    router.push('/signin');
   };
 
   return (
