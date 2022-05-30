@@ -1,15 +1,17 @@
-import { useMutation, useQuery } from '@apollo/client';
-import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../../../commons/store';
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../../commons/store";
 import {
   DELETE_COMMENT,
   FETCH_COMMENTS,
   FETCH_SAVED_BOARDS,
   LIKE_COMMENT,
+
 } from '../../../../commons/queries';
 import { FETCH_MYLIKED_COMMENT } from '../../../garden/comment/list/GrdenCommentList.queries';
 import GardenDetailCommentListUI from './GardenDetailCommentList.presenter';
+
 
 export default function GardenDetailCommentList(props: any) {
   const [loginUserInfo] = useRecoilState(userInfoState);
@@ -43,6 +45,7 @@ export default function GardenDetailCommentList(props: any) {
           },
         ],
       });
+
     } catch (error) {
       alert(error);
     }

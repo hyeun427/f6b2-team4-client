@@ -123,9 +123,8 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
       Modal.success({ content: "게시물 수정에 성공하였습니다!" });
       router.push(`/community/${editResult.data?.updateCommunityBoard.id}`);
     } catch (error) {
-      console.log(error);
       Modal.error({
-        content: "에러ㅠ",
+        content: "게시물 수정에 문제가 발생했습니다.재시도해주세요.",
       });
     }
   };

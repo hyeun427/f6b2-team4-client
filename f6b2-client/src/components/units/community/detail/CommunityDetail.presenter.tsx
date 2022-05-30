@@ -1,14 +1,14 @@
-import * as S from './CommunityDetail.styles';
-import { getDate } from '../../../../commons/libraries/utils';
-import { ICommunityDetailUIProps } from './CommunityDetail.types';
-import { useRecoilState } from 'recoil';
-import { userInfoState } from '../../../../commons/store';
-import Dompurify from 'dompurify';
-import { GiHearts } from 'react-icons/gi';
+import * as S from "./CommunityDetail.styles";
+import { getDate } from "../../../../commons/libraries/utils";
+import { ICommunityDetailUIProps } from "./CommunityDetail.types";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store";
+import Dompurify from "dompurify";
+import { GiHearts } from "react-icons/gi";
 // 번역
-import styled from '@emotion/styled';
-import { useState } from 'react';
-import TranslateCommunity from '../../../commons/translate/community';
+import styled from "@emotion/styled";
+import { useState } from "react";
+import TranslateCommunity from "../../../commons/translate/community";
 
 export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
   // // 번역
@@ -31,7 +31,6 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
 
   // 로그인유저정보 가져오기
   const [userInfo] = useRecoilState(userInfoState);
-  console.log('커뮤', props.data);
   return (
     <S.OutWrapper>
       <S.Wrapper>
@@ -40,9 +39,9 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
           <S.Info onClick={props.onClickUser}>
             <S.UserImg
               src={
-                props.data?.fetchCommunityBoard.writer.image.includes('http')
+                props.data?.fetchCommunityBoard.writer.image.includes("http")
                   ? props.data?.fetchCommunityBoard.writer.image
-                  : '/image/defaultuser.png'
+                  : "/image/defaultuser.png"
               }
             />
             <S.Writer>{props.data?.fetchCommunityBoard?.writer.name}</S.Writer>
@@ -56,9 +55,9 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
           <S.InnerWrapper>
             <S.Img
               src={
-                props.data?.fetchCommunityBoard?.image.includes('http')
+                props.data?.fetchCommunityBoard?.image.includes("http")
                   ? props.data?.fetchCommunityBoard?.image
-                  : '/community/default.png'
+                  : "/community/default.png"
               }
             />
 
@@ -66,7 +65,7 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
             {props.isLike ? (
               <S.LikesWrapper onClick={props.onClickLike}>
                 <S.IconWrapper>
-                  <GiHearts style={{ color: '#FF5B5B' }} />
+                  <GiHearts style={{ color: "#FF5B5B" }} />
                 </S.IconWrapper>
                 <S.Likes>{props.data?.fetchCommunityBoard?.likes}</S.Likes>
               </S.LikesWrapper>
@@ -83,19 +82,21 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
             {/* 제목,내용 */}
             <S.Detail>
               <S.Title>{props.data?.fetchCommunityBoard?.title}</S.Title>
-              {typeof window !== 'undefined' && (
-                <S.Contents
-                  dangerouslySetInnerHTML={{
-                    __html: Dompurify.sanitize(
-                      props.data?.fetchCommunityBoard?.content
-                    ),
-                  }}
-                ></S.Contents>
-              )}
-              {/* 번역 컴포 불러오기 */}
-              <TranslateCommunity
-                content={props.data?.fetchCommunityBoard?.content}
-              />
+              <S.ContentsBox>
+                {typeof window !== "undefined" && (
+                  <S.Contents
+                    dangerouslySetInnerHTML={{
+                      __html: Dompurify.sanitize(
+                        props.data?.fetchCommunityBoard?.content
+                      ),
+                    }}
+                  ></S.Contents>
+                )}
+                {/* 번역 컴포 불러오기 */}
+                <TranslateCommunity
+                  content={props.data?.fetchCommunityBoard?.content}
+                />
+              </S.ContentsBox>
             </S.Detail>
 
             {/* 내 글 버튼 리스트 */}
