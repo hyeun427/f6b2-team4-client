@@ -20,11 +20,9 @@ export default function GardenCommentList(props: any) {
 
   const { data: myLike } = useQuery(FETCH_MYLIKED_COMMENT, {
     variables: {
-      userId: loginInfo.id,
+      userId: loginInfo?.id,
     },
   });
-
-  console.log('마이라이크', myLike);
 
   const [deleteComment] = useMutation(DELETE_COMMENT);
 
@@ -75,7 +73,7 @@ export default function GardenCommentList(props: any) {
           {
             query: FETCH_MYLIKED_COMMENT,
             variables: {
-              userId: loginInfo.id,
+              userId: loginInfo?.id,
             },
           },
         ],

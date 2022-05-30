@@ -9,10 +9,20 @@ import GardenDetailCommentList from './detailcomment/list/GardenDetailCommentLis
 import GardenDetailCommentWrite from './detailcomment/write/GardenDetailCommentWrite.container';
 import TranslateGarden from '../../commons/translate/garden';
 import DropdownIcon from './dropDown';
+import { FETCH_MYLIKED_COMMENT } from '../garden/comment/list/GrdenCommentList.queries';
+import { useQuery } from '@apollo/client';
+import { FETCH_SAVED_BOARDS } from '../../commons/queries';
 
 export default function GardenDetailUI(props: any) {
   const [loginInfo] = useRecoilState(userInfoState);
-  console.log(props.data);
+  const { data: savedInfo } = useQuery(FETCH_SAVED_BOARDS, {
+    variables: {
+      userId: loginInfo?.id,
+    },
+  });
+
+  // props.data.fetchBoard.id
+  //
 
   return (
     <S.Outer>
@@ -63,23 +73,53 @@ export default function GardenDetailUI(props: any) {
 
                 <S.LikeAndCommentCountBox>
                   <S.LikeAndCommentCount>
-                    <S.Like>
-                      <MdThumbUp
-                        size={'13'}
-                        style={{ marginRight: 5 }}
-                        onClick={props.onClickLikeBoard}
-                        id={props.data?.fetchBoard.id}
-                      />{' '}
-                      {props.data?.fetchBoard.likes}
-                    </S.Like>
                     {/* 댓글 수 나옴 */}
                     <S.CommentCount>
-                      <MdQuestionAnswer
-                        size={'13'}
-                        style={{ marginRight: 5 }}
-                      />
+                      <S.CommentIcon />
                       {props.data?.fetchBoard.commentsCount}
                     </S.CommentCount>
+
+                    {props.savedInfo?.fetchSavedBoards.filter(
+                      (element) =>
+                        element.board.id === props.data?.fetchBoard.id
+                    ).length > 0 ? (
+                      props.savedInfo?.fetchSavedBoards.map((element2) =>
+                        element2.board.id === props.data?.fetchBoard.id ? (
+                          element2.isLiked ? (
+                            <S.Like
+                              onClick={props.onClickLikeBoard}
+                              id={props.data?.fetchBoard.id}
+                            >
+                              <S.LikeOn /> {props.data?.fetchBoard.likes}
+                            </S.Like>
+                          ) : (
+                            <S.Like
+                              onClick={props.onClickLikeBoard}
+                              id={props.data?.fetchBoard.id}
+                            >
+                              <S.LikeOff /> {props.data?.fetchBoard.likes}
+                            </S.Like>
+                          )
+                        ) : (
+                          ''
+                        )
+                      )
+                    ) : (
+                      <S.Like
+                        onClick={props.onClickLikeBoard}
+                        id={props.data?.fetchBoard.id}
+                      >
+                        <S.LikeOff /> {props.data?.fetchBoard.id}
+                      </S.Like>
+                    )}
+
+                    {/* <S.Like>
+                      <S.LikeOff
+                        onClick={props.onClickLikeBoard}
+                        id={props.data?.fetchBoard.id}
+                      />
+                      {props.data?.fetchBoard.likes}
+                    </S.Like> */}
                   </S.LikeAndCommentCount>
                 </S.LikeAndCommentCountBox>
                 {/* 댓글 목록 불러오기 */}
