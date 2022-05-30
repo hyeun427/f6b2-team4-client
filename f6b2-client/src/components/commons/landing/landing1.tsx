@@ -204,19 +204,22 @@ export default function Landing1() {
       <Container style={{ animationDelay: "0.3" }}>
         <Text>BUILD YOUR HIVE</Text>
         <MoveGarden onClick={onClickMoveToGarden}>Click to explore</MoveGarden>
+        {/* <div>
+          <img src="/landing/hive.png" />
+        </div> */}
         {/* row1 */}
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa2></Hexa2>
         {/* row2 */}
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
@@ -239,13 +242,13 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         {/* row4 */}
         <Hexa2></Hexa2>
-        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
@@ -259,7 +262,7 @@ export default function Landing1() {
         {/* row5 */}
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
@@ -269,15 +272,15 @@ export default function Landing1() {
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         {/* row6 */}
-        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
@@ -285,15 +288,15 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
-        <Hexa2></Hexa2>
-        <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         {/* row8 */}
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
@@ -311,11 +314,11 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
@@ -378,6 +381,15 @@ export default function Landing1() {
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
+        <Hexa2></Hexa2>
+        <Hexa1></Hexa1>
+        <Hexa2></Hexa2>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
@@ -385,15 +397,6 @@ export default function Landing1() {
         <Hexa1></Hexa1>
         <Hexa1></Hexa1>
         <Hexa2></Hexa2>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa2></Hexa2>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
-        <Hexa1></Hexa1>
         <Hexa2></Hexa2>
         <Hexa1></Hexa1>
       </Container>
