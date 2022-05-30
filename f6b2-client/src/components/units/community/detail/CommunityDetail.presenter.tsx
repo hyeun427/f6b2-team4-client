@@ -116,9 +116,9 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
                   ></S.Contents>
                 )}
                 {/* 번역 컴포 불러오기 */}
-                <TranslateCommunity
+                {/* <TranslateCommunity
                   content={props.data?.fetchCommunityBoard?.content}
-                />
+                /> */}
               </S.ContentsBox>
             </S.Detail>
 

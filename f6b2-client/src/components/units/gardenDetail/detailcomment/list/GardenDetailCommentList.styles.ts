@@ -1,17 +1,17 @@
-import styled from '@emotion/styled';
-import TimeAgo from 'timeago-react';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import styled from "@emotion/styled";
+import TimeAgo from "timeago-react";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { style } from "@mui/system";
 
 export const CommentListBox = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 15px;
-  border-top: 1px solid gray;
   width: 100%;
 `;
 
 export const CommentProfile = styled.img`
-  margin-top: 13px;
+  margin-top: 5px;
   width: 30px;
   height: 30px;
   border-radius: 50px;
@@ -25,20 +25,23 @@ export const CommentContentsBox = styled.main`
 `;
 
 export const CommentInfo = styled.div`
+  width: 100%;
+`;
+
+export const InfoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
 `;
 
 export const CommentName = styled.article`
   font-weight: 700;
   font-size: 14px;
+  margin-right: 5px;
 `;
 
 export const CommentText = styled.article`
   font-weight: 400;
   font-size: 12px;
   color: black;
-  margin-top: 10px;
   width: 300px;
 `;
 
@@ -83,7 +86,7 @@ export const DeleteBtn = styled.button`
 
 export const CreatedAt = styled(TimeAgo)`
   font-weight: 400;
-  font-size: 11px;
+  font-size: 13px;
   color: #767676;
 `;
 
@@ -91,7 +94,8 @@ export const Like = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 5px;
+  /* background-color: red; */
   font-size: 12px;
 `;
 
@@ -102,13 +106,13 @@ export const ContentWrapper = styled.div`
 `;
 
 export const OtherBtns = styled.div`
-  margin-left: 20px;
+  margin-left: 5px;
 `;
 
 export const Row1 = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const LikeOn = styled(BsHeartFill)`

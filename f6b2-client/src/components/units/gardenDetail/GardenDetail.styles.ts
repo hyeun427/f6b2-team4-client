@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { RiFileEditLine, RiDeleteBinLine } from 'react-icons/ri';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
-import { IoChatbubbleOutline } from 'react-icons/io5';
+import styled from "@emotion/styled";
+import { RiFileEditLine, RiDeleteBinLine } from "react-icons/ri";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { IoChatbubbleOutline } from "react-icons/io5";
 
 export const Outer = styled.div`
   width: 100vw;
@@ -98,8 +98,9 @@ export const ContentsBox = styled.section`
 export const Contents = styled.div`
   width: 100%;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
+  margin-left: 15px;
 `;
 
 export const ContentsTranslateBox = styled.article`

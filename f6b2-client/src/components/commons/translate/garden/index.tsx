@@ -13,7 +13,7 @@ export default function TranslateGarden(props) {
   // 번역버튼
   const Button = styled.div`
     color: #767676;
-    font-size: 9px;
+    font-size: 10px;
     border: none;
     background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
@@ -22,6 +22,7 @@ export default function TranslateGarden(props) {
   const TranslateBox = styled.div`
     color: #767676;
     margin-top: 5px;
+    font-size: 12px;
   `;
   const [isTranslate, setIsTranslate] = useState(false);
   const onClickTranslate = () => {
