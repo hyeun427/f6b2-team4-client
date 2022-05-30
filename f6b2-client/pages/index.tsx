@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Landing1 from "../src/components/commons/landing/landing1";
 import Landing2 from "../src/components/commons/landing/landing2";
+import { useRef } from "react";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -40,11 +41,6 @@ const Slider1 = styled(Slider)`
   }
 `;
 
-// const LogoLanding = styled.img`
-//   width: 100%;
-//   height: 100%;
-// `;
-
 const GardenLanding = styled.img`
   width: 100%;
   height: 100%;
@@ -63,8 +59,11 @@ const ChatLanding = styled.img`
 export default function Home() {
   const settings = {
     dots: false,
+    arrows: false,
     infinite: true,
-    speed: 800,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 1000,
     slidesPerRow: 1,
     slidesToScroll: 1,
   };
@@ -72,16 +71,16 @@ export default function Home() {
   return (
     <Wrapper>
       <Inner>
-        {/* <LogoLanding src="/landing/logo.png" /> */}
         <Landing2 />
       </Inner>
       <Inner>
-        <Slider1>
+        <Slider1 {...settings}>
           <GardenLanding src="/landing/garden.png" />
           <CommunityLanding src="/landing/community.png" />
           <ChatLanding src="/landing/chat.png" />
         </Slider1>
       </Inner>
+
       <Inner>
         <Landing1 />
       </Inner>
