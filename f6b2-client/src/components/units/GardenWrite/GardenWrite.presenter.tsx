@@ -10,6 +10,7 @@ import VideoRecord from './videorecord/videorecord.container';
 import Badge from '@mui/material/Badge';
 import lottie from 'lottie-web';
 import { useEffect, useRef } from 'react';
+import { Tooltip } from '@mui/material';
 
 export default function GardenWriteUI(props: IGardenWrite) {
   const bee1Container = useRef();
@@ -60,6 +61,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
           </L.WrapperRow>
           <L.WrapperRowIcon>
             <L.GardenRecordUpload onClick={props.handleOpen} />
+
             <Modal
               open={props.open}
               onClose={props.handleClose}
@@ -79,6 +81,7 @@ export default function GardenWriteUI(props: IGardenWrite) {
               fileUrls={props.fileUrls}
               type={'garden'}
             />
+
             <VideoUpload
               onChangeVideoUrls={props.onChangeVideoUrls}
               videoUrls={props.videoUrls}

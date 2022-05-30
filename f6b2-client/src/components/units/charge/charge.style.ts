@@ -328,18 +328,3 @@ export const BtnHexaCharge = styled.button`
     color: white;
   }
 `;
-
-export const Hexa = styled.div`
-  display: flex;
-  --s: 100px; /* size  */
-  --m: 4px; /* margin */
-  --f: calc(var(--s) * 1.732 + 4 * var(--m) - 1px);
-  font-size: 0; /* disable white space between inline block element */
-  width: var(--s);
-  margin: var(--m);
-  height: calc(var(--s) * 1.1547);
-  display: inline-block;
-  font-size: initial;
-  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-  margin-bottom: calc(var(--m) - var(--s) * 0.2885);
-`;

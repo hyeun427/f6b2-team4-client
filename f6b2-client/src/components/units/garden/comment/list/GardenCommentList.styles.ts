@@ -7,7 +7,7 @@ export const CommentListBox = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 15px;
-  border-top: 1px solid gray;
+  border-top: 1px solid #dbdbdb;
   padding-top: 15px;
 `;
 

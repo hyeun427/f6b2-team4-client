@@ -151,18 +151,21 @@ export const LikeAndCommentCountBox = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
 `;
 
 export const Like = styled.button`
+  width: auto;
   border: none;
   background: none;
   cursor: pointer;
   font-weight: 400;
   font-size: 12px;
-
   margin-right: 30px;
-  padding-right: 30px;
+  /* padding-right: 30px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const CommentCount = styled.div`
@@ -170,6 +173,10 @@ export const CommentCount = styled.div`
   font-size: 12px;
   margin-right: 9px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const CommentListBtn = styled.button`
@@ -206,14 +213,17 @@ export const InputSearchBarWrapper = styled.div`
 export const LikeOn = styled(BsHeartFill)`
   font-size: 13px;
   color: red;
+  margin-right: 5px;
 `;
 
 export const LikeOff = styled(BsHeart)`
   font-size: 13px;
+  margin-right: 5px;
 `;
 
 export const CommentIcon = styled(IoChatbubbleOutline)`
   font-size: 13px;
+  margin-right: 5px;
 `;
 
 export const SpanCommentCount = styled.span`
@@ -233,4 +243,12 @@ export const IconSearch = styled(BsSearch)`
   font-size: 18px;
   left: -30px;
   top: -10px;
+`;
+
+export const WrapperIconRow = styled.div`
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 `;
