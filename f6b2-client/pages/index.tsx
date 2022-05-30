@@ -1,8 +1,8 @@
-import Landing1 from "../src/components/commons/landing/landing1";
+import styled from "@emotion/styled";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "@emotion/styled";
+import Landing1 from "../src/components/commons/landing/landing1";
 import Landing2 from "../src/components/commons/landing/landing2";
 
 const Wrapper = styled.div`
@@ -12,13 +12,22 @@ const Wrapper = styled.div`
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* 스크롤바 안보이게 설정 */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;
 
 const Inner = styled.div`
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* 스크롤바 안보이게 설정 */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+  -ms-overflow-style: none; /* IE and Edge */
 `;
 
 const Slider1 = styled(Slider)`
@@ -31,18 +40,21 @@ const Slider1 = styled(Slider)`
   }
 `;
 
-const LogoLanding = styled.img`
-  width: 100%;
-  height: 100%;
-`;
+// const LogoLanding = styled.img`
+//   width: 100%;
+//   height: 100%;
+// `;
+
 const GardenLanding = styled.img`
   width: 100%;
   height: 100%;
 `;
+
 const CommunityLanding = styled.img`
   width: 100%;
   height: 100%;
 `;
+
 const ChatLanding = styled.img`
   width: 100%;
   height: 100%;
@@ -56,10 +68,12 @@ export default function Home() {
     slidesPerRow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <Wrapper>
       <Inner>
-        <LogoLanding src="/landing/logo.png" />
+        {/* <LogoLanding src="/landing/logo.png" /> */}
+        <Landing2 />
       </Inner>
       <Inner>
         <Slider1>
@@ -74,38 +88,3 @@ export default function Home() {
     </Wrapper>
   );
 }
-
-// import styled from "@emotion/styled";
-
-// const Wrapper = styled.div`
-//   /* position: relative; */
-//   z-index: 1;
-//   width: 100vw;
-//   height: 100vh;
-// `;
-
-// const Video = styled.video`
-//   /* position: relative; */
-//   z-index: 2;
-//   width: max-content;
-//   width: 100%;
-//   height: 100%;
-//   /* width: 450px; */
-//   object-fit: fill;
-// `;
-
-// const Btn = styled.button`
-//   /* position: absolute; */
-//   z-index: 1000;
-//   width: 100px;
-// `;
-
-// export default function Home() {
-//   return (
-//     <Wrapper>
-//       <Video muted autoPlay loop src="/landing/landing.mp4">
-//       </Video>
-//       <Btn>버튼</Btn>
-//     </Wrapper>
-//   );
-// }
