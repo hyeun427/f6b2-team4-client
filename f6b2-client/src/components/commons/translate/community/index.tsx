@@ -15,9 +15,6 @@ export default function TranslateCommunity(props) {
     variables: { communityBoardId: router.query.communityBoardId },
   });
 
-  // console.log(data?.fetchCommunityBoard.writer.myLang, "1");
-  // console.log(getLangCode(userInfo?.myLang), "2");
-
   const Wrapper = styled.div``;
   // 번역버튼
   const Button = styled.div`

@@ -16,14 +16,14 @@ import {
   MediaBox,
   OtherBtns,
   Row1,
-} from './GardenDetailCommentList.styles';
-import styled from '@emotion/styled';
-import { MdModeEditOutline, MdOutlineClear } from 'react-icons/md';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { Image } from 'antd';
-import 'antd/dist/antd.css';
-import { getDate } from '../../../../../commons/libraries/utils';
-import GardenDetailCommentEdit from '../edit/GardenDetailCommentEdit.container';
+} from "./GardenDetailCommentList.styles";
+import styled from "@emotion/styled";
+import { MdModeEditOutline, MdOutlineClear } from "react-icons/md";
+import { AiOutlineHeart } from "react-icons/ai";
+import { Image } from "antd";
+import "antd/dist/antd.css";
+import { getDate } from "../../../../../commons/libraries/utils";
+import GardenDetailCommentEdit from "../edit/GardenDetailCommentEdit.container";
 
 const Image1 = styled(Image)`
   object-fit: cover;
@@ -31,7 +31,6 @@ const Image1 = styled(Image)`
 `;
 
 export default function GardenDetailCommentListUI(props) {
-  console.log(props.comments);
   return (
     <>
       {props.comments?.fetchComments.map((el, index) => (
@@ -39,9 +38,9 @@ export default function GardenDetailCommentListUI(props) {
           <CommentListBox key={index}>
             <CommentProfile
               src={
-                el.writer?.image.includes('http')
+                el.writer?.image.includes("http")
                   ? el.writer?.image
-                  : '/image/defaultuser.png'
+                  : "/image/defaultuser.png"
               }
             />
             <CommentContentsBox>
@@ -62,7 +61,7 @@ export default function GardenDetailCommentListUI(props) {
                     </OtherBtns>
                   )}
                 </Row1>
-                <CreatedAt datetime={el.createdAt} locale='ko'>
+                <CreatedAt datetime={el.createdAt} locale="ko">
                   {getDate(el.createdAt)}
                 </CreatedAt>
               </CommentInfo>
@@ -74,8 +73,8 @@ export default function GardenDetailCommentListUI(props) {
                 </Like>
               </ContentWrapper>
               <MediaBox>
-                {el.image !== '' && <Image1 src={el.image} width={300} />}
-                {el.video !== '' && <CommentVideo src={el.video} controls />}
+                {el.image !== "" && <Image1 src={el.image} width={300} />}
+                {el.video !== "" && <CommentVideo src={el.video} controls />}
               </MediaBox>
             </CommentContentsBox>
             {/* 버튼 조건 (작성자-유저 이름이 동일 시, 보임) */}

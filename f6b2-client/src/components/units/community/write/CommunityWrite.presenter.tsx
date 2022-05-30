@@ -11,7 +11,6 @@ import { useRecoilState } from "recoil";
 import { userInfoState } from "../../../../commons/store";
 
 export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
-  console.log(props.fileUrls, "1");
   const [userInfo] = useRecoilState(userInfoState);
   // 에디터 커스텀
   const modules = {
@@ -27,7 +26,11 @@ export default function CommunityListUI(props: ICommunityBoardWriteUIProps) {
     <S.OutWrapper>
       <S.Wrapper>
         <S.InfoWrapper>
-          <S.Profile>{userInfo?.image}</S.Profile>
+          {userInfo?.image.includes("http") ? (
+            <S.Profile src={userInfo?.image} />
+          ) : (
+            <S.Profile src={"/image/defaultuser.png"} />
+          )}
           <S.Writer>{userInfo?.name}</S.Writer>
         </S.InfoWrapper>
 

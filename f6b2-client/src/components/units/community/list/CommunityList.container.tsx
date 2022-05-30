@@ -17,8 +17,6 @@ export default function CommunityList() {
     Pick<IQuery, "fetchCommunityBoards">,
     IQueryFetchCommunityBoardsArgs
   >(FETCH_COMMUNITY_BOARDS);
-  console.log(data);
-
   //커뮤니티 새 글 작성페이지로 이동
   const onClickMoveToWrite = () => {
     router.push("./community/write");

@@ -23,7 +23,7 @@ export const InfoWrapper = styled.div`
   border-bottom: 1px solid #000000;
 `;
 
-export const Profile = styled.div`
+export const Profile = styled.img`
   margin-right: 14px;
   width: 30px;
   height: 30px;

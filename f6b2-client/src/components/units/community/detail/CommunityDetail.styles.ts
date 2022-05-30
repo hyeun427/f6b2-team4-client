@@ -12,7 +12,7 @@ export const OutWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 64px;
+  margin-top: 120px;
   width: 700px;
 `;
 
@@ -29,6 +29,7 @@ export const Info = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const UserImg = styled.img`
@@ -64,7 +65,7 @@ export const Body = styled.div`
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 `;
 
@@ -105,33 +106,42 @@ export const Detail = styled.div`
 
 export const Title = styled.div`
   margin-bottom: 10px;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
   font-size: 11px;
   color: #ffffff;
   border-bottom: 1px solid #cdcdcd;
 `;
 
+export const ContentsBox = styled.div`
+  width: 100%;
+  height: 230px;
+  overflow: auto;
+`;
+
 export const Contents = styled.div`
   font-size: 11px;
   color: #ffffff;
+  margin-bottom: 5px;
 `;
 
 export const BtnWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 120px;
 `;
 
 export const IconWrapper = styled.button`
   color: white;
   border: none;
   background-color: white;
-
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0));
   cursor: pointer;
 `;
 
 export const ListIcon = styled(BsListUl)`
   color: black;
-  width: 24px;
+  font-size: 22px;
+
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
   :hover {
     color: #ffb950;
@@ -140,7 +150,7 @@ export const ListIcon = styled(BsListUl)`
 
 export const EditIcon = styled(RiFileEditLine)`
   color: black;
-  width: 24px;
+  font-size: 22px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
   :hover {
     color: #ffb950;
@@ -149,7 +159,7 @@ export const EditIcon = styled(RiFileEditLine)`
 
 export const DeleteIcon = styled(RiDeleteBinLine)`
   color: black;
-  width: 24px;
+  font-size: 22px;
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
   :hover {
     color: #ffb950;

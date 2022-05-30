@@ -57,8 +57,6 @@ export const Body = styled.div`
   flex-direction: row;
   justify-content: center;
 
-
-  
   width: 705px;
 `;
 
@@ -99,6 +97,10 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.div`
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 13px;
   text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
 `;

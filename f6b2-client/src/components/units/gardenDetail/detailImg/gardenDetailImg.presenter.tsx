@@ -63,7 +63,6 @@ export default function GardenDetailImgUI(props) {
     slidesToScroll: 1,
   };
 
-  console.log(props.data?.fetchBoardImage);
   return (
     <Wrapper>
       {props.video !== "" || props.data?.fetchBoardImage.length > 0 ? (
@@ -86,7 +85,7 @@ export default function GardenDetailImgUI(props) {
           ))}
         </SliderGarden>
       ) : (
-        ""
+        <Image1 width={430} height={500} src="/image/default3.jpg" />
       )}
     </Wrapper>
   );
