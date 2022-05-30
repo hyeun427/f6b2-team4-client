@@ -110,6 +110,10 @@ const MyPoint = styled(BsFlower1)`
   font-size: 18px;
   text-align: center;
   color: #ffffff;
+  :hover {
+    cursor: pointer;
+    color: #ffb950;
+  }
 `;
 
 const WrapperHeaderInfo = styled.div`
@@ -137,10 +141,6 @@ const SpanPoint = styled.span`
   line-height: 21px;
   text-align: center;
   color: #ffffff;
-  :hover {
-    cursor: pointer;
-    color: #ffb950;
-  }
 `;
 
 const SpanLogin = styled.span`
@@ -186,7 +186,6 @@ export default function LayoutHeader() {
   const [userLogOut] = useMutation(LOG_OUT);
   const [usePoint] = useMutation(USE_POINT);
 
-  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   // save login user data in global state
@@ -264,9 +263,24 @@ export default function LayoutHeader() {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
               >
-                <MenuItem onClick={onClickLogOut}>Log Out</MenuItem>
-                <MenuItem onClick={onClickMoveMypage}>MyPage</MenuItem>
+                <MenuItem style={{ fontSize: '12px' }} onClick={onClickLogOut}>
+                  Log Out
+                </MenuItem>
+                <MenuItem
+                  style={{ fontSize: '12px' }}
+                  onClick={onClickMoveMypage}
+                >
+                  MyPage
+                </MenuItem>
               </Menu>
             </>
           ) : (
@@ -274,8 +288,8 @@ export default function LayoutHeader() {
           )}
 
           {isToken ? (
-            <WrapperPoint onClick={onClickCharge}>
-              <MyPoint style={{ margin: '10' }} />
+            <WrapperPoint>
+              <MyPoint style={{ margin: '10' }} onClick={onClickCharge} />
 
               <SpanPoint>
                 {data?.fetchUser.points.toLocaleString('ko-KR')} P

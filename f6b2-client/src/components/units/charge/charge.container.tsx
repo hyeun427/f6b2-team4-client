@@ -14,7 +14,7 @@ declare const window: typeof globalThis & {
 export default function ChargeStation() {
   const [userInfo] = useRecoilState(userInfoState);
   const [isToken] = useRecoilState(accessTokenState);
-  const [isSelect, setIsSelect] = useState(100);
+  const [isSelect, setIsSelect] = useState(0);
   const [buyPoint] = useMutation(BUY_POINT);
   const [isClicked, setIsClicked] = useState<any>({
     btn1: false,

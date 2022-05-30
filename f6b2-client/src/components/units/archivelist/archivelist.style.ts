@@ -70,7 +70,7 @@ export const WrapperRowItem = styled.div`
   align-items: flex-start;
   width: 100%;
   height: 45px;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   :hover {
     cursor: pointer;
   }

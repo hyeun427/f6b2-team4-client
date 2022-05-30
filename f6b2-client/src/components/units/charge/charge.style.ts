@@ -320,13 +320,15 @@ export const BtnHexaCharge = styled.button`
   font-size: 15px;
   line-height: 22px;
   text-align: center;
-  background-image: url(${(props) => props.isClicked ? '/image/charge_b.svg' : '/image/charge_a.svg'});
-  color: ${(props) => props.isClicked ? 'white' : 'black'};
+  background-image: url(${(props) => props.isSelect ? '/image/charge_b.svg' : '/image/charge_a.svg'});
+  color: ${(props) => props.isSelect ? 'white' : 'black'};
 
-  :hover {
+
+
+  /* :hover {
     background-image: url('/image/charge_b.svg');
     color: white;
-  }
+  } */
 `;
 
 export const SpanChargeText = styled.span`
