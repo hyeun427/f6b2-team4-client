@@ -62,7 +62,7 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
   };
 
   // 이미지 업로드 시
-  const onChangeFileUrls = (fileUrl: string) => {
+  const onChangeFileUrls = (fileUrl: never) => {
     const newFileUrls = [...fileUrls];
     newFileUrls.push(fileUrl);
     setFileUrls(newFileUrls);
@@ -98,7 +98,7 @@ export default function CommunityWrite(props: ICommunityBoardWriteProps) {
     }
   };
   // 수정 버튼
-  const onClickUpdate = async (data) => {
+  const onClickUpdate = async () => {
     const currentFiles = JSON.stringify(fileUrls);
     const defaultFiles = JSON.stringify(props.data?.fetchCommunityBoard.image);
     const isChangeFiles = currentFiles !== defaultFiles;

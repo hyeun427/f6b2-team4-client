@@ -63,10 +63,10 @@ export default function CommunityDetailUI(props: ICommunityDetailUIProps) {
 
             {/* 좋아요 */}
             {props.myLike?.fetchLikedCommunityBoard.filter(
-              (el) =>
+              (el: any) =>
                 el?.communityBoard?.id === props.data?.fetchCommunityBoard.id
             ).length > 0 ? (
-              props.myLike?.fetchLikedCommunityBoard.map((el2) =>
+              props.myLike?.fetchLikedCommunityBoard.map((el2: any) =>
                 el2.communityBoard?.id ===
                 props.data?.fetchCommunityBoard.id ? (
                   el2.isLiked ? (

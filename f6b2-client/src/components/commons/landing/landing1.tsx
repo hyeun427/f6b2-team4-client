@@ -161,7 +161,7 @@ const Text = styled.div`
   inset: 0;
   /* 내가 추가 */
   text-shadow: 15px 30px 6px rgba(0, 0, 0, 0.25);
-  animation: ${textScale} 2s 2s;
+  animation: ${textScale} 2s 3s;
   animation-fill-mode: forwards;
   opacity: 0;
   position: absolute;
@@ -186,7 +186,6 @@ const MoveGarden = styled.div`
   /* 내가 추가 */
   text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   animation: ${explore} 2s 3s linear infinite;
-  /* animation: ${explore} 2s 3s linear infinite; */
   opacity: 0;
   position: absolute;
   z-index: 1;
