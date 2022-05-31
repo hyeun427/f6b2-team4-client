@@ -30,6 +30,7 @@ export const CommentWriteInputBox = styled.article`
   flex-direction: row;
   align-items: center;
   background: #ffffff;
+  border-radius: 10px;
   border: 1px solid #dbdbdb;
 `;
 
